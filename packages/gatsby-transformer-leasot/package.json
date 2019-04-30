@@ -1,0 +1,13 @@
+{
+  "name": "gatsby-transformer-leasot",
+  "version": "0.1.0",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "dependencies": {
+    "autolinker": "^3.0.5",
+    "leasot": "^7.3.4",
+    "lodash": "^4.17.11"
+  }
+}

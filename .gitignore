@@ -1,0 +1,9 @@
+# Project dependencies
+.cache
+node_modules
+yarn-error.log
+test/**/public
+.DS_Store
+public/
+.netlify
+.vscode/
