@@ -1,0 +1,29 @@
+---
+type: post
+title: CSS-Only Fluid Typography
+slug: fluid-typography
+layout: Article
+date: 2019-04-26
+author: can
+summary:
+---
+
+Just came across this awesome piece of CSS by [madebymike.com](https://www.madebymike.com.au/writing/fluid-type-calc-examples/)
+
+```css{1,4-6}
+:root {
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 20rem) {
+  :root {
+    font-size: calc(0.875rem + 0.5 * ((100vw - 20rem) / 60));
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  :root {
+    font-size: 1.1rem;
+  }
+}
+```

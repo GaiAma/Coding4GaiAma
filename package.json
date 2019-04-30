@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "@gaiama/coding4gaiama",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:GaiAma/Coding4GaiAma.git",
+  "author": "CanRau <cansrau@gmail.com> (canrau.com)",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ]
+}

@@ -1,0 +1,133 @@
+// @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'gatsby-prism.scss';
+
+:root {
+  font-size: 0.875rem;
+  // line-height: 1.2em;
+}
+
+@media screen and (min-width: 20rem) {
+  :root {
+    font-size: calc(0.875rem + 0.5 * ((100vw - 20rem) / 60));
+    // line-height: calc(1.2em + 0.6 * ((100vw - 20em) / 60));
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  :root {
+    font-size: 1.1rem;
+    // line-height: 1.8em;
+  }
+}
+
+.main-grid {
+  display: grid;
+  // based on https://www.smashingmagazine.com/2016/05/fluid-typography/
+  // grid-template-columns: 11rem repeat(12,1fr) 15rem;
+  // grid-row-gap: calc(1em + .5vw);
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr))
+    10px
+    minmax(auto, 50ch)
+    10px
+    repeat(3, minmax(0, 1fr));
+
+  > * {
+    grid-column: 5;
+  }
+
+  > header,
+  > h1 {
+    grid-column: 3/8;
+    text-align: center;
+  }
+
+  > blockquote {
+    grid-column: 4/7;
+    padding-left: 7px;
+  }
+
+  > .gatsby-highlight {
+    grid-column: 2/9;
+  }
+}
+
+// article > header {
+//   border-bottom: 1px solid hsla(0, 0%, 0%, 0.07);
+//   > h1 {
+//     border-bottom: 0;
+//   }
+// }
+:not(pre) > code[class*='language-'] {
+  padding: 0.1em 0.3rem;
+  border-radius: 0.2em;
+  white-space: normal;
+  font-size: 0.8rem;
+}
+// html {
+//   // font: 100%/1.75 'Merriweather Sans', 'Georgia', serif;
+//   // font-family: sans-serif;
+//   // line-height: 1.15;
+//   -webkit-text-size-adjust: 100%;
+//   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+// }
+// body {
+//   margin: 0;
+//   font-weight: 400;
+//   line-height: 1.5;
+//   font-size: 1.1rem;
+//   font-family: 'Proza Libre', sans-serif;
+// }
+
+// p,
+// ul,
+// dl {
+//   @apply mb-0 mt-6;
+// }
+
+// ol ol,
+// ul ul,
+// ol ul,
+// ul ol {
+//   @apply mt-0;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-family: Montserrat, sans-serif;
+//   // @apply font-heading font-semibold mb-0 mt-6;
+// }
+// h1:first-child,
+// h2:first-child,
+// h3:first-child,
+// h4:first-child,
+// h5:first-child,
+// h6:first-child {
+//   @apply mt-0;
+// }
+
+// h1 {
+//   @apply text-5xl leading-tight;
+// }
+// h2 {
+//   @apply text-4xl leading-tight;
+// }
+// h3 {
+//   @apply text-3xl leading-tight;
+// }
+// h4 {
+//   @apply text-2xl leading-tight;
+// }
+// h5 {
+//   @apply text-xl leading-tight;
+// }
+// h6 {
+//   @apply text-lg leading-tight;
+// }

@@ -1,0 +1,16 @@
+// @flow
+
+import * as React from 'react';
+
+declare export var HeadProvider: React.ComponentType<{
+  headTags?: Array<React.Element<any>>,
+  children: React.Node,
+}>;
+
+declare export var Title: React.ComponentType<{ [string]: mixed }>;
+
+declare export var Style: React.ComponentType<{ [string]: mixed }>;
+
+declare export var Meta: React.ComponentType<{ [string]: mixed }>;
+
+declare export var Link: React.ComponentType<{ [string]: mixed }>;

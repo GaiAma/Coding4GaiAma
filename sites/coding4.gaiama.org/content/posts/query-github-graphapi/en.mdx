@@ -1,0 +1,46 @@
+---
+type: post
+title: Query all repo files using GitHub's GraphQL API and gatsby-source-graphql
+slug: query-github-graphql-api
+layout: Article
+date: 2019-04-27
+author: can
+summary:
+---
+
+Thanks to this amazing SO [answer to the question "Github GraphQL to recursively list all files in the directory"](https://stackoverflow.com/a/46683303/3484824) I finally got my query working 😃
+The query works only using the [gatsby-source-graphql](https://www.gatsbyjs.org/packages/gatsby-source-graphql/) plugin.  
+If you want to use it outside Gatsby remove the `graphql+GitHub_` prefixes so it becomes `graphql+GitObjectID`, `graphql+Tree` and `graphql+Blob`
+
+```graphql
+query($branch: GitHub_GitObjectID) {
+  github {
+    viewer {
+      repository(name: "canrau.com") {
+        name
+        object(expression: "master:", oid: $branch) {
+          ... on GitHub_Tree {
+            entries {
+              name
+              object {
+                ... on GitHub_Blob {
+                  text
+                }
+              }
+            }
+          }
+        }
+        issues(first: 10, filterBy: { states: OPEN }) {
+          nodes {
+            title
+            url
+            bodyText
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+\*[SO]: StackOverflow
