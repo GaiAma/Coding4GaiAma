@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react'
 import { Link } from 'gatsby'
 import nano from 'nanostyled'
@@ -6,13 +7,26 @@ const Wrapper = nano(`footer`, {
   base: `text-center`,
 })
 
-// TODO: start using Flow, TypeScript or PropTypes!
-export const Header = ({ title, homepage, ...props }) => (
-  <Wrapper {...props}>
-    <h3>
-      <Link to={homepage.fields.url}>{title}</Link>
-    </h3>
-    {/* <ThemeToggler>
+type Props = {
+  title: string,
+  subtitle: string,
+  homepage: {
+    fields: {
+      url: string,
+    },
+  },
+}
+
+export const Header = ({ title, subtitle, homepage, ...props }: Props) =>
+  !homepage ? null : (
+    <Wrapper {...props}>
+      <h3>
+        <Link className="block" to={homepage.fields.url}>
+          {title}
+        </Link>
+        {!!subtitle && <small>{subtitle}</small>}
+      </h3>
+      {/* <ThemeToggler>
           {({ theme, toggleTheme }) =>
             !!theme && (
               <label className="absolute top-0 right-0 m-4">
@@ -31,5 +45,5 @@ export const Header = ({ title, homepage, ...props }) => (
             )
           }
         </ThemeToggler> */}
-  </Wrapper>
-)
+    </Wrapper>
+  )

@@ -6,13 +6,13 @@
  * Copyright (c) 2019 Can Rau (canrau.com)
  * Licensed under the MIT License (MIT)
  */
-const isArray = arr =>
-  (Array.isArray && Array.isArray(arr)) ||
-  Object.prototype.toString.call(arr) === `[object Array]`
+// const isArray = arr =>
+//   (Array.isArray && Array.isArray(arr)) ||
+//   Object.prototype.toString.call(arr) === `[object Array]`
 
 export const cx = classNames => {
   const classes =
-    typeof classNames === `string` ? classNames.split(` `) : isArray(classNames)
+    typeof classNames === `string` ? classNames.split(` `) : classNames
   if (!classes) return ``
   return classes.reduce((acc, val) => {
     if (val && typeof val === `string`) acc = `${acc} ${val}`

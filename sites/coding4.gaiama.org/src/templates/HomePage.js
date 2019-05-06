@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { cx } from '../utils/micro-classnames'
 
 const HomePage = ({ data: { page, posts }, ...props }) => {
   return (
@@ -10,10 +11,14 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
     >
       <MDXRenderer>{page.code.body}</MDXRenderer>
 
+      {/* TODO: explain !! ? https://frontarm.com/james-k-nelson/react-anti-patterns-conditional-rendering/ */}
       {!!posts?.nodes?.length && (
         <div>
           {posts.nodes.map(p => (
-            <article key={p.id} className="mt-12">
+            <article
+              key={p.id}
+              className={cx([`mt-12`, { 'opacity-50': p.frontmatter.draft }])}
+            >
               <header>
                 <h2 className="border-none mb-0 pb-0">
                   <Link to={p.fields.url}>{p.frontmatter.title}</Link>
@@ -26,7 +31,7 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
                   <span>{p.timeToRead} min read</span>
                 </small>
               </header>
-              <p className="mt-2">{p.excerpt}</p>
+              <p className="mt-2">{p.frontmatter.description || p.excerpt}</p>
             </article>
           ))}
         </div>
@@ -37,41 +42,31 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
 
 export default HomePage
 
+// draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
 export const query = graphql`
-  query($url: String!) {
+  query($url: String!, $draftBlacklist: [Boolean!]!) {
     ...siteMeta
 
     page: mdx(
       fields: { url: { eq: $url } }
       frontmatter: { layout: { eq: "HomePage" } }
     ) {
-      code {
-        body
-      }
-      frontmatter {
-        title
-        type
-      }
+      ...CommonFields
     }
 
     posts: allMdx(
-      filter: { frontmatter: { type: { eq: "post" } } }
+      filter: {
+        frontmatter: { type: { eq: "post" }, draft: { nin: $draftBlacklist } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
+        ...CommonFields
         id
         timeToRead
         excerpt
-        code {
-          body
-        }
         frontmatter {
-          title
-          date(formatString: "MMMM DD, YYYY")
-          dateTime: date(formatString: "YYYY-MM-DD")
-        }
-        fields {
-          url
+          draft
         }
       }
     }

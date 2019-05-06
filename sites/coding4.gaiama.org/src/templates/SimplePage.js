@@ -20,17 +20,7 @@ export const query = graphql`
       fields: { url: { eq: $url } }
       frontmatter: { layout: { eq: "SimplePage" } }
     ) {
-      code {
-        body
-      }
-      frontmatter {
-        title
-        type
-        date(formatString: "YYYY-MM-DD")
-      }
-      fields {
-        url
-      }
+      ...CommonFields
       tableOfContents
     }
   }

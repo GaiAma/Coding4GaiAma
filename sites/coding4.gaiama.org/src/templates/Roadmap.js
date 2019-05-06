@@ -30,14 +30,21 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
   </li>
 )
 
-const Article = ({ data: { page, roadmap, site }, ...props }) => {
+const getEmoji = num => <span>{num > 20 ? `😱` : num > 10 ? `😨` : `😊`}</span>
+
+const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
   return (
     <div className="main-grid">
       {!!page?.code?.body && <MDXRenderer>{page.code.body}</MDXRenderer>}
 
       {roadmap?.group?.map(x => (
         <div key={x.fieldValue}>
-          <h3>{x.fieldValue}</h3>
+          <h3>
+            {x.fieldValue}{' '}
+            <small>
+              ({x.nodes.length} {getEmoji(x.nodes.length)})
+            </small>
+          </h3>
           <ul>
             {x.nodes.map(({ id, todo }) => (
               <TodoItem todo={todo} meta={site.meta} key={id} />
@@ -49,20 +56,14 @@ const Article = ({ data: { page, roadmap, site }, ...props }) => {
   )
 }
 
-export default Article
+export default Roadmap
 
 export const query = graphql`
   query($url: String!) {
     ...siteMeta
 
     page: mdx(fields: { url: { eq: $url } }) {
-      code {
-        body
-      }
-      frontmatter {
-        title
-        type
-      }
+      ...CommonFields
     }
 
     roadmap: allRoadmap(
