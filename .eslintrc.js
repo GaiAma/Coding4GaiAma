@@ -1,3 +1,4 @@
+// TODO: eslint settings should be per site/package
 module.exports = {
   parser: 'babel-eslint',
   extends: [

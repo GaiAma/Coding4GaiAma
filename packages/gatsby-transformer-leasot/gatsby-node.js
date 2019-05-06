@@ -61,7 +61,13 @@ exports.onCreateNode = async (
     reporter,
     actions: { createNode, createParentChildLink /*, deleteNode*/ },
   },
-  { sourceInstanceName, customTags = [], emptyState: customizedEmptyState = {} }
+  {
+    sourceInstanceName,
+    customTags = [],
+    customParsers = {},
+    associateParser = {},
+    emptyState: customizedEmptyState = {},
+  }
 ) => {
   /**
    * we only care about File nodes with our sourceInstanceName
@@ -113,6 +119,12 @@ exports.onCreateNode = async (
       filename: node.base,
       withInlineFiles: true,
       customTags,
+      customParsers,
+      associateParser: {
+        '.md': { parserName: 'twigParser', includedFiles: [`.yml`] },
+        '.mdx': { parserName: 'twigParser', includedFiles: [`.yml`] },
+        ...associateParser,
+      },
     })
 
     /**
@@ -168,4 +180,36 @@ exports.onCreateNode = async (
       ${err.message}`
     )
   }
+}
+
+/**
+ * Add types and resolvers
+ */
+module.exports.sourceNodes = ({ actions, schema }, { sourceInstanceName }) => {
+  const { createTypes } = actions
+  const nodeName = upperFirst(sourceInstanceName)
+  createTypes([
+    /**
+     * `${nodeName}Todo`
+     * Ensure todo.file is a string
+     */
+    schema.buildObjectType({
+      name: `${nodeName}Todo`,
+      fields: {
+        file: `File`,
+      },
+    }),
+
+    /**
+     * Add types and resolvers to Mdx
+     */
+    schema.buildObjectType({
+      name: nodeName,
+      fields: {
+        // set todo to above declared ${nodeName}Todo types
+        todo: `${nodeName}Todo!`,
+      },
+      interfaces: [`Node`],
+    }),
+  ])
 }
