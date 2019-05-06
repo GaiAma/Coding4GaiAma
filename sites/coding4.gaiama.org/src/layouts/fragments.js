@@ -1,10 +1,31 @@
 import { graphql } from 'gatsby'
 
 export const Fragments = graphql`
+  fragment CommonFields on Mdx {
+    code {
+      body
+    }
+    frontmatter {
+      title
+      type
+      date(formatString: "YYYY-MM-DD")
+      dateTime: date(formatString: "YYYY-MM-DD")
+      description
+    }
+    fields {
+      url
+      shareableUrl
+      absoluteUrl
+      editLink
+      shareableUrlAbsolute
+    }
+  }
+
   fragment siteMeta on Query {
     site {
       meta: siteMetadata {
         title
+        description
         siteUrl
         version
         repository
@@ -13,6 +34,9 @@ export const Fragments = graphql`
     }
 
     homepage: mdx(frontmatter: { layout: { eq: "HomePage" } }) {
+      frontmatter {
+        title
+      }
       fields {
         url
       }

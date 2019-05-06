@@ -3,30 +3,35 @@
  * https://www.npmjs.com/package/gatsby-plugin-webmention
  * https://webmention.io/
  * https://brid.gy/
+ *
+ * TODO: check out https://gatsby-remark-design-system.netlify.com/
+ *
+ * TODO: gatsby-plugin for https://ffoodd.github.io/a11y.css/ ?
+ * check out GaiAma/gaiama.org/packages..
+ *
+ * TODO: use https://github.com/nytimes/react-tracking ?
+ *
+ * TODO: add fancy page transitions
+ * https://github.com/gatsbyjs/gatsby/blob/master/examples/using-page-transitions/src/components/transition.js
+ *
+ * TODO: use react-icons?
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
-const { homepage, version, repository } = require(`./package.json`)
+const { version, repository } = require(`./package.json`)
 
 const {
-  URL: NETLIFY_SITE_URL = homepage,
-  DEPLOY_PRIME_URL = NETLIFY_SITE_URL,
-  CONTEXT: NETLIFY_ENV = process.env.NODE_ENV,
-  BRANCH,
-} = process.env
-const branch = BRANCH || `dev`
-const isNetlifyProduction =
-  NETLIFY_ENV === `production` || `${branch}`.startsWith(`ab_`)
-const siteUrl = isNetlifyProduction
-  ? NETLIFY_SITE_URL
-  : DEPLOY_PRIME_URL || homepage
-const isDebug = /^(gatsby)?\*/i.test(`${process.env.DEBUG}`)
+  branch,
+  isNetlifyProduction,
+  siteUrl,
+  isDebug,
+} = require(`./src/utils/environment-helpers.js`)
 
 module.exports = {
   siteMetadata: {
     title: `Coding4GaiAma`,
     author: `GaiAma.org`,
-    description: `Behind the coding scenes of GaiAma.org`,
+    description: `Open Source straight from the jungle`,
     siteUrl,
     version,
     branch,
@@ -47,13 +52,6 @@ module.exports = {
         path: __dirname,
         name: `roadmap`,
         ignore: [
-          // TODO: write about those chokidar matchers
-          // `**/node_modules/*(.)**`,
-          // `**/.cache/*(.)**`,
-          // `**/public/**`,
-          // `**/static/**`,
-          // `**/*(.)*.{jpg,jpeg,png,gif,ico,json,map,gz,pdf}`,
-          // string => string.includes(`/.cache/`),
           /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
           /\.*.\.(jpe?g|png|gif|ico|json|map|gz|pdf)/,
         ],
@@ -82,9 +80,33 @@ module.exports = {
     {
       resolve: `gatsby-mdx`,
       options: {
-        // TODO: get the header slugs going
-        // rehypePlugins: [require(`rehype-slug`)],
+        rehypePlugins: [
+          require(`rehype-a11y-emoji`),
+          [
+            require(`rehype-autolink-headings`),
+            {
+              content: {
+                type: 'element',
+                tagName: 'span',
+                properties: { className: ['icon', 'icon-link'] },
+                children: [],
+              },
+            },
+          ],
+        ],
+        remarkPlugins: [
+          require(`remark-heading-id`),
+          require(`remark-breaks`),
+          require(`remark-github`),
+          require(`remark-kbd`),
+          [
+            require(`remark-textr`),
+            { plugins: [require(`typographic-single-spaces`)] },
+          ],
+        ],
         gatsbyRemarkPlugins: [
+          // TODO: hash urls not jumping to anchor?
+          `gatsby-remark-slug-i18n`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -110,33 +132,25 @@ module.exports = {
             // TODO: add react-live https://react-live.kitten.sh/ ?
             resolve: `gatsby-remark-prismjs`,
             options: {
-              inlineCodeMarker: `+`,
-              // If you wish to only show line numbers on certain code blocks,
-              // leave false and use the {numberLines: true} syntax below
+              // inlineCodeMarker: `+`,
               showLineNumbers: true,
+              noInlineHighlight: false,
             },
           },
           `gatsby-remark-gemoji-to-emoji`,
-          // TODO: gatsby-remark-abbr not working?
+          // TODO: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
           // maybe make mdx plugin
-          `gatsby-remark-abbr`,
-          `gatsby-remark-a11y-emoji`,
+          // accessible footnotes
+          // https://www.sitepoint.com/accessible-footnotes-css/
+          // https://codepen.io/SitePoint/pen/QbMgvY?editors=1100
+          // https://github.com/zestedesavoir/zmarkdown/blob/master/packages/remark-numbered-footnotes
+          // maybe make accessible footnote plugin like https://www.jamesrmeyer.com/otherstuff/easy-footnotes-for-web-pages.html
+          // https://blog.apaonline.org/2019/01/17/eliminating-footnotes-makes-philosophy-more-accessible/
+          // footnotes https://en.wikipedia.org/wiki/Fields_Medal
+          // `gatsby-remark-abbr`,
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-theme-context`,
-    //   options: {
-    //     themes,
-    //     defaultTheme: `dark`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-emotion`,
-    //   options: {
-    //     labelFormat: `[filename]--[local]`,
-    //   },
-    // },
     `gatsby-plugin-dark-mode`,
     `gatsby-plugin-layout`,
     `gatsby-transformer-sharp`,
@@ -155,7 +169,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        implementation: require(`sass`),
+        // implementation: require(`sass`),
         postCssPlugins: [
           // require(`postcss-import`)({
           //   path: [resolve(__dirname, `..`, `..`), resolve(__dirname)],
@@ -172,7 +186,7 @@ module.exports = {
         printRejected: isDebug,
         printAll: isDebug,
         tailwind: true,
-        whitelist: [`dark`, `light`],
+        whitelistPatterns: [/^(gatsby|theme)-/],
       },
     },
     {
@@ -232,5 +246,6 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-offline`,
+    `gatsby-plugin-jarvis`,
   ],
 }

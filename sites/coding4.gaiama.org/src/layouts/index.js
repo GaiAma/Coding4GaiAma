@@ -18,44 +18,38 @@ import './global.scss'
 // import 'typeface-proza-libre'
 // import 'typeface-merriweather-sans'
 
-const elements = [
-  [`h1`, ``],
-  [`h2`, ``],
-  [`h3`, ``],
-  [`h4`, ``],
-  [`h5`, ``],
-  [`h6`, ``],
-].reduce(
-  (acc, [Tag, classes]) => ({
-    ...acc,
-    [Tag]: props => (
-      <Tag {...(classes ? { className: classes } : {})} {...props} />
-    ),
-  }),
-  {}
-)
-
+const elements = {}
 const providerOptions = { components: { ...elements } }
 
 // const handleThemeChange = toggleTheme => e =>
 //   toggleTheme(e.target.checked ? 'dark' : 'light')
 
 const Layout = ({ children, data, ...props }) =>
-  console.log(`LayoutProps`, data, props) || (
+  (process.env.NODE_ENV !== `production` && console.log(data, props)) || (
     <>
       <GlobalMeta page={data?.page} meta={data?.site?.meta} />
       <div className={`type-${data?.page?.frontmatter?.type}`}>
         <Header
           className="text-center"
-          title={data.site.meta.title}
-          homepage={data.homepage}
+          title={data?.site?.meta.title}
+          subtitle={data?.site?.meta.description}
+          homepage={data?.homepage}
         />
 
         <main>
           <MDXProvider {...providerOptions}>{children}</MDXProvider>
         </main>
 
-        <Footer className="max-w-2xl mx-auto" menu={data.footerMenu.nodes} />
+        <Footer
+          className="max-w-2xl mx-auto mt-12 mb-2"
+          menu={data?.footerMenu?.nodes}
+          additionalLinks={[
+            {
+              url: data?.page?.fields?.editLink,
+              title: `Edit page on GitHub`,
+            },
+          ]}
+        />
       </div>
     </>
   )

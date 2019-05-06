@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Title, Meta } from 'react-head'
+import { Title, Meta, Link } from 'react-head'
 
 export const GlobalMeta = ({ page, meta }) => {
   if (!page?.frontmatter) {
@@ -12,6 +12,7 @@ export const GlobalMeta = ({ page, meta }) => {
     <>
       <Title>{`${page.frontmatter.title} — ${meta.title}`}</Title>
       <Meta name="description" content={description} />
+      <Link rel="canonical" href={page.fields.absoluteUrl} />
     </>
   )
 }

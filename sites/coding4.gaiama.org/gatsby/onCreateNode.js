@@ -1,14 +1,20 @@
-const slugify = require('@sindresorhus/slugify')
+const speakingurl = require(`speakingurl`)
+const { homepage, repository } = require(`../package.json`)
 
-exports.onCreateNode = ({ homepage }) => async ({
+module.exports = async function onCreateNode({
   node,
   actions,
   getNode,
   reporter,
-}) => {
+}) {
   if (typeof node.frontmatter === `undefined`) return
 
-  const { createNodeField, createRedirect } = actions
+  const { createNodeField, createRedirect, deleteNode } = actions
+
+  // remove draft nodes
+  // not working at the moment
+  // https://github.com/gatsbyjs/gatsby/issues/10844
+  // if (node.frontmatter.draft) deleteNode(node)
 
   const fileNode = getNode(node.parent)
 
@@ -30,40 +36,54 @@ exports.onCreateNode = ({ homepage }) => async ({
   const lang = node.frontmatter.lang || fileNameLang || fileNode.name
   // fileNode.relativeDirectory.split(`/`)[0]
   const date = node.frontmatter.date || fileNode.birthtime
+  const editLink = repository.url.replace(
+    /.git$/,
+    `/edit/master/${repository.directory}/content/${fileNode.relativePath}`
+  )
 
   addField(`relativePath`, node.relativePath)
   addField(`lang`, lang)
   addField(`date`, date)
+  addField(`editLink`, editLink)
 
   if (!node.frontmatter.layout) {
-    if (/^authors/.test(node.relativeDirectoy)) {
-      addField(`type`, `author`)
-      addField(`author`, node.relativeDirectoy.split(`/`).slice(-1))
-    }
-
     return
   }
+
+  const slugify = s => speakingurl(s, { lang })
 
   /**
    * Post related fields
    */
-  const slug = slugify(`${node.frontmatter.slug || fileNode.name}`)
-  const url = lang ? `/${lang}/${slug}` : `/${slug}`
+  const { slug, title, shortSlug } = node.frontmatter
+  const sluggified = slugify(`${slug || title || fileNode.name}`)
+  const sluggifiedShort = shortSlug ? slugify(`${shortSlug}`) : sluggified
+  const url = lang ? `/${lang}/${sluggified}` : `/${sluggified}`
 
-  // addField(`type`, isPost(node) ? `post` : `page`)
-  addField(`slug`, slug)
+  addField(`slug`, sluggified)
   addField(`url`, url)
-  addField(`absoluteUrl`, `${homepage}${url}`)
+  const absoluteUrl = `${homepage}${url}`
+  const absoluteUrlShort = `${homepage}/${sluggifiedShort}`
+  addField(`absoluteUrl`, absoluteUrl)
+  addField(`shareableUrl`, sluggifiedShort || url)
+  addField(`shareableUrlAbsolute`, absoluteUrlShort || absoluteUrl)
 
-  // https://www.gatsbyjs.org/docs/actions/#createRedirect
-  // createRedirect({
-  //   isPermanent: true,
-  //   fromPath: '/url',
-  //   toPath: '/zn-CH/url',
-  //   Language: 'zn',
-  // })
+  const redirects = []
+    .concat(node.frontmatter.redirects)
+    .concat(sluggifiedShort)
+    .filter(Boolean)
+  if (redirects.length) {
+    // https://www.gatsbyjs.org/docs/actions/#createRedirect
+    redirects.forEach(redirect =>
+      createRedirect({
+        isPermanent: true,
+        fromPath: redirect,
+        toPath: url,
+      })
+    )
+  }
 
-  if (!node.frontmatter.summary) {
-    reporter.info(`summary missing for ${url}`)
+  if (!node.frontmatter.description) {
+    reporter.info(`description missing for ${url}`)
   }
 }

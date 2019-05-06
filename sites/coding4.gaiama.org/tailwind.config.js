@@ -1,3 +1,5 @@
+// default https://github.com/tailwindcss/tailwindcss/blob/next/stubs/defaultConfig.stub.js
+
 module.exports = {
   theme: {
     extend: {
@@ -23,12 +25,12 @@ module.exports = {
     // ({ addVariant, e }) => {
     //   addVariant('dark', ({ modifySelectors, separator }) =>
     //     modifySelectors(
-    //       ({ className }) => `body.dark .${e(`dark${separator}${className}`)}`
+    //       ({ className }) => `body.theme-dark .${e(`dark${separator}${className}`)}`
     //     )
     //   )
     //   addVariant('light', ({ modifySelectors, separator }) =>
     //     modifySelectors(
-    //       ({ className }) => `body.light .${e(`light${separator}${className}`)}`
+    //       ({ className }) => `body.theme-light .${e(`light${separator}${className}`)}`
     //     )
     //   )
     // },

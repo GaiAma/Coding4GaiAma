@@ -1,6 +1,12 @@
 const { resolve } = require(`path`)
+const {
+  branch,
+  isNetlifyProduction,
+  siteUrl,
+  isDebug,
+} = require(`../src/utils/environment-helpers.js`)
 
-exports.createPages = async ({ graphql, actions }) => {
+module.exports = async function createPages({ graphql, actions }) {
   const { createPage } = actions
   const result = await graphql(`
     {
@@ -22,15 +28,24 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allMdx.nodes.forEach(node => {
     // no layout? not a page
-    if (!node.frontmatter.layout) {
+    // isProduction && draft? don't create page!
+    if (
+      !node.frontmatter.layout ||
+      (isNetlifyProduction && node.frontmatter.draft)
+    ) {
       return
     }
 
     const page = {
       path: node.fields.url,
       component: resolve(`./src/templates/${node.frontmatter.layout}.js`),
+      // customizable layout
+      // layout: resolve(`./src/templates/${node.frontmatter.layout}.js`),
       context: {
         url: node.fields.url,
+        lang: node.fields.lang,
+        // draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
+        draftBlacklist: isNetlifyProduction ? [true] : [],
       },
     }
 
@@ -40,6 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage({
           ...page,
           path: `/${node.fields.slug}`,
+          matchPath: `/*`,
         })
       }
       page.matchPath = `/${node.fields.lang}/*`
