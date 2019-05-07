@@ -1,0 +1,29 @@
+---
+type: post
+title: ES6 object destructuring mandatory parameters
+shortSlug: es6-required-fields
+layout: Article
+date: 2019-05-05
+author: can
+description: Using ES6 magic to throw on required fields not being set
+---
+
+Couple of days ago I came across this cool trick to validate required fields using ES6 default function parameters.
+
+```js{8}
+function throwRequired(name) {
+  throw new Error(`'${name}' is required`)
+}
+
+function name({
+  id = null,
+  name = 'user',
+  password = throwRequired('password'),
+}) {
+  console.log('All is good, password is: ' + password)
+}
+```
+
+I haven't actually used it so far, just tested in Chrome DevTools.
+
+Check out the [StackOverflow question](https://stackoverflow.com/questions/41536118/es6-object-destructuring-mandatory-parameters) all this originates from.

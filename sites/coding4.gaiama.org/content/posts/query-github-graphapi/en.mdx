@@ -1,22 +1,24 @@
 ---
 type: post
-title: Query all repo files using GitHub's GraphQL API and gatsby-source-graphql
-slug: query-github-graphql-api
+title: Github GraphQL to recursively list all files in the directory
+shortSlug: query-all-github-files
 layout: Article
 date: 2019-04-27
 author: can
-summary:
+description: Query all repository files using GitHub's GraphQL API and gatsby-source-graphql
+# TODO: add dependency versions like Gatsby version to posts
 ---
 
-Thanks to this amazing SO [answer to the question "Github GraphQL to recursively list all files in the directory"](https://stackoverflow.com/a/46683303/3484824) I finally got my query working 😃
+Thanks to this amazing SO (StackOverflow) [answer to the question "Github GraphQL to recursively list all files in the directory"](https://stackoverflow.com/a/46683303/3484824) I finally got my query working 😃
+
 The query works only using the [gatsby-source-graphql](https://www.gatsbyjs.org/packages/gatsby-source-graphql/) plugin.  
-If you want to use it outside Gatsby remove the `graphql+GitHub_` prefixes so it becomes `graphql+GitObjectID`, `graphql+Tree` and `graphql+Blob`
+If you want to use it outside Gatsby remove the `GitHub_` prefixes so it becomes `GitObjectID`, `Tree` and `Blob`, haven't tested it elsewhere though.
 
 ```graphql
 query($branch: GitHub_GitObjectID) {
   github {
     viewer {
-      repository(name: "canrau.com") {
+      repository(name: "Coding4GaiAma") {
         name
         object(expression: "master:", oid: $branch) {
           ... on GitHub_Tree {
@@ -43,4 +45,4 @@ query($branch: GitHub_GitObjectID) {
 }
 ```
 
-\*[SO]: StackOverflow
+Would love to know if you're going to use it in a project 🙏
