@@ -23,13 +23,13 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
                 <h2 className="border-none mb-0 pb-0">
                   <Link to={p.fields.url}>{p.frontmatter.title}</Link>
                 </h2>
-                <small className="">
+                {/* <small className="">
                   <time dateTime={p.frontmatter.dateTime}>
                     {p.frontmatter.date}
                   </time>
                   <span className="mx-2">–</span>
                   <span>{p.timeToRead} min read</span>
-                </small>
+                </small> */}
               </header>
               <p className="mt-2">{p.frontmatter.description || p.excerpt}</p>
             </article>
