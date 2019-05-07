@@ -78,24 +78,26 @@ const Article = ({ data: { page }, ...props }: Props) => {
         Share/Discuss on Twitter
       </ShareButtons>
 
-      <footer className="flex justify-start align-start mt-8">
-        <Img
-          className="rounded-full"
-          {...page.author.frontmatter.image.childImageSharp}
-        />
-        <div className="ml-4">
-          <h4 className="mt-0 mb-1">{page.author.frontmatter.name}</h4>
-          <div className="text-sm">
-            <MDXRenderer>{page.author.code.body}</MDXRenderer>
-          </div>
-          <div className="flex text-sm">
-            {page.author.frontmatter.links.map((l, i) => (
-              <div key={l.url} className={cx([{ 'ml-2': i % 2 === 1 }])}>
-                <a href={l.url} target="blank" rel="noopener">
-                  {l.name}
-                </a>
-              </div>
-            ))}
+      <footer>
+        <div className="flex justify-start align-start mt-8">
+          <Img
+            className="rounded-full"
+            {...page.author.frontmatter.image.childImageSharp}
+          />
+          <div className="ml-4">
+            <h4 className="mt-0 mb-1">{page.author.frontmatter.name}</h4>
+            <div className="text-sm">
+              <MDXRenderer>{page.author.code.body}</MDXRenderer>
+            </div>
+            <div className="flex text-sm">
+              {page.author.frontmatter.links.map((l, i) => (
+                <div key={l.url} className={cx([{ 'ml-2': i % 2 === 1 }])}>
+                  <a href={l.url} target="blank" rel="noopener">
+                    {l.name}
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </footer>
@@ -127,7 +129,7 @@ export const query = graphql`
           name
           image {
             childImageSharp {
-              fixed(width: 120, height: 120, quality: 75, cropFocus: ENTROPY) {
+              fixed(width: 80, height: 80, quality: 75, cropFocus: ENTROPY) {
                 ...GatsbyImageSharpFixed
               }
             }
