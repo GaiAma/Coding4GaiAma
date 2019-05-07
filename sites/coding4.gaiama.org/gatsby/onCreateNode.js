@@ -1,6 +1,8 @@
 const speakingurl = require(`speakingurl`)
 const { homepage, repository } = require(`../package.json`)
 
+const isHomePage = node => node.frontmatter.layout === `HomePage`
+
 module.exports = async function onCreateNode({
   node,
   actions,
@@ -74,13 +76,15 @@ module.exports = async function onCreateNode({
     .filter(Boolean)
   if (redirects.length) {
     // https://www.gatsbyjs.org/docs/actions/#createRedirect
-    redirects.forEach(redirect =>
+    redirects.forEach(redirect => {
       createRedirect({
         isPermanent: true,
         fromPath: redirect,
         toPath: url,
+        // TODO: when plugin/theme change `en` to defaultLanguage from config
+        ...(lang !== `en` ? { Language: lang } : {}),
       })
-    )
+    })
   }
 
   if (!node.frontmatter.description) {

@@ -27,38 +27,38 @@ module.exports = async function createPages({ graphql, actions }) {
   `)
 
   result.data.allMdx.nodes.forEach(node => {
+    const { layout, draft, type } = node.frontmatter
+    const { lang, url, slug } = node.fields
+
     // no layout? not a page
     // isProduction && draft? don't create page!
-    if (
-      !node.frontmatter.layout ||
-      (isNetlifyProduction && node.frontmatter.draft)
-    ) {
+    if (!layout || (isNetlifyProduction && draft)) {
       return
     }
 
     const page = {
-      path: node.fields.url,
-      component: resolve(`./src/templates/${node.frontmatter.layout}.js`),
+      path: url,
+      component: resolve(`./src/templates/${layout}.js`),
       // customizable layout
-      // layout: resolve(`./src/templates/${node.frontmatter.layout}.js`),
+      // layout: resolve(`./src/templates/${layout}.js`),
       context: {
-        url: node.fields.url,
-        lang: node.fields.lang,
+        url,
+        lang,
         // draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
         draftBlacklist: isNetlifyProduction ? [true] : [],
       },
     }
 
     // localized and root error pages
-    if (node.frontmatter.type === `error`) {
-      if (node.fields.lang === `en`) {
+    if (type === `error`) {
+      if (lang === `en`) {
         createPage({
           ...page,
-          path: `/${node.fields.slug}`,
+          path: `/${slug}`,
           matchPath: `/*`,
         })
       }
-      page.matchPath = `/${node.fields.lang}/*`
+      page.matchPath = `/${lang}/*`
     }
 
     createPage(page)
