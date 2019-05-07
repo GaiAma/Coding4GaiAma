@@ -7,7 +7,7 @@
   <a href="https://donate.gaiama.org/" title="Donate to help us protect more rainforest from being destroyed"><img src="https://img.shields.io/badge/$-support-green.svg"></a>
   <a href="#contributors" title="All Contributors"><img src="https://img.shields.io/badge/all_contributors-3-orange.svg"></a>
   <a href="http://makeapullrequest.com/" title="PRs Welcome"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
-  <a href="https://www.netlify.com" title="Frontend hosted on Netlify"><img src="https://api.netlify.com/api/v1/badges/59de1bcf-fb9d-4fe4-8af1-699d24120b31/deploy-status" alt="Netlify Status"/></a>
+  <a href="https://www.netlify.com" title="Frontend hosted on Netlify"><img src="https://api.netlify.com/api/v1/badges/2f70a68f-3b42-44ca-8dbe-189f030dbd64/deploy-status" alt="Netlify Status"/></a>
   <a href="https://nodejs.org" title="Node.js 10.10"><img src="https://img.shields.io/badge/node.js-10.10-%23026e00.svg"/></a>
 </p>
 
