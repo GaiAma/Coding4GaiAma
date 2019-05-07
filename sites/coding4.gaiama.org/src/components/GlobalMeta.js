@@ -6,7 +6,7 @@ export const GlobalMeta = ({ page, meta }) => {
     return null
   }
 
-  const description = page.frontmatter.summary || page.excerpt
+  const description = page.frontmatter.description || page.excerpt
 
   return (
     <>
