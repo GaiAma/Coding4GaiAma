@@ -16,7 +16,9 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
         <>
           <span className="mr-1">–</span>
           <a
-            href={`${repo}/tree/${branch}/${t.file.relativePath}#${t.line}`}
+            href={`${repo.url}/blob/${branch}/${repo.directory}/${
+              t.file.relativePath
+            }#${t.line}`}
             target="_blank"
             rel="noopener noreferrer"
           >
