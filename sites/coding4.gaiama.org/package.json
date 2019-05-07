@@ -22,6 +22,7 @@
     "debug": "DEBUG=* yarn dev",
     "serve": "serve -c public/serve.json",
     "build": "gatsby build && notify -t 'Build complete' -m 'Build complete'",
+    "build:live": "gatsby build",
     "flow": "flow",
     "readme": "remark README.md"
   },
