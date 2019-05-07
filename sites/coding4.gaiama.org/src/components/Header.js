@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import nano from 'nanostyled'
 
-const Wrapper = nano(`footer`, {
+const Wrapper = nano(`header`, {
   base: `text-center`,
 })
 
