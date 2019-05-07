@@ -11,6 +11,7 @@ export const Fragments = graphql`
       date(formatString: "YYYY-MM-DD")
       dateTime: date(formatString: "YYYY-MM-DD")
       description
+      robots
     }
     fields {
       url

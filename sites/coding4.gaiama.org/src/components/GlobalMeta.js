@@ -13,6 +13,10 @@ export const GlobalMeta = ({ page, meta }) => {
       <Title>{`${page.frontmatter.title} — ${meta.title}`}</Title>
       <Meta name="description" content={description} />
       <Link rel="canonical" href={page.fields.absoluteUrl} />
+
+      {page.frontmatter.robots && (
+        <Meta name="robots" content={page.frontmatter.robots} />
+      )}
     </>
   )
 }
