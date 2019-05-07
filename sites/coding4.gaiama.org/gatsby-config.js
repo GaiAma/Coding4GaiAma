@@ -1,4 +1,5 @@
 /**
+ * TODO: upgrade webpack-assets-manifest in gatsby-plugin-netlify
  * TODO: check out webmentions
  * https://www.npmjs.com/package/gatsby-plugin-webmention
  * https://webmention.io/
@@ -35,7 +36,10 @@ module.exports = {
     siteUrl,
     version,
     branch,
-    repository: `${repository.url}`.replace(/\.git$/, ``),
+    repository: {
+      url: `${repository.url}`.replace(/\.git$/, ``),
+      directory: repository.directory,
+    },
   },
   plugins: [
     `gatsby-plugin-flow`,
@@ -186,7 +190,8 @@ module.exports = {
         printRejected: isDebug,
         printAll: isDebug,
         tailwind: true,
-        whitelistPatterns: [/^(gatsby|theme)-/],
+        whitelistPatterns: [/^(gatsby|theme|has-highlighted)/],
+        whitelistPatternsChildren: [/token/],
       },
     },
     {
@@ -239,9 +244,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-root-import`,
       options: {
-        '@root': resolve(`./`),
-        '@src': resolve(`./src`),
-        '@components': resolve(`./src/components`),
+        root: resolve(`./`),
+        src: resolve(`./src`),
+        components: resolve(`./src/components`),
       },
     },
     `gatsby-plugin-netlify-cache`,

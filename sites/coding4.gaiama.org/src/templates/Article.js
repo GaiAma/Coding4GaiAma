@@ -3,8 +3,8 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import ShareButtons from '@components/ShareButtons'
-import { cx } from '../utils/micro-classnames'
+import ShareButtons from 'components/ShareButtons'
+import { cx } from 'src/utils/micro-classnames'
 
 type Props = {
   data: {
