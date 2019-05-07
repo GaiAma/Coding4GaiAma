@@ -26,30 +26,51 @@
   // based on https://www.smashingmagazine.com/2016/05/fluid-typography/
   // grid-template-columns: 11rem repeat(12,1fr) 15rem;
   // grid-row-gap: calc(1em + .5vw);
+  // grid-template-columns:
+  //   repeat(3, minmax(0, 1fr))
+  //   10px
+  //   minmax(auto, calc(100vw - 20px))
+  //   10px
+  //   repeat(3, minmax(0, 1fr));
+
+  // @media screen and (min-width: 35rem) {
   grid-template-columns:
     repeat(3, minmax(0, 1fr))
     10px
-    minmax(auto, 50ch)
+    // TODO: ensure 50ch won't exceed viewport without using a breakpoint?
+    // minmax(auto, 50ch)
+    auto
     10px
     repeat(3, minmax(0, 1fr));
+  // }
 
   > * {
     grid-column: 5;
+    width: 50ch;
+    max-width: calc(100vw - 50px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   > header,
   > h1 {
     grid-column: 3/8;
+    width: 100%;
+    max-width: 100%;
     text-align: center;
   }
 
   > blockquote {
     grid-column: 4/7;
+    width: 100%;
+    max-width: 100%;
     padding-left: 7px;
   }
 
   > .gatsby-highlight {
     grid-column: 2/9;
+    width: 100%;
+    max-width: 100%;
   }
 }
 

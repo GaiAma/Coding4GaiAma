@@ -6,7 +6,7 @@ import { cx } from '../utils/micro-classnames'
 const HomePage = ({ data: { page, posts }, ...props }) => {
   return (
     <div
-      className="main-grid max-w-75ch my-0 mx-auto py-4 px-8"
+      className="main-grid"
       /* background: linear-gradient(20deg, #db7093, #daa357); */
     >
       <MDXRenderer>{page.code.body}</MDXRenderer>
