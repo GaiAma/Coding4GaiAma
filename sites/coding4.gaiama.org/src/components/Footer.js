@@ -44,8 +44,5 @@ export const Footer = ({ menu, additionalLinks, ...props }: Props) =>
             </div>
           ))}
       </div>
-      <div className="text-gray-600 mt-2">
-        Content & source code MIT licensed{' '}
-      </div>
     </Wrapper>
   )
