@@ -8,8 +8,6 @@ import { Footer } from 'components/Footer'
 
 // import 'normalize.css'
 // import 'modern-normalize'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 import './global.scss'
 // import indexStyles from './index.module.scss'
 // import 'react-toggle/style.css'

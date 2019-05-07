@@ -6,6 +6,10 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import ShareButtons from 'components/ShareButtons'
 import { cx } from 'src/utils/micro-classnames'
 
+import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+import 'src/layouts/gatsby-prism.scss'
+
 type Props = {
   data: {
     page: {
