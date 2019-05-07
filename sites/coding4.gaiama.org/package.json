@@ -20,7 +20,7 @@
     "dev:watch": "watch 'kill-port --port 8000 && yarn dev' gatsby ../../packages",
     "debug:gatsby": "DEBUG=gatsby* yarn settings gatsby develop",
     "debug": "DEBUG=* yarn dev",
-    "serve": "gatsby serve",
+    "serve": "serve -c public/serve.json",
     "build": "gatsby build && notify -t 'Build complete' -m 'Build complete'",
     "flow": "flow",
     "readme": "remark README.md"
@@ -113,6 +113,7 @@
     "remark-preset-wooorm": "^4.0.0",
     "remark-textr": "^3.0.3",
     "sass": "^1.20.1",
+    "serve": "^11.0.0",
     "typographic-single-spaces": "^1.0.2",
     "watch": "^1.0.2",
     "webpack-jarvis": "^0.3.2"
