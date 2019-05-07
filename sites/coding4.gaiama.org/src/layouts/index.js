@@ -1,9 +1,9 @@
 import React from 'react'
 // import Toggle from 'react-toggle'
 import { MDXProvider } from '@mdx-js/react'
-import { GlobalMeta } from '@components/GlobalMeta'
-import { Header } from '@components/Header'
-import { Footer } from '@components/Footer'
+import { GlobalMeta } from 'components/GlobalMeta'
+import { Header } from 'components/Header'
+import { Footer } from 'components/Footer'
 // import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
 // import 'normalize.css'
@@ -58,7 +58,7 @@ export default Layout
 
 // import React from 'react'
 // import { ThemeProvider } from 'gatsby-theme-context'
-// import { themes } from '@src/themes/Main/theme'
+// import { themes } from 'src/themes/Main/theme'
 
 // const Layout = ({ children, ...props }) => (
 //   <ThemeProvider value={{ themes, defaultTheme: `dark` }}>

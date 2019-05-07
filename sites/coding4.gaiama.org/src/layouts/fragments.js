@@ -28,8 +28,11 @@ export const Fragments = graphql`
         description
         siteUrl
         version
-        repository
         branch
+        repository {
+          url
+          directory
+        }
       }
     }
 
