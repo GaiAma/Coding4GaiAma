@@ -17,3 +17,7 @@
 </p>
 
 ## Features
+
+## License
+
+[MIT](../../LICENSE) © [GaiAma](https://www.gaiama.org)
