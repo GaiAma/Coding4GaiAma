@@ -133,7 +133,8 @@ module.exports = {
           },
           { resolve: `gatsby-remark-external-links` },
           {
-            // TODO: add react-live https://react-live.kitten.sh/ ?
+            // TODO: try https://github.com/andrewbranch/gatsby-remark-vscode
+            // TODO: check out https://mdxjs.com/guides/live-code
             resolve: `gatsby-remark-prismjs`,
             options: {
               // inlineCodeMarker: `+`,
