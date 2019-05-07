@@ -25,6 +25,7 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
             {t.file.relativePath}#{t.line}
           </a>
           <span className="mx-1">–</span>
+          {/* TODO: File last modified not working, all same on Netlify */}
           <span>File last modified: {t.modifiedTime}</span>
         </>
       )}
