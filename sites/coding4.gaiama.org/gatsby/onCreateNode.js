@@ -58,14 +58,14 @@ module.exports = async function onCreateNode({
    * Post related fields
    */
   const { slug, title, shortSlug } = node.frontmatter
-  const sluggified = slugify(`${slug || title || fileNode.name}`)
-  const sluggifiedShort = shortSlug ? slugify(`${shortSlug}`) : sluggified
-  const url = lang ? `/${lang}/${sluggified}` : `/${sluggified}`
+  const sluggified = `/${slugify(`${slug || title || fileNode.name}`)}`
+  const sluggifiedShort = shortSlug ? `/${slugify(`${shortSlug}`)}` : sluggified
+  const url = lang ? `/${lang}${sluggified}` : sluggified
 
   addField(`slug`, sluggified)
   addField(`url`, url)
   const absoluteUrl = `${homepage}${url}`
-  const absoluteUrlShort = `${homepage}/${sluggifiedShort}`
+  const absoluteUrlShort = `${homepage}${sluggifiedShort}`
   addField(`absoluteUrl`, absoluteUrl)
   addField(`shareableUrl`, sluggifiedShort || url)
   addField(`shareableUrlAbsolute`, absoluteUrlShort || absoluteUrl)
