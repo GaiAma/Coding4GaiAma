@@ -1,0 +1,38 @@
+---
+type: post
+title: Query parent File node in GatsbyJS
+slug: graphql-parent-file
+layout: Article
+date: 2019-05-04
+author: can
+description: Accessing file informations from Markdown/MDX nodes using GraphQL's inline fragments
+tags:
+  - graphql
+---
+
+```graphql{7-10}
+{
+  mdx {
+    frontmatter {
+      title
+    }
+    parent {
+      ... on File {
+        relativePath
+        changeTime
+      }
+    }
+  }
+}
+```
+
+When querying a Markdown/MDX node in GatsbyJS I always wondered how to get information of the parent file and why only `file.absolutePath` has been included as `mdx.fileAbsolutePath`. Then one day I came across some GraphQL magic I didn't fully understand and sadly couldn't remember nor find again. 😅
+
+That's the main reason for this post. It serves as a note to myself and hopefully serves others as well as I think it's quite usefull.
+
+Thanks to a [video about the new Facebook.com](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/) using GraphQL and [Relay](https://facebook.github.io/relay/) which showed **inline fragments**, leading me to the right syntax 🙏. By the way, I found the video pretty informative to watch including cool techniques to build a more accessible and user friendy web.
+
+Why has only `absolutePath` been added to the md/mdx node?  
+I think it's for filtering, because AFAIK you can't use the inline fragment syntax in filters.
+
+More about inline fragments in the [GraphQL Docs](https://graphql.org/learn/queries/#inline-fragments).

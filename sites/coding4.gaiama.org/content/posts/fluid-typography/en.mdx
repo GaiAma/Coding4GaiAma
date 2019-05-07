@@ -5,12 +5,12 @@ slug: fluid-typography
 layout: Article
 date: 2019-04-26
 author: can
-summary:
+description: Responsive font-size using vh (viewport width), calc() and media queries to set boundaries
 ---
 
 Just came across this awesome piece of CSS by [madebymike.com](https://www.madebymike.com.au/writing/fluid-type-calc-examples/)
 
-```css{1,4-6}
+```css{7}
 :root {
   font-size: 0.875rem;
 }
@@ -27,3 +27,9 @@ Just came across this awesome piece of CSS by [madebymike.com](https://www.madeb
   }
 }
 ```
+
+Line 7 is where all the magic happens. 🦄
+The rest ensure minimum and maximum sizes so it won't shrink or grow infinitely.
+
+I'm using this exact piece of CSS on this page, so please let me know if you encounter any font-size related issues.
+Hopefully you can read this note 🤞
