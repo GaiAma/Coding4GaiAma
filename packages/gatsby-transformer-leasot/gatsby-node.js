@@ -90,6 +90,7 @@ exports.onCreateNode = async (
       `${node.id} >>> ${todo.file}#${todo.line} >>> Leasot`
     )
     if (getNode(id)) return
+
     const leasotNode = {
       todo: {
         ...todo,
@@ -155,7 +156,7 @@ exports.onCreateNode = async (
           line: 0,
           ref: `EmptyState`,
           text: `All done, nothing todo 🎉`,
-          file: `${pluginName}/gatsby-node.js`,
+          // file: `${pluginName}/gatsby-node.js`,
         },
         customizedEmptyState
       )
@@ -170,8 +171,11 @@ exports.onCreateNode = async (
     /**
      * iterate todos to store each in its own node
      * easier to query
+     * drop `file` in favor of `file___NODE`
      */
-    return todos.map(makeNode)
+    return todos.map(({ file, ...t }) =>
+      makeNode({ ...t, file___NODE: node.id })
+    )
   } catch (err) {
     reporter.panicOnBuild(
       `Error in ${pluginName}, processing ${sourceInstanceName} ${
@@ -185,31 +189,31 @@ exports.onCreateNode = async (
 /**
  * Add types and resolvers
  */
-module.exports.sourceNodes = ({ actions, schema }, { sourceInstanceName }) => {
-  const { createTypes } = actions
-  const nodeName = upperFirst(sourceInstanceName)
-  createTypes([
-    /**
-     * `${nodeName}Todo`
-     * Ensure todo.file is a string
-     */
-    schema.buildObjectType({
-      name: `${nodeName}Todo`,
-      fields: {
-        file: `File`,
-      },
-    }),
+// module.exports.sourceNodes = ({ actions, schema }, { sourceInstanceName }) => {
+//   const { createTypes } = actions
+//   const nodeName = upperFirst(sourceInstanceName)
+//   createTypes([
+//     /**
+//      * `${nodeName}Todo`
+//      * Ensure todo.file is a string
+//      */
+//     schema.buildObjectType({
+//       name: `${nodeName}Todo`,
+//       fields: {
+//         file: `File`,
+//       },
+//     }),
 
-    /**
-     * Add types and resolvers to Mdx
-     */
-    schema.buildObjectType({
-      name: nodeName,
-      fields: {
-        // set todo to above declared ${nodeName}Todo types
-        todo: `${nodeName}Todo!`,
-      },
-      interfaces: [`Node`],
-    }),
-  ])
-}
+//     /**
+//      * Add types and resolvers to Mdx
+//      */
+//     schema.buildObjectType({
+//       name: nodeName,
+//       fields: {
+//         // set todo to above declared ${nodeName}Todo types
+//         todo: `${nodeName}Todo!`,
+//       },
+//       interfaces: [`Node`],
+//     }),
+//   ])
+// }
