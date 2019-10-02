@@ -44,6 +44,3 @@ try {
   )
   /* eslint-disable-next-line */
 } catch (e) {}
-
-export const shouldUpdateScroll = ({ prevRouterProps }) =>
-  prevRouterProps && prevRouterProps.location ? `main-nav` : true
