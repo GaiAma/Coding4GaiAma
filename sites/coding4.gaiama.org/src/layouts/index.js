@@ -27,6 +27,7 @@ const Layout = ({ children, data, ...props }) =>
     <>
       <GlobalMeta page={data?.page} meta={data?.site?.meta} />
       <div className={`type-${data?.page?.frontmatter?.type}`}>
+        {/* TODO: move into grid like article header */}
         <Header
           className="text-center"
           title={data?.site?.meta.title}

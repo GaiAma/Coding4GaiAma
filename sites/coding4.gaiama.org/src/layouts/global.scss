@@ -54,10 +54,11 @@
 
   > header,
   > h1 {
-    grid-column: 3/8;
-    width: 100%;
+    grid-column: 5;
+    // TODO: probably needs to be handled differently
+    // think it might be better to have a proper center column
+    width: 50ch;
     max-width: 100%;
-    text-align: center;
   }
 
   > blockquote {
