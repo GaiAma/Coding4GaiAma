@@ -1,5 +1,4 @@
 /**
- * TODO: upgrade webpack-assets-manifest in gatsby-plugin-netlify
  * TODO: check out webmentions
  * https://www.npmjs.com/package/gatsby-plugin-webmention
  * https://webmention.io/
@@ -57,7 +56,7 @@ module.exports = {
         name: `roadmap`,
         ignore: [
           /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
-          /\.*.\.(jpe?g|png|gif|ico|json|map|gz|pdf)/,
+          /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf)/,
         ],
       },
     },
@@ -198,7 +197,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-react-head`,
       options: {
-        whitelist: `html,title,[name="description"],[name="apple-mobile-web-app-title"],[name="application-name"],[property^="og:"],[property^="fb:"],[property^="twitter:"],[rel="alternate"],[property="^article:"],[name="robots"]`,
+        whitelist: `html,title,[name="description"],[name="robots"],[name="apple-mobile-web-app-title"],[name="application-name"],[property^="og:"],[property^="fb:"],[property^="twitter:"],[rel="alternate"],[property="^article:"],[name="robots"]`,
       },
     },
     {
@@ -240,6 +239,10 @@ module.exports = {
         allPageHeaders: [
           ...(!isNetlifyProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
         ],
+        transformHeaders: (headers, path) => {
+          console.log(JSON.stringify({ path, headers }, null, 2))
+          return headers
+        },
       },
     },
     {
