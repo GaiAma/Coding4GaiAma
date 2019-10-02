@@ -74,6 +74,7 @@ module.exports = async function onCreateNode({
     .concat(node.frontmatter.redirects)
     .concat(sluggifiedShort)
     .filter(Boolean)
+
   if (redirects.length) {
     // https://www.gatsbyjs.org/docs/actions/#createRedirect
     redirects.forEach(redirect => {
@@ -81,7 +82,7 @@ module.exports = async function onCreateNode({
         isPermanent: true,
         fromPath: redirect,
         toPath: url,
-        // TODO: when plugin/theme change `en` to defaultLanguage from config
+        // TODO: when plugin/theme, change `en` to defaultLanguage from config
         ...(lang !== `en` ? { Language: lang } : {}),
       })
     })

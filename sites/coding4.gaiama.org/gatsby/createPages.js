@@ -51,10 +51,11 @@ module.exports = async function createPages({ graphql, actions }) {
 
     // localized and root error pages
     if (type === `error`) {
+      // page.statusCode = node.frontmatter.statusCode
       if (lang === `en`) {
         createPage({
           ...page,
-          path: `/${slug}`,
+          path: slug,
           matchPath: `/*`,
         })
       }
