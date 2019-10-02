@@ -17,6 +17,7 @@ type Props = {
         title: string,
         description: string,
         date: string,
+        dateTime: string,
       },
       fields: {
         shareableUrl: string,
