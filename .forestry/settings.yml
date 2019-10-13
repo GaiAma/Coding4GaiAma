@@ -5,11 +5,17 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: sites/coding4.gaiama.org/content/posts
+  label: Posts
+  create: all
+  match: "**/*.mdx"
+  new_doc_ext: ".mdx"
+- type: directory
   path: sites/coding4.gaiama.org/content/pages
   label: Pages
   create: all
   match: "**/*.mdx"
-  new_doc_ext: ".mdx"
+  new_doc_ext: mdx
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
