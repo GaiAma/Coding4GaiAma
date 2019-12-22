@@ -2,8 +2,8 @@
   "name": "gatsby-remark-slug-i18n",
   "version": "0.1.0",
   "dependencies": {
-    "mdast-util-to-string": "^1.0.5",
+    "mdast-util-to-string": "^1.0.7",
     "speakingurl": "^14.0.1",
-    "unist-util-visit": "^1.4.0"
+    "unist-util-visit": "^2.0.1"
   }
 }
