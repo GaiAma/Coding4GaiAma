@@ -50,17 +50,17 @@ module.exports = async function createPages({ graphql, actions }) {
     }
 
     // localized and root error pages
-    if (type === `error`) {
-      // page.statusCode = node.frontmatter.statusCode
-      if (lang === `en`) {
-        createPage({
-          ...page,
-          path: slug,
-          matchPath: `/*`,
-        })
-      }
-      page.matchPath = `/${lang}/*`
-    }
+    // if (type === `error`) {
+    //   // page.statusCode = node.frontmatter.statusCode
+    //   if (lang === `en`) {
+    //     createPage({
+    //       ...page,
+    //       path: slug,
+    //       matchPath: `/*`,
+    //     })
+    //   }
+    //   page.matchPath = `/${lang}/*`
+    // }
 
     createPage(page)
   })

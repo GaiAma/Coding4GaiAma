@@ -4,6 +4,8 @@
  * https://webmention.io/
  * https://brid.gy/
  *
+ * TODO: Check out https://npm.im/gatsby-plugin-schema-snapshot/ to lock-down gQL schema
+ *
  * TODO: check out https://gatsby-remark-design-system.netlify.com/
  *
  * TODO: gatsby-plugin for https://ffoodd.github.io/a11y.css/ ?
@@ -81,7 +83,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-mdx`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
         rehypePlugins: [
           require(`rehype-a11y-emoji`),
@@ -134,6 +136,7 @@ module.exports = {
           {
             // TODO: try https://github.com/andrewbranch/gatsby-remark-vscode
             // TODO: check out https://mdxjs.com/guides/live-code
+            // TODO: check out https://mdxjs.com/guides/syntax-highlighting
             resolve: `gatsby-remark-prismjs`,
             options: {
               // inlineCodeMarker: `+`,
@@ -195,9 +198,22 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-react-head`,
+      resolve: `@canrau/gatsby-plugin-react-head`,
       options: {
-        whitelist: `html,title,[name="description"],[name="robots"],[name="apple-mobile-web-app-title"],[name="application-name"],[property^="og:"],[property^="fb:"],[property^="twitter:"],[rel="alternate"],[property="^article:"],[name="robots"]`,
+        whitelist: [
+          `html`,
+          `title`,
+          `[name="description"]`,
+          `[name="apple-mobile-web-app-title"]`,
+          `[name="application-name"]`,
+          `[property^="og:"]`,
+          `[property^="fb:"]`,
+          `[property^="twitter:"]`,
+          `[rel="alternate"]`,
+          `[rel="canonical"]`,
+          `[property="^article:"]`,
+          `[name="robots"]`,
+        ],
       },
     },
     {
@@ -239,10 +255,10 @@ module.exports = {
         allPageHeaders: [
           ...(!isNetlifyProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
         ],
-        transformHeaders: (headers, path) => {
-          console.log(JSON.stringify({ path, headers }, null, 2))
-          return headers
-        },
+        // transformHeaders: (headers, path) => {
+        //   console.log(JSON.stringify({ path, headers }, null, 2))
+        //   return headers
+        // },
       },
     },
     {
@@ -255,6 +271,5 @@ module.exports = {
     },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-offline`,
-    `gatsby-plugin-jarvis`,
   ],
 }

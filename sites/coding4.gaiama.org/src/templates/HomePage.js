@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { cx } from '../utils/micro-classnames'
 
 const HomePage = ({ data: { page, posts }, ...props }) => {
@@ -9,7 +9,7 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
       className="main-grid"
       /* background: linear-gradient(20deg, #db7093, #daa357); */
     >
-      <MDXRenderer>{page.code.body}</MDXRenderer>
+      <MDXRenderer>{page.body}</MDXRenderer>
 
       {/* TODO: explain !! ? https://frontarm.com/james-k-nelson/react-anti-patterns-conditional-rendering/ */}
       {!!posts?.nodes?.length && (

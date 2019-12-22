@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const SimplePage = ({ data: { page }, ...props }) => {
   return (
     <div className="main-grid">
-      <MDXRenderer>{page.code.body}</MDXRenderer>
+      <MDXRenderer>{page.body}</MDXRenderer>
     </div>
   )
 }

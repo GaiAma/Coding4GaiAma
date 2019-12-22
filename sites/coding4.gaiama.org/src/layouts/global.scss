@@ -35,13 +35,15 @@
 
   // @media screen and (min-width: 35rem) {
   grid-template-columns:
-    repeat(3, minmax(0, 1fr))
+    1fr
+    minmax(auto, 7rem)
+    minmax(auto, 7rem)
     10px
-    // TODO: ensure 50ch won't exceed viewport without using a breakpoint?
-    // minmax(auto, 50ch)
-    auto
+    minmax(calc(92%-20px), 50rem)
     10px
-    repeat(3, minmax(0, 1fr));
+    minmax(auto, 7rem)
+    minmax(auto, 7rem)
+    1fr;
   // }
 
   > * {
@@ -65,7 +67,7 @@
     grid-column: 4/7;
     width: 100%;
     max-width: 100%;
-    padding-left: 7px;
+    padding-left: 10px;
   }
 
   > .gatsby-highlight {

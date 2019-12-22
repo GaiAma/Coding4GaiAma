@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 /**
  * TODO: improve 404
@@ -16,8 +16,8 @@ const NotFound = props => {
         <h1>{props?.data?.page.frontmatter.title}</h1>
       )}
       <div className="my-12">
-        {!!props?.data?.page?.code?.body && (
-          <MDXRenderer>{props?.data?.page.code.body}</MDXRenderer>
+        {!!props?.data?.page?.body && (
+          <MDXRenderer>{props?.data?.page.body}</MDXRenderer>
         )}
         <div className="bg-gray-300 text-gray-900 px-6 py-1 font-normal rounded-full border border-gray-300">
           <span>{props.location.host}</span>

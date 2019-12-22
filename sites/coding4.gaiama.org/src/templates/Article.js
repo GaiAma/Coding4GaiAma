@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import ShareButtons from 'components/ShareButtons'
 import { cx } from 'src/utils/micro-classnames'
 
@@ -23,13 +23,9 @@ type Props = {
         shareableUrl: string,
         shareableUrlAbsolute: string,
       },
-      code: {
-        body: string,
-      },
+      body: string,
       author: {
-        code: {
-          body: string,
-        },
+        body: string,
         frontmatter: {
           name: string,
           twitterHandle: string,
@@ -66,7 +62,7 @@ const Article = ({ data: { page }, ...props }: Props) => {
         </small>
       </header>
 
-      <MDXRenderer>{page.code.body}</MDXRenderer>
+      <MDXRenderer>{page.body}</MDXRenderer>
 
       <ShareButtons
         className="my-6"
@@ -88,7 +84,7 @@ const Article = ({ data: { page }, ...props }: Props) => {
           <div className="ml-4">
             <h4 className="mt-0 mb-1">{page.author.frontmatter.name}</h4>
             <div className="text-sm">
-              <MDXRenderer>{page.author.code.body}</MDXRenderer>
+              <MDXRenderer>{page.author.body}</MDXRenderer>
             </div>
             <div className="flex text-sm">
               {page.author.frontmatter.links.map((l, i) => (
@@ -123,9 +119,7 @@ export const query = graphql`
         shareableUrlAbsolute
       }
       author {
-        code {
-          body
-        }
+        body
         frontmatter {
           name
           image {

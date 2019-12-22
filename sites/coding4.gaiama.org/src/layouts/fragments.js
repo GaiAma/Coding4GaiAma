@@ -2,9 +2,7 @@ import { graphql } from 'gatsby'
 
 export const Fragments = graphql`
   fragment CommonFields on Mdx {
-    code {
-      body
-    }
+    body
     frontmatter {
       title
       type

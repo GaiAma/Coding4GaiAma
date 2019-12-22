@@ -14,6 +14,9 @@ export const GlobalMeta = ({ page, meta }) => {
       <Meta name="description" content={description} />
       <Link rel="canonical" href={page.fields.absoluteUrl} />
 
+      <Meta property="og:site_name" content="Coding4GaiAma" />
+      <Meta property="og:url" content={`${page.fields.absoluteUrl}`} />
+
       {page.frontmatter.robots && (
         <Meta name="robots" content={page.frontmatter.robots} />
       )}

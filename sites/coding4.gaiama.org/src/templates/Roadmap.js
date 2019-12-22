@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
   <li>
@@ -38,7 +38,7 @@ const getEmoji = num => <span>{num > 20 ? `😱` : num > 10 ? `😨` : `😊`}</
 const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
   return (
     <div className="main-grid">
-      {!!page?.code?.body && <MDXRenderer>{page.code.body}</MDXRenderer>}
+      {!!page?.body && <MDXRenderer>{page.body}</MDXRenderer>}
 
       {roadmap?.group?.map(x => (
         <div key={x.fieldValue}>

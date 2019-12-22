@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a title="Static Site Generator: GatsbyJS" href="https://www.gatsbyjs.org" target="_blank"><img src="https://www.gaiama.org/gatsby_logo.svg" width="40" alt="GatsbyJS Logo"></a> <a title="Hoster: Netlify" href="https://www.netlify.com" target="_blank"><img src="https://www.gaiama.org/netlify_logo.svg" width="40" alt="Netlify Logo"></a> <a title="Server: DigitalOcean" href="https://m.do.co/c/bcef7e4dac88" target="_blank"><img src="https://www.gaiama.org/digitalocean_logo.svg" width="40" alt="DigitalOcean Logo"></a>
+  <a title="Static Site Generator: GatsbyJS" href="https://www.gatsbyjs.org" target="_blank"><img src="https://www.gaiama.org/gatsby_logo.svg" width="40" alt="GatsbyJS Logo"></a> <a title="Hoster: Netlify" href="https://www.netlify.com" target="_blank"><img src="https://www.gaiama.org/netlify_logo.svg" width="40" alt="Netlify Logo"></a>
 <!-- ![GatsbyJS](https://img.shields.io/badge/dynamic/json.svg?color=%23663399&label=GatsbyJS&prefix=v&query=%24.dependencies.gatsby&url=https%3A%2F%2Fraw.githubusercontent.com%2FGaiAma%2Fgaiama.org%2Fmaster%2Fpackage.json) -->
 </p>
 
