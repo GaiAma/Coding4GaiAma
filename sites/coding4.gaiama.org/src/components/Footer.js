@@ -1,48 +1,62 @@
-// @flow
-import * as React from 'react'
-import { Link } from 'gatsby'
-import nano from 'nanostyled'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { Link } from 'components/Link'
+import { Box, Flex } from '@theme-ui/components'
+import { DiGithubBadge } from 'react-icons/di'
 
-const Wrapper = nano(`footer`, {
-  base: `text-center text-xs`,
-})
+// type SharedFields = {
+//   id: string,
+//   fields: { url: string },
+//   frontmatter: { title: string },
+// }
 
-type SharedFields = {
-  id: string,
-  fields: { url: string },
-  frontmatter: { title: string },
-}
+// type Props = {
+//   menu: Array<SharedFields>,
+//   additionalLinks: Array<SharedFields>,
+// }
 
-type Props = {
-  menu: Array<SharedFields>,
-  additionalLinks: Array<SharedFields>,
-}
-
-export const Footer = ({ menu, additionalLinks, ...props }: Props) =>
+export const Footer = ({
+  menu = [],
+  additionalLinks = [],
+  meta,
+  editLink,
+  ...props
+}) =>
   !menu?.length ? null : (
-    <Wrapper {...props}>
-      <div className="flex justify-center">
-        {!!menu.length &&
-          menu.map(m => (
-            <div key={m.id || m.fields.url}>
-              <Link className="px-2" to={m.fields.url}>
-                {m.frontmatter.title}
+    <Box mt="4" sx={{ backgroundColor: `background2` }}>
+      <Box mx="auto" sx={{ maxWidth: `34.8rem` }}>
+        <Flex sx={{ ml: -1 }}>
+          {!!menu.length &&
+            menu.map(m => (
+              <div key={m.id || m.fields.url}>
+                <Link sx={{ px: 1 }} to={m.fields.url}>
+                  {m.frontmatter.title}
+                </Link>
+              </div>
+            ))}
+          {!!additionalLinks.length &&
+            additionalLinks.map(m => (
+              <div key={m.url}>
+                <Link sx={{ px: 2 }} href={m.url}>
+                  {m.title}
+                </Link>
+              </div>
+            ))}
+        </Flex>
+
+        <Flex mt="2">
+          <Box>Version: {meta.version}</Box>
+          <Box ml="2">Branch: {meta.branch}</Box>
+          <Box ml="2">License: {meta.license}</Box>
+          {editLink && (
+            <Box ml="2">
+              <Link variant="plain" to={editLink}>
+                <DiGithubBadge />
+                Source
               </Link>
-            </div>
-          ))}
-        {!!additionalLinks.length &&
-          additionalLinks.map(m => (
-            <div key={m.url}>
-              <a
-                className="px-2"
-                href={m.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {m.title}
-              </a>
-            </div>
-          ))}
-      </div>
-    </Wrapper>
+            </Box>
+          )}
+        </Flex>
+      </Box>
+    </Box>
   )

@@ -11,7 +11,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
  */
 const NotFound = props => {
   return (
-    <div className="main-grid">
+    <div>
       {!!props?.data?.page?.frontmatter?.title && (
         <h1>{props?.data?.page.frontmatter.title}</h1>
       )}

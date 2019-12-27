@@ -1,12 +1,14 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
+import { Box } from '@theme-ui/components'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const SimplePage = ({ data: { page }, ...props }) => {
   return (
-    <div className="main-grid">
+    <Box variant="grid" mt="4">
       <MDXRenderer>{page.body}</MDXRenderer>
-    </div>
+    </Box>
   )
 }
 

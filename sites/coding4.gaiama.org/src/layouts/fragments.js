@@ -28,6 +28,7 @@ export const Fragments = graphql`
         siteUrl
         version
         branch
+        license
         repository {
           url
           directory

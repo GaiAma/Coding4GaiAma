@@ -1,4 +1,4 @@
-/* global window dataLayer */
+/* global window */
 import preval from 'babel-plugin-preval/macro'
 const { version, bugs, branch } = preval`
   const { version, bugs } = require('./package.json')
@@ -9,10 +9,10 @@ const { version, bugs, branch } = preval`
 // TODO: maybe improve on it – but what 😅
 // sadly don't remember what I was thinking
 // https://github.com/gatsbyjs/gatsby/pull/11379/files
-window.dataLayer = window.dataLayer || []
-dataLayer.push({
-  GAIAMA_BRANCH: branch,
-})
+// window.dataLayer = window.dataLayer || []
+// window.dataLayer.push({
+//   GAIAMA_BRANCH: branch,
+// })
 
 try {
   window.GaiAma = {
@@ -37,9 +37,7 @@ try {
     `color:green;`
   )
   console.log(
-    `%cIf you encounter anything unexpected, or have other feedback feel free to file an issue at ${
-      bugs.url
-    }/new?labels=ViaDevTools`,
+    `%cIf you encounter anything unexpected, or have other feedback feel free to file an issue at ${bugs.url}/new?labels=ViaDevTools`,
     `color:#3a9a02;`
   )
   /* eslint-disable-next-line */

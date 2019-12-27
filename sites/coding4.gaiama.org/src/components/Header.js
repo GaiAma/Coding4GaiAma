@@ -1,49 +1,69 @@
-// @flow
-import * as React from 'react'
-import { Link } from 'gatsby'
-import nano from 'nanostyled'
+/** @jsx jsx */
+import { jsx, useColorMode, useThemeUI } from 'theme-ui'
+import { Link } from 'components/Link'
+import { Heading, Box, Button, Flex } from '@theme-ui/components'
 
-const Wrapper = nano(`header`, {
-  base: `text-center`,
-})
+// const modes = [`pineapple`, `watermelon`]
+// const modeLabels = {
+//   pineapple: `Pineapple`,
+//   dark: `TOdo`,
+//   watermelon: `Watermelon`,
+//   papaya: `Papaya`,
+// }
 
-type Props = {
-  title: string,
-  subtitle: string,
-  homepage: {
-    fields: {
-      url: string,
-    },
-  },
-}
+// type Props = {
+//   title: string,
+//   subtitle: string,
+//   homepage: {
+//     fields: {
+//       url: string,
+//     },
+//   },
+// }
 
-export const Header = ({ title, subtitle, homepage, ...props }: Props) =>
-  !homepage ? null : (
-    <Wrapper {...props}>
-      <h3>
-        <Link className="block" to={homepage.fields.url}>
-          {title}
-        </Link>
-        {!!subtitle && <small>{subtitle}</small>}
-      </h3>
-      {/* <ThemeToggler>
-          {({ theme, toggleTheme }) =>
-            !!theme && (
-              <label className="absolute top-0 right-0 m-4">
-                {console.log({ theme })}
-                <Toggle
-                  defaultChecked={theme === `dark`}
-                  icons={false}
-                  // icons={{
-                  //   checked: <Heart />,
-                  //   unchecked: null,
-                  // }}
-                  onChange={handleThemeChange(toggleTheme)}
-                />
-                <span>Dark mode</span>
-              </label>
-            )
-          }
-        </ThemeToggler> */}
-    </Wrapper>
+export const Header = ({ title, subtitle, homepage, ...props }) => {
+  const [mode, setMode] = useColorMode()
+  const { theme } = useThemeUI()
+  const modes = [`pineapple`, ...Object.keys(theme.colors.modes)]
+
+  const cycleMode = e => {
+    const i = modes.indexOf(mode)
+    const next = modes[(i + 1) % modes.length]
+    setMode(next)
+  }
+
+  return !homepage ? null : (
+    <Box sx={{ backgroundColor: `background2` }}>
+      <Flex
+        mx="auto"
+        sx={{
+          justifyContent: `space-between`,
+          maxWidth: `34.8rem`,
+        }}
+      >
+        <Heading as="h3" mt={[3, 2]} {...props}>
+          <Link
+            variant="plain"
+            sx={{ display: `block`, a: { color: `primary` } }}
+            to={homepage.fields.url}
+          >
+            {title}
+          </Link>
+          {!!subtitle && <small sx={{ color: `muted` }}>{subtitle}</small>}
+        </Heading>
+        <Box
+          sx={{
+            gridColumn: [null, null, null, `6/8`],
+            position: [`absolute`, null, null, `static`],
+            right: 0,
+          }}
+        >
+          <Button variant="slim" mt="2" onClick={cycleMode}>
+            {/* {modeLabels[mode]} */}
+            {mode}
+          </Button>
+        </Box>
+      </Flex>
+    </Box>
   )
+}

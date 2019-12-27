@@ -1,70 +1,74 @@
-// @flow
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import ShareButtons from 'components/ShareButtons'
-import { cx } from 'src/utils/micro-classnames'
+// import { FiEdit } from 'react-icons/fi'
+import { ShareButtons } from 'components/ShareButtons'
+import { Link } from 'components/Link'
+import { Flex, Box, Heading } from '@theme-ui/components'
 
-import 'prismjs/themes/prism-tomorrow.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-import 'src/layouts/gatsby-prism.scss'
+// import 'prismjs/themes/prism-tomorrow.css'
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+// import 'src/layouts/gatsby-prism.scss'
 
-type Props = {
-  data: {
-    page: {
-      frontmatter: {
-        title: string,
-        description: string,
-        date: string,
-        dateTime: string,
-      },
-      fields: {
-        shareableUrl: string,
-        shareableUrlAbsolute: string,
-      },
-      body: string,
-      author: {
-        body: string,
-        frontmatter: {
-          name: string,
-          twitterHandle: string,
-          image: any,
-          links: Array<{
-            url: string,
-            name: string,
-          }>,
-        },
-      },
-    },
-  },
-}
+// type Props = {
+//   data: {
+//     page: {
+//       frontmatter: {
+//         title: string,
+//         description: string,
+//         date: string,
+//         dateTime: string,
+//       },
+//       fields: {
+//         shareableUrl: string,
+//         shareableUrlAbsolute: string,
+//       },
+//       body: string,
+//       author: {
+//         body: string,
+//         frontmatter: {
+//           name: string,
+//           twitterHandle: string,
+//           image: any,
+//           links: Array<{
+//             url: string,
+//             name: string,
+//           }>,
+//         },
+//       },
+//     },
+//   },
+// }
 
-const Article = ({ data: { page }, ...props }: Props) => {
+const Article = ({ data: { page }, ...props }) => {
   // const description = page.frontmatter.description
   return (
-    <article
+    <Box
+      variant="grid"
       // className="max-w-75ch my-0 mx-auto py-4 px-8"
       /* background: linear-gradient(20deg, #db7093, #daa357); */
-      className="main-grid"
+      // sx={{ gridColumn: 5 }}
     >
-      <header className="mb-8">
-        <h1 className="mb-0">
+      <Box as="header" mb="3">
+        <Heading as="h1" mt="4">
           <span itemProp="headline">{page.frontmatter.title}</span>
           {/* {!!description && <small itemProp="description">{description}</small>} */}
-        </h1>
-        <small className="text-gray-700">
-          <Link to={page.fields.shareableUrl} className="text-gray-700">
-            <time dateTime={page.frontmatter.dateTime}>
-              {page.frontmatter.date}
-            </time>
-          </Link>
-        </small>
-      </header>
+        </Heading>
+        <Box as="small" variant="text.muted">
+          {/* <Link variant="dim" to={page.fields.shareableUrl}> */}
+          <time dateTime={page.frontmatter.dateTime}>
+            {page.frontmatter.date}
+          </time>
+          {/* </Link> */}
+        </Box>
+      </Box>
 
       <MDXRenderer>{page.body}</MDXRenderer>
 
       <ShareButtons
+        sx={{ gridColumn: `1/6`, mt: 4 }}
         className="my-6"
         title={page.frontmatter.title}
         twitterHandle={page.author.frontmatter.twitterHandle.replace(/^@/, ``)}
@@ -75,30 +79,37 @@ const Article = ({ data: { page }, ...props }: Props) => {
         Share/Discuss on Twitter
       </ShareButtons>
 
-      <footer>
-        <div className="flex justify-start align-start mt-8">
+      {/* <Link to={page?.fields?.editLink}>
+        <span>
+          <FiEdit />
+          Edit
+        </span>
+      </Link> */}
+
+      <Box as="footer" mt="4">
+        <Flex sx={{ justifyContent: `start`, alignItems: `start` }}>
           <Img
-            className="rounded-full"
             {...page.author.frontmatter.image.childImageSharp}
+            sx={{ borderRadius: `round` }}
           />
-          <div className="ml-4">
-            <h4 className="mt-0 mb-1">{page.author.frontmatter.name}</h4>
-            <div className="text-sm">
+          <Box ml="4">
+            <Heading as="h4">{page.author.frontmatter.name}</Heading>
+            <Box variant="text.small" mt="1">
               <MDXRenderer>{page.author.body}</MDXRenderer>
-            </div>
-            <div className="flex text-sm">
+            </Box>
+            <Flex variant="text.small" mt="1">
               {page.author.frontmatter.links.map((l, i) => (
-                <div key={l.url} className={cx([{ 'ml-2': i % 2 === 1 }])}>
-                  <a href={l.url} target="blank" rel="noopener">
+                <Box key={l.url} ml={i > 0 ? 3 : 0}>
+                  <Link href={l.url} target="blank" rel="noopener">
                     {l.name}
-                  </a>
-                </div>
+                  </Link>
+                </Box>
               ))}
-            </div>
-          </div>
-        </div>
-      </footer>
-    </article>
+            </Flex>
+          </Box>
+        </Flex>
+      </Box>
+    </Box>
   )
 }
 

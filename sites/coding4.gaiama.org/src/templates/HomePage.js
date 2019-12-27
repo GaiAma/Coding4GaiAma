@@ -1,42 +1,49 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
+/** @jsx jsx */
+import { jsx, useThemeUI } from 'theme-ui'
+import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { cx } from '../utils/micro-classnames'
+import { Link } from 'components/Link'
+import { Heading, Box, Text } from '@theme-ui/components'
 
 const HomePage = ({ data: { page, posts }, ...props }) => {
+  const context = useThemeUI()
+  console.log(context)
   return (
-    <div
-      className="main-grid"
-      /* background: linear-gradient(20deg, #db7093, #daa357); */
-    >
+    <Box variant="grid" mt="4">
       <MDXRenderer>{page.body}</MDXRenderer>
 
-      {/* TODO: explain !! ? https://frontarm.com/james-k-nelson/react-anti-patterns-conditional-rendering/ */}
+      {/* TODO: explain '!!' ? https://frontarm.com/james-k-nelson/react-anti-patterns-conditional-rendering/ */}
       {!!posts?.nodes?.length && (
-        <div>
+        <Box mt="2">
           {posts.nodes.map(p => (
-            <article
+            <Box
+              as="article"
               key={p.id}
-              className={cx([`mt-12`, { 'opacity-50': p.frontmatter.draft }])}
+              mt="5"
+              sx={{ opacity: p.frontmatter.draft && 0.3 }}
             >
-              <header>
-                <h2 className="border-none mb-0 pb-0">
-                  <Link to={p.fields.url}>{p.frontmatter.title}</Link>
-                </h2>
-                {/* <small className="">
+              <Box as="header">
+                <Heading as="h2">
+                  <Link variant="plain" to={p.fields.url}>
+                    {p.frontmatter.title}
+                  </Link>
+                </Heading>
+                <Text as="small" sx={{ color: `dimgrey` }}>
                   <time dateTime={p.frontmatter.dateTime}>
                     {p.frontmatter.date}
                   </time>
-                  <span className="mx-2">–</span>
+                  <span sx={{ mx: 2 }}>–</span>
                   <span>{p.timeToRead} min read</span>
-                </small> */}
-              </header>
-              <p className="mt-2">{p.frontmatter.description || p.excerpt}</p>
-            </article>
+                </Text>
+              </Box>
+              <Text as="p" mt="2">
+                {p.frontmatter.description || p.excerpt}
+              </Text>
+            </Box>
           ))}
-        </div>
+        </Box>
       )}
-    </div>
+    </Box>
   )
 }
 

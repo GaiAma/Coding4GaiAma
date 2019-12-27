@@ -20,7 +20,7 @@
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
-const { version, repository } = require(`./package.json`)
+const { version, repository, license } = require(`./package.json`)
 
 const {
   branch,
@@ -37,12 +37,15 @@ module.exports = {
     siteUrl,
     version,
     branch,
+    license,
     repository: {
       url: `${repository.url}`.replace(/\.git$/, ``),
       directory: repository.directory,
     },
   },
   plugins: [
+    `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -99,6 +102,7 @@ module.exports = {
           ],
         ],
         remarkPlugins: [
+          // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-heading-id`),
           require(`remark-breaks`),
           require(`remark-github`),
@@ -131,18 +135,18 @@ module.exports = {
               dashes: `oldschool`,
             },
           },
-          { resolve: `gatsby-remark-external-links` },
-          {
-            // TODO: try https://github.com/andrewbranch/gatsby-remark-vscode
-            // TODO: check out https://mdxjs.com/guides/live-code
-            // TODO: check out https://mdxjs.com/guides/syntax-highlighting
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              // inlineCodeMarker: `+`,
-              showLineNumbers: true,
-              noInlineHighlight: false,
-            },
-          },
+          // { resolve: `gatsby-remark-external-links` },
+          // {
+          //   // TODO: try https://github.com/andrewbranch/gatsby-remark-vscode
+          //   // TODO: check out https://mdxjs.com/guides/live-code
+          //   // TODO: check out https://mdxjs.com/guides/syntax-highlighting
+          //   resolve: `gatsby-remark-prismjs`,
+          //   options: {
+          //     // inlineCodeMarker: `+`,
+          //     showLineNumbers: true,
+          //     noInlineHighlight: false,
+          //   },
+          // },
           `gatsby-remark-gemoji-to-emoji`,
           // TODO: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
           // maybe make mdx plugin
@@ -157,8 +161,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-dark-mode`,
-    `gatsby-plugin-layout`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
@@ -166,36 +168,36 @@ module.exports = {
         useMozJpeg: isNetlifyProduction,
       },
     },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        // implementation: require(`sass`),
-        postCssPlugins: [
-          // require(`postcss-import`)({
-          //   path: [resolve(__dirname, `..`, `..`), resolve(__dirname)],
-          // }),
-          require(`tailwindcss`),
-          require(`postcss-preset-env`)({ stage: 0 }),
-        ],
-      },
-    },
-    {
-      // https://github.com/anantoghosh/gatsby-plugin-purgecss#whitelist-solutions
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        printRejected: isDebug,
-        printAll: isDebug,
-        tailwind: true,
-        whitelistPatterns: [/^(gatsby|theme|has-highlighted)/],
-        whitelistPatternsChildren: [/token/],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-sass`,
+    //   options: {
+    //     // implementation: require(`sass`),
+    //     postCssPlugins: [
+    //       // require(`postcss-import`)({
+    //       //   path: [resolve(__dirname, `..`, `..`), resolve(__dirname)],
+    //       // }),
+    //       require(`tailwindcss`),
+    //       require(`postcss-preset-env`)({ stage: 0 }),
+    //     ],
+    //   },
+    // },
+    // {
+    //   // https://github.com/anantoghosh/gatsby-plugin-purgecss#whitelist-solutions
+    //   resolve: `gatsby-plugin-purgecss`,
+    //   options: {
+    //     printRejected: isDebug,
+    //     printAll: isDebug,
+    //     tailwind: true,
+    //     whitelistPatterns: [/^(gatsby|theme|has-highlighted)/],
+    //     whitelistPatternsChildren: [/token/],
+    //   },
+    // },
     {
       resolve: `@canrau/gatsby-plugin-react-head`,
       options: {
@@ -215,13 +217,13 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-tagmanager`,
-      options: {
-        id: `GTM-WMKKBFD`,
-        includeInDevelopment: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-tagmanager`,
+    //   options: {
+    //     id: `GTM-WMKKBFD`,
+    //     includeInDevelopment: true,
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

@@ -1,33 +1,40 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { Fragment } from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { DiGithubBadge } from 'react-icons/di'
+import { Link } from 'components/Link'
+import { Box, Heading, Flex } from '@theme-ui/components'
 
 const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
   <li>
-    <h4 className="mb-1" dangerouslySetInnerHTML={{ __html: t.text }} />
+    {/* <h4
+      sx={{ mb: 1, a: { variant: `links.default` } }}
+      dangerouslySetInnerHTML={{ __html: t.text }}
+    /> */}
+    <MDXRenderer>{t.value}</MDXRenderer>
     <div className="text-xs text-gray-700">
       {!!t.ref && (
-        <>
-          <span className="mr-1">–</span>
+        <Fragment>
+          <span sx={{ mr: 1 }}>–</span>
           <span>{t.ref}</span>
-        </>
+        </Fragment>
       )}
       {!!t.file && (
-        <>
-          <span className="mr-1">–</span>
-          <a
-            href={`${repo.url}/blob/${branch}/${repo.directory}/${
-              t.file.relativePath
-            }#${t.line}`}
-            target="_blank"
-            rel="noopener noreferrer"
+        <Flex variant="text.dim" sx={{ alignItems: `center`, fontSize: 1 }}>
+          <DiGithubBadge size="1.3rem" />
+          <Link
+            href={`${repo.url}/blob/${branch}/${repo.directory}/${t.file.relativePath}#${t.line}`}
+            variant="plain"
+            ml="1"
           >
             {t.file.relativePath}#{t.line}
-          </a>
-          <span className="mx-1">–</span>
+          </Link>
+          <span sx={{ mx: 1 }}>–</span>
           {/* TODO: File last modified not working, all same on Netlify */}
           <span>File last modified: {t.modifiedTime}</span>
-        </>
+        </Flex>
       )}
     </div>
   </li>
@@ -37,25 +44,29 @@ const getEmoji = num => <span>{num > 20 ? `😱` : num > 10 ? `😨` : `😊`}</
 
 const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
   return (
-    <div className="main-grid">
-      {!!page?.body && <MDXRenderer>{page.body}</MDXRenderer>}
+    <Box variant="grid">
+      {!!page?.body && (
+        <Box mt="4">
+          <MDXRenderer>{page.body}</MDXRenderer>
+        </Box>
+      )}
 
       {roadmap?.group?.map(x => (
-        <div key={x.fieldValue}>
-          <h3>
+        <Fragment key={x.fieldValue}>
+          <Heading as="h3" mt="5">
             {x.fieldValue}{' '}
             <small>
               ({x.nodes.length} {getEmoji(x.nodes.length)})
             </small>
-          </h3>
-          <ul>
+          </Heading>
+          <Box as="ul" variant="styles.ul">
             {x.nodes.map(({ id, todo }) => (
               <TodoItem todo={todo} meta={site.meta} key={id} />
             ))}
-          </ul>
-        </div>
+          </Box>
+        </Fragment>
       ))}
-    </div>
+    </Box>
   )
 }
 
@@ -82,7 +93,8 @@ export const query = graphql`
             tag
             line
             ref
-            text
+            #text
+            value
             modifiedTime(formatString: "YYYY-MM-DD H:mm")
             file {
               relativePath

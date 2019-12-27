@@ -40,7 +40,7 @@ module.exports = async function onCreateNode({
   const date = node.frontmatter.date || fileNode.birthtime
   const editLink = repository.url.replace(
     /.git$/,
-    `/edit/master/${repository.directory}/content/${fileNode.relativePath}`
+    `/blob/master/${repository.directory}/content/${fileNode.relativePath}`
   )
 
   addField(`relativePath`, node.relativePath)
