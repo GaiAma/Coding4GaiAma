@@ -8,10 +8,6 @@ import { ShareButtons } from 'components/ShareButtons'
 import { Link } from 'components/Link'
 import { Flex, Box, Heading } from '@theme-ui/components'
 
-// import 'prismjs/themes/prism-tomorrow.css'
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
-// import 'src/layouts/gatsby-prism.scss'
-
 // type Props = {
 //   data: {
 //     page: {
@@ -45,12 +41,7 @@ import { Flex, Box, Heading } from '@theme-ui/components'
 const Article = ({ data: { page }, ...props }) => {
   // const description = page.frontmatter.description
   return (
-    <Box
-      variant="grid"
-      // className="max-w-75ch my-0 mx-auto py-4 px-8"
-      /* background: linear-gradient(20deg, #db7093, #daa357); */
-      // sx={{ gridColumn: 5 }}
-    >
+    <Box variant="grid">
       <Box as="header" mb="3">
         <Heading as="h1" mt="4">
           <span itemProp="headline">{page.frontmatter.title}</span>
