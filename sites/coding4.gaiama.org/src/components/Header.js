@@ -46,6 +46,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
             variant="plain"
             sx={{ display: `block`, a: { color: `primary` } }}
             to={homepage.fields.url}
+            active={false}
           >
             {title}
           </Link>
