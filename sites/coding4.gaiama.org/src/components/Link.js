@@ -2,10 +2,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { forwardRef } from 'react'
-// import PropTypes from 'prop-types'
-import { Box, Link as UiLink } from '@theme-ui/components'
-// import * as QS from '@gaiama/query-string'
 import { Link as GatsbyLink } from 'gatsby'
+import { Link as UiLink } from '@theme-ui/components'
 
 /**
  * fix custom scroll behaviour using __navigatingToLink
@@ -27,7 +25,7 @@ export const Link = forwardRef(
       title,
       as,
       ext,
-      variant = `default`,
+      variant: _variant = `default`,
       target,
       rel,
       children,
@@ -37,12 +35,12 @@ export const Link = forwardRef(
   ) => {
     const url = to || href
     const isExt = ext || isFqdn(url)
-    const Tag = as ? as : isExt ? `a` : GatsbyLink
+    const Tag = as ? as : isExt ? UiLink : GatsbyLink
+    const variant = !/^links\./.test(_variant) ? `links.${_variant}` : _variant
     const linkProps = {
-      as: Tag,
-      variant,
+      ref: ref,
       ...(!isExt
-        ? { to: url }
+        ? { to: url, getProps: props => console.log(`getProps`, props) }
         : {
             href: url,
           }),
@@ -52,13 +50,20 @@ export const Link = forwardRef(
           rel: rel || `nofollow noopener noreferrer`,
         }),
       title: title || url,
+      ...props,
     }
+
     return (
-      <Box as="span" {...props} __themeKey="links">
-        <UiLink ref={ref} {...linkProps}>
-          {children}
-        </UiLink>
-      </Box>
+      // <Box as="span" {...props} __themeKey="links">
+      //   {linkProps.title.includes(`roadmap`) && (
+      //     <Tag {...linkProps} sx={{ variant }}>
+      //       {children}
+      //     </Tag>
+      //   )}
+      <Tag as={Tag} {...linkProps} sx={{ variant }}>
+        {children}
+      </Tag>
+      // </Box>
     )
   }
 )
