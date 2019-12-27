@@ -87,23 +87,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        rehypePlugins: [
-          require(`rehype-a11y-emoji`),
-          [
-            require(`rehype-autolink-headings`),
-            {
-              content: {
-                type: 'element',
-                tagName: 'span',
-                properties: { className: ['icon', 'icon-link'] },
-                children: [],
-              },
-            },
-          ],
-        ],
+        rehypePlugins: [require(`rehype-a11y-emoji`)],
         remarkPlugins: [
           // TODO: use for https://github.com/remarkjs/remark-toc ?
-          require(`remark-heading-id`),
           require(`remark-breaks`),
           require(`remark-github`),
           require(`remark-kbd`),
