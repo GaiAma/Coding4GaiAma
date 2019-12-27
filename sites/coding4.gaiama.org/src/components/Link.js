@@ -26,6 +26,7 @@ export const Link = forwardRef(
       as,
       ext,
       variant: _variant = `default`,
+      active = true,
       target,
       rel,
       children,
@@ -42,7 +43,7 @@ export const Link = forwardRef(
       ...(!isExt
         ? {
             to: url,
-            activeClassName: `active`,
+            activeClassName: active ? `active` : ``,
           }
         : {
             href: url,
