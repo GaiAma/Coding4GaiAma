@@ -1,0 +1,34 @@
+{
+  "name": "remark-truncate-links",
+  "version": "0.1.0",
+  "description": "Parse TODOs, FIXMEs & more, then query them via GraphQL",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch"
+  },
+  "keywords": [
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
+    "markdown",
+    "text",
+    "plain",
+    "truncate",
+    "urls",
+    "links",
+    "shorten"
+  ],
+  "dependencies": {
+    "autolinker": "^3.11.1",
+    "unist-util-visit": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/unist": "^2.0.3",
+    "typescript": "^3.7.4"
+  }
+}

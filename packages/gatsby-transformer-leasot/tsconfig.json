@@ -1,0 +1,14 @@
+{
+  "include": ["./src/"],
+  "exclude": ["src/**/*.spec.*", "node_modules"],
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "target": "es2018",
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "./",
+    "sourceMap": true,
+    "resolveJsonModule": true
+  }
+}

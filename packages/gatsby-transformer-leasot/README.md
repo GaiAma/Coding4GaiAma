@@ -8,6 +8,7 @@ set emptyState to null if you want to disable it, bear in mind that you always h
 
 customize:
 
+- mode: `mdx`
 - associateParser
 - customParsers
 
