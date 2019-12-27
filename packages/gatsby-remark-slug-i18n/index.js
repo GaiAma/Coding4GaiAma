@@ -2,6 +2,7 @@
 
 const toString = require('mdast-util-to-string')
 const visit = require('unist-util-visit')
+// TODO: pretty old? https://www.npmjs.com/package/speakingurl
 const speakingurl = require(`speakingurl`)
 
 /**
