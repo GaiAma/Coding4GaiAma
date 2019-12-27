@@ -2,4 +2,4 @@
 
 ## License
 
-[MIT](../../LICENSE) © [GaiAma](https://www.gaiama.org)
+[MIT](../../LICENSE) [GaiAma](https://www.gaiama.org)
