@@ -40,7 +40,10 @@ export const Link = forwardRef(
     const linkProps = {
       ref: ref,
       ...(!isExt
-        ? { to: url, getProps: props => console.log(`getProps`, props) }
+        ? {
+            to: url,
+            activeClassName: `active`,
+          }
         : {
             href: url,
           }),
@@ -60,7 +63,7 @@ export const Link = forwardRef(
       //       {children}
       //     </Tag>
       //   )}
-      <Tag as={Tag} {...linkProps} sx={{ variant }}>
+      <Tag {...linkProps} sx={{ variant }}>
         {children}
       </Tag>
       // </Box>
