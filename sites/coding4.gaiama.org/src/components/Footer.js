@@ -28,18 +28,14 @@ export const Footer = ({
         <Flex sx={{ ml: -1 }}>
           {!!menu.length &&
             menu.map(m => (
-              <div key={m.id || m.fields.url}>
-                <Link sx={{ px: 1 }} to={m.fields.url}>
-                  {m.frontmatter.title}
-                </Link>
+              <div key={m.fields.url} sx={{ mx: 1 }}>
+                <Link to={m.fields.url}>{m.frontmatter.title}</Link>
               </div>
             ))}
           {!!additionalLinks.length &&
             additionalLinks.map(m => (
-              <div key={m.url}>
-                <Link sx={{ px: 2 }} href={m.url}>
-                  {m.title}
-                </Link>
+              <div key={m.url} sx={{ px: 2 }}>
+                <Link to={m.url}>{m.title}</Link>
               </div>
             ))}
         </Flex>
