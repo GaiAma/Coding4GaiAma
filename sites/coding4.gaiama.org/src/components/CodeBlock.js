@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/vsDark'
 
-console.log(`prism`, theme)
+// console.log(`prism`, theme)
 
 const codeFenceRegex = /language-(?<lang>[^{\s]+)(?:\{(?<lineStart>\d*)(?:-(?<lineEnd>.*))?\})?/i
 
@@ -34,7 +34,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
         <div sx={{ position: `relative` }}>
           <pre
             className={className}
-            sx={{ ...style, px: 0, overflow: `scroll` }}
+            sx={{ ...style, px: 0, m: 0, overflow: `scroll` }}
           >
             {tokens.map((line, i) => {
               const lineNo = i + 1
