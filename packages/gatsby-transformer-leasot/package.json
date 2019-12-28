@@ -4,6 +4,11 @@
   "description": "Parse TODOs, FIXMEs & more, then query them via GraphQL",
   "types": "gatsby-node.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/gatsby-transformer-leasot"
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
