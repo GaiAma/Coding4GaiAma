@@ -1,11 +1,30 @@
 {
   "name": "rehype-a11y-emoji",
   "version": "0.1.0",
+  "description": "Rehype plugin to make emojis accessible, wrapping emojis in <span> with image role and the emojis name in aria-label>",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/rehype-a11y-emoji"
+  },
+  "license": "MIT",
   "dependencies": {
     "emoji-regex": "^8.0.0",
     "gemoji": "^4.2.1",
     "unist-util-flatmap": "^1.0.0",
     "unist-util-visit": "^2.0.1",
     "unist-util-visit-parents": "^3.0.1"
-  }
+  },
+  "keywords": [
+    "mdx",
+    "remark",
+    "rehype",
+    "markdown",
+    "accessibility",
+    "emoji",
+    "gemoji",
+    "unist",
+    "a11y"
+  ]
 }
