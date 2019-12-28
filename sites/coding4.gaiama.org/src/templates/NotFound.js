@@ -1,6 +1,9 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Box } from '@theme-ui/components'
+import { Link } from 'components/Link'
 
 /**
  * TODO: improve 404
@@ -10,27 +13,31 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
  * https://www.cludo.com/blog/best-practices-for-brilliant-404-pages/
  */
 const NotFound = props => {
+  console.log(props.location)
   return (
-    <div>
+    <Box variant="grid">
       {!!props?.data?.page?.frontmatter?.title && (
         <h1>{props?.data?.page.frontmatter.title}</h1>
       )}
-      <div className="my-12">
-        {!!props?.data?.page?.body && (
-          <MDXRenderer>{props?.data?.page.body}</MDXRenderer>
-        )}
-        <div className="bg-gray-300 text-gray-900 px-6 py-1 font-normal rounded-full border border-gray-300">
-          <span>{props.location.host}</span>
-          <span className="font-bold">{props.location.pathname}</span>
-        </div>
-        <div className="mt-4">
-          Head back to{' '}
-          <a href={props.data.homepage.fields.url}>
-            {props.data.homepage.frontmatter.title}
-          </a>
-        </div>
-      </div>
-    </div>
+      {!!props?.data?.page?.body && (
+        <MDXRenderer>{props?.data?.page.body}</MDXRenderer>
+      )}
+      <Box
+        mb="7"
+        px="6"
+        py="1"
+        sx={{ color: `background`, bg: `text`, borderRadius: `round` }}
+      >
+        <span>{props.location.host}</span>
+        <span sx={{ fontWeight: `bold` }}>{props.location.pathname}</span>
+      </Box>
+      <Box>
+        Head back to{' '}
+        <Link to={props.data.homepage.fields.url}>
+          {props.data.homepage.frontmatter.title}
+        </Link>
+      </Box>
+    </Box>
   )
 }
 
