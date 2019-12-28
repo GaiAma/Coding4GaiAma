@@ -40,6 +40,9 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
               </Box>
               <Text as="p" mt="2">
                 {p.frontmatter.description || p.excerpt}
+                <Link to={p.fields.url} variant="plain" sx={{ ml: 2 }}>
+                  .. read on
+                </Link>
               </Text>
             </Box>
           ))}
