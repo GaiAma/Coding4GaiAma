@@ -6301,6 +6301,14 @@ gatsby-react-router-scroll@^2.1.19:
     scroll-behavior "^0.9.10"
     warning "^3.0.0"
 
+gatsby-remark-a11y-emoji@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-a11y-emoji/-/gatsby-remark-a11y-emoji-1.0.1.tgz#4d0e37426e68fefbb99644d66a67583cf8a0df1e"
+  integrity sha512-7ezgQdSriswaSLAgEZLjD6nAFi8gBLYRxcLlaYRYSu3Mt1FZ2SAwbTRCufRQjmgltNnxc5RBfNItnPjbSI7XiQ==
+  dependencies:
+    emoji-regex "^8.0.0"
+    gemoji "^4.2.1"
+
 gatsby-remark-abbr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-abbr/-/gatsby-remark-abbr-2.0.0.tgz#c63540898ec2c2d51e251fc4b380d604202fb283"
@@ -6360,6 +6368,13 @@ gatsby-remark-images@^3.1.39:
     query-string "^6.9.0"
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
+
+gatsby-remark-slug-i18n@./packages/gatsby-remark-slug-i18n:
+  version "0.1.0"
+  dependencies:
+    mdast-util-to-string "^1.0.7"
+    speakingurl "^14.0.1"
+    unist-util-visit "^2.0.1"
 
 gatsby-remark-smartypants@^2.1.19:
   version "2.1.19"
@@ -11939,6 +11954,15 @@ regjsparser@^0.6.0:
   integrity sha512-E9ghzUtoLwDekPT0DYCp+c4h+bvuUpe6rRHCTYn6eGoqj1LgKXxT6I0Il4WbjhQkOghzi/V+y03bPKvbllL93Q==
   dependencies:
     jsesc "~0.5.0"
+
+rehype-a11y-emoji@./packages/rehype-a11y-emoji:
+  version "0.1.0"
+  dependencies:
+    emoji-regex "^8.0.0"
+    gemoji "^4.2.1"
+    unist-util-flatmap "^1.0.0"
+    unist-util-visit "^2.0.1"
+    unist-util-visit-parents "^3.0.1"
 
 rehype-autolink-headings@^2.0.5:
   version "2.0.5"
