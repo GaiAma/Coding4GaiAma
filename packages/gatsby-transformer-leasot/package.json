@@ -9,6 +9,7 @@
     "url": "https://github.com/GaiAma/Coding4GaiAma.git",
     "directory": "packages/gatsby-transformer-leasot"
   },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-transformer-leasot#readme",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
