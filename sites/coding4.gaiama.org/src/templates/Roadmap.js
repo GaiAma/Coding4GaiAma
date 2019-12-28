@@ -14,7 +14,7 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
       dangerouslySetInnerHTML={{ __html: t.text }}
     /> */}
     <MDXRenderer>{t.value}</MDXRenderer>
-    <div className="text-xs text-gray-700">
+    <div sx={{ fontSize: 1, color: `muted` }}>
       {!!t.ref && (
         <Fragment>
           <span sx={{ mr: 1 }}>–</span>
@@ -22,7 +22,7 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
         </Fragment>
       )}
       {!!t.file && (
-        <Flex variant="text.dim" sx={{ alignItems: `center`, fontSize: 1 }}>
+        <Flex variant="text.dim" sx={{ alignItems: `center` }}>
           <DiGithubBadge size="1.3rem" />
           <Link
             href={`${repo.url}/blob/${branch}/${repo.directory}/${t.file.relativePath}#${t.line}`}
