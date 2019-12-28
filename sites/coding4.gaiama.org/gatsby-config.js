@@ -98,11 +98,13 @@ module.exports = {
             require(`remark-textr`),
             { plugins: [require(`typographic-single-spaces`)] },
           ],
+          require('remark-truncate-links').remarkTruncateLinks,
         ],
         gatsbyRemarkPlugins: [
           // TODO: hash urls not jumping to anchor?
           `gatsby-remark-slug-i18n`,
           {
+            // TODO: consider [gatsby-remark-images-anywhere](https://github.com/d4rekanguok/gatsby-remark-images-anywhere)
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
