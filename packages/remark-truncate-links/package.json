@@ -1,10 +1,15 @@
 {
   "name": "remark-truncate-links",
   "version": "0.1.0",
-  "description": "Parse TODOs, FIXMEs & more, then query them via GraphQL",
+  "description": "shortens links in Markdown/MDX",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/remark-truncate-links"
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
@@ -13,6 +18,7 @@
   "keywords": [
     "unified",
     "remark",
+    "mdx",
     "plugin",
     "mdast",
     "markdown",
