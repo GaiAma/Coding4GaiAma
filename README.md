@@ -19,7 +19,7 @@
 - [Theme UI](https://theme-ui.com/) & [Emotion](https://emotion.sh/) for styling
 - [Node.js 12.10](https://nodejs.org/en/) - not necessarily the minimum but what it's developed in
 - [MDX](https://www.gatsbyjs.org/docs/mdx/) - for everything content
-- [Offline support](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-offline#readme) - PWA supporting "Add to homescreen"
+- [Offline support](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-offline#readme) - PWA supporting "Add to Homescreen"
 - [gatsby-image](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-image#readme) & [gatsby-remark-images](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-images#readme) - for responsive images
 - [Yarn](https://yarnpkg.com) - v1.21.1 using policies
 
