@@ -15,7 +15,7 @@ module.exports = (
 ) => {
   if (markdownNode && markdownNode.fields && markdownNode.fields.lang) {
     visit(markdownAST, 'heading', node => {
-      const lang = markdownNode.fields.lang
+      const lang = markdownNode.fields.lang || `en`
       if (!node.id) {
         const data = node.data || (node.data = {})
         const props = data.hProperties || (data.hProperties = {})
