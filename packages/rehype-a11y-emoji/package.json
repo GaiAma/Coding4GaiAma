@@ -8,6 +8,7 @@
     "url": "https://github.com/GaiAma/Coding4GaiAma.git",
     "directory": "packages/rehype-a11y-emoji"
   },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/rehype-a11y-emoji#readme",
   "license": "MIT",
   "dependencies": {
     "emoji-regex": "^8.0.0",
