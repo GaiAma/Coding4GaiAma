@@ -10,6 +10,7 @@
     "url": "https://github.com/GaiAma/Coding4GaiAma.git",
     "directory": "packages/remark-truncate-links"
   },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-truncate-links#readme",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
