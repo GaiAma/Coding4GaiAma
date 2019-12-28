@@ -1,5 +1,7 @@
 # gatsby-remark-slug-i18n
 
+It's almost the same as [gatsby-remark-slug](https://www.npmjs.com/package/gatsby-remark-slug) yet it uses [speakingurl](https://github.com/pid/speakingurl) instead of [github-slugger](https://github.com/Flet/github-slugger) for proper slugs on pages in languages other than English.
+
 ### Installation
 
 ```bash
