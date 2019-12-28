@@ -31,10 +31,15 @@ const Layout = ({ children, data, ...props }) =>
             title={data?.site?.meta.title}
             subtitle={data?.site?.meta.description}
             homepage={data?.homepage}
-            sx={{ gridColumn: 5 }}
+            sx={{ maxWidth: `90vw`, mx: `auto` }}
           />
 
-          <Box id="content" mb="10">
+          <Box
+            as="main"
+            id="content"
+            mb="10"
+            sx={{ maxWidth: `90vw`, mx: `auto` }}
+          >
             <MDXProvider>{children}</MDXProvider>
           </Box>
 

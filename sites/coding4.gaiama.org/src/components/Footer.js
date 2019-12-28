@@ -23,7 +23,13 @@ export const Footer = ({
   ...props
 }) =>
   !menu?.length ? null : (
-    <Box mt="12" mb="4" sx={{ backgroundColor: `background2` }}>
+    <Box
+      as="footer"
+      mt="12"
+      mb="4"
+      sx={{ backgroundColor: `background2` }}
+      {...props}
+    >
       <Box mx="auto" sx={{ maxWidth: `34.8rem` }}>
         <Flex sx={{ ml: -1, fontSize: 1 }}>
           {!!menu.length &&

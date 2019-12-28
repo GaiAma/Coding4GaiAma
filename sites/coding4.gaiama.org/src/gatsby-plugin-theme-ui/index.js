@@ -100,7 +100,7 @@ export default {
     Global: { '*': { boxSizing: 'border-box' }, body: { margin: 0 } },
     root: { fontFamily: 'body', lineHeight: 'body', fontWeight: 'body' },
     Layout: {},
-    Footer: { fontSize: 1 },
+    Footer: { fontSize: 1, maxWidth: `90vw`, mx: `auto` },
     a: {
       color: 'primary',
       textDecoration: 'none',

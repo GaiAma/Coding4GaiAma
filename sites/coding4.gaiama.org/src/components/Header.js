@@ -34,7 +34,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
   }
 
   return !homepage ? null : (
-    <Box sx={{ backgroundColor: `background2`, mb: 10 }}>
+    <Box as="header" sx={{ backgroundColor: `background2`, mb: 10 }} {...props}>
       <Flex
         mx="auto"
         sx={{
@@ -42,7 +42,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
           maxWidth: `34.8rem`,
         }}
       >
-        <Heading as="h2" mt={[3, 2]} {...props}>
+        <Heading as="h2" mt={[3, 2]}>
           <Link
             variant="plain"
             sx={{ display: `block`, a: { color: `primary` } }}
@@ -53,13 +53,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
           </Link>
           {!!subtitle && <small /*sx={{ color: `muted` }}*/>{subtitle}</small>}
         </Heading>
-        <Box
-          sx={{
-            gridColumn: [null, null, null, `6/8`],
-            position: [`absolute`, null, null, `static`],
-            right: 0,
-          }}
-        >
+        <Box>
           <Button variant="slim" mt="2" onClick={cycleMode}>
             {/* {modeLabels[mode]} */}
             {mode}
