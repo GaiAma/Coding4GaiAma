@@ -1,9 +1,34 @@
 {
   "name": "gatsby-remark-slug-i18n",
   "version": "0.1.0",
+  "description": "Uses speakingurl to add localized anchors to headings",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/gatsby-remark-slug-i18n"
+  },
+  "license": "MIT",
   "dependencies": {
     "mdast-util-to-string": "^1.0.7",
     "speakingurl": "^14.0.1",
     "unist-util-visit": "^2.0.1"
-  }
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
+    "markdown",
+    "text",
+    "slug",
+    "id",
+    "github",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization"
+  ]
 }
