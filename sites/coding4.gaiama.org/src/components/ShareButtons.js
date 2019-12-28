@@ -30,7 +30,7 @@ export const ShareButtons = ({
           borderWidth: 0,
           borderTopWidth: `1px`,
           borderStyle: `solid`,
-          borderColor: `#a0aec0`,
+          borderColor: `subtle`,
         }}
       />
       <span sx={{ fontSize: 2, ml: 2 }}>Share</span>
