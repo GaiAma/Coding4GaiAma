@@ -37,5 +37,8 @@
     "@types/unist": "^2.0.3",
     "@types/vfile-message": "^2.0.0",
     "typescript": "^3.7.4"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
