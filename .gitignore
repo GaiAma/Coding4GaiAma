@@ -7,3 +7,7 @@ test/**/public
 public/
 .netlify
 .vscode/
+
+packages/**/lib
+packages/**/*.js
+!packages/**/index.js
