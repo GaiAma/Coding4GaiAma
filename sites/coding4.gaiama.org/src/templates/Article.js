@@ -80,7 +80,7 @@ const Article = ({ data: { page }, ...props }) => {
         <Flex sx={{ justifyContent: `start`, alignItems: `start` }}>
           <Img
             {...page.author.frontmatter.image.childImageSharp}
-            sx={{ borderRadius: `round` }}
+            sx={{ borderRadius: `egg` }}
           />
           <Box ml="4">
             <Heading as="h4">{page.author.frontmatter.name}</Heading>
