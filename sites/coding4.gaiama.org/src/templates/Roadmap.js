@@ -14,7 +14,7 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
       dangerouslySetInnerHTML={{ __html: t.text }}
     /> */}
     <MDXRenderer>{t.value}</MDXRenderer>
-    <div sx={{ fontSize: 1, color: `muted` }}>
+    <div sx={{ fontSize: 1, variant: `text.muted` }}>
       {!!t.ref && (
         <Fragment>
           <span sx={{ mr: 1 }}>–</span>

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 
+/* eslint-disable jsx-a11y/anchor-has-content */
 export default props => (
   <a
     href="#content"
