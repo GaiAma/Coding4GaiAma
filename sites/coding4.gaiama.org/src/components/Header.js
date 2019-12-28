@@ -24,7 +24,8 @@ import { Heading, Box, Button, Flex } from '@theme-ui/components'
 export const Header = ({ title, subtitle, homepage, ...props }) => {
   const [mode, setMode] = useColorMode()
   const { theme } = useThemeUI()
-  const modes = [`pineapple`, ...Object.keys(theme.colors.modes)]
+  // console.log(JSON.stringify(theme))
+  const modes = [`dark`, ...Object.keys(theme.colors.modes)]
 
   const cycleMode = e => {
     const i = modes.indexOf(mode)
