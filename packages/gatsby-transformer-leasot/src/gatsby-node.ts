@@ -63,7 +63,7 @@ type NodeArgs = CreateNodeArgs & {
 type PluginOpts = PluginOptions & {
   sourceInstanceName: string
   mode: string
-  truncateLinks: boolean
+  truncateLinks?: number | { length: number; style: string }
   customTags: string[]
   customParsers: CustomParsers
   associateParser: ExtensionsDb
@@ -111,7 +111,7 @@ exports.onCreateNode = async (
   {
     sourceInstanceName,
     mode = `mdx`,
-    truncateLinks = true,
+    truncateLinks = { length: 32, style: `smart` },
     customTags = [],
     customParsers = {},
     associateParser = {},
@@ -140,7 +140,9 @@ exports.onCreateNode = async (
       html: async (): Promise<string> => autolinker.link(todo.text),
       mdx: async (): Promise<string> => {
         const remarkPlugins = []
-        if (truncateLinks) remarkPlugins.push(remarkTruncateLinks)
+        if (truncateLinks !== 0) {
+          remarkPlugins.push([remarkTruncateLinks, truncateLinks])
+        }
         const code = await mdx(todo.text, { remarkPlugins })
         const result = babel.transform(code, {
           configFile: false,
