@@ -8,6 +8,7 @@
     "url": "https://github.com/GaiAma/Coding4GaiAma.git",
     "directory": "packages/gatsby-remark-slug-i18n"
   },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-remark-slug-i18n#readme",
   "license": "MIT",
   "dependencies": {
     "mdast-util-to-string": "^1.0.7",
