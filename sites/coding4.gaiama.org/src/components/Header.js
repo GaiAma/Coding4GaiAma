@@ -42,7 +42,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
           maxWidth: `34.8rem`,
         }}
       >
-        <Heading as="h3" mt={[3, 2]} {...props}>
+        <Heading as="h2" mt={[3, 2]} {...props}>
           <Link
             variant="plain"
             sx={{ display: `block`, a: { color: `primary` } }}
@@ -51,7 +51,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
           >
             {title}
           </Link>
-          {!!subtitle && <small sx={{ color: `muted` }}>{subtitle}</small>}
+          {!!subtitle && <small /*sx={{ color: `muted` }}*/>{subtitle}</small>}
         </Heading>
         <Box
           sx={{
