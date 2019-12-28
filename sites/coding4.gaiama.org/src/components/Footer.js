@@ -23,9 +23,9 @@ export const Footer = ({
   ...props
 }) =>
   !menu?.length ? null : (
-    <Box mt="4" sx={{ backgroundColor: `background2` }}>
+    <Box mt="12" mb="4" sx={{ backgroundColor: `background2` }}>
       <Box mx="auto" sx={{ maxWidth: `34.8rem` }}>
-        <Flex sx={{ ml: -1 }}>
+        <Flex sx={{ ml: -1, fontSize: 1 }}>
           {!!menu.length &&
             menu.map(m => (
               <div key={m.fields.url} sx={{ mx: 1 }}>
@@ -40,7 +40,7 @@ export const Footer = ({
             ))}
         </Flex>
 
-        <Flex mt="2">
+        <Flex mt="2" sx={{ fontSize: 0 }}>
           <Box>Version: {meta.version}</Box>
           <Box ml="2">Branch: {meta.branch}</Box>
           <Box ml="2">License: {meta.license}</Box>
