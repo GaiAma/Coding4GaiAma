@@ -11,7 +11,7 @@ export default {
     background2: '#000',
     secondary: '#fff',
     accent: '#fff',
-    muted: 'hsla(0, 0%, 100%, 0.85)',
+    muted: 'hsla(0, 0%, 100%, 0.75)',
     subtle: '#a0aec0',
     modes: {
       'b/w': {
@@ -21,7 +21,7 @@ export default {
         background2: '#fff',
         secondary: '#000',
         accent: '#000',
-        muted: 'hsla(0, 0%, 0%, 0.85)',
+        muted: 'hsla(0, 0%, 0%, 0.75)',
         subtle: '#a0aec0',
         // muted: 'hsla(230, 20%, 0%, 20%)',
       },
@@ -212,7 +212,10 @@ export default {
       color: 'accent',
     },
     small: { fontSize: 1 },
-    muted: { color: 'muted' },
+    muted: {
+      color: 'muted',
+      a: { variant: `links.muted` },
+    },
   },
   buttons: {
     slim: {
