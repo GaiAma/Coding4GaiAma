@@ -7,8 +7,6 @@
     "target": "es2018",
     "esModuleInterop": true,
     "declaration": true,
-    "outDir": "./",
-    "sourceMap": true,
-    "resolveJsonModule": true
+    "outDir": "./"
   }
 }
