@@ -8,7 +8,7 @@ import { Link } from 'components/Link'
 import { Box, Heading, Flex } from '@theme-ui/components'
 
 const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
-  <li>
+  <li sx={{ p: { m: 0 } }}>
     {/* <h4
       sx={{ mb: 1, a: { variant: `links.default` } }}
       dangerouslySetInnerHTML={{ __html: t.text }}
@@ -46,14 +46,14 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
   return (
     <Box variant="grid">
       {!!page?.body && (
-        <Box mt="4">
+        <Box mb="4">
           <MDXRenderer>{page.body}</MDXRenderer>
         </Box>
       )}
 
       {roadmap?.group?.map(x => (
         <Fragment key={x.fieldValue}>
-          <Heading as="h3" mt="5">
+          <Heading as="h3" mb="5">
             {x.fieldValue}{' '}
             <small>
               ({x.nodes.length} {getEmoji(x.nodes.length)})

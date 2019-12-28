@@ -65,15 +65,17 @@ const heading = Tag => props => {
         },
       }}
     >
-      <a href={`#${props.id}`}>{svgIcon}</a>
+      <a href={`#${props.id}`} sx={{ color: `muted`, textDecoration: `none` }}>
+        #
+      </a>
       {props.children}
-    </Tag>
+    </Heading>
   )
 }
 
 export default {
   // blockquote,
-  pre: props => <div {...props} sx={{ variant: `grid.contentL`, mt: 4 }} />,
+  pre: props => <div {...props} sx={{ variant: `grid.contentL`, mb: 7 }} />,
   code: props => <CodeBlock {...props} />,
   // h1: props => <Title as="h1" {...props} />,
   // h2: props => <Title as="h2" {...props} />,

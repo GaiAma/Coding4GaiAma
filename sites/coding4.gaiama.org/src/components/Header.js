@@ -34,7 +34,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
   }
 
   return !homepage ? null : (
-    <Box sx={{ backgroundColor: `background2` }}>
+    <Box sx={{ backgroundColor: `background2`, mb: 10 }}>
       <Flex
         mx="auto"
         sx={{

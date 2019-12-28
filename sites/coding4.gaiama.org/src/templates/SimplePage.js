@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 const SimplePage = ({ data: { page }, ...props }) => {
   return (
-    <Box variant="grid" mt="4">
+    <Box variant="grid">
       <MDXRenderer>{page.body}</MDXRenderer>
     </Box>
   )

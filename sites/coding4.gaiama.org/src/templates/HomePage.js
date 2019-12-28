@@ -1,25 +1,27 @@
 /** @jsx jsx */
-import { jsx, useThemeUI } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Link } from 'components/Link'
 import { Heading, Box, Text } from '@theme-ui/components'
 
 const HomePage = ({ data: { page, posts }, ...props }) => {
-  const context = useThemeUI()
-  console.log(context)
+  // const context = useThemeUI()
+  // console.log(context)
   return (
-    <Box variant="grid" mt="4">
-      <MDXRenderer>{page.body}</MDXRenderer>
+    <Box variant="grid">
+      <Box mb="4">
+        <MDXRenderer>{page.body}</MDXRenderer>
+      </Box>
 
       {/* TODO: explain '!!' ? https://frontarm.com/james-k-nelson/react-anti-patterns-conditional-rendering/ */}
       {!!posts?.nodes?.length && (
-        <Box mt="2">
+        <Box>
           {posts.nodes.map(p => (
             <Box
               as="article"
               key={p.id}
-              mt="5"
+              mb="12"
               sx={{ opacity: p.frontmatter.draft && 0.3 }}
             >
               <Box as="header">

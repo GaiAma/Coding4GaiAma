@@ -42,8 +42,8 @@ const Article = ({ data: { page }, ...props }) => {
   // const description = page.frontmatter.description
   return (
     <Box variant="grid">
-      <Box as="header" mb="3">
-        <Heading as="h1" mt="4">
+      <Box as="header" mb="9">
+        <Heading as="h1">
           <span itemProp="headline">{page.frontmatter.title}</span>
           {/* {!!description && <small itemProp="description">{description}</small>} */}
         </Heading>
@@ -60,7 +60,6 @@ const Article = ({ data: { page }, ...props }) => {
 
       <ShareButtons
         sx={{ gridColumn: `1/6`, mt: 4 }}
-        className="my-6"
         title={page.frontmatter.title}
         twitterHandle={page.author.frontmatter.twitterHandle.replace(/^@/, ``)}
         url={page.fields.shareableUrlAbsolute}
@@ -77,7 +76,7 @@ const Article = ({ data: { page }, ...props }) => {
         </span>
       </Link> */}
 
-      <Box as="footer" mt="4">
+      <Box as="footer" mt="10">
         <Flex sx={{ justifyContent: `start`, alignItems: `start` }}>
           <Img
             {...page.author.frontmatter.image.childImageSharp}
