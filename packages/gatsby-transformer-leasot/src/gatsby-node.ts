@@ -1,4 +1,8 @@
-import { CreateNodeArgs, PluginOptions } from 'gatsby'
+import {
+  CreateNodeArgs,
+  PluginOptions,
+  CreateSchemaCustomizationArgs,
+} from 'gatsby'
 import { upperFirst } from 'lodash'
 import * as leasot from 'leasot'
 import { CustomParsers, ExtensionsDb } from 'leasot/dist/definitions'
@@ -564,3 +568,24 @@ function truncateMiddle(
 //     }),
 //   ])
 // }
+export const createSchemaCustomization = ({
+  actions,
+}: CreateSchemaCustomizationArgs) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type Roadmap implements Node @derivedTypes @dontInfer {
+      todo: RoadmapTodo
+    }
+
+    type RoadmapTodo {
+      tag: String
+      line: Int
+      ref: String
+      text: String
+      file: File @link(by: "id", from: "file___NODE")
+      value: String
+      modifiedTime: Date @dateformat
+    }
+  `
+  createTypes(typeDefs)
+}
