@@ -44,6 +44,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-schema-snapshot`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-layout`,

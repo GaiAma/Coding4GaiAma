@@ -74,6 +74,7 @@
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-root-import": "^2.0.5",
+    "gatsby-plugin-schema-snapshot": "^1.0.0",
     "gatsby-plugin-sharp": "^2.3.10",
     "gatsby-remark-copy-linked-files": "^2.1.33",
     "gatsby-remark-gemoji-to-emoji": "^1.0.0",
