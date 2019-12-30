@@ -106,8 +106,7 @@
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm",
-      "remark-license"
+      "preset-wooorm"
     ]
   }
 }

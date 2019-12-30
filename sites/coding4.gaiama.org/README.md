@@ -22,6 +22,10 @@
 - [gatsby-image](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-image#readme) & [gatsby-remark-images](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-remark-images#readme) - for responsive images
 - [Yarn](https://yarnpkg.com) - v1.21.1 using policies
 
+## TODO
+
+- improve/customize [remark-preset-wooorm](https://github.com/wooorm/remark-preset-wooorm) or find something else
+
 ## License
 
 Source code: [MIT](../../LICENSE)  
