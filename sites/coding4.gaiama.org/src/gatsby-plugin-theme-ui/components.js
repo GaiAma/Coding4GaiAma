@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { CodeBlock } from 'components/CodeBlock'
+import { Box } from '@theme-ui/components'
 import { Link } from 'components/Link'
-import { Heading, Box } from '@theme-ui/components'
+import { Heading } from 'components/Heading'
 
 // const blockquote = props => (
 //   <blockquote
@@ -33,35 +34,6 @@ import { Heading, Box } from '@theme-ui/components'
 
 // const Paragraph = props => <Text as="p" mb="4" {...props} />
 
-const heading = tag => props => {
-  return (
-    <Heading
-      as={tag}
-      {...props}
-      sx={{
-        ':hover a': { opacity: 1 },
-        a: {
-          position: `absolute`,
-          ml: `-1em`,
-          opacity: 0,
-          '@media (hover: none)': {
-            opacity: 1,
-          },
-          pr: `0.5rem`,
-          svg: {
-            fill: `text`,
-          },
-        },
-      }}
-    >
-      <a href={`#${props.id}`} sx={{ color: `muted`, textDecoration: `none` }}>
-        #
-      </a>
-      {props.children}
-    </Heading>
-  )
-}
-
 export default {
   // blockquote,
   pre: props => <div {...props} sx={{ variant: `grid.contentL`, mb: 7 }} />,
@@ -75,11 +47,11 @@ export default {
   // p: Paragraph,
   a: Link,
   Link,
-  h1: heading('h1'),
-  h2: heading('h2'),
-  h3: heading('h3'),
-  h4: heading('h4'),
-  h5: heading('h5'),
-  h6: heading('h6'),
+  h1: props => <Heading {...props} as="h1" />,
+  h2: props => <Heading {...props} as="h2" />,
+  h3: props => <Heading {...props} as="h3" />,
+  h4: props => <Heading {...props} as="h4" />,
+  h5: props => <Heading {...props} as="h5" />,
+  h6: props => <Heading {...props} as="h6" />,
   Box,
 }
