@@ -7,7 +7,7 @@
   publish = "sites/coding4.gaiama.org/public"
 
   # Default build command.
-  command = "yarn workspace remark-truncate-links build && yarn workspace @gaiama/coding4.gaiama.org build:live"
+  command = "yarn workspace remark-truncate-links build && yarn workspace gatsby-transformer-leasot build && yarn workspace @gaiama/coding4.gaiama.org build:live"
 
 [build.environment]
   YARN_VERSION = "1.21.1"
