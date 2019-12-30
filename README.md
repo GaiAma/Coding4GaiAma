@@ -10,7 +10,7 @@
 - [gatsby-transformer-leasot](packages/gatsby-transformer-leasot) - lets you query `TODO:` comments in your source code [more](#roadmap)
 - [remark-truncate-links](packages/remark-truncate-links) - shortens plain links in markdown you haven't wrapped in `[]()` used in `gatsby-transformer-leasot`
 - [gatsby-remark-slug-i18n](packages/gatsby-remark-slug-i18n) - The same as [remark-slug](https://github.com/remarkjs/remark-slug) using [speakingurl](https://github.com/pid/speakingurl) instead of [github-slugger](https://github.com/Flet/github-slugger)
-- [rehype-a11y-emoji](packages/rehype-a11y-emoji) - basically same as [gatsby-remark-a11y-emoji](https://github.com/florianeckerstorfer/gatsby-remark-a11y-emoji) but for rehype as I think I couldn't get the other one working in MDX
+- [rehype-accessible-emojis](packages/rehype-accessible-emojis) - basically same as [gatsby-remark-a11y-emoji](https://github.com/florianeckerstorfer/gatsby-remark-a11y-emoji) but for rehype as I think I couldn't get the other one working in MDX
 
 ## Not yet implemented
 

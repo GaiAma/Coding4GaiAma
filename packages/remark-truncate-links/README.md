@@ -84,3 +84,4 @@ mdx(`mdxString`, { remarkPlugins: [[remarkTruncateLinks, options]] })
 ### Ideas
 
 - Truncate based on host, for example truncate GitHub repos to repo name like [Coding4GaiAma](https://github.com/GaiAma/Coding4GaiAma/)
+- Check out https://github.com/williambelle/crop-url

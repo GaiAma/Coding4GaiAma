@@ -1,6 +1,6 @@
 {
   "include": ["./src/"],
-  "exclude": ["src/**/*.spec.*"],
+  "exclude": ["node_modules", "src/**/*.spec.*"],
   "compilerOptions": {
     "strict": true,
     "module": "commonjs",
@@ -8,6 +8,6 @@
     "esModuleInterop": true,
     "declaration": true,
     "outDir": "lib",
-    "sourceMap": true
+    "types": ["node"]
   }
 }

@@ -35,8 +35,8 @@
     "unist-util-visit": "^2.0.1"
   },
   "devDependencies": {
+    "@types/node": "^13.1.1",
     "@types/unist": "^2.0.3",
-    "@types/vfile-message": "^2.0.0",
     "typescript": "^3.7.4"
   },
   "files": [
