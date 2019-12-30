@@ -102,7 +102,7 @@ const defaultEmptyState = {
 
 let emptyStateCreated: boolean = false
 
-exports.onCreateNode = async (
+export const onCreateNode = async (
   {
     node,
     loadNodeContent,
@@ -537,37 +537,6 @@ function truncateMiddle(
   ).substr(0, availableLength + ellipsisLengthBeforeParsing)
 }
 
-/**
- * Add types and resolvers
- */
-// module.exports.sourceNodes = ({ actions, schema }, { sourceInstanceName }) => {
-//   const { createTypes } = actions
-//   const nodeName = upperFirst(sourceInstanceName)
-//   createTypes([
-//     /**
-//      * `${nodeName}Todo`
-//      * Ensure todo.file is a string
-//      */
-//     schema.buildObjectType({
-//       name: `${nodeName}Todo`,
-//       fields: {
-//         file: `File`,
-//       },
-//     }),
-
-//     /**
-//      * Add types and resolvers to Mdx
-//      */
-//     schema.buildObjectType({
-//       name: nodeName,
-//       fields: {
-//         // set todo to above declared ${nodeName}Todo types
-//         todo: `${nodeName}Todo!`,
-//       },
-//       interfaces: [`Node`],
-//     }),
-//   ])
-// }
 export const createSchemaCustomization = ({
   actions,
 }: CreateSchemaCustomizationArgs) => {
