@@ -132,7 +132,7 @@ export default {
       fontSize: 2,
     },
     blockquote: {
-      variant: 'grid.contentM',
+      variant: 'grid.list',
       m: 0,
       mb: 7,
       borderLeft: '5px solid',
@@ -141,7 +141,7 @@ export default {
       p: { m: 0 },
     },
     ul: {
-      variant: `grid.contentM`,
+      variant: `grid.list`,
       p: 0,
       m: 0,
       mb: 7,
@@ -191,18 +191,19 @@ export default {
     display: 'grid',
 
     gridTemplateColumns: [
-      `0 0 0 20px minmax(auto, 90vw) 20px 0 0 0`,
+      // `0 0 0 20px minmax(auto, 90vw) 20px 0 0 0`,
+      `0 0 0 2vw 20px minmax(auto,90vw) 20px 2vw 0 0 0`,
       null,
       null,
-      `1fr minmax(auto, 7rem) minmax(auto, 5rem) 20px minmax(auto, 34.8rem) 20px minmax(auto, 5rem) minmax(auto, 7rem) 1fr`,
+      // `1fr minmax(auto, 7rem) minmax(auto, 5rem) 20px minmax(auto, 34.8rem) 20px minmax(auto, 5rem) minmax(auto, 7rem) 1fr`,
+      `1fr 1fr minmax(auto,7rem) minmax(auto,5rem) 20px minmax(auto,34.8rem) 20px minmax(auto,5rem) minmax(auto,7rem) 1fr 1fr`,
     ],
     '> *': { variant: `grid.content` },
-    content: { gridColumn: '5' },
-    contentM: { gridColumn: '4/6' },
-    contentL: { gridColumn: '3/8' },
-    contentXL: { gridColumn: '2/9' },
-    contentXXL: { gridColumn: '2/9' },
-    contentXXXL: { gridColumn: '1/10' },
+    content: { gridColumn: '6' },
+    contentL: { gridColumn: '4/9' },
+    contentXL: { gridColumn: '2/11' },
+    contentXXL: { gridColumn: '1/12' },
+    list: { gridColumn: '5/7' },
   },
   text: {
     heading: {

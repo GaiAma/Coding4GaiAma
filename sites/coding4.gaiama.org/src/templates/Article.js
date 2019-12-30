@@ -59,7 +59,7 @@ const Article = ({ data: { page }, ...props }) => {
       <MDXRenderer>{page.body}</MDXRenderer>
 
       <ShareButtons
-        sx={{ gridColumn: `1/6`, mt: 4 }}
+        sx={{ gridColumn: `1/7`, mt: 4 }}
         title={page.frontmatter.title}
         twitterHandle={page.author.frontmatter.twitterHandle.replace(/^@/, ``)}
         url={page.fields.shareableUrlAbsolute}

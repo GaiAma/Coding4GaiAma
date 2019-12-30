@@ -34,12 +34,7 @@ const Layout = ({ children, data, ...props }) =>
             sx={{ maxWidth: `90vw`, mx: `auto` }}
           />
 
-          <Box
-            as="main"
-            id="content"
-            mb="10"
-            sx={{ maxWidth: `90vw`, mx: `auto` }}
-          >
+          <Box as="main" id="content" mb="10">
             <MDXProvider>{children}</MDXProvider>
           </Box>
 
