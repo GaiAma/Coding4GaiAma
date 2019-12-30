@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: __dirname,
+        path: resolve(__dirname, `../..`),
         name: `roadmap`,
         ignore: [
           /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
