@@ -123,20 +123,12 @@ export const onCreateNode = async (
   }: PluginOpts
 ): Promise<void> => {
   // we only care about File nodes with our sourceInstanceName
-  console.log(
-    `LEASOT RUNNING`,
-    node.sourceInstanceName,
-    sourceInstanceName,
-    node.internal.type,
-    leasot.isExtensionSupported(node.ext)
-  )
   if (
     node.sourceInstanceName !== sourceInstanceName ||
     !(node.internal.type === `File` && leasot.isExtensionSupported(node.ext))
   ) {
     return
   }
-  console.log(`LEASOT`, node.name)
   // const nodeType = `${upperFirst(sourceInstanceName)}Unfiltered`
   const nodeType: string = `${upperFirst(sourceInstanceName)}`
 
