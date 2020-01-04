@@ -244,7 +244,6 @@ export default {
     plain: {
       transition: 'all 0.3s ease',
       textDecoration: 'none',
-      wordBreak: 'break-all',
       color: 'primary',
       ':hover, &.active': {
         backgroundColor: 'accent',
