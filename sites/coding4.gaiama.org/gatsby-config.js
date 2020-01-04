@@ -59,7 +59,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: resolve(__dirname, `../..`),
-        name: `roadmap`,
+        name: `leasot`,
         ignore: [
           /\.*.*\/(node_modules|\.cache|public|static|dist|\.yarn)\/./,
           /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf)/,
@@ -82,7 +82,6 @@ module.exports = {
     {
       resolve: `gatsby-transformer-leasot`,
       options: {
-        sourceInstanceName: `roadmap`,
         customTags: [`NOTE`],
       },
     },

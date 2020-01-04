@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-01-04T04:24:36.903Z ###
+### Type definitions saved at 2020-01-04T06:01:49.269Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -70,6 +70,20 @@ type Directory implements Node @dontInfer {
   birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
   blksize: Int
   blocks: Int
+}
+
+type Leasot implements Node @dontInfer {
+  todo: LeasotTodo
+}
+
+type LeasotTodo {
+  tag: String
+  line: Int
+  ref: String
+  text: String
+  file: File @link(by: "id", from: "file___NODE")
+  value: String
+  modifiedTime: Date @dateformat
 }
 
 enum ImageFormat {
@@ -330,18 +344,4 @@ type MdxFields {
   absoluteUrl: String
   shareableUrl: String
   shareableUrlAbsolute: String
-}
-
-type Roadmap implements Node @derivedTypes @dontInfer {
-  todo: RoadmapTodo
-}
-
-type RoadmapTodo {
-  tag: String
-  line: Int
-  ref: String
-  text: String
-  file: File @link(by: "id", from: "file___NODE")
-  value: String
-  modifiedTime: Date @dateformat
 }
