@@ -19,7 +19,7 @@ import { Flex, Box, Heading } from '@theme-ui/components'
 //       },
 //       fields: {
 //         shareableUrl: string,
-//         shareableUrlAbsolute: string,
+//         absoluteUrl: string,
 //       },
 //       body: string,
 //       author: {
@@ -40,6 +40,7 @@ import { Flex, Box, Heading } from '@theme-ui/components'
 
 const Article = ({ data: { page }, ...props }) => {
   // const description = page.frontmatter.description
+  const { absoluteUrl } = page.fields
   return (
     <Box variant="grid">
       <Box as="header" mb="9">
@@ -48,7 +49,7 @@ const Article = ({ data: { page }, ...props }) => {
           {/* {!!description && <small itemProp="description">{description}</small>} */}
         </Heading>
         <Box as="small" variant="text.muted">
-          {/* <Link variant="dim" to={page.fields.shareableUrl}> */}
+          {/* <Link variant="dim" to={page.fields.url}> */}
           <time dateTime={page.frontmatter.dateTime}>
             {page.frontmatter.date}
           </time>
@@ -62,8 +63,8 @@ const Article = ({ data: { page }, ...props }) => {
         sx={{ gridColumn: `1/7`, mt: 4 }}
         title={page.frontmatter.title}
         twitterHandle={page.author.frontmatter.twitterHandle.replace(/^@/, ``)}
-        url={page.fields.shareableUrlAbsolute}
-        emailBody={`${page.fields.shareableUrlAbsolute}`}
+        url={absoluteUrl}
+        emailBody={`${absoluteUrl}`}
         // onClick={add Analytics}
       >
         Share/Discuss on Twitter
@@ -117,7 +118,7 @@ export const query = graphql`
       #tableOfContents
       fields {
         shareableUrl
-        shareableUrlAbsolute
+        absoluteUrl
       }
       author {
         body

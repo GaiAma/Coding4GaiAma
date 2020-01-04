@@ -13,10 +13,10 @@ export const Fragments = graphql`
     }
     fields {
       url
-      shareableUrl
+      # shareableUrl
       absoluteUrl
       editLink
-      shareableUrlAbsolute
+      # shareableUrlAbsolute
     }
   }
 

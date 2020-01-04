@@ -65,17 +65,18 @@ module.exports = async function onCreateNode({
   addField(`slug`, sluggified)
   addField(`url`, url)
   const absoluteUrl = `${homepage}${url}`
-  const absoluteUrlShort = `${homepage}${sluggifiedShort}`
+  // const absoluteUrlShort = `${homepage}${sluggifiedShort}`
   addField(`absoluteUrl`, absoluteUrl)
-  addField(`shareableUrl`, sluggifiedShort || url)
-  addField(`shareableUrlAbsolute`, absoluteUrlShort || absoluteUrl)
+  // addField(`shareableUrl`, sluggifiedShort || url)
+  // addField(`shareableUrlAbsolute`, absoluteUrlShort || absoluteUrl)
 
   const redirects = []
-    .concat(node.frontmatter.redirects)
-    .concat(sluggifiedShort)
-    .filter(Boolean)
+  // .concat(node.frontmatter.redirects)
+  // .concat(sluggifiedShort)
+  // .filter(Boolean)
 
   if (redirects.length) {
+    console.log(JSON.stringify({ redirects }, null, 2))
     // https://www.gatsbyjs.org/docs/actions/#createRedirect
     redirects.forEach(redirect => {
       createRedirect({
