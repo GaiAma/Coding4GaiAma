@@ -72,6 +72,13 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
           </Box>
         </Fragment>
       ))}
+
+      <Box>
+        Made with{' '}
+        <Link to="https://www.npmjs.com/package/gatsby-transformer-leasot">
+          gatsby-transformer-leasot
+        </Link>
+      </Box>
     </Box>
   )
 }
