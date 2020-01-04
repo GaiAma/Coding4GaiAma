@@ -6,6 +6,7 @@ export const Heading = props => (
   <UiHeading
     {...props}
     sx={{
+      ':target': { border: '1px solid', borderColor: 'text' },
       ':hover a': { opacity: 1 },
       a: {
         position: `absolute`,
