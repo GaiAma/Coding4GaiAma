@@ -1,4 +1,4 @@
-### Type definitions saved at 2019-12-30T04:05:59.062Z ###
+### Type definitions saved at 2020-01-04T04:24:36.903Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -264,13 +264,13 @@ type MdxFrontmatter @derivedTypes {
   slug: String
   shortUrl: String
   type: String
-  shortSlug: String
   layout: String
+  menu: String
+  description: String
+  shortSlug: String
   date: Date @dateformat
   author: String
-  description: String
   tags: [String]
-  menu: String
   robots: String
   statusCode: Int
   name: String
