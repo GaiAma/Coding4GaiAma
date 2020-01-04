@@ -28,12 +28,13 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
             href={`${repo.url}/blob/${branch}/${repo.directory}/${t.file.relativePath}#${t.line}`}
             variant="plain"
             ml="1"
+            sx={{ border: `none !important` }}
           >
             {t.file.relativePath}#{t.line}
           </Link>
-          <span sx={{ mx: 1 }}>–</span>
+          {/* <span sx={{ mx: 1 }}>–</span> */}
           {/* TODO: File last modified not working, all same on Netlify */}
-          <span>File last modified: {t.modifiedTime}</span>
+          {/* <span>File last modified: {t.modifiedTime}</span> */}
         </Flex>
       )}
     </div>
