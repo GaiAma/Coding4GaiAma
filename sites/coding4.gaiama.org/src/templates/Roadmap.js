@@ -81,7 +81,7 @@ export const query = graphql`
     }
 
     roadmap: allRoadmap(
-      filter: { todo: { tag: { ne: "EmptyState" } } }
+      # filter: { todo: { tag: { ne: "EmptyState" } } }
       sort: { fields: [todo___modifiedTime], order: DESC }
     ) {
       group(field: todo___tag) {
