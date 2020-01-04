@@ -97,7 +97,19 @@ export default {
     display: { fontWeight: 'display', lineHeight: 'heading' },
   },
   styles: {
-    Global: { '*': { boxSizing: 'border-box' }, body: { margin: 0 } },
+    Global: {
+      '*': { boxSizing: 'border-box' },
+      body: { margin: 0 },
+      // by https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
+      '@media screen and (prefers-reduced-motion: reduce), (update: slow)': {
+        '*:not(.safe-animation), *:not(.safe-animation)::before, *:not(.safe-animation)::after': {
+          animationDuration: `0.01s !important`,
+          animationIterationCount: `1 !important` /* Hat tip Nick/cssremedy (https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/#comment-1700170) */,
+          transitionDuration: `0.001ms !important`,
+          scrollBehavior: `auto !important`,
+        },
+      },
+    },
     root: { fontFamily: 'body', lineHeight: 'body', fontWeight: 'body' },
     Layout: {},
     Footer: { fontSize: 1, maxWidth: `90vw`, mx: `auto` },
