@@ -50,7 +50,7 @@
     "react-dom": "^16.12.0",
     "react-head": "^3.3.0-0",
     "react-icons": "^3.8.0",
-    "react-share": "^3.0.1",
+    "react-share": "^4.0.0",
     "react-toggle": "^4.1.1",
     "speakingurl": "^14.0.1",
     "theme-ui": "^0.2.52",
