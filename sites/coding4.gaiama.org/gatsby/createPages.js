@@ -49,6 +49,7 @@ module.exports = async function createPages({ graphql, actions }) {
       },
     }
 
+    // FIXME: implement proper 404, on gaiama.org they just flickr briefly then turn blank - WSOD aka white screen of death
     // localized and root error pages
     // if (type === `error`) {
     //   // page.statusCode = node.frontmatter.statusCode
