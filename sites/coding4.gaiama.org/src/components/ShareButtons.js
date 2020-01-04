@@ -39,7 +39,6 @@ export const ShareButtons = ({
         via={twitterHandle}
         url={url}
         sx={{ cursor: `pointer`, variant: `links.plain`, ml: 2, flexShrink: 0 }}
-        openWindow={true}
         // onClick={onClick}
       >
         Twitter
@@ -49,7 +48,6 @@ export const ShareButtons = ({
         quote={title}
         url={url}
         sx={{ cursor: `pointer`, variant: `links.plain`, ml: 2, flexShrink: 0 }}
-        openWindow={true}
         // onClick={onClick}
       >
         Facebook
@@ -60,7 +58,6 @@ export const ShareButtons = ({
         body={emailBody}
         url={url}
         sx={{ cursor: `pointer`, variant: `links.plain`, ml: 2, flexShrink: 0 }}
-        openWindow={true}
         // onClick={onClick}
       >
         E-Mail
