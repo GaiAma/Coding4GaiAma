@@ -61,7 +61,7 @@ module.exports = {
         path: resolve(__dirname, `../..`),
         name: `roadmap`,
         ignore: [
-          /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
+          /\.*.*\/(node_modules|\.cache|public|static|dist|\.yarn)\/./,
           /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf)/,
         ],
       },
