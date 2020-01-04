@@ -42,7 +42,12 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => (
 
 const getEmoji = num => <span>{num > 20 ? `😱` : num > 10 ? `😨` : `😊`}</span>
 
+const isEmptyStateNotAlone = (item, _, arr) =>
+  arr.length > 1 && item.fieldValue !== `EmptyState`
+
 const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
+  const roadmapFilterdEmptyState = roadmap.group.filter(isEmptyStateNotAlone)
+
   return (
     <Box variant="grid">
       {!!page?.body && (
@@ -51,7 +56,7 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
         </Box>
       )}
 
-      {roadmap?.group?.map(x => (
+      {roadmapFilterdEmptyState?.map(x => (
         <Fragment key={x.fieldValue}>
           <Heading as="h3" mb="5">
             {x.fieldValue}{' '}
