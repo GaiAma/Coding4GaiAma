@@ -11,7 +11,7 @@ Uses [leasot](https://github.com/pgilad/leasot) to parse select source files for
 const comeBackToImprove = () => console.log('Please improve me')
 ```
 
-will be transformed
+will be transformed to
 
 ```json
 {
