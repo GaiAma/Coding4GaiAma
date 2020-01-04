@@ -1,15 +1,55 @@
-# EXPERIMENTAL
+# gatsby-transformer-leasot
 
-create empty state/fallback via emptyState option or always ensure a TODO: comment somewhere 😉
+Uses [leasot](https://github.com/pgilad/leasot) to parse select source files for `TODO:`, `FIXME:` and custom comments.
 
-set emptyState to null if you want to disable it, bear in mind that you always have to ensure at least one matching comment is being sourced to avoid crashes
+**[Live Example](https://coding4.gaiama.org/en/roadmap)**
 
-<!-- TODO: createTypes to ensure emptyState just returns nothing instead of erroring -->
+### Install
 
-customize:
+```bash
+yarn add -D gatsby-transformer-leasot
+# or
+npm i -D gatsby-transformer-leasot
+```
 
-- mode: `mdx`
-- associateParser
-- customParsers
+**REQUIRES: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**
 
-includes custom mdParser for .md and .mdx
+### Usage
+
+```js
+{
+  resolve: `gatsby-source-filesystem`,
+  options: {
+    path: __dirname,
+    // has to match `sourceInstanceName` field in gatsby-transformer-leasot
+    name: `roadmap`,
+    ignore: [
+      // can be customized, it's just what works for me at the moment
+      /\.*.*\/(node_modules|\.cache|public|static|dist|\.yarn)\/./,
+      /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf)/,
+    ],
+  },
+},
+{
+  resolve: `gatsby-transformer-leasot`,
+  options: {
+    // has to match the gatsby-source-filesystem `name` field
+    // defaults to leasot. Can be omitted if source instane name = 'leasot'
+    sourceInstanceName: `leasot`,
+
+    // parse `NOTE:` in addition to `TODO:` & `FIXME:`
+    customTags: [`NOTE`],
+
+    mode: 'mdx', // <- default, supports 'mdx', 'html', 'text'
+
+    // allows to associate and define additional parsers, showing here the predefined
+    associateParser: {
+      '.md': { parserName: 'twigParser', includedFiles: ['.yml'] },
+      '.mdx': { parserName: 'twigParser', includedFiles: ['.yml'] },
+    },
+    customParsers: {},
+  },
+},
+```
+
+More about `associateParsers` & `customParsers` in [Leasot's docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html)
