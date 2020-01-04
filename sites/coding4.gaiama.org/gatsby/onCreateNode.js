@@ -76,7 +76,6 @@ module.exports = async function onCreateNode({
     .filter(Boolean)
 
   if (redirects.length) {
-    console.log(JSON.stringify({ redirects }, null, 2))
     // https://www.gatsbyjs.org/docs/actions/#createRedirect
     redirects.forEach(redirect => {
       createRedirect({
