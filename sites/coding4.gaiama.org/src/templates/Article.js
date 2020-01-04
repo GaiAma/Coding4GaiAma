@@ -38,7 +38,7 @@ import { Flex, Box, Heading } from '@theme-ui/components'
 //   },
 // }
 
-const Article = ({ data: { page }, ...props }) => {
+const Article = ({ data: { page, site }, ...props }) => {
   // const description = page.frontmatter.description
   const { absoluteUrl } = page.fields
   return (
@@ -62,7 +62,7 @@ const Article = ({ data: { page }, ...props }) => {
       <ShareButtons
         sx={{ gridColumn: `1/7`, mt: 4 }}
         title={page.frontmatter.title}
-        twitterHandle={page.author.frontmatter.twitterHandle.replace(/^@/, ``)}
+        twitterHandle={site.meta.title}
         url={absoluteUrl}
         emailBody={`${absoluteUrl}`}
         // onClick={add Analytics}
@@ -131,7 +131,6 @@ export const query = graphql`
               }
             }
           }
-          twitterHandle
           links {
             name
             type
