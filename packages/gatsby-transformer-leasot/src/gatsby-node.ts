@@ -66,7 +66,7 @@ export const onCreateNode = async (
   }: NodeArgs,
   {
     sourceInstanceName = defaultSourceInstanceName,
-    mode = ContentMode.Mdx,
+    mode = ContentMode.Text,
     truncateLinks = { length: 32, style: 'smart' },
     customTags = [],
     customParsers = {},
