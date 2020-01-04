@@ -109,7 +109,6 @@ export const query = graphql`
             tag
             line
             ref
-            #text
             value
             modifiedTime(formatString: "YYYY-MM-DD H:mm")
             file {

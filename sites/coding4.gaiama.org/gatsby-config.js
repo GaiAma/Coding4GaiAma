@@ -83,6 +83,7 @@ module.exports = {
       resolve: `gatsby-transformer-leasot`,
       options: {
         customTags: [`NOTE`],
+        mode: `mdx`,
       },
     },
     {
