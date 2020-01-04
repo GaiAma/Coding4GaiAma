@@ -71,9 +71,9 @@ module.exports = async function onCreateNode({
   // addField(`shareableUrlAbsolute`, absoluteUrlShort || absoluteUrl)
 
   const redirects = []
-  // .concat(node.frontmatter.redirects)
-  // .concat(sluggifiedShort)
-  // .filter(Boolean)
+    .concat(node.frontmatter.redirects)
+    .concat(sluggifiedShort)
+    .filter(Boolean)
 
   if (redirects.length) {
     console.log(JSON.stringify({ redirects }, null, 2))
