@@ -59,6 +59,14 @@ const Article = ({ data: { page, site }, ...props }) => {
 
       <MDXRenderer>{page.body}</MDXRenderer>
 
+      <Box>
+        <Link
+          to={`https://twitter.com/search?q=${encodeURIComponent(absoluteUrl)}`}
+        >
+          Discuss on Twitter
+        </Link>
+      </Box>
+
       <ShareButtons
         sx={{ gridColumn: `1/7`, mt: 4 }}
         title={page.frontmatter.title}
