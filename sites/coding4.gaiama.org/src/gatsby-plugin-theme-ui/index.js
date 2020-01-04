@@ -13,6 +13,7 @@ export default {
     accent: '#fff',
     muted: 'hsla(0, 0%, 100%, 0.75)',
     subtle: '#a0aec0',
+    codeLineHighlight: `hsla(0, 0%, 50%, 0.5)`,
     modes: {
       'b/w': {
         primary: '#000',

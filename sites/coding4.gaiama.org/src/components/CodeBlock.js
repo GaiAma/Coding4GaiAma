@@ -37,12 +37,20 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
             sx={{
               ...style,
               px: 0,
+              py: 3,
               m: 0,
               overflow: `scroll`,
               counterReset: `linenumbers`,
             }}
           >
             {tokens.map((line, i) => {
+              if (
+                (i === 0 || i === tokens.length - 1) &&
+                !line.filter(l => l.content).length
+              ) {
+                return null
+              }
+
               const lineNo = i + 1
               const isLineHighlighted = highlightEnd
                 ? lineNo >= highlightStart && lineNo <= highlightEnd
@@ -63,23 +71,18 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                 >
                   <div
                     sx={{
-                      textAlign: `right`,
                       ':before': {
+                        textAlign: `right`,
                         counterIncrement: `linenumbers`,
                         content: `counter(linenumbers)`,
                         display: `inline-block`,
-                        width: `2rem`,
+                        width: `1.2rem`,
                         borderRight: `1px black solid`,
-                        paddingRight: `1rem`,
+                        paddingRight: `0.5rem`,
                         marginRight: `1rem`,
                         pointerEvents: `none`,
                         userSelect: `none`,
                       },
-                    }}
-                  ></div>
-                  <div
-                    sx={{
-                      pl: 3,
                     }}
                   >
                     {line.map((token, key) => (
