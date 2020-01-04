@@ -34,7 +34,13 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
         <div sx={{ position: `relative` }}>
           <pre
             className={className}
-            sx={{ ...style, px: 0, m: 0, overflow: `scroll` }}
+            sx={{
+              ...style,
+              px: 0,
+              m: 0,
+              overflow: `scroll`,
+              counterReset: `linenumbers`,
+            }}
           >
             {tokens.map((line, i) => {
               const lineNo = i + 1
@@ -55,8 +61,27 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                     px: 3,
                   }}
                 >
-                  <div sx={{ textAlign: `right` }}>{lineNo}</div>
-                  <div sx={{ pl: 3 }}>
+                  <div
+                    sx={{
+                      textAlign: `right`,
+                      ':before': {
+                        counterIncrement: `linenumbers`,
+                        content: `counter(linenumbers)`,
+                        display: `inline-block`,
+                        width: `2rem`,
+                        borderRight: `1px black solid`,
+                        paddingRight: `1rem`,
+                        marginRight: `1rem`,
+                        pointerEvents: `none`,
+                        userSelect: `none`,
+                      },
+                    }}
+                  ></div>
+                  <div
+                    sx={{
+                      pl: 3,
+                    }}
+                  >
                     {line.map((token, key) => (
                       <span key={key} {...getTokenProps({ token, key })} />
                     ))}
