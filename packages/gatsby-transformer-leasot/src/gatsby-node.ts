@@ -129,6 +129,7 @@ export const onCreateNode = async (
   ) {
     return
   }
+  console.log(`LEASOT`, node.name)
   // const nodeType = `${upperFirst(sourceInstanceName)}Unfiltered`
   const nodeType: string = `${upperFirst(sourceInstanceName)}`
 
