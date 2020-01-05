@@ -1,6 +1,6 @@
 # gatsby-transformer-leasot
 
-Uses [leasot](https://github.com/pgilad/leasot) to parse select source files for `TODO:`, `FIXME:` and custom comments.
+Uses [leasot](https://github.com/pgilad/leasot) to parse select source files for `TODO:`, `FIXME:` and custom comments. Written in **`Typescript`**.
 
 ## Example
 
@@ -48,7 +48,7 @@ npm i -D gatsby-transformer-leasot
   options: {
     path: __dirname,
     // has to match `sourceInstanceName` field in gatsby-transformer-leasot
-    name: `roadmap`,
+    name: `leasot`,
     ignore: [
       // can be customized, it's just what works for me at the moment
       /\.*.*\/(node_modules|\.cache|public|static|dist|\.yarn)\/./,
@@ -64,37 +64,15 @@ npm i -D gatsby-transformer-leasot
 {
   resolve: `gatsby-transformer-leasot`,
   options: {
-    // has to match the gatsby-source-filesystem `name` prop
-    // defaults to leasot. Can be omitted if source instane name = 'leasot'
     sourceInstanceName: `leasot`,
-
     // parse `NOTE:` in addition to `TODO:` & `FIXME:`
     customTags: [`NOTE`],
-
-    mode: 'text', // <- default, supports 'mdx', 'html', 'text'
-
-    // link truncation works only in `mdx` mode at the moment
-    // can be set to 0 to disable
-    // { truncateLinks: 40 } to change just the length
-    // showing default
-    truncateLinks: {
-      length: 32,
-      style: 'smart',
-    },
-
-    // allows to associate and define additional parsers, showing here the predefined
-    associateParser: {
-      '.md': { parserName: 'twigParser', includedFiles: ['.yml'] },
-      '.mdx': { parserName: 'twigParser', includedFiles: ['.yml'] },
-    },
-    customParsers: {},
+    mode: 'mdx',
   },
 },
 ```
 
-> `mdx` - you have to wrap the `value` in `MDXRenderer` provided by [gatsby-plugin-mdx](https://www.npmjs.com/package/gatsby-plugin-mdx)
-
-More about `associateParsers` & `customParsers` in [Leasot's docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html)
+> For `mdx` to work you have to wrap the `value` in `MDXRenderer` provided by [gatsby-plugin-mdx](https://www.npmjs.com/package/gatsby-plugin-mdx)
 
 ## Query
 
@@ -122,4 +100,27 @@ allLeasot(
 }
 ```
 
+> **Note:** The name `allLeasot` depends on the provided `sourceInstanceName` in the configs. So when you change it you have to change the `name` option of gatsby-source-filesystem accordingly, lets say `todo` then you query for `allTodo` or `todo` if you just want a single one.
+
+## All config options
+
+| name               | type            | default                     | description                                                                                                                                                                                                                                          |
+| ------------------ | --------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sourceInstanceName | `string`        | 'leasot'                    | Has to match the `name` prop of `gatsby-source-filesystem`.                                                                                                                                                                                          |
+| customTags         | `array`         | []                          | Other tags to look for (besides todos and fixmes). Tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customtags) |
+| mode               | `string`        | 'text'                      | Supports one of: `text`, `mdx`, `html`.                                                                                                                                                                                                              |
+| truncateLinks      | `int`\|`object` | {length: 32,style: 'smart'} | Provide `int` to change the length only. `style` can be one of: `smart`, `middle`, `end`.                                                                                                                                                            |
+| associateParser    | `object`        | {}                          | Associate the filetypes with parsers. This allows adding support for new filetypes. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#associateparser)                                                             |
+| customParsers      | `object`        | {}                          | Extend the parsers by parserName, for example override the defaultParser or add a new parser. [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customparsers)                                                             |
+
 > `modifiedTime` works only locally as file time will be the same on CI
+
+A table showing the [Supported Languages](https://github.com/pgilad/leasot/#supported-languages) & the **comment format** spec by Leasot in their [readme](https://github.com/pgilad/leasot/#comment-format).
+
+## Provides its own Schema
+
+That means if your sourced files don't contain anything for gatsby-transformer-leasot to parse it won't crash as Gatsby will be prepared. Also congratulations for finishing off all notes, fixmes & todos 🥳
+
+## Credits
+
+Huge thanks of course to [@GiladPeleg](https://twitter.com/GiladPeleg) and their amazing work on [Leasot](https://github.com/pgilad/leasot)
