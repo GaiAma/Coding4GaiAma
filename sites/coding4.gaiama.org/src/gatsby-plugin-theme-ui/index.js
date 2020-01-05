@@ -198,6 +198,7 @@ export default {
       color: `background`,
       px: 1,
       borderRadius: `sm`,
+      whiteSpace: `nowrap`,
     },
     img: { maxWidth: '100%', height: 'auto' },
   },
