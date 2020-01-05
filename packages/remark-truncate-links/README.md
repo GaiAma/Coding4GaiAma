@@ -4,6 +4,7 @@
 
 Actually it'll shorten [auto] linked URLs where the URL and the text are equal as in `[example.com](example.com)`  
 So this plugin doesn't work if you want to show a full URL longer than `length`.
+Written in **`Typescript`**.
 
 ### Install
 
@@ -17,7 +18,7 @@ npm i -D remark-truncate-links
 
 ```js
 {
-  style: `smart`, // one of [`smart`, `middle`]
+  style: `smart`, // one of [`smart`, `middle`, `end`]
   length: 30,
 }
 // showing default options
