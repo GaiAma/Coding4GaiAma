@@ -16,7 +16,9 @@ turns into
 >
 ```
 
-### Install
+so screenreaders and other assistive technology can understand the emojis and act accordingly by for example reading the `aria-label`.
+
+## Install
 
 ```bash
 yarn add -D rehype-accessible-emojis
@@ -24,7 +26,44 @@ yarn add -D rehype-accessible-emojis
 npm i -D rehype-accessible-emojis
 ```
 
-### Usage
+## Usage
+
+### Using Rehype
+
+Given an `example.html` like
+
+```html
+<h1>Hello World!</h1>
+
+<p>👋 Hi, I love emojis a lot 🤓</p>
+```
+
+and `example.js` like
+
+```js
+import vfile from 'to-vfile'
+import rehype from 'rehype'
+import accessibleEmojis from 'rehype-accessible-emojis'
+
+rehype()
+  .use(accessibleEmojis)
+  .process(vfile.readSync('example.html'), (_, file) => {
+    console.log(String(file))
+  })
+```
+
+running `node example` results in
+
+```html
+<h1>Hello World!</h1>
+
+<p>
+  <span role="image" aria-label="waving hand">👋</span> Hi, I love emojis a lot
+  <span role="image" aria-label="nerd face">🤓</span>
+</p>
+```
+
+### Using gatsby-plugin-mdx
 
 ```js
 // gatsby-config.js
@@ -36,6 +75,10 @@ npm i -D rehype-accessible-emojis
 }
 ```
 
-### Mentioned in
+## Mentioned in
 
 - [Rehype's Plugin List](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md)
+
+## License
+
+[MIT](/license) © [Can Rau](https://www.canrau.com)
