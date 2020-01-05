@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-lang-slug",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Uses speakingurl to add localized anchors to headings",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
   "repository": {
