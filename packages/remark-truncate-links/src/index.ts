@@ -2,9 +2,16 @@ import { Node } from 'unist'
 import visit from 'unist-util-visit'
 import { truncateMiddle } from 'autolinker/dist/commonjs/truncate/truncate-middle.js'
 import { truncateSmart } from 'autolinker/dist/commonjs/truncate/truncate-smart.js'
+import { truncateEnd } from 'autolinker/dist/commonjs/truncate/truncate-end.js'
+
+enum Style {
+  Smart = 'smart',
+  Middle = 'middle',
+  End = 'end',
+}
 
 type Props = {
-  style?: string
+  style?: Style
   length?: number
 }
 
@@ -22,12 +29,13 @@ type TruncateStyle = {
 }
 
 const truncators: TruncateStyle = {
-  smart: truncateSmart,
-  middle: truncateMiddle,
+  [Style.Smart]: truncateSmart,
+  [Style.Middle]: truncateMiddle,
+  [Style.End]: truncateEnd,
 }
 
 export function remarkTruncateLinks({
-  style = `smart`,
+  style = Style.Smart,
   length = 30,
 }: Props = {}): (ast: NodeWithChildren) => void {
   const truncator = truncators[style]
