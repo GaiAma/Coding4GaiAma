@@ -84,5 +84,19 @@ mdx(`mdxString`, { remarkPlugins: [[remarkTruncateLinks, options]] })
 
 ### Ideas
 
-- Truncate based on host, for example truncate GitHub repos to repo name like [Coding4GaiAma](https://github.com/GaiAma/Coding4GaiAma/)
+- Truncate based on host, for example truncate GitHub repos to repo name like [GaiAma/Coding4GaiAma](https://github.com/GaiAma/Coding4GaiAma/)
 - Check out https://github.com/williambelle/crop-url
+
+### Used in
+
+- [gatsby-transformer-leasot](https://www.npmjs.com/package/gatsby-transformer-leasot) - make your TODOs and FIXMEs from comments in your files queryable via GraphQL
+- [coding4.gaiama.org](https://coding4.gaiama.org/en/) - As MDX plugin to truncate all links not manually named.
+
+### Credits
+
+- [Autolinker.js](https://www.npmjs.com/package/autolinker) - is used for actual truncation
+- [Unified](https://unifiedjs.com/) & [Remark](https://www.npmjs.com/package/remark)
+
+### License
+
+MIT
