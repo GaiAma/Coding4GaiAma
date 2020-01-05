@@ -32,7 +32,7 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => {
               ml="1"
               sx={{ border: `none !important` }}
             >
-              {t.file.relativePath}#{t.line}
+              {t.file.relativePath}#L{t.line}
             </Link>
             {/* <span sx={{ mx: 1 }}>–</span> */}
             {/* TODO: File last modified not working, all same on Netlify */}
