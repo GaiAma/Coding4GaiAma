@@ -119,7 +119,7 @@ export default {
       textDecoration: 'none',
       ':hover': { textDecoration: 'underline' },
     },
-    p: { m: 0, mb: 8, lineHeight: 'body' },
+    p: { m: 0, mb: 10, lineHeight: 'body' },
     h1: {
       variant: 'typeStyles.heading',
       fontSize: 7,
