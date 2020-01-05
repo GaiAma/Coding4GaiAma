@@ -103,7 +103,7 @@ module.exports = {
         ],
         gatsbyRemarkPlugins: [
           // TODO: hash urls not jumping to anchor?
-          `gatsby-remark-slug-i18n`,
+          `gatsby-remark-lang-slug`,
           {
             // TODO: consider [gatsby-remark-images-anywhere](https://github.com/d4rekanguok/gatsby-remark-images-anywhere)
             resolve: `gatsby-remark-images`,
