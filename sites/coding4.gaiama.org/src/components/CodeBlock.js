@@ -18,9 +18,10 @@ const languages = new Map([
 
 export const CodeBlock = ({ children, className, highlight, ...props }) => {
   const codeFence = className.match(codeFenceRegex)
-  const language = codeFence.groups.lang
-  const highlightStart = parseInt(codeFence.groups.lineStart)
-  const highlightEnd = parseInt(codeFence.groups.lineEnd)
+  const language = codeFence?.groups.lang ?? null
+  const highlightStart = parseInt(codeFence?.groups.lineStart ?? null)
+  const highlightEnd = parseInt(codeFence?.groups.lineEnd ?? null)
+  const hasTopbar = !!props.file || !!language
   // const language = className.replace(/language-/, '')
   // const [highlightStart, highlightEnd] = `${highlight}`.split(`-`).map(parseInt)
   return (
@@ -32,79 +33,104 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <div sx={{ position: `relative` }}>
-          <pre
+          <div
             className={className}
             sx={{
               ...style,
-              px: 0,
-              py: 3,
+              p: 0,
               m: 0,
               overflow: `scroll`,
               counterReset: `linenumbers`,
             }}
           >
-            {tokens.map((line, i) => {
-              if (
-                (i === 0 || i === tokens.length - 1) &&
-                !line.filter(l => l.content).length
-              ) {
-                return null
-              }
-
-              const lineNo = i + 1
-              const isLineHighlighted = highlightEnd
-                ? lineNo >= highlightStart && lineNo <= highlightEnd
-                : highlightStart
-                ? lineNo === highlightStart
-                : false
-
-              return (
-                <div
-                  key={i}
-                  {...getLineProps({ line, key: i })}
-                  sx={{
-                    backgroundColor: isLineHighlighted && `codeLineHighlight`,
-                    display: `grid`,
-                    gridTemplateColumns: `20px auto`,
-                    px: 3,
-                  }}
-                >
+            {hasTopbar && (
+              <div
+                sx={{
+                  display: `flex`,
+                  justifyContent: `space-between`,
+                  alignItems: `start`,
+                }}
+              >
+                {!!props.file && (
                   <div
                     sx={{
-                      ':before': {
-                        textAlign: `right`,
-                        counterIncrement: `linenumbers`,
-                        content: `counter(linenumbers)`,
-                        display: `inline-block`,
-                        width: `1.2rem`,
-                        borderRight: `1px black solid`,
-                        paddingRight: `0.5rem`,
-                        marginRight: `1rem`,
-                        pointerEvents: `none`,
-                        userSelect: `none`,
-                      },
+                      backgroundColor: `dimgrey`,
+                      px: 2,
+                      mb: 3,
+                      mr: `auto`,
+                      borderBottomRightRadius: `lg`,
+                      fontSize: `small`,
                     }}
                   >
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
+                    {props.file}
                   </div>
-                </div>
-              )
-            })}
-          </pre>
-          <div
-            sx={{
-              position: `absolute`,
-              top: 0,
-              right: 0,
-              backgroundColor: `dimgrey`,
-              px: 2,
-              borderBottomLeftRadius: `lg`,
-              fontSize: `small`,
-            }}
-          >
-            {languages.get(language) || language.toUpperCase()}
+                )}
+                {!!language && (
+                  <div
+                    sx={{
+                      ml: `auto`,
+                      backgroundColor: `dimgrey`,
+                      px: 2,
+                      borderBottomLeftRadius: `lg`,
+                      fontSize: `small`,
+                    }}
+                  >
+                    {languages.get(language) || language.toUpperCase()}
+                  </div>
+                )}
+              </div>
+            )}
+            <pre sx={{ m: 0, mb: 3, mt: !hasTopbar && 3 }}>
+              {tokens.map((line, i) => {
+                if (
+                  (i === 0 || i === tokens.length - 1) &&
+                  !line.filter(l => l.content).length
+                ) {
+                  return null
+                }
+
+                const lineNo = i + 1
+                const isLineHighlighted = highlightEnd
+                  ? lineNo >= highlightStart && lineNo <= highlightEnd
+                  : highlightStart
+                  ? lineNo === highlightStart
+                  : false
+
+                return (
+                  <div
+                    key={i}
+                    {...getLineProps({ line, key: i })}
+                    sx={{
+                      backgroundColor: isLineHighlighted && `codeLineHighlight`,
+                      display: `grid`,
+                      gridTemplateColumns: `20px auto`,
+                      px: 3,
+                    }}
+                  >
+                    <div
+                      sx={{
+                        ':before': {
+                          textAlign: `right`,
+                          counterIncrement: `linenumbers`,
+                          content: `counter(linenumbers)`,
+                          display: `inline-block`,
+                          width: `1.2rem`,
+                          borderRight: `1px black solid`,
+                          paddingRight: `0.5rem`,
+                          marginRight: `1rem`,
+                          pointerEvents: `none`,
+                          userSelect: `none`,
+                        },
+                      }}
+                    >
+                      {line.map((token, key) => (
+                        <span key={key} {...getTokenProps({ token, key })} />
+                      ))}
+                    </div>
+                  </div>
+                )
+              })}
+            </pre>
           </div>
         </div>
       )}

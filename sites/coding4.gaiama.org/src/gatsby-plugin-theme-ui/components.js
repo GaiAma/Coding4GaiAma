@@ -36,7 +36,7 @@ import { Heading } from 'components/Heading'
 
 export default {
   // blockquote,
-  pre: props => <div {...props} sx={{ variant: `grid.contentL`, mb: 7 }} />,
+  pre: props => <div {...props} sx={{ variant: `grid.contentL`, mb: 10 }} />,
   code: props => <CodeBlock {...props} />,
   // h1: props => <Title as="h1" {...props} />,
   // h2: props => <Title as="h2" {...props} />,
