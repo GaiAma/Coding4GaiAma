@@ -123,4 +123,9 @@ That means if your sourced files don't contain anything for gatsby-transformer-l
 
 ## Credits
 
-Huge thanks of course to [@GiladPeleg](https://twitter.com/GiladPeleg) and their amazing work on [Leasot](https://github.com/pgilad/leasot)
+- Huge thanks of course to [@GiladPeleg](https://twitter.com/GiladPeleg) and their amazing work on [Leasot](https://github.com/pgilad/leasot)
+- `truncateLinks` uses [remark-truncate-links](https://www.npmjs.com/package/remark-truncate-links)
+
+## License
+
+MIT
