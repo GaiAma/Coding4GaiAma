@@ -35,3 +35,7 @@ npm i -D rehype-accessible-emojis
   },
 }
 ```
+
+### Mentioned in
+
+- [Rehype's Plugin List](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md)
