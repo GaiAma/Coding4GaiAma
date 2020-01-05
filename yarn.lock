@@ -12696,6 +12696,14 @@ remark-toc@^6.0.0:
   dependencies:
     mdast-util-toc "^4.0.0"
 
+remark-truncate-links@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/remark-truncate-links/-/remark-truncate-links-0.1.1.tgz#f796ae1ec595838a6e1e8d8fe6dd85145eac19b7"
+  integrity sha512-a+e7X7lfqFPkEPPSHUO+oOehIHqdx/Tp9fcEYCceT89SGMInzPrMnQItV5tV7vp2fEzBqY3ByYMuRPW0feuF8g==
+  dependencies:
+    autolinker "^3.11.1"
+    unist-util-visit "^2.0.1"
+
 remark-validate-links@^9.0.0:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/remark-validate-links/-/remark-validate-links-9.0.1.tgz#9d0b667832f2ef325694ef0539d23c0ee3e423ba"
