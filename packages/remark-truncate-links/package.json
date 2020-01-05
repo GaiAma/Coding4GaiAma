@@ -1,6 +1,6 @@
 {
   "name": "remark-truncate-links",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "shortens links in Markdown/MDX",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
