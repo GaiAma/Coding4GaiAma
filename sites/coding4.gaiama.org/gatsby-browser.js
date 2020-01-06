@@ -4,7 +4,7 @@ const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
   const { version, bugs } = require('./package.json')
   const branch = process.env.BRANCH || 'dev'
   const repoUrl = bugs.url.replace('/issues', '')
-  const newIssueUrl = bugs.url + '/new?labels=ViaDevTools'
+  const newIssueUrl = bugs.url + '/new'
   module.exports = { version, bugs, branch, repoUrl, newIssueUrl }
 `
 
