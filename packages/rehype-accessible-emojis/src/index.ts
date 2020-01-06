@@ -113,5 +113,3 @@ export const rehypeAccessibleEmojis = (options: Options = defaultOptions) => (
 
   return ast
 }
-
-export default rehypeAccessibleEmojis
