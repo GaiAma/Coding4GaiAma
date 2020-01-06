@@ -45,10 +45,10 @@ and `example.js` like
 ```js
 import vfile from 'to-vfile'
 import rehype from 'rehype'
-import accessibleEmojis from 'rehype-accessible-emojis'
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
 
 rehype()
-  .use(accessibleEmojis)
+  .use(rehypeAccessibleEmojis)
   .process(vfile.readSync('example.html'), (_, file) => {
     console.log(String(file))
   })
@@ -72,7 +72,7 @@ running `node example` results in
 {
   resolve: `gatsby-plugin-mdx`,
   options: {
-    rehypePlugins: [require(`rehype-accessible-emojis`)],
+    rehypePlugins: [require(`rehype-accessible-emojis`).rehypeAccessibleEmojis],
   },
 }
 ```
