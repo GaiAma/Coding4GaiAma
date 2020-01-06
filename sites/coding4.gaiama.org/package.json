@@ -14,6 +14,9 @@
     "type": "git",
     "directory": "sites/coding4.gaiama.org"
   },
+  "bugs": {
+    "url": "https://github.com/GaiAma/Coding4GaiAma/issues"
+  },
   "scripts": {
     "settings": "GATSBY_TELEMETRY_DISABLED=1 GATSBY_TELEMETRY_DEBUG=0 GATSBY_GRAPHQL_IDE=playground ENABLE_GATSBY_REFRESH_ENDPOINT=1",
     "dev": "yarn settings gatsby develop --https --host 0.0.0.0",
