@@ -6,6 +6,19 @@ Actually it'll shorten [auto] linked URLs where the URL and the text are equal a
 So this plugin doesn't work if you want to show a full URL longer than `length`.
 Written in **`Typescript`**.
 
+### Examples
+
+```bash
+# input
+https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-truncate-links
+# smart
+github.com/GaiAma/C…te-links
+# middle
+https://github…runcate-links
+# end
+https://github.com/GaiAma/C…
+```
+
 ### Install
 
 ```bash
@@ -96,6 +109,10 @@ mdx(`mdxString`, { remarkPlugins: [[remarkTruncateLinks, options]] })
 
 - [Autolinker.js](https://www.npmjs.com/package/autolinker) - is used for actual truncation
 - [Unified](https://unifiedjs.com/) & [Remark](https://www.npmjs.com/package/remark)
+
+### Mentioned in
+
+- [Remark's Plugin List](https://github.com/remarkjs/remark/blob/master/doc/plugins.md)
 
 ### License
 
