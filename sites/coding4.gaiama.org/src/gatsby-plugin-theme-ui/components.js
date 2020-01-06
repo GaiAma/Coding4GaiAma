@@ -54,4 +54,9 @@ export default {
   h5: props => <Heading {...props} as="h5" />,
   h6: props => <Heading {...props} as="h6" />,
   Box,
+  table: props => (
+    <Box as="figure" sx={{ overflowX: `auto`, variant: `grid.contentL` }}>
+      <table {...props} />
+    </Box>
+  ),
 }

@@ -167,7 +167,6 @@ export default {
       variant: `styles.ul`,
     },
     table: {
-      variant: `grid.contentL`,
       width: '100%',
       m: 0,
       mb: 7,
