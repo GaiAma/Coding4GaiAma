@@ -27,8 +27,7 @@
     "typescript": "^3.7.4"
   },
   "files": [
-    "lib",
-    "types"
+    "lib"
   ],
   "keywords": [
     "mdx",
