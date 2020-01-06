@@ -1,9 +1,11 @@
 /* global window */
 import preval from 'babel-plugin-preval/macro'
-const { version, bugs, branch } = preval`
+const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
   const { version, bugs } = require('./package.json')
   const branch = process.env.BRANCH || 'dev'
-  module.exports = { version, bugs, branch }
+  const repoUrl = bugs.url.replace('/issues', '')
+  const newIssueUrl = bugs.url + '/new?labels=ViaDevTools'
+  module.exports = { version, bugs, branch, repoUrl, newIssueUrl }
 `
 
 // TODO: maybe improve on it – but what 😅
@@ -39,17 +41,17 @@ try {
     `,
     `\n`,
     `\n`,
-    `Feel free to inspect everything, e.g. 'window.GaiAma'`,
+    `Feel free to inspect everything, e.g. 'window.C4G' / 'window.GaiAma'`,
     `\n`,
     `\n`,
-    `You'll find the MIT licensed source code of the website at ${bugs.url.replace(
-      `/issues`,
-      ``
-    )}`,
+    `You'll find the MIT licensed source code of the website at ${repoUrl}`,
     `\n`,
     `\n`,
-    `If you encounter anything unexpected, or have other feedback feel free to file an issue at ${bugs.url}/new?labels=ViaDevTools`,
+    `If you encounter anything unexpected, or have other feedback feel free to file an issue at ${newIssueUrl}`,
     `\nƛ`
   )
-  /* eslint-disable-next-line */
-} catch (e) {}
+} catch (e) {
+  console.info(
+    `Have you found a bug? Please help me fix it by submitting it to ${newIssueUrl}`
+  )
+}
