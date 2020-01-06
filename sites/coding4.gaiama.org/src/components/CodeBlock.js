@@ -22,6 +22,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
   const highlightStart = parseInt(codeFence?.groups.lineStart ?? null)
   const highlightEnd = parseInt(codeFence?.groups.lineEnd ?? null)
   const hasTopbar = !!props.file || !!language
+  const hasLineNumbers = !!props.showLineNumbers
   // const language = className.replace(/language-/, '')
   // const [highlightStart, highlightEnd] = `${highlight}`.split(`-`).map(parseInt)
   return (
@@ -108,20 +109,22 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                     }}
                   >
                     <div
-                      sx={{
-                        ':before': {
-                          textAlign: `right`,
-                          counterIncrement: `linenumbers`,
-                          content: `counter(linenumbers)`,
-                          display: `inline-block`,
-                          width: `1.2rem`,
-                          borderRight: `1px black solid`,
-                          paddingRight: `0.5rem`,
-                          marginRight: `1rem`,
-                          pointerEvents: `none`,
-                          userSelect: `none`,
-                        },
-                      }}
+                      sx={
+                        hasLineNumbers && {
+                          ':before': {
+                            textAlign: `right`,
+                            counterIncrement: `linenumbers`,
+                            content: `counter(linenumbers)`,
+                            display: `inline-block`,
+                            width: `1.2rem`,
+                            borderRight: `1px black solid`,
+                            paddingRight: `0.5rem`,
+                            marginRight: `1rem`,
+                            pointerEvents: `none`,
+                            userSelect: `none`,
+                          },
+                        }
+                      }
                     >
                       {line.map((token, key) => (
                         <span key={key} {...getTokenProps({ token, key })} />
