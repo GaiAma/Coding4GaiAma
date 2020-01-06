@@ -1,6 +1,6 @@
 {
   "name": "rehype-accessible-emojis",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Rehype plugin to make emojis accessible, wrapping emojis in <span> with image role and the emojis name in aria-label>",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
   "main": "lib/index.js",
