@@ -1,5 +1,7 @@
+/// <reference types="mdast-util-to-string" />
 import { Node } from 'unist'
 import visit from 'unist-util-visit'
+import toString from 'mdast-util-to-string'
 import { truncateMiddle } from 'autolinker/dist/commonjs/truncate/truncate-middle.js'
 import { truncateSmart } from 'autolinker/dist/commonjs/truncate/truncate-smart.js'
 import { truncateEnd } from 'autolinker/dist/commonjs/truncate/truncate-end.js'
@@ -49,12 +51,12 @@ export function remarkTruncateLinks({
 
   return function(ast: NodeWithChildren): void {
     visit(ast, 'link', (node: NodeWithChildren) => {
-      node.title = node.title || node.url
-      node.children?.map((child: NodeWithChildren): void => {
-        if (typeof child?.value === `string` && child.value === node.url) {
-          child.value = truncator(child.value, length, `...`)
-        }
-      })
+      const value = toString(node)
+      if (value === node.url) {
+        node.children = [
+          { type: 'text', value: truncator(value, length, `...`) },
+        ]
+      }
     })
   }
 }

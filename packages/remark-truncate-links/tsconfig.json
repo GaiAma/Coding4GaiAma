@@ -1,7 +1,8 @@
 {
   "include": ["./src/"],
-  "exclude": ["node_modules", "src/**/*.spec.*"],
+  "exclude": ["node_modules", "src/**/*.spec.*", "./types"],
   "compilerOptions": {
+    "typeRoots": [ "./types", "./node_modules/@types"],
     "strict": true,
     "module": "commonjs",
     "target": "es2018",
