@@ -6,23 +6,23 @@ import { truncateMiddle } from 'autolinker/dist/commonjs/truncate/truncate-middl
 import { truncateSmart } from 'autolinker/dist/commonjs/truncate/truncate-smart.js'
 import { truncateEnd } from 'autolinker/dist/commonjs/truncate/truncate-end.js'
 
-enum Style {
+export enum Style {
   Smart = 'smart',
   Middle = 'middle',
   End = 'end',
 }
 
-type Props = {
+export type Props = {
   style?: Style
   length?: number
 }
 
-type NodeWithChildren = Node & {
+export type NodeWithChildren = Node & {
   children?: Node[]
   value?: string
 }
 
-type TruncateStyle = {
+export type TruncateStyle = {
   [key: string]: (
     url: string,
     truncateLen: number,
