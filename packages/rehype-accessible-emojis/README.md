@@ -1,5 +1,7 @@
 # rehype-accessible-emojis
 
+Written in Typescript
+
 As I couldn't get [gatsby-remark-a11y-emoji](https://github.com/florianeckerstorfer/gatsby-remark-a11y-emoji) working with [gatsby-plugin-mdx](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-mdx#readme) I made this rehype version to make **emojis accessible** by wrapping them in a `<span role="image">` with `aria-label` set to the emojis description based on [gemoji](https://github.com/github/gemoji/).
 
 So
@@ -11,9 +13,7 @@ So
 turns into
 
 ```html
-<span role="img" aria-label="smiling face with open mouth &amp; cold sweat"
-  >😅</span
->
+<span role="img" aria-label="smiling face with open mouth &amp; cold sweat">😅</span>
 ```
 
 so screenreaders and other assistive technology can understand the emojis and act accordingly by for example reading the `aria-label`.
