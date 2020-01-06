@@ -121,6 +121,10 @@ A table showing the [Supported Languages](https://github.com/pgilad/leasot/#supp
 
 That means if your sourced files don't contain anything for gatsby-transformer-leasot to parse it won't crash as Gatsby will be prepared. Also congratulations for finishing off all notes, fixmes & todos 🥳
 
+## Changelog
+
+- v1.1.0 - add [he](http://npmjs.com/package/he) to entity encode the comments
+
 ## Credits
 
 - Huge thanks of course to [@GiladPeleg](https://twitter.com/GiladPeleg) and their amazing work on [Leasot](https://github.com/pgilad/leasot)
