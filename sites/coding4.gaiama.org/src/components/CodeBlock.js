@@ -33,14 +33,13 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div sx={{ position: `relative` }}>
+        <div sx={{ position: `relative`, maxHeight: 500 }}>
           <div
             className={className}
             sx={{
               ...style,
               p: 0,
               m: 0,
-              overflow: `scroll`,
               counterReset: `linenumbers`,
             }}
           >
@@ -81,7 +80,8 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                 )}
               </div>
             )}
-            <pre sx={{ m: 0, mb: 3, mt: !hasTopbar && 3 }}>
+
+            <pre sx={{ m: 0, pb: 5, mt: !hasTopbar && 3, overflowX: `scroll` }}>
               {tokens.map((line, i) => {
                 if (
                   (i === 0 || i === tokens.length - 1) &&
