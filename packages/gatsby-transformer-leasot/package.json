@@ -31,6 +31,7 @@
     "@babel/core": "^7.7.7",
     "@mdx-js/mdx": "^1.5.3",
     "autolinker": "^3.11.1",
+    "he": "^1.2.0",
     "leasot": "^9.3.1",
     "lodash": "^4.17.15",
     "remark-truncate-links": "^1.0.1",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.3",
+    "@types/he": "^1.1.0",
     "@types/lodash": "^4.14.149",
     "@types/node": "^13.1.1",
     "typescript": "^3.7.4"

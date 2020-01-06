@@ -7,6 +7,7 @@ import { upperFirst } from 'lodash'
 import * as leasot from 'leasot'
 import { CustomParsers, ExtensionsDb } from 'leasot/dist/definitions'
 import Autolinker from 'autolinker'
+import he from 'he'
 import * as babel from '@babel/core'
 import mdx from '@mdx-js/mdx'
 import { remarkTruncateLinks } from 'remark-truncate-links'
@@ -49,7 +50,7 @@ type Node = {
 }
 
 type ContentModes = {
-  [key: string]: () => Promise<string>
+  [key: string]: (text: string) => Promise<string>
 }
 
 const defaultSourceInstanceName = 'leasot'
@@ -92,15 +93,15 @@ export const onCreateNode = async (
     if (getNode(id)) return
 
     const contentModes: ContentModes = {
-      [ContentMode.Text]: async (): Promise<string> => todo.text,
-      [ContentMode.Html]: async (): Promise<string> =>
-        autolinker.link(todo.text),
-      [ContentMode.Mdx]: async (): Promise<string> => {
+      [ContentMode.Text]: async (text: string): Promise<string> => text,
+      [ContentMode.Html]: async (text: string): Promise<string> =>
+        autolinker.link(text),
+      [ContentMode.Mdx]: async (text: string): Promise<string> => {
         const remarkPlugins = []
         if (truncateLinks !== 0) {
           remarkPlugins.push([remarkTruncateLinks, truncateLinks])
         }
-        const code = await mdx(todo.text, { remarkPlugins })
+        const code = await mdx(text, { remarkPlugins })
         const result = babel.transform(code, {
           configFile: false,
           presets: [
@@ -129,11 +130,13 @@ export const onCreateNode = async (
       },
     }
 
+    const escapedText = he.encode(todo.text)
+
     const leasotNode = {
       todo: {
         ...todo,
         file___NODE: node.id,
-        value: await contentModes[mode](),
+        value: await contentModes[mode](escapedText),
         modifiedTime: node.modifiedTime,
       },
       id,
