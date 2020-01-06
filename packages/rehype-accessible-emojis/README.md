@@ -77,6 +77,12 @@ running `node example` results in
 }
 ```
 
+## Options
+
+`options.ignore` (Array, default: `['title', 'script', 'style', 'svg', 'math']`)  
+Tag-names of parents to ignore, to not wrap an emoji within a `<script>` for example.  
+Will be merged with the defaults.
+
 ## Mentioned in
 
 - [Rehype's Plugin List](https://github.com/rehypejs/rehype/blob/master/doc/plugins.md)

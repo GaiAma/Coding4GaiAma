@@ -8,9 +8,9 @@
  * https://github.com/syntax-tree/hast-util-find-and-replace/blob/master/index.js#L9
  */
 
-/// <reference path="../types/gemoji/index.d.ts" />
-/// <reference path="../types/unist-util-flatmap/index.d.ts" />
-/// <reference path="../types/hast-util-is-element/index.d.ts" />
+/// <reference types="gemoji" />
+/// <reference types="unist-util-flatmap" />
+/// <reference types="hast-util-is-element" />
 
 import { Node, Literal } from 'unist'
 import flatMap from 'unist-util-flatmap'
@@ -22,7 +22,7 @@ const defaultIgnore = ['title', 'script', 'style', 'svg', 'math']
 
 type Opaque<K, T> = T & { __TYPE__: K }
 
-type NodeWithChildren = Node & {
+export type NodeWithChildren = Node & {
   children?: Node[]
   value?: string
 }
@@ -58,7 +58,7 @@ function buildEmojiNode(emoji: string, children?: Node[]) {
   }
 }
 
-type hProps = { value: string }
+export type hProps = { value: string }
 function h(type: string, props: hProps, children?: Node[]) {
   if (type === 'text') return buildTextNode(props.value)
   if (type === 'emoji') return buildEmojiNode(props.value, children)
@@ -89,9 +89,22 @@ function splitTextNode(textNode: Literal) {
   return newNodes
 }
 
-export default () => (ast: NodeWithChildren) => {
+export type Options = {
+  ignore: string[]
+}
+
+const defaultOptions = { ignore: [] }
+
+// from https://medium.com/dailyjs/how-to-remove-array-duplicates-in-es6-5daa8789641c
+const unique = (array: string[]): string[] =>
+  array.filter((item: string, index: number) => array.indexOf(item) === index)
+
+export default (options: Options = defaultOptions) => (
+  ast: NodeWithChildren
+) => {
+  const ignore = unique([...defaultIgnore, ...options.ignore])
   flatMap(ast, (node: Literal, _?: number, parent?: Literal) => {
-    if (node.type !== 'text' || (parent && is(parent as Node, defaultIgnore))) {
+    if (node.type !== 'text' || (parent && is(parent as Node, ignore))) {
       return [node]
     }
 
