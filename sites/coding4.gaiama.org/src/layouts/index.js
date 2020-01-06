@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled, Layout as UiLayout } from 'theme-ui'
+import { jsx, Styled, Layout as UiLayout, useThemeUI } from 'theme-ui'
+import { useEffect } from 'react'
 import { Box } from '@theme-ui/components'
 import { Global } from '@emotion/core'
 import { MDXProvider } from '@mdx-js/react'
@@ -18,8 +19,15 @@ const isProduction = process.env.NODE_ENV === `production`
 // minmax(min(1fr, calc(92% - 20px)), 40rem)
 // const Main = props => <div {...props} />
 
-const Layout = ({ children, data, ...props }) =>
-  (!isProduction && console.log(data, props)) || (
+const Layout = ({ children, data, ...props }) => {
+  !isProduction && console.log(data, props)
+  const themeUi = useThemeUI()
+  useEffect(() => {
+    const { emotionVersion, theme, colorMode } = themeUi
+    window.GaiAma = window.GaiAma ?? {}
+    window.GaiAma.ThemeUI = { emotionVersion, theme, colorMode }
+  }, [themeUi])
+  return (
     <Styled.root>
       <UiLayout>
         <SkipLink>Skip to content</SkipLink>
@@ -62,5 +70,5 @@ const Layout = ({ children, data, ...props }) =>
       </UiLayout>
     </Styled.root>
   )
-
+}
 export default Layout
