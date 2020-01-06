@@ -21,24 +21,35 @@ try {
     version,
     bugTracker: bugs,
   }
-  console.log(
-    `%cWelcome to Coding4.GaiAma.org version ${version}, you're on the ${branch} branch`,
-    `font-size:13px;color:#01422e;`
-  )
-  console.log(
-    `%cFeel free to inspect everything, e.g. 'window.GaiAma'`,
-    `color:green;`
-  )
-  console.log(
-    `%cYou'll find the MIT licensed source code of the website at ${bugs.url.replace(
+  window.C4G = window.GaiAma
+  // TODO: use [figlet](https://www.npmjs.com/package/figlet) & turn it into a gatsby-plugin?
+  console.info(
+    `ƛ\n`,
+    `Welcome to Coding4.GaiAma.org version ${version}, you're on the ${branch} branch`,
+    `\n`,
+    `\n`,
+    `
+ ######   #######  ########  #### ##    ##  ######   ##         ######      ###    ####    ###    ##     ##    ###
+##    ## ##     ## ##     ##  ##  ###   ## ##    ##  ##    ##  ##    ##    ## ##    ##    ## ##   ###   ###   ## ##
+##       ##     ## ##     ##  ##  ####  ## ##        ##    ##  ##         ##   ##   ##   ##   ##  #### ####  ##   ##
+##       ##     ## ##     ##  ##  ## ## ## ##   #### ##    ##  ##   #### ##     ##  ##  ##     ## ## ### ## ##     ##
+##       ##     ## ##     ##  ##  ##  #### ##    ##  ######### ##    ##  #########  ##  ######### ##     ## #########
+##    ## ##     ## ##     ##  ##  ##   ### ##    ##        ##  ##    ##  ##     ##  ##  ##     ## ##     ## ##     ##
+ ######   #######  ########  #### ##    ##  ######         ##   ######   ##     ## #### ##     ## ##     ## ##     ##
+    `,
+    `\n`,
+    `\n`,
+    `Feel free to inspect everything, e.g. 'window.GaiAma'`,
+    `\n`,
+    `\n`,
+    `You'll find the MIT licensed source code of the website at ${bugs.url.replace(
       `/issues`,
       ``
     )}`,
-    `color:green;`
-  )
-  console.log(
-    `%cIf you encounter anything unexpected, or have other feedback feel free to file an issue at ${bugs.url}/new?labels=ViaDevTools`,
-    `color:#3a9a02;`
+    `\n`,
+    `\n`,
+    `If you encounter anything unexpected, or have other feedback feel free to file an issue at ${bugs.url}/new?labels=ViaDevTools`,
+    `\nƛ`
   )
   /* eslint-disable-next-line */
 } catch (e) {}
