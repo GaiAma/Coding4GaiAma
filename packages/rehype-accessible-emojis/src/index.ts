@@ -99,7 +99,7 @@ const defaultOptions = { ignore: [] }
 const unique = (array: string[]): string[] =>
   array.filter((item: string, index: number) => array.indexOf(item) === index)
 
-export default (options: Options = defaultOptions) => (
+export const rehypeAccessibleEmojis = (options: Options = defaultOptions) => (
   ast: NodeWithChildren
 ) => {
   const ignore = unique([...defaultIgnore, ...options.ignore])
@@ -113,3 +113,5 @@ export default (options: Options = defaultOptions) => (
 
   return ast
 }
+
+export default rehypeAccessibleEmojis
