@@ -89,7 +89,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        rehypePlugins: [require(`rehype-accessible-emojis`)],
+        rehypePlugins: [
+          require(`rehype-accessible-emojis`).rehypeAccessibleEmojis,
+        ],
         remarkPlugins: [
           // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-breaks`),
