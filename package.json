@@ -9,5 +9,25 @@
   "workspaces": [
     "packages/*",
     "sites/*"
-  ]
+  ],
+  "scripts": {
+    "plop": "plop"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "lerna test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "husky": "^4.0.0",
+    "plop": "^2.5.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }
