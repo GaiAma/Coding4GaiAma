@@ -23,7 +23,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
   const language = codeFence?.groups.lang ?? null
   const highlightStart = parseInt(codeFence?.groups.lineStart ?? null)
   const highlightEnd = parseInt(codeFence?.groups.lineEnd ?? null)
-  const hasTopbar = !!props.file || !!language
+  const hasTopbar = !!props.title || !!language
   const hasLineNumbers = !!props.showLineNumbers
   // const language = className.replace(/language-/, '')
   // const [highlightStart, highlightEnd] = `${highlight}`.split(`-`).map(parseInt)
@@ -53,7 +53,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   alignItems: `start`,
                 }}
               >
-                {!!props.file && (
+                {!!props.title && (
                   <div
                     sx={{
                       backgroundColor: `dimgrey`,
@@ -64,7 +64,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                       fontSize: `small`,
                     }}
                   >
-                    {props.file}
+                    {props.title}
                   </div>
                 )}
                 {!!language && (
