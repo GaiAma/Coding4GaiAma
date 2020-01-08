@@ -59,4 +59,5 @@ export default {
       <table {...props} />
     </Box>
   ),
+  kbd: props => <kbd {...props} sx={{ variant: `styles.kbd` }} />,
 }

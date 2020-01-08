@@ -201,6 +201,13 @@ export default {
       whiteSpace: `nowrap`,
     },
     img: { maxWidth: '100%', height: 'auto' },
+    kbd: {
+      fontFamily: 'monospace',
+      backgroundColor: `subtle`,
+      px: 1,
+      borderRadius: `sm`,
+      whiteSpace: `nowrap`,
+    },
   },
   grid: {
     display: 'grid',
