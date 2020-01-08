@@ -125,7 +125,7 @@ export const query = graphql`
       ...CommonFields
       #tableOfContents
       fields {
-        shareableUrl
+        # shareableUrl
         absoluteUrl
       }
       author {
