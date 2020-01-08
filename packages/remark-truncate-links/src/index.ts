@@ -2,6 +2,7 @@
 import { Node } from 'unist'
 import visit from 'unist-util-visit'
 import toString from 'mdast-util-to-string'
+// TODO: https://github.com/sindresorhus/humanize-url/issues/1
 import { truncateMiddle } from 'autolinker/dist/commonjs/truncate/truncate-middle.js'
 import { truncateSmart } from 'autolinker/dist/commonjs/truncate/truncate-smart.js'
 import { truncateEnd } from 'autolinker/dist/commonjs/truncate/truncate-end.js'

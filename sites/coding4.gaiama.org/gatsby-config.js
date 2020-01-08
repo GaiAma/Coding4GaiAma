@@ -1,10 +1,11 @@
 /**
+ * NOTE: https://wooorm.com/write-music/ & https://unifiedjs.com/learn/guide/create-an-editor/
  * TODO: check out webmentions
  * https://www.npmjs.com/package/gatsby-plugin-webmention
  * https://webmention.io/
  * https://brid.gy/
  *
- * TODO: Check out https://npm.im/gatsby-plugin-schema-snapshot/ to lock-down gQL schema
+ * DONE: Check out https://npm.im/gatsby-plugin-schema-snapshot/ to lock-down gQL schema
  *
  * TODO: check out https://gatsby-remark-design-system.netlify.com/
  *
@@ -17,6 +18,8 @@
  * https://github.com/gatsbyjs/gatsby/blob/master/examples/using-page-transitions/src/components/transition.js
  *
  * TODO: use react-icons?
+ *
+ * NOTE: consider https://www.gatsbyjs.org/packages/gatsby-remark-embedder/
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
@@ -119,6 +122,7 @@ module.exports = {
               ignoreFileExtensions: [], // the quick fix? #6698
             },
           },
+          // FIXME: install or improve gatsby-remark-wrap-images then open source it
           // { resolve: `@gaiama/gatsby-remark-wrap-images` },
           { resolve: `gatsby-remark-copy-linked-files` },
           {
@@ -263,6 +267,8 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify-cache`,
+    // If this should ever be removed, replace it with `gatsby-plugin-remove-serviceworker`
+    // as explained in https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
     `gatsby-plugin-offline`,
   ],
 }

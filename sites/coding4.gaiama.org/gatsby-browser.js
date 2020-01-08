@@ -8,6 +8,9 @@ const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
   module.exports = { version, bugs, branch, repoUrl, newIssueUrl }
 `
 
+// from https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/gatsby/node/createPages.js#L5
+// const log = (message, section) => console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`)
+
 // TODO: maybe improve on it – but what 😅
 // sadly don't remember what I was thinking
 // https://github.com/gatsbyjs/gatsby/pull/11379/files

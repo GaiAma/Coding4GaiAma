@@ -16,6 +16,8 @@ const languages = new Map([
   [`bash`, `Bash`],
 ])
 
+// TODO: add copy to clipboard button https://github.com/gatsbyjs/gatsby/pull/15834/files
+
 export const CodeBlock = ({ children, className, highlight, ...props }) => {
   const codeFence = className.match(codeFenceRegex)
   const language = codeFence?.groups.lang ?? null
