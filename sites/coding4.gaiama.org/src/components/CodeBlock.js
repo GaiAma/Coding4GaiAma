@@ -35,7 +35,13 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <div sx={{ position: `relative`, maxHeight: 500 }}>
+        <div
+          sx={{
+            position: `relative`,
+            maxHeight: 500,
+            overflowY: `scroll`,
+          }}
+        >
           <div
             className={className}
             sx={{
