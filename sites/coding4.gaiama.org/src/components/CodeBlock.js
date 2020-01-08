@@ -49,6 +49,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
               p: 0,
               m: 0,
               counterReset: `linenumbers`,
+              position: `relative`,
             }}
           >
             {hasTopbar && (
@@ -57,6 +58,8 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   display: `flex`,
                   justifyContent: `space-between`,
                   alignItems: `start`,
+                  position: `sticky`,
+                  top: 0,
                 }}
               >
                 {!!props.title && (
