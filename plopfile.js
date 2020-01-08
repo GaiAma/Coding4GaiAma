@@ -17,9 +17,21 @@ module.exports = function(plop) {
       },
       {
         type: `input`,
-        name: `author`,
-        message: `Your name/email for putting in the package.json of the new package`,
-        default: `CanRau <cansrau@gmail.com> (https://www.canrau.com)`,
+        name: `author.name`,
+        message: `Your name`,
+        default: `Can Rau`,
+      },
+      {
+        type: `input`,
+        name: `author.email`,
+        message: `Your email`,
+        default: `cansrau@gmail.com`,
+      },
+      {
+        type: `input`,
+        name: `author.url`,
+        message: `Your url`,
+        default: `https://www.canrau.com`,
       },
       // {
       //   type: `confirm`,
@@ -30,6 +42,15 @@ module.exports = function(plop) {
     actions: data => {
       // Get current date
       data.year = new Date().getFullYear()
+
+      data.pkgAuthor = [
+        !!data.author.name && data.author.name,
+        !!data.author.email && `<${data.author.email}>`,
+        !!data.author.url && `(${data.author.url})`,
+      ]
+        .filter(Boolean)
+        .join(` `)
+
       return [
         {
           type: `add`,
@@ -86,13 +107,18 @@ module.exports = function(plop) {
       {
         type: `input`,
         name: `shortSlug`,
-        message: `shotSlug of new post`,
+        message: `optional shortSlug`,
       },
       {
         type: `input`,
         name: `author`,
         message: `Your name`,
         default: `can`,
+      },
+      {
+        type: `input`,
+        name: `tags`,
+        message: `Tags (comma separated)`,
       },
       {
         type: 'input',
@@ -103,7 +129,7 @@ module.exports = function(plop) {
         type: 'confirm',
         name: 'isDraft',
         message: 'Save as draft?',
-        default: false,
+        default: true,
       },
     ],
     actions: data => {
@@ -118,37 +144,8 @@ module.exports = function(plop) {
       return [
         {
           type: `add`,
-          path: `packages/{{kebabCase name}}/package.json`,
-          templateFile: `plop-templates/package/package.json.hbs`,
-        },
-        {
-          type: `add`,
-          path: `packages/{{kebabCase name}}/index.js`,
-          templateFile: `plop-templates/package/index.js.hbs`,
-        },
-        {
-          type: `add`,
-          path: `packages/{{kebabCase name}}/README.md`,
-          templateFile: `plop-templates/package/README.md.hbs`,
-        },
-        // data.isBrowser && {
-        //   type: `add`,
-        //   path: `packages/{{kebabCase name}}/.babelrc`,
-        //   templateFile: `plop-templates/package/.babelrc.hbs`,
-        // },
-        {
-          type: `add`,
-          path: `packages/{{kebabCase name}}/.gitignore`,
-          templateFile: `plop-templates/package/.gitignore.hbs`,
-        },
-        {
-          type: `add`,
-          path: `packages/{{kebabCase name}}/.npmignore`,
-          templateFile: `plop-templates/package/.npmignore.hbs`,
-        },
-        {
-          type: `add`,
-          path: `packages/{{kebabCase name}}/src/.gitkeep`,
+          path: `sites/coding4.gaiama.org/content/posts/{{kebabCase title}}/en.mdx`,
+          templateFile: `plop-templates/post/en.mdx.hbs`,
         },
       ].filter(Boolean)
     },

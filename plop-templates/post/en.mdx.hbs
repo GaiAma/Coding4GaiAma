@@ -2,14 +2,14 @@
 draft: {{isDraft}}
 type: post
 title: {{title}}
+{{#if shortSlug}}
 shortSlug: {{{dashCase shortSlug}}}
+{{/if}}
 layout: Article
 date: {{date}}
 author: {{author}}
 description: {{description}}
 {{tags}}
 ---
-
-# {{title}}
 
 {{{body}}}
