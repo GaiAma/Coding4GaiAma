@@ -108,12 +108,21 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   ? lineNo === highlightStart
                   : false
 
+                const lineStartsWithMinus = line[0]?.content.startsWith(`-`)
+                const lineStartsWithPlus = line[0]?.content.startsWith(`+`)
+
+                const backgroundColor = lineStartsWithMinus
+                  ? `codeError`
+                  : lineStartsWithPlus
+                  ? `codeSuccess`
+                  : isLineHighlighted && `codeLineHighlight`
+
                 return (
                   <div
                     key={i}
                     {...getLineProps({ line, key: i })}
                     sx={{
-                      backgroundColor: isLineHighlighted && `codeLineHighlight`,
+                      backgroundColor,
                       display: `grid`,
                       gridTemplateColumns: `20px auto`,
                       px: 3,

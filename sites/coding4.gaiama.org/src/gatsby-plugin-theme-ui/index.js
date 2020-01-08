@@ -14,6 +14,8 @@ export default {
     muted: 'hsla(0, 0%, 100%, 0.75)',
     subtle: '#a0aec0',
     codeLineHighlight: `hsla(0, 0%, 50%, 0.5)`,
+    codeError: `rgba(255, 0, 0, 0.52)`,
+    codeSuccess: `rgba(0, 128, 0, 0.52)`,
     modes: {
       'b/w': {
         primary: '#000',
