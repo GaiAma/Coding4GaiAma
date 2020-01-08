@@ -32,7 +32,7 @@ const Layout = ({ children, data, ...props }) => {
       <UiLayout>
         <SkipLink>Skip to content</SkipLink>
         <GlobalMeta page={data?.page} meta={data?.site?.meta} />
-        <Global styles={theme => theme.styles.Global} />
+        <Global styles={theme => theme.styles.Global(theme)} />
         <div className={`type-${data?.page?.frontmatter?.type}`}>
           {/* <Main> */}
           <Header

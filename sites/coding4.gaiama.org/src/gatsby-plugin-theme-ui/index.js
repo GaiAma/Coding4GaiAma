@@ -100,7 +100,7 @@ export default {
     display: { fontWeight: 'display', lineHeight: 'heading' },
   },
   styles: {
-    Global: {
+    Global: theme => ({
       '*': { boxSizing: 'border-box' },
       body: { margin: 0 },
       // by https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
@@ -112,7 +112,17 @@ export default {
           scrollBehavior: `auto !important`,
         },
       },
-    },
+      'body::-webkit-scrollbar-thumb': {
+        borderRadius: `10px`,
+        backgroundColor: theme.colors.text, // NOTE:  maybe as primary? `#f56545`,
+      },
+      'body::-webkit-scrollbar': {
+        width: `2px`,
+      },
+      // 'body::-webkit-scrollbar-track': {
+      //   background: `#161616`,
+      // },
+    }),
     root: { fontFamily: 'body', lineHeight: 'body', fontWeight: 'body' },
     Layout: {},
     Footer: { fontSize: 1, maxWidth: `90vw`, mx: `auto` },
