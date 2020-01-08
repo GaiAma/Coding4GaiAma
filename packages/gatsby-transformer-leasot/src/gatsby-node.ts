@@ -16,7 +16,7 @@ const autolinker = new Autolinker({
   truncate: { length: 32, location: 'smart' },
 })
 
-export type NodeArgs = CreateNodeArgs & {
+type NodeArgs = CreateNodeArgs & {
   node: {
     id: string
     ext: string
@@ -25,13 +25,13 @@ export type NodeArgs = CreateNodeArgs & {
   }
 }
 
-export enum ContentMode {
+enum ContentMode {
   Mdx = 'mdx',
   Html = 'html',
   Text = 'text',
 }
 
-export type PluginOpts = PluginOptions & {
+type PluginOpts = PluginOptions & {
   sourceInstanceName: string
   mode: ContentMode
   truncateLinks?: number | { length: number; style: string }
@@ -40,7 +40,7 @@ export type PluginOpts = PluginOptions & {
   associateParser: ExtensionsDb
 }
 
-export type Node = {
+type Node = {
   file___NODE?: string
   file?: string
   tag: string
@@ -49,7 +49,7 @@ export type Node = {
   text: string
 }
 
-export type ContentModes = {
+type ContentModes = {
   [key: string]: (text: string) => Promise<string>
 }
 
