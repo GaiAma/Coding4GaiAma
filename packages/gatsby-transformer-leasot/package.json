@@ -13,7 +13,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "watch": "yarn build --watch"
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
   },
   "keywords": [
     "gatsby",
