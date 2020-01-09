@@ -102,6 +102,7 @@ export default {
   styles: {
     Global: theme => ({
       '*': { boxSizing: 'border-box' },
+      html: { scrollBehavior: `smooth` },
       body: { margin: 0 },
       // by https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/
       '@media screen and (prefers-reduced-motion: reduce), (update: slow)': {
