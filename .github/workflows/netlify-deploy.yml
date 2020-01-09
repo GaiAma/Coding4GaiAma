@@ -1,0 +1,52 @@
+# based on https://sung.codes/blog/2019/12/25/building-gatsby-with-git-hub-actions-and-deploying-to-netlify/
+
+name: Build and Deploy Releases to Netlify
+
+on:
+  # use https://hub.github.com/hub-release.1.html to trigger a build
+  release:
+    types:
+      - created
+  # push:
+  # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpaths
+  #   paths-ignore:
+  #     - 'docs/**' # to be extended if I decide to enable build on push
+  #   branches:
+  #     - master
+  # 1. Trigger the workflow every 2 hours
+  # schedule:
+  #   - cron: '0 */2 * * *'
+
+jobs:
+  build:
+    # 2. Using the latest Ubuntu image
+    runs-on: ubuntu-latest
+    steps:
+      # Check out the current repository code
+      # 3. https://github.com/actions/checkout#usage
+      - uses: actions/checkout@v2
+
+      # 3. https://github.com/actions/setup-node#usage
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - run: yarn
+
+      # TODO: workaround until I set up sthg like Lerna
+      - run: yarn workspace remark-truncate-links build
+      - run: yarn workspace gatsby-transformer-leasot build
+      - run: yarn workspace rehype-accessible-emojis build
+
+      # This triggers `gatsby build` script in "package.json"
+      - run: yarn workspace @gaiama/coding4.gaiama.org build:live
+
+      # 4. Deploy the gatsby build to Netlify
+      - uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          # 5. "gatsby build" creates "public" folder, which is what we are deploying
+          args: deploy --dir=sites/coding4.gaiama.org/public --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
