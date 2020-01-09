@@ -1,4 +1,4 @@
-/* global window */
+/* global document, window */
 import preval from 'babel-plugin-preval/macro'
 const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
   const { version, bugs } = require('./package.json')
@@ -18,6 +18,21 @@ const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
 // window.dataLayer.push({
 //   GAIAMA_BRANCH: branch,
 // })
+
+const scrollTo = id => () => {
+  const el = document.querySelector(id)
+  if (el) {
+    // return window.scrollTo(0, el.offsetTop - 20)
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+  return false
+}
+
+export const onRouteUpdate = ({ location: { hash } }) => {
+  if (hash) {
+    window.setTimeout(scrollTo(hash), 10)
+  }
+}
 
 try {
   window.GaiAma = {
