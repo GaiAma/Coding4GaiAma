@@ -215,6 +215,7 @@ export default {
     kbd: {
       fontFamily: 'monospace',
       backgroundColor: `subtle`,
+      color: `text`,
       px: 1,
       borderRadius: `sm`,
       whiteSpace: `nowrap`,
