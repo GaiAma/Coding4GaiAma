@@ -75,19 +75,21 @@ That's what you get after running your new alias `gapa`, then entering ||?|| and
 
 ## All possible commands
 
-||y|| - stage this hunk
-||n|| - do not stage this hunk
-||a|| - stage this and all the remaining hunks in the file
-||d|| - do not stage this hunk nor any of the remaining hunks in the file
-||g|| - select a hunk to go to
-||/|| - search for a hunk matching the given regex
-||j|| - leave this hunk undecided, see next undecided hunk
-||J|| - leave this hunk undecided, see next hunk
-||k|| - leave this hunk undecided, see previous undecided hunk
-||K|| - leave this hunk undecided, see previous hunk
-||s|| - split the current hunk into smaller hunks
-||e|| - manually edit the current hunk
-||?|| - print help
+```
+y - stage this hunk
+n - do not stage this hunk
+a - stage this and all the remaining hunks in the file
+d - do not stage this hunk nor any of the remaining hunks in the file
+g - select a hunk to go to
+/ - search for a hunk matching the given regex
+j - leave this hunk undecided, see next undecided hunk
+J - leave this hunk undecided, see next hunk
+k - leave this hunk undecided, see previous undecided hunk
+K - leave this hunk undecided, see previous hunk
+s - split the current hunk into smaller hunks
+e - manually edit the current hunk
+? - print help
+```
 
 This list from the [official Git docs] is confusingly much longer than in my previous example 😅 so I just looked it up and [Stackoverflow][why is split option missing in git add -p?] confirmed that ||?|| will only show options useful for the current hunk.
 
