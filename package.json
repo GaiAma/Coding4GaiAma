@@ -11,11 +11,12 @@
     "sites/*"
   ],
   "scripts": {
-    "plop": "plop"
+    "plop": "plop",
+    "lerna": "lerna"
   },
   "husky": {
     "hooks": {
-      "pre-push": "lerna test",
+      "pre-push": "echo \"lerna run test\"",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -23,6 +24,7 @@
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
     "husky": "^4.0.0",
+    "lerna": "^3.20.2",
     "plop": "^2.5.3"
   },
   "commitlint": {

@@ -20,6 +20,9 @@
  * TODO: use react-icons?
  *
  * NOTE: consider https://www.gatsbyjs.org/packages/gatsby-remark-embedder/
+ *
+ * NOTE: any need for [semantic-release-plus](https://github.com/semantic-release-plus/semantic-release) ([spectrum](https://spectrum.chat/semantic-release/general/commit-filtering-and-other-monorepo-requests~5fc5901a-121e-40e9-b7a2-8a4840fe1341))?
+ *
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
