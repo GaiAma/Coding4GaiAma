@@ -12,7 +12,7 @@ module.exports = function sourceNodes({ actions, schema }) {
     schema.buildObjectType({
       name: `MdxFrontmatter`,
       fields: {
-        draft: `Boolean`,
+        isPublished: `Boolean`,
         slug: `String`,
         shortUrl: `String`,
       },

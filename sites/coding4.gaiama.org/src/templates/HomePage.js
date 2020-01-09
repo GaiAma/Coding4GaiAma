@@ -22,7 +22,7 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
               as="article"
               key={p.id}
               mb="12"
-              sx={{ opacity: p.frontmatter.draft && 0.3 }}
+              sx={{ opacity: !p.frontmatter.isPublished && 0.3 }}
             >
               <Box as="header">
                 <Heading as="h2">
@@ -56,7 +56,7 @@ export default HomePage
 
 // draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
 export const query = graphql`
-  query($url: String!, $draftBlacklist: [Boolean!]!) {
+  query($url: String!, $publishedList: [Boolean!]!) {
     ...siteMeta
 
     page: mdx(
@@ -68,7 +68,10 @@ export const query = graphql`
 
     posts: allMdx(
       filter: {
-        frontmatter: { type: { eq: "post" }, draft: { nin: $draftBlacklist } }
+        frontmatter: {
+          type: { eq: "post" }
+          isPublished: { in: $publishedList }
+        }
       }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -78,7 +81,7 @@ export const query = graphql`
         timeToRead
         excerpt
         frontmatter {
-          draft
+          isPublished
         }
       }
     }

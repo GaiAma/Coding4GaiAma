@@ -15,6 +15,7 @@ module.exports = async function createPages({ graphql, actions }) {
           frontmatter {
             layout
             type
+            isPublished
           }
           fields {
             url
@@ -27,14 +28,17 @@ module.exports = async function createPages({ graphql, actions }) {
   `)
 
   result.data.allMdx.nodes.forEach(node => {
-    const { layout, draft, type } = node.frontmatter
+    const { layout, isPublished, type } = node.frontmatter
     const { lang, url, slug } = node.fields
 
     // no layout? not a page
     // isProduction && draft? don't create page!
-    if (!layout || (isNetlifyProduction && draft)) {
+    if (!layout || (isNetlifyProduction && !isPublished)) {
       return
     }
+
+    // publishedList based on draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
+    const publishedList = isNetlifyProduction ? [true] : [true, false]
 
     const page = {
       path: url,
@@ -44,8 +48,7 @@ module.exports = async function createPages({ graphql, actions }) {
       context: {
         url,
         lang,
-        // draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
-        draftBlacklist: isNetlifyProduction ? [true] : [],
+        publishedList,
       },
     }
 

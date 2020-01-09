@@ -125,12 +125,6 @@ module.exports = function(plop) {
         name: 'body',
         message: 'Body text?',
       },
-      {
-        type: 'confirm',
-        name: 'isDraft',
-        message: 'Save as draft?',
-        default: true,
-      },
     ],
     actions: data => {
       // Get current date

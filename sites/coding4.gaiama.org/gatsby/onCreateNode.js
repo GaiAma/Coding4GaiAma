@@ -16,7 +16,7 @@ module.exports = async function onCreateNode({
   // remove draft nodes
   // not working at the moment
   // https://github.com/gatsbyjs/gatsby/issues/10844
-  // if (node.frontmatter.draft) deleteNode(node)
+  // if (!node.frontmatter.isPublished) deleteNode(node)
 
   const fileNode = getNode(node.parent)
 

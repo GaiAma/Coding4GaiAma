@@ -274,7 +274,7 @@ type ImageSharpResize {
 
 type MdxFrontmatter @derivedTypes {
   title: String!
-  draft: Boolean
+  isPublished: Boolean
   slug: String
   shortUrl: String
   type: String
