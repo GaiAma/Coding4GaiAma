@@ -1,18 +1,8 @@
-/* global window */
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { forwardRef } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { Link as UiLink } from '@theme-ui/components'
-
-/**
- * fix custom scroll behaviour using __navigatingToLink
- * by https://github.com/gatsbyjs/gatsby/issues/7454#issuecomment-415786239
- * as reach/router does not (yet) provide the used action for onRouteUpdate
- */
-if (typeof window !== `undefined`) {
-  window.__navigatingToLink = false
-}
 
 const isFqdn = x => !/^\/(?!\/)/.test(x)
 const isAnchor = x => /^#/.test(x)
