@@ -92,7 +92,7 @@ export default {
   typeStyles: {
     heading: {
       fontFamily: 'heading',
-      fontWeight: 'heading',
+      fontWeight: 'body',
       lineHeight: 'heading',
       mt: 0,
       mb: 5,
