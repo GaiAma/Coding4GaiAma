@@ -92,7 +92,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
               </div>
             )}
 
-            <pre sx={{ m: 0, pb: 5, mt: !hasTopbar && 3, overflowX: `scroll` }}>
+            <pre sx={{ m: 0, pb: 5, pt: !hasTopbar && 4, overflowX: `scroll` }}>
               {tokens.map((line, i) => {
                 if (
                   (i === 0 || i === tokens.length - 1) &&
