@@ -1,6 +1,6 @@
 {
   "name": "gatsby-transformer-leasot",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Parse TODOs, FIXMEs & more, then query them via GraphQL",
   "types": "gatsby-node.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
@@ -35,7 +35,7 @@
     "he": "^1.2.0",
     "leasot": "^10.0.0",
     "lodash": "^4.17.15",
-    "remark-truncate-links": "^1.0.1",
+    "remark-truncate-links": "^1.0.3",
     "unist-util-visit": "^2.0.1"
   },
   "devDependencies": {
