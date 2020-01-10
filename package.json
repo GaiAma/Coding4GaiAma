@@ -23,7 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
-    "husky": "^4.0.0",
+    "husky": "^4.0.5",
     "lerna": "^3.20.2",
     "plop": "^2.5.3",
     "user-meta": "^1.0.0"
