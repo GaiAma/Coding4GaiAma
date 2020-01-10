@@ -62,6 +62,15 @@ module.exports = async function onCreateNode({
   const sluggifiedShort = shortSlug ? `/${slugify(shortSlug)}` : sluggified
   const url = lang ? `/${lang}${sluggified}` : sluggified
 
+  // notify if description missing, bail if isPublished=true & NODE_ENV=production
+  if (!node.frontmatter.description) {
+    const reportType = node.frontmatter.isPublished ? `error` : `info`
+    reporter[reportType](`description missing for ${url}`)
+    if (reportType === `error` && process.env.NODE_ENV === `production`) {
+      process.exit(1)
+    }
+  }
+
   addField(`slug`, sluggified)
   addField(`url`, url)
   const absoluteUrl = `${homepage}${url}`
@@ -86,9 +95,5 @@ module.exports = async function onCreateNode({
         ...(lang !== `en` ? { Language: lang } : {}),
       })
     })
-  }
-
-  if (!node.frontmatter.description) {
-    reporter.info(`description missing for ${url}`)
   }
 }
