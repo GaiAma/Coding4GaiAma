@@ -3,6 +3,8 @@
  * - https://github.com/malerba118/react-starter-cli/tree/master/plop-templates
  * - https://dev.to/ekafyi/adding-generators-to-your-gatsby-site-with-plop-2gd5
  * - https://www.reddit.com/r/javascript/comments/3v5gum/plop_a_microgenerator_to_ease_your_daily_life/
+ *
+ * TODO: dedupe and maybe even merge `package` & `package:unified`
  */
 const userMeta = require('user-meta')
 
@@ -112,6 +114,111 @@ module.exports = function(plop) {
         {
           type: `add`,
           path: `packages/{{kebabCase name}}/src/.gitkeep`,
+        },
+      ].filter(Boolean)
+    },
+  })
+  // Add new unified plugin
+  plop.setGenerator(`package:unified`, {
+    description: `This sets up the basic files for a new unified plugin.`,
+    prompts: [
+      {
+        type: `input`,
+        name: `name`,
+        message: `name of new package`,
+      },
+      {
+        type: `input`,
+        name: `username`,
+        message: `Your name`,
+        default: userMeta.name,
+        when(answers) {
+          if (!userMeta.name) {
+            return true
+          }
+          answers.username = userMeta.name
+          console.log(`Using NPM/Git name`)
+        },
+      },
+      {
+        type: `input`,
+        name: `useremail`,
+        message: `Your email`,
+        default: userMeta.email,
+        when(answers) {
+          if (!userMeta.email) {
+            return true
+          }
+          answers.useremail = userMeta.email
+          console.log(`Using NPM/Git email`)
+        },
+      },
+      {
+        type: `input`,
+        name: `userurl`,
+        message: `Your url`,
+        default: userMeta.url,
+        when(answers) {
+          if (!userMeta.url) {
+            return true
+          }
+          answers.userurl = userMeta.url
+          console.log(`Using NPM/Git url`)
+        },
+      },
+      // {
+      //   type: `confirm`,
+      //   name: `isBrowser`,
+      //   message: `Will this package contain code that runs in a browser, e.g. have a gatsby-browser.js or gatsby-ssr.js file?`,
+      // },
+    ],
+    actions: data => {
+      // Get current date
+      data.year = new Date().getFullYear()
+
+      data.pkgAuthor = [
+        !!data.username && data.username,
+        !!data.useremail && `<${data.useremail}>`,
+        !!data.userurl && `(${data.userurl})`,
+      ]
+        .filter(Boolean)
+        .join(` `)
+
+      return [
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/package.json`,
+          templateFile: `plop-templates/unified-plugin/package.json.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/src/index.ts`,
+          templateFile: `plop-templates/unified-plugin/src/index.ts.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/README.md`,
+          templateFile: `plop-templates/unified-plugin/README.md.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/.gitignore`,
+          templateFile: `plop-templates/unified-plugin/.gitignore.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/license`,
+          templateFile: `plop-templates/unified-plugin/license.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/tsconfig.json`,
+          templateFile: `plop-templates/unified-plugin/tsconfig.json.hbs`,
+        },
+        {
+          type: `add`,
+          path: `packages/{{kebabCase name}}/types/mdast-util-to-string/index.d.ts`,
+          templateFile: `plop-templates/unified-plugin/types/mdast-util-to-string/index.d.ts`,
         },
       ].filter(Boolean)
     },
