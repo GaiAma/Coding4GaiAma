@@ -1,7 +1,7 @@
 const speakingurl = require(`speakingurl`)
 const { homepage, repository } = require(`../package.json`)
 
-const isHomePage = node => node.frontmatter.layout === `HomePage`
+// const isHomePage = node => node.frontmatter.layout === `HomePage`
 
 module.exports = async function onCreateNode({
   node,
@@ -58,8 +58,8 @@ module.exports = async function onCreateNode({
    * Post related fields
    */
   const { slug, title, shortSlug } = node.frontmatter
-  const sluggified = `/${slugify(`${slug || title || fileNode.name}`)}`
-  const sluggifiedShort = shortSlug ? `/${slugify(`${shortSlug}`)}` : sluggified
+  const sluggified = `/${slugify(slug || title || fileNode.name)}`
+  const sluggifiedShort = shortSlug ? `/${slugify(shortSlug)}` : sluggified
   const url = lang ? `/${lang}${sluggified}` : sluggified
 
   addField(`slug`, sluggified)
