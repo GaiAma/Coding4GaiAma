@@ -4,6 +4,7 @@
  * - https://dev.to/ekafyi/adding-generators-to-your-gatsby-site-with-plop-2gd5
  * - https://www.reddit.com/r/javascript/comments/3v5gum/plop_a_microgenerator_to_ease_your_daily_life/
  */
+const userMeta = require('user-meta')
 
 module.exports = function(plop) {
   // Add new package
@@ -17,21 +18,42 @@ module.exports = function(plop) {
       },
       {
         type: `input`,
-        name: `author.name`,
+        name: `username`,
         message: `Your name`,
-        default: `Can Rau`,
+        default: userMeta.name,
+        when(answers) {
+          if (!userMeta.name) {
+            return true
+          }
+          answers.username = userMeta.name
+          console.log(`Using NPM/Git name`)
+        },
       },
       {
         type: `input`,
-        name: `author.email`,
+        name: `useremail`,
         message: `Your email`,
-        default: `cansrau@gmail.com`,
+        default: userMeta.email,
+        when(answers) {
+          if (!userMeta.email) {
+            return true
+          }
+          answers.useremail = userMeta.email
+          console.log(`Using NPM/Git email`)
+        },
       },
       {
         type: `input`,
-        name: `author.url`,
+        name: `userurl`,
         message: `Your url`,
-        default: `https://www.canrau.com`,
+        default: userMeta.url,
+        when(answers) {
+          if (!userMeta.url) {
+            return true
+          }
+          answers.userurl = userMeta.url
+          console.log(`Using NPM/Git url`)
+        },
       },
       // {
       //   type: `confirm`,
@@ -44,9 +66,9 @@ module.exports = function(plop) {
       data.year = new Date().getFullYear()
 
       data.pkgAuthor = [
-        !!data.author.name && data.author.name,
-        !!data.author.email && `<${data.author.email}>`,
-        !!data.author.url && `(${data.author.url})`,
+        !!data.username && data.username,
+        !!data.useremail && `<${data.useremail}>`,
+        !!data.userurl && `(${data.userurl})`,
       ]
         .filter(Boolean)
         .join(` `)
