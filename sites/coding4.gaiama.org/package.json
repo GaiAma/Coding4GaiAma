@@ -96,6 +96,7 @@
     "rehype-accessible-emojis": "^0.3.1",
     "rehype-autolink-headings": "^2.0.5",
     "remark-breaks": "^1.0.3",
+    "remark-capitalize": "^1.1.0",
     "remark-cli": "^7.0.1",
     "remark-github": "^8.0.0",
     "remark-heading-id": "^1.0.0",
