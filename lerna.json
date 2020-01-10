@@ -1,11 +1,11 @@
 {
   "version": "independent",
   "packages": ["packages/*"],
+  "npmClient": "yarn",
   "command": {
-    "run": {
-      "npmClient": "yarn"
-    },
+    "run": {},
     "publish": {
+      "registry": "https://registry.npmjs.org/",
       "message": "chore(release): publish"
     }
   }
