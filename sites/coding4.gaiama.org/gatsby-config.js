@@ -67,8 +67,9 @@ module.exports = {
         path: resolve(__dirname, `../..`),
         name: `leasot`,
         ignore: [
-          /\.*.*\/(node_modules|\.cache|public|static|dist|\.yarn)\/./,
-          /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf)/,
+          /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
+          /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf|yarn|d\.ts)/,
+          /packages\/.*\/lib\//,
         ],
       },
     },
