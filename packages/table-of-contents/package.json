@@ -1,0 +1,44 @@
+{
+  "name": "table-of-contents",
+  "version": "1.0.0",
+  "description": "turns a flat list of headings with their depth into a nested table-of-contents",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/table-of-contents"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/table-of-contents",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build",
+    "test": "ava --verbose"
+  },
+  "keywords": [
+    "toc",
+    "table-of-contents"
+  ],
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/unist": "^2.0.3",
+    "ava": "^2.4.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "files": [
+    "lib"
+  ],
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
