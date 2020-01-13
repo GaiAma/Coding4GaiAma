@@ -220,9 +220,7 @@ export default {
       variant: `styles.inlineCode`,
       bg: `subtle`,
       color: `text`,
-      // TODO: check out horizontal scroll on Heike's, if it's okay use it but fix vertical align
-      // NOTE: dedupe inlineCode & kbd
-      kbd: { fontWeight: `heading` },
+      kbd: { p: 0, fontWeight: `heading` },
     },
   },
   grid: {
