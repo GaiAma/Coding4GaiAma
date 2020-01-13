@@ -1,7 +1,7 @@
 const { resolve } = require(`path`)
 const {
   branch,
-  isNetlifyProduction,
+  isProduction,
   siteUrl,
   isDebug,
 } = require(`../src/utils/environment-helpers.js`)
@@ -33,12 +33,12 @@ module.exports = async function createPages({ graphql, actions }) {
 
     // no layout? not a page
     // isProduction && draft? don't create page!
-    if (!layout || (isNetlifyProduction && !isPublished)) {
+    if (!layout || (isProduction && !isPublished)) {
       return
     }
 
     // publishedList based on draftBlacklist by https://github.com/gatsbyjs/gatsby/issues/12460#issuecomment-471376629
-    const publishedList = isNetlifyProduction ? [true] : [true, false]
+    const publishedList = isProduction ? [true] : [true, false]
 
     const page = {
       path: url,

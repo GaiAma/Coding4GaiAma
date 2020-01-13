@@ -1,11 +1,9 @@
 /* global document, window */
 import preval from 'babel-plugin-preval/macro'
-const { version, bugs, branch, repoUrl, newIssueUrl } = preval`
+const { version, bugs, branch, repository, newIssueUrl } = preval`
   const { version, bugs } = require('./package.json')
-  const branch = process.env.BRANCH || 'dev'
-  const repoUrl = bugs.url.replace('/issues', '')
-  const newIssueUrl = bugs.url + '/new'
-  module.exports = { version, bugs, branch, repoUrl, newIssueUrl }
+  const { branch, isProduction, siteUrl, repository, newIssueUrl } = require('./src/utils/environment-helpers.js')
+  module.exports = { version, bugs, branch, repository, newIssueUrl }
 `
 
 // from https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/gatsby/node/createPages.js#L5
@@ -62,7 +60,7 @@ try {
     `Feel free to inspect everything, e.g. 'window.C4G' / 'window.GaiAma'`,
     `\n`,
     `\n`,
-    `You'll find the MIT licensed source code of the website at ${repoUrl}`,
+    `You'll find the MIT licensed source code of the website at ${repository.url}`,
     `\n`,
     `\n`,
     `If you encounter anything unexpected, or have other feedback feel free to file an issue at ${newIssueUrl}`,

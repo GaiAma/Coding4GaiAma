@@ -26,13 +26,13 @@
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
-const { version, repository, license } = require(`./package.json`)
-
+const { version, license } = require(`./package.json`)
 const {
   branch,
-  isNetlifyProduction,
+  isProduction,
   siteUrl,
-  isDebug,
+  repository,
+  // isDebug,
 } = require(`./src/utils/environment-helpers.js`)
 
 module.exports = {
@@ -44,10 +44,7 @@ module.exports = {
     version,
     branch,
     license,
-    repository: {
-      url: `${repository.url}`.replace(/\.git$/, ``),
-      directory: repository.directory,
-    },
+    repository,
   },
   plugins: [
     `gatsby-plugin-schema-snapshot`,
@@ -165,7 +162,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        useMozJpeg: isNetlifyProduction,
+        useMozJpeg: isProduction,
       },
     },
     // {
@@ -254,7 +251,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         allPageHeaders: [
-          ...(!isNetlifyProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
+          ...(!isProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
         ],
         // transformHeaders: (headers, path) => {
         //   console.log(JSON.stringify({ path, headers }, null, 2))
