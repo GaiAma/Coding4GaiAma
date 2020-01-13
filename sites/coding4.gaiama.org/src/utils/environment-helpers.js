@@ -6,13 +6,14 @@ const {
   CONTEXT: NETLIFY_ENV = process.env.NODE_ENV,
   BRANCH,
   GITHUB_REF,
+  DEBUG,
 } = process.env
 
-const branch = BRANCH || GITHUB_REF || `dev`
-const isDebug = /^(gatsby)?\*/i.test(`${process.env.DEBUG}`)
-const siteUrl = isProduction ? NETLIFY_SITE_URL : DEPLOY_PRIME_URL
 const isProduction =
   NETLIFY_ENV === `production` || `${branch}`.startsWith(`ab_`)
+const branch = BRANCH || GITHUB_REF || `dev`
+const isDebug = /^(gatsby)?\*/i.test(`${DEBUG}`)
+const siteUrl = isProduction ? NETLIFY_SITE_URL : DEPLOY_PRIME_URL
 
 module.exports = {
   branch,
