@@ -48,13 +48,13 @@ export const Footer = ({
 
         <Flex mt="2" sx={{ fontSize: 0 }}>
           <Box>Version: {meta.version}</Box>
-          <Box ml="2">Branch: {meta.branch}</Box>
+          {/* <Box ml="2">Branch: {meta.branch}</Box> */}
           <Box ml="2">License: {meta.license}</Box>
           {editLink && (
             <Box ml="2">
               <Link variant="plain" to={editLink}>
                 <DiGithubBadge />
-                Source
+                Edit
               </Link>
             </Box>
           )}
