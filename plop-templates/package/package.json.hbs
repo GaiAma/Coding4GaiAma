@@ -1,20 +1,36 @@
 {
   "name": "{{kebabCase name}}",
-  "version": "0.1.0",
-  "description": "Stub description for {{name}}",
-  "license": "MIT",
-  "main": "index.js",
-  "author": "{{{pkgAuthor}}}",
-  "bugs": {
-    "url": "https://github.com/GaiAma/Coding4GaiAma/issues"
-  },
-  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/{{kebabCase name}}#readme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "{{{authorString}}}",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GaiAma/Coding4GaiAma.git"
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/{{kebabCase name}}"
   },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/{{kebabCase name}}#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
+  },{{#if keywords}}
   "keywords": [
-    "gatsby",
-    "gatsby-plugin"
-  ]
+    {{{pkgList keywords}}}
+  ],{{/if}}{{#if dependencies}}
+  "dependencies": {
+    {{{pkgList dependencies}}}
+  },{{/if}}
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/unist": "^2.0.3",
+    "typescript": "^3.7.4"{{#if devDependencies}},
+    {{{pkgList devDependencies}}}
+    {{/if}}
+  }{{#if files}},
+  "files": [
+    "{{files}}"
+  ]{{/if}}
 }

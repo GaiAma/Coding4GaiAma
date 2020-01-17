@@ -1,0 +1,14 @@
+{
+  "include": ["./src/"],
+  "exclude": ["node_modules", "src/**/*.test.*", "./types"],
+  "compilerOptions": {
+    "typeRoots": [ "./types", "./node_modules/@types"],
+    "strict": true,
+    "module": "commonjs",
+    "target": "es2018",
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "{{{outDir}}}",
+    "types": ["node"]
+  }
+}

@@ -8,6 +8,79 @@ yarn add -D {{kebabCase name}}
 npm i -D {{kebabCase name}}
 ```
 
+### Options
+
+```js
+```
+
+### Usage
+
+{{#if_eq type 'unified'}}
+#### In gatsby-plugin-mdx
+
+```js
+// default options
+{
+  resolve: `gatsby-plugin-mdx`,
+  options: {
+    remarkPlugins: [
+      require('{{kebabCase name}}').remarkTruncateLinks,
+    ],
+  },
+}
+
+// providing options
+{
+  resolve: `gatsby-plugin-mdx`,
+  options: {
+    remarkPlugins: [
+      [
+        require('{{kebabCase name}}').remarkTruncateLinks,
+        { style: 'middle' },
+      ],
+    ],
+  },
+}
+```
+
+#### Using Unified
+
+```js
+import unified from 'unified'
+import remarkParse from 'remark-parse'
+import stringify from 'remark-stringify'
+import { remarkTruncateLinks } from '{{kebabCase name}}'
+
+// with default options
+unified()
+  .use(remarkParse)
+  .use(remarkTruncateLinks)
+
+// providing options
+unified()
+  .use(remarkParse)
+  .use(remarkTruncateLinks, { style: `middle`, length: 40 })
+```
+
+#### As MDX plugin
+
+```js
+import mdx from '@mdx-js/mdx'
+import { remarkTruncateLinks } from '{{kebabCase name}}'
+const options = { length: 60 }
+
+mdx(`mdxString`, { remarkPlugins: [[remarkTruncateLinks, options]] })
+```
+{{/if_eq}}
+
+### Ideas
+
+### Used in
+
+### Credits
+
+### Mentioned in
+
 ## License
 
 [MIT](/license) © [{{username}}]({{userurl}})
