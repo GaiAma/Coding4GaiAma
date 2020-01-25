@@ -1,0 +1,24 @@
+{
+  "name": "plop-pack-node-helpers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/plop-pack-node-helpers"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/plop-pack-node-helpers#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/unist": "^2.0.3",
+    "typescript": "^3.7.4"  }
+}
