@@ -12,7 +12,6 @@ for (const testCase in testCases) {
   test(testCase, (t: ExecutionContext) => {
     const result = toc(testCases[testCase].input)
     t.deepEqual(result, testCases[testCase].expected)
-    t.snapshot(result)
   })
 }
 
