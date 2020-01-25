@@ -1,0 +1,41 @@
+{
+  "name": "plop-pack-gatsby",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/plop-pack-gatsby"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/plop-pack-gatsby#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn prepare && tsc",
+    "watch": "yarn prepare && tsc --watch",
+    "prepare": "rimraf lib && mkdir -p lib/templates && cp -af src/templates lib/",
+    "prepublish": "yarn build"
+  },
+  "dependencies": {
+    "@types/handlebars": "4.1.0",
+    "chalk": "3.0.0",
+    "handlebars": "4.4.3",
+    "plop": "2.5.3",
+    "plop-pack-node-helpers": "1.0.0",
+    "rimraf": "3.0.0",
+    "user-meta": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "13.1.6",
+    "@types/unist": "2.0.3",
+    "typescript": "3.7.4"
+  },
+  "keywords": [
+    "plop",
+    "plop-pack",
+    "generator",
+    "gatsby"
+  ]
+}

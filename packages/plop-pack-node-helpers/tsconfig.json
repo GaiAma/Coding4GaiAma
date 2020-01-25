@@ -1,0 +1,15 @@
+{
+  "include": ["./src/"],
+  "exclude": ["node_modules", "src/**/*.test.*", "./types"],
+  "compilerOptions": {
+    "typeRoots": [ "./types", "./node_modules/@types"],
+    "strict": true,
+    "module": "commonjs",
+    "target": "ES5",
+    "lib": ["ES5"],
+    "esModuleInterop": true,
+    "declaration": true,
+    "outDir": "lib",
+    "types": ["node"]
+  }
+}
