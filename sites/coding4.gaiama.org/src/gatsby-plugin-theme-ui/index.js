@@ -123,6 +123,33 @@ export default {
       // 'body::-webkit-scrollbar-track': {
       //   background: `#161616`,
       // },
+      '@media only screen and (max-width: 900px)': {
+        'table, thead, tbody, th, td, tr': {
+          display: 'block',
+        },
+        'thead tr': {
+          position: 'absolute',
+          top: '-9999px',
+          left: '-9999px',
+        },
+        tr: { border: '1px solid #ccc' },
+        td: {
+          border: 'none',
+          borderBottom: '1px solid #eee',
+          position: 'relative',
+          paddingLeft: '200px',
+          marginLeft: '150px',
+        },
+        'td:before': {
+          position: 'absolute',
+          top: '12px',
+          left: '6px',
+          width: '200px',
+          paddingRight: '40px',
+          whiteSpace: 'nowrap',
+          marginLeft: '-150px',
+        },
+      },
     }),
     root: { fontFamily: 'body', lineHeight: 'body', fontWeight: 'body' },
     Layout: {},
