@@ -34,7 +34,7 @@ export const onRouteUpdate = ({ location: { hash } }) => {
 
 try {
   window.GaiAma = {
-    ...window.GaiAma,
+    ...(window.GaiAma || {}),
     branch,
     version,
     bugTracker: bugs,
