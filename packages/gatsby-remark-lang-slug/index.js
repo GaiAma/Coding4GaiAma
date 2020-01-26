@@ -11,12 +11,24 @@ const visit = require('unist-util-visit')
 // https://github.com/lovell/limax/blob/master/lib/limax.js even tho it uses speakingurl under the hood
 const speakingurl = require(`speakingurl`)
 
+const typesToSearch = ['heading', 'figure', 'table']
+
+/**
+ * support duplicate headings like github-slugger appending a counter `-n`
+ * use cases https://github.com/markedjs/marked/issues/879
+ *
+ * example implementation
+ * https://github.com/Flet/github-slugger/blob/master/index.js
+ * test cases https://github.com/Flet/github-slugger/blob/master/test/index.js#L66
+ *
+ * https://www.halostatue.ca/posts/markdown-generating-heading-ids/
+ *
+ * and custom IDs / https://github.com/imcuttle/remark-heading-id
+ */
+
 /**
  * inspired by https://github.com/remarkjs/remark-slug
  */
-
-const typesToSearch = ['heading', 'figure', 'table']
-
 module.exports = (
   { markdownAST, markdownNode, ...props },
   pluginOptions = {}
@@ -30,8 +42,7 @@ module.exports = (
       if (!node.id) {
         const data = node.data || (node.data = {})
         const props = data.hProperties || (data.hProperties = {})
-        let id = props.id || node.type !== 'heading' ? 'figure' : ''
-
+        let id = props.id // || node.type !== 'heading' ? 'figure' : ''
         id = id
           ? speakingurl(id, { lang })
           : speakingurl(toString(node), { lang })
