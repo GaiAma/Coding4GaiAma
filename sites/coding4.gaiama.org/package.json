@@ -88,7 +88,7 @@
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-source-git": "^1.0.2",
     "gatsby-source-graphql": "^2.1.31",
-    "gatsby-transformer-leasot": "^1.1.0",
+    "gatsby-theme-leasot": "1.0.0",
     "gatsby-transformer-sharp": "^2.3.12",
     "kill-port": "^1.6.0",
     "node-notifier-cli": "^1.1.2",

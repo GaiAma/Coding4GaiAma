@@ -1,0 +1,33 @@
+{
+  "name": "gatsby-theme-leasot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/gatsby-theme-leasot"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-theme-leasot#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "dependencies": {
+    "gatsby-transformer-leasot": "1.1.1",
+    "gatsby-source-filesystem": "^2.1.46"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/unist": "^2.0.3",
+    "typescript": "^3.7.4"
+  }
+}
