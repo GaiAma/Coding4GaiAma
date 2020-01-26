@@ -38,11 +38,48 @@ import { Flex, Box, Heading } from '@theme-ui/components'
 //   },
 // }
 
+// inspired by https://gatsby-theme-legals.netlify.com/privacy-policy
+const TableOfContents = ({ items }) =>
+  !!items.length && (
+    <ul>
+      {items.map(item => (
+        <li key={item.url}>
+          <Link to={item.url}>{item.title}</Link>
+          {!!item.children?.length && <TableOfContents items={item.children} />}
+        </li>
+      ))}
+    </ul>
+  )
+
 const Article = ({ data: { page, site }, ...props }) => {
   // const description = page.frontmatter.description
   const { absoluteUrl } = page.fields
+  const toc = page.frontmatter.showTableOfContents === true ? page.toc : []
   return (
     <Box variant="grid">
+      {!!toc?.length && (
+        <Box
+          sx={{
+            '@media screen and (min-width: 1030px)': {
+              gridRow: '1',
+              gridColumn: '1/5',
+              position: 'sticky',
+              top: 50,
+              ml: 5,
+            },
+          }}
+        >
+          <Box
+            sx={{
+              '@media screen and (min-width: 1030px)': { position: `absolute` },
+            }}
+          >
+            <h4 sx={{ textTransform: `uppercase` }}>Table of contents</h4>
+            <TableOfContents items={toc} />
+          </Box>
+        </Box>
+      )}
+
       <Box as="header" mb="9">
         <Heading as="h1">
           <span itemProp="headline">{page.frontmatter.title}</span>
@@ -123,7 +160,10 @@ export const query = graphql`
       frontmatter: { layout: { eq: "Article" } }
     ) {
       ...CommonFields
-      #tableOfContents
+      toc
+      frontmatter {
+        showTableOfContents
+      }
       fields {
         # shareableUrl
         absoluteUrl
