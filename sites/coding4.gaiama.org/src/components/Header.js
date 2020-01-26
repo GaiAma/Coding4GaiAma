@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, useColorMode, useThemeUI } from 'theme-ui'
 import { Link } from 'components/Link'
-import { Heading, Box, Button, Flex } from '@theme-ui/components'
+import { Box, Button, Flex } from '@theme-ui/components'
 
 // const modes = [`pineapple`, `watermelon`]
 // const modeLabels = {
@@ -42,7 +42,8 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
           maxWidth: `34.8rem`,
         }}
       >
-        <Heading as="h2" mt={[3, 2]}>
+        {/* DONE: h2 doesn't work here (hmm [yale](https://usability.yale.edu/web-accessibility/articles/headings) says it's fine tho), probably don't use h heading at all [report](https://a11ygator.chialab.io/api/reports/3558756c-30be-43ae-8ba9-712936856953?format=html&ts=1578974823583) [nomensa](https://www.nomensa.com/blog/2017/how-structure-headings-web-accessibility) [Mozilla](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements#Nesting) */}
+        <Box variant="styles.h5" mt={[3, 2]}>
           <Link
             variant="plain"
             sx={{ display: `block`, a: { color: `primary` } }}
@@ -52,7 +53,7 @@ export const Header = ({ title, subtitle, homepage, ...props }) => {
             {title}
           </Link>
           {!!subtitle && <small /*sx={{ color: `muted` }}*/>{subtitle}</small>}
-        </Heading>
+        </Box>
         <Box>
           <Button variant="slim" mt="2" onClick={cycleMode}>
             {/* {modeLabels[mode]} */}
