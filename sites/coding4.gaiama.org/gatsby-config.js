@@ -105,6 +105,7 @@ module.exports = {
           require(`rehype-accessible-emojis`).rehypeAccessibleEmojis,
         ],
         remarkPlugins: [
+          require(`remark-heading-id`),
           // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-breaks`),
           require(`remark-responsive-css-tables`).remarkResponsiveCssTables,
