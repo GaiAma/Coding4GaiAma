@@ -90,6 +90,7 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
         </Box>
       )}
 
+      {/* inspired by https://dev.to/dillionmegida/making-sticky-column-with-grid-area-5eph */}
       <Flex
         mb="10"
         sx={{
@@ -99,6 +100,8 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
             justifyContent: `space-around`,
             gridColumn: 3,
             gridRow: '3/4',
+            position: 'sticky',
+            top: 0,
           },
         }}
       >
