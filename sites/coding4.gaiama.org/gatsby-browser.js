@@ -1,45 +1,80 @@
 /* global document, window */
 import preval from 'babel-plugin-preval/macro'
-const { version, bugs, branch, repository, newIssueUrl } = preval`
+const { version, branch, repository, newIssueUrl } = preval`
   const { version, bugs } = require('./package.json')
   const { branch, isProduction, siteUrl, repository, newIssueUrl } = require('./src/utils/environment-helpers.js')
   module.exports = { version, bugs, branch, repository, newIssueUrl }
 `
+const doc = document
+const win = window
+
+// by https://stackoverflow.com/a/27779534/3484824
+// read https://developer.akamai.com/blog/2017/12/04/beware-performancetimingdominteractive
+// watch https://www.oreilly.com/ideas/measuring-what-matters
+doc.addEventListener('readystatechange', () => {
+  win.GaiAma.perf[doc.readyState] = `${performance.now().toFixed(2)}ms`
+})
+doc.addEventListener(
+  'DOMContentLoaded',
+  () => {
+    win.GaiAma.perf.DOMContentLoaded = `${performance.now().toFixed(2)}ms`
+  },
+  false
+)
+win.addEventListener(
+  'load',
+  () => {
+    win.GaiAma.perf.load = `${performance.now().toFixed(2)}ms`
+  },
+  false
+)
+
+// https://stackoverflow.com/a/55803507/3484824
+// markers https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure
+// http://qnimate.com/measuring-web-page-performance-using-modern-javascript-apis/
+// https://techblog.constantcontact.com/software-development/measure-page-load-times-using-the-user-timing-api/
+
+const perf =
+  win.performance ||
+  win.mozPerformance ||
+  win.msPerformance ||
+  win.webkitPerformance ||
+  {}
+
+perf.measure('navigationLoadTime')
+perf
+  .getEntriesByType('measure')
+  .map(x => (win.GaiAma.perf[x.name] = `${x.duration.toFixed(2)}ms`))
+perf.clearMarks()
+perf.clearMeasures()
+
+win.onload = win.setTimeout(() => {
+  const t = perf.timing
+  if (!t) return
+  win.GaiAma.perf.pageLoadTime = `${t.domContentLoadedEventEnd -
+    t.navigationStart}ms`
+})
 
 // from https://github.com/narative/gatsby-theme-novela/blob/master/%40narative/gatsby-theme-novela/src/gatsby/node/createPages.js#L5
-// const log = (message, section) => console.log(`\n\u001B[36m${message} \u001B[4m${section}\u001B[0m\u001B[0m\n`)
+const log = msg => console.log(`\n\u001B[36m${msg}\u001B[0m\u001B[0m\n`)
 
-// TODO: maybe improve on it – but what 😅
-// sadly don't remember what I was thinking
-// https://github.com/gatsbyjs/gatsby/pull/11379/files
-// window.dataLayer = window.dataLayer || []
-// window.dataLayer.push({
+// win.dataLayer.push({
 //   GAIAMA_BRANCH: branch,
 // })
 
 const scrollTo = id => () => {
-  const el = document.querySelector(id)
-  if (el) {
-    // return window.scrollTo(0, el.offsetTop - 20)
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-  return false
+  const el = doc.querySelector(id)
+  if (!el) return false
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 export const onRouteUpdate = ({ location: { hash } }) => {
-  if (hash) {
-    window.setTimeout(scrollTo(hash), 10)
-  }
+  if (!hash) return false
+  win.setTimeout(scrollTo(hash), 10)
 }
 
 try {
-  window.GaiAma = {
-    ...(window.GaiAma || {}),
-    branch,
-    version,
-    bugTracker: bugs,
-  }
-  window.C4G = window.GaiAma
+  win.C4G = win.GaiAma
   // TODO: use [figlet](https://www.npmjs.com/package/figlet) & turn it into a gatsby-plugin?
   console.info(
     `ƛ\n`,
@@ -57,7 +92,7 @@ try {
     `,
     `\n`,
     `\n`,
-    `Feel free to inspect everything, e.g. 'window.C4G' / 'window.GaiAma'`,
+    `Feel free to inspect everything, e.g. 'win.C4G' / 'win.GaiAma'`,
     `\n`,
     `\n`,
     `You'll find the MIT licensed source code of the website at ${repository.url}`,
@@ -67,7 +102,7 @@ try {
     `\nƛ`
   )
 } catch (e) {
-  console.info(
+  log(
     `Have you found a bug? Please help me fix it by submitting it to ${newIssueUrl}`
   )
 }
