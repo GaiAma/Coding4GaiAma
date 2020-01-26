@@ -107,6 +107,7 @@ module.exports = {
         remarkPlugins: [
           // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-breaks`),
+          require(`remark-responsive-css-tables`).remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
           [
