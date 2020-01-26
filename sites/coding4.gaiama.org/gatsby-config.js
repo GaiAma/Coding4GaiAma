@@ -118,8 +118,6 @@ module.exports = {
           require('remark-truncate-links').remarkTruncateLinks,
         ],
         gatsbyRemarkPlugins: [
-          // TODO: hash urls not jumping to anchor?
-          `gatsby-remark-lang-slug`,
           {
             // TODO: consider [gatsby-remark-images-anywhere](https://github.com/d4rekanguok/gatsby-remark-images-anywhere)
             resolve: `gatsby-remark-images`,
@@ -139,7 +137,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-smartypants`,
             options: {
-              dashes: `oldschool`,
+              dashes: false,
             },
           },
           // { resolve: `gatsby-remark-external-links` },
@@ -165,6 +163,8 @@ module.exports = {
           // https://blog.apaonline.org/2019/01/17/eliminating-footnotes-makes-philosophy-more-accessible/
           // footnotes https://en.wikipedia.org/wiki/Fields_Medal
           // `gatsby-remark-abbr`,
+          // DONE: hash urls not jumping to anchor?
+          `gatsby-remark-lang-slug`,
         ],
       },
     },
