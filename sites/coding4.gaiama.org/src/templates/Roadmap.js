@@ -11,10 +11,6 @@ const TodoItem = ({ todo: t, meta: { repository: repo, branch } }) => {
   const fileGitHubUrl = `${repo.url}/blob/${branch}/${t.file.relativePath}#${t.line}`
   return (
     <li sx={{ p: { m: 0 } }}>
-      {/* <h4
-      sx={{ mb: 1, a: { variant: `links.default` } }}
-      dangerouslySetInnerHTML={{ __html: t.text }}
-    /> */}
       <MDXRenderer>{t.value}</MDXRenderer>
       <div sx={{ fontSize: 1, variant: `text.muted` }}>
         {!!t.ref && (
@@ -49,8 +45,42 @@ const getEmoji = num => <span>{num > 20 ? `😱` : num > 10 ? `😨` : `😊`}</
 const isEmptyStateNotAlone = (item, _, arr) =>
   arr.length > 1 && item.fieldValue !== `EmptyState`
 
+const roadmapSortArray = ['FIXME', 'TODO', 'NOTE', 'DONE']
+
 const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
+  // TODO: no EmptyState anymore right? 🤔
   const roadmapFilterdEmptyState = roadmap.group.filter(isEmptyStateNotAlone)
+
+  const roadMapDb = roadmapFilterdEmptyState.reduce(
+    (result, each) => ({
+      ...result,
+      [each.fieldValue]: each,
+    }),
+    {}
+  )
+
+  const renderRoadmap = () =>
+    roadmapSortArray.map(label => {
+      const group = roadMapDb[label]
+      if (!group) {
+        return null
+      }
+      return (
+        <Fragment key={label}>
+          <Heading id={label} as="h2" mb="5">
+            {label}{' '}
+            <small>
+              ({group.nodes.length} {getEmoji(group.nodes.length)})
+            </small>
+          </Heading>
+          <Box as="ul" variant="styles.ul">
+            {group.nodes.map(({ id, todo }) => (
+              <TodoItem todo={todo} meta={site.meta} key={id} />
+            ))}
+          </Box>
+        </Fragment>
+      )
+    })
 
   return (
     <Box variant="grid">
@@ -60,21 +90,26 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
         </Box>
       )}
 
-      {roadmapFilterdEmptyState?.map(x => (
-        <Fragment key={x.fieldValue}>
-          <Heading as="h3" mb="5">
-            {x.fieldValue}{' '}
-            <small>
-              ({x.nodes.length} {getEmoji(x.nodes.length)})
-            </small>
-          </Heading>
-          <Box as="ul" variant="styles.ul">
-            {x.nodes.map(({ id, todo }) => (
-              <TodoItem todo={todo} meta={site.meta} key={id} />
-            ))}
+      <Flex
+        mb="10"
+        sx={{
+          justifyContent: `space-between`,
+          '@media screen and (min-width: 1030px)': {
+            flexDirection: 'column',
+            justifyContent: `space-around`,
+            gridColumn: 3,
+            gridRow: '3/4',
+          },
+        }}
+      >
+        {roadmapSortArray.map(label => (
+          <Box key={label}>
+            <Link to={`#${label}`}>{label}</Link>
           </Box>
-        </Fragment>
-      ))}
+        ))}
+      </Flex>
+
+      {renderRoadmap()}
 
       <Box>
         Made with{' '}
