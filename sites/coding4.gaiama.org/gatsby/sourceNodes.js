@@ -31,6 +31,7 @@ module.exports = function sourceNodes({ actions, schema }) {
         author: {
           type: `Mdx`,
           async resolve(source, _args, { nodeModel }) {
+            if (!source.frontmatter.author) return null
             const author = source.frontmatter.author.toLowerCase()
             const lang = source.fields.lang
             const result = await nodeModel.runQuery({
