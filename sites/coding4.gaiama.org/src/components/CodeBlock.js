@@ -55,12 +55,13 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   alignItems: `start`,
                   position: `sticky`,
                   top: 0,
+                  color: 'background',
                 }}
               >
                 {!!props.title && (
                   <div
                     sx={{
-                      backgroundColor: `dimgrey`,
+                      bg: `subtle`,
                       px: 2,
                       mb: 3,
                       mr: `auto`,
@@ -75,7 +76,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   <div
                     sx={{
                       ml: `auto`,
-                      backgroundColor: `dimgrey`,
+                      bg: `subtle`,
                       px: 2,
                       borderBottomLeftRadius: `lg`,
                       fontSize: `small`,
@@ -113,6 +114,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                 const lineStartsWithMinus = line[0]?.content.startsWith(`-`)
                 const lineStartsWithPlus = line[0]?.content.startsWith(`+`)
 
+                // border left example https://gregperlman.dev/creating-a-gatsby-plugin-with-typescript/
                 const backgroundColor = lineStartsWithMinus
                   ? `codeError`
                   : lineStartsWithPlus
@@ -124,7 +126,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                     key={i}
                     {...getLineProps({ line, key: i })}
                     sx={{
-                      backgroundColor,
+                      backgroundColor, // NOTE: maybe apply only to <spans>?
                       display: `grid`,
                       gridTemplateColumns: `20px auto`,
                       px: 3,
