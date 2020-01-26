@@ -30,7 +30,7 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
                     {p.frontmatter.title}
                   </Link>
                 </Heading>
-                <Text as="small" sx={{ color: `dimgrey` }}>
+                <Text as="small" sx={{ color: `subtle` }}>
                   <time dateTime={p.frontmatter.dateTime}>
                     {p.frontmatter.date}
                   </time>
