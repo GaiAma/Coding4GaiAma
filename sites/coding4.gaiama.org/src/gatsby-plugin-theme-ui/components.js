@@ -54,10 +54,22 @@ export default {
   h5: props => <Heading {...props} as="h5" />,
   h6: props => <Heading {...props} as="h6" />,
   Box,
-  table: props => (
-    <Box as="figure" sx={{ overflowX: `auto`, variant: `grid.contentL` }}>
-      <table {...props} />
-    </Box>
+  table: ({ headers, ...props }) => (
+    <table
+      {...props}
+      sx={{
+        '@media only screen and (max-width: 900px)': headers.reduce(
+          (result, each, index) => ({
+            ...result,
+            [`td:nth-of-type(${index + 1}):before`]: { content: `"${each}"` },
+          }),
+          {}
+        ),
+      }}
+    />
   ),
+  // TODO: hmmm don't wrap? how are gatsbyjs.org's tables responsive??
+  // <Box as="figure" sx={{ overflowX: `auto`, variant: `grid.contentL` }}>
+  // </Box>
   kbd: props => <kbd {...props} sx={{ variant: `styles.kbd` }} />,
 }

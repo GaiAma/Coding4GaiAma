@@ -1,0 +1,4 @@
+.env
+/lib
+# ignore gatsby- files in root
+/gatsby-*

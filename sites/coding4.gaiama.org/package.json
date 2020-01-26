@@ -55,6 +55,7 @@
     "react-icons": "^3.8.0",
     "react-share": "^4.0.1",
     "react-toggle": "^4.1.1",
+    "remark-responsive-css-tables": "1.0.0",
     "speakingurl": "^14.0.1",
     "theme-ui": "^0.2.52",
     "typeface-cormorant-garamond": "^0.0.72",

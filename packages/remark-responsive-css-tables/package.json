@@ -1,0 +1,55 @@
+{
+  "name": "remark-responsive-css-tables",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/remark-responsive-css-tables"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-responsive-css-tables#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build",
+    "test": "ava --verbose"
+  },
+  "keywords": [
+    "unified",
+    "remark",
+    "mdx",
+    "plugin",
+    "mdast",
+    "markdown"
+  ],
+  "dependencies": {
+    "mdast-util-to-string": "^1.0.7",
+    "unist-util-visit": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.6",
+    "@types/unist": "^2.0.3",
+    "ava": "2.4.0",
+    "remark": "11.0.2",
+    "typescript": "^3.7.4",
+    "unist-builder": "2.0.2",
+    "unist-util-remove-position": "2.0.0"
+  },
+  "files": [
+    "lib"
+  ],
+  "ava": {
+    "compileEnhancements": false,
+    "files": ["src/**/*.test.ts"],
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
