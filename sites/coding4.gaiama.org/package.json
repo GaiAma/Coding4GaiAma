@@ -36,6 +36,7 @@
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
     "@theme-ui/components": "^0.2.50",
+    "@theme-ui/style-guide": "0.2.53",
     "crop-url": "^3.0.0",
     "date-fns": "^2.9.0",
     "gatsby": "^2.18.21",

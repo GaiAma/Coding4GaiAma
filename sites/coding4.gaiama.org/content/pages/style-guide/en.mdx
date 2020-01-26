@@ -9,51 +9,101 @@ description: Showcasing the style features of Coding4GaiAma
 showTableOfContents: true
 ---
 
-#### Headings
-<Box mb="8">
+<!-- inspiration and related reads
+  - http://codeforamerica.clearleft.com/
+-->
 
-# ① Look ma I'm huge
+import { TypeScale, ColorPalette } from '@theme-ui/style-guide'
+import { Headings } from '../../../src/components/style-guide/headings.js'
+// import {
+//   Alert,
+//   Audio,
+//   BorderRadius,
+//   ColorFamilies,
+//   Download,
+//   FontFamily,
+//   FontSize,
+//   FontWeight,
+//   Palette,
+//   Shadow,
+//   Space,
+//   Table,
+//   Video,
+//   normalizeThemeUIColors,
+//   filterStyles,
+// } from '@lekoarts/gatsby-theme-specimens'
+// import { Colors } from '../../../src/components/style-guide/colors.js'
+// <Colors />
 
-## ② Second level of excitement
+# Style Guide
 
-### ③ Third level of
+## Color Palette
 
-#### ④ Fourth level
-
-##### ⑤ Fifth level
-
-###### ⑥ Sixth
+<Box mb="10">
+  <ColorPalette />
 </Box>
 
-#### ❡ Paragraph
+## Type Scale
+
+<Box mb="10">
+  <TypeScale />
+</Box>
+
+## Headings
+
+<Headings
+  levels={[`h1`, `h2`, `h3`, `h4`, `h5`, `h6`]}
+  previewTexts={{
+    h1: "① Look ma I'm huge",
+    h2: '② Second level of excitement',
+    h3: '③ Third level of',
+    h4: '④ Fourth level',
+    h5: '⑤ Fifth level',
+    h6: '⑥ Sixth',
+  }}
+/>
+
+## ❡ Paragraph
 
 I'm coding from & for the rainforest and for a more sustainable future. Looking forward to build inspiring examples of possible living & business models and technology truly supporting us, while treating tech as first-class citizens. 🤖 — Can
 
-#### ❞ Blockquote
+## ❞ Blockquote
 
 > If there's one person I'd like to quote than it'd be you — Can
 
-#### ↩️ Link
+## ↩️ Link
 
 Check out our rainforest project [GaiAma.org](https://www.gaiama.org/en/)
 
-#### ⌨️ Keyboard shortcuts
+## ⌨️ Keyboard shortcuts
 
-||cmd+f|| <!-- https://dev.to/samanthaming/html-kbd-tag-8di -->
+||<kbd>cmd</kbd>+<kbd>f</kbd>|| <!-- https://dev.to/samanthaming/html-kbd-tag-8di -->
 
-#### ƛ Code
+## ƛ Code
 
-##### Inline
+### Inline
 
 `process.exit()`
 
-##### Block
+### Block
 
 ```js
 process.exit()
 ```
 
-#### ✔︎ More to come List
+## Table
+
+| Column 1 | Column 2 |
+| -------- | -------- |
+| Row 1    | Row 1    |
+| Row 2    | Row 2    |
+
+| Second Table 1 | Second Table 2 |
+| -------------- | -------------- |
+| 2nd Row 1      | 2nd Row 1      |
+| 2nd Row 2      | 2nd Row 2      |
+
+## ✔︎ More to come List
 
 - Images
 - Videos
