@@ -1,3 +1,4 @@
+/* global window */
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { Link } from 'components/Link'
@@ -21,8 +22,10 @@ export const Footer = ({
   meta,
   editLink,
   ...props
-}) =>
-  !menu?.length ? null : (
+}) => {
+  const loadTime =
+    typeof window !== `undefined` && window.GaiAma?.perf?.pageLoadTime
+  return !menu?.length ? null : (
     <Box
       as="footer"
       mt="12"
@@ -49,6 +52,7 @@ export const Footer = ({
         <Flex mt="2" sx={{ fontSize: 0 }}>
           <Box>Version: {meta.version}</Box>
           {/* <Box ml="2">Branch: {meta.branch}</Box> */}
+          <Box ml="2">Load Time: {loadTime}</Box>
           <Box ml="2">License: {meta.license}</Box>
           {editLink && (
             <Box ml="2">
@@ -62,3 +66,4 @@ export const Footer = ({
       </Box>
     </Box>
   )
+}
