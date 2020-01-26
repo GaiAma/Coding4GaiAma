@@ -1,12 +1,14 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { MDXProvider } from '@mdx-js/react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 // import { FiEdit } from 'react-icons/fi'
 import { ShareButtons } from 'components/ShareButtons'
 import { Link } from 'components/Link'
-import { Flex, Box, Heading } from '@theme-ui/components'
+import { Flex, Box } from '@theme-ui/components'
+import { Heading } from 'components/Heading'
 
 // type Props = {
 //   data: {
@@ -55,6 +57,25 @@ const Article = ({ data: { page, site }, ...props }) => {
   // const description = page.frontmatter.description
   const { absoluteUrl } = page.fields
   const toc = page.frontmatter.showTableOfContents === true ? page.toc : []
+
+  const components = {
+    h1: ({ children, ...props }) => (
+      <Box as="header" mb="9">
+        <Heading as="h1" {...props}>
+          <span itemProp="headline">{children}</span>
+          {/* {!!description && <small itemProp="description">{description}</small>} */}
+        </Heading>
+        <Box as="small" variant="text.muted">
+          {/* <Link variant="dim" to={page.fields.url}> */}
+          <time dateTime={page.frontmatter.dateTime}>
+            {page.frontmatter.date}
+          </time>
+          {/* </Link> */}
+        </Box>
+      </Box>
+    ),
+  }
+
   return (
     <Box variant="grid">
       {!!toc?.length && (
@@ -80,21 +101,9 @@ const Article = ({ data: { page, site }, ...props }) => {
         </Box>
       )}
 
-      <Box as="header" mb="9">
-        <Heading as="h1">
-          <span itemProp="headline">{page.frontmatter.title}</span>
-          {/* {!!description && <small itemProp="description">{description}</small>} */}
-        </Heading>
-        <Box as="small" variant="text.muted">
-          {/* <Link variant="dim" to={page.fields.url}> */}
-          <time dateTime={page.frontmatter.dateTime}>
-            {page.frontmatter.date}
-          </time>
-          {/* </Link> */}
-        </Box>
-      </Box>
-
-      <MDXRenderer>{page.body}</MDXRenderer>
+      <MDXProvider components={components}>
+        <MDXRenderer>{page.body}</MDXRenderer>
+      </MDXProvider>
 
       <Box>
         <Link
