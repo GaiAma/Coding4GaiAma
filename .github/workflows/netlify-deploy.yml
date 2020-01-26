@@ -1,6 +1,7 @@
 # based on https://sung.codes/blog/2019/12/25/building-gatsby-with-git-hub-actions-and-deploying-to-netlify/
 name: Build and Deploy Releases to Netlify
 
+# TODO: integrate [cache](https://github.com/actions/cache), looks like it's not compatible with actions on.release tho
 on:
   # use https://hub.github.com/hub-release.1.html to trigger a build
   release:
