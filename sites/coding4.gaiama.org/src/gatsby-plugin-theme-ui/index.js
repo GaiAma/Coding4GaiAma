@@ -157,7 +157,7 @@ export default {
     a: {
       color: 'primary',
       textDecoration: 'none',
-      ':hover': { textDecoration: 'underline' },
+      ':hover,:focus': { textDecoration: 'underline' },
     },
     p: { m: 0, mb: 10, lineHeight: 'body' },
     h1: {
@@ -295,7 +295,7 @@ export default {
       transition: 'all 0.3s ease',
       textDecoration: 'none',
       color: 'primary',
-      ':hover, &.active': {
+      ':hover,:focus, &.active': {
         backgroundColor: 'accent',
         color: 'background',
         borderBottomColor: 'initial',
