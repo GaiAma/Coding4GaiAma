@@ -94,20 +94,28 @@ const Roadmap = ({ data: { page, roadmap, site }, ...props }) => {
       <Flex
         mb="10"
         sx={{
+          bg: 'background',
           justifyContent: `space-between`,
+          position: 'sticky',
+          top: 0,
+          boxShadow: theme => `0px 4px 5px -3px ${theme.colors.subtle}`,
           '@media screen and (min-width: 1030px)': {
+            boxShadow: 'none',
             flexDirection: 'column',
             justifyContent: `space-around`,
             gridColumn: 3,
             gridRow: '3/4',
-            position: 'sticky',
-            top: 0,
           },
         }}
       >
         {roadmapSortArray.map(label => (
           <Box key={label}>
-            <Link to={`#${label}`}>{label}</Link>
+            <Link
+              to={`#${label}`}
+              sx={{ py: 3, display: 'block', border: 'none' }}
+            >
+              {label}
+            </Link>
           </Box>
         ))}
       </Flex>
