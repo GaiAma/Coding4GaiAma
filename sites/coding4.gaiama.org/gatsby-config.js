@@ -58,18 +58,18 @@ module.exports = {
         name: `content`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: resolve(__dirname, `../..`),
-        name: `leasot`,
-        ignore: [
-          /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
-          /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf|yarn|d\.ts)/,
-          /packages\/.*\/lib\//,
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: resolve(__dirname, `../..`),
+    //     name: `leasot`,
+    //     ignore: [
+    //       /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
+    //       /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf|yarn|d\.ts)/,
+    //       /packages\/.*\/lib\//,
+    //     ],
+    //   },
+    // },
     // {
     //   resolve: `gatsby-source-graphql`,
     //   options: {
@@ -83,9 +83,17 @@ module.exports = {
     //     fetchOptions: {},
     //   },
     // },
+    // {
+    //   resolve: `gatsby-transformer-leasot`,
+    //   options: {
+    //     customTags: [`NOTE`, `DONE`],
+    //     mode: `mdx`,
+    //   },
+    // },
     {
-      resolve: `gatsby-transformer-leasot`,
+      resolve: `gatsby-theme-leasot`,
       options: {
+        sourcePath: resolve(__dirname, `../..`),
         customTags: [`NOTE`, `DONE`],
         mode: `mdx`,
       },
