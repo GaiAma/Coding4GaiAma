@@ -11,7 +11,9 @@ const TableOfContents = ({ items }) =>
     <ul>
       {items.map(item => (
         <li key={item.url}>
-          <Link to={item.url}>{item.title}</Link>
+          <Link variant="muted" to={item.url}>
+            {item.title}
+          </Link>
           {!!item.children?.length && <TableOfContents items={item.children} />}
         </li>
       ))}
@@ -26,18 +28,21 @@ const SimplePage = ({ data: { page }, ...props }) => {
       {!!toc?.length && (
         <Box
           sx={{
+            color: 'muted',
             '@media screen and (min-width: 1030px)': {
               gridRow: '1',
-              gridColumn: '1/5',
+              gridColumn: '9/-1',
               position: 'sticky',
               top: 50,
-              ml: 5,
             },
           }}
         >
           <Box
             sx={{
-              '@media screen and (min-width: 1030px)': { position: `absolute` },
+              '@media screen and (min-width: 1030px)': {
+                position: `absolute`,
+                mr: 5,
+              },
             }}
           >
             <h4 sx={{ textTransform: `uppercase` }}>Table of contents</h4>
