@@ -41,7 +41,7 @@ const SimplePage = ({ data: { page }, ...props }) => {
             sx={{
               '@media screen and (min-width: 1030px)': {
                 position: `absolute`,
-                mr: 5,
+                mx: 5,
               },
             }}
           >
