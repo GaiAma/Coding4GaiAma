@@ -42,9 +42,8 @@ function buildTextNode(value: string) {
 }
 
 function buildEmojiNode(emoji: string, children?: Node[]) {
-  const description = gemoji.unicode[emoji]
-    ? gemoji.unicode[emoji].description
-    : ''
+  const emojiInfo = gemoji.find((x: { emoji: string }) => x.emoji === emoji)
+  const description = emojiInfo?.description ? emojiInfo.description : ''
   return {
     type: `element`,
     tagName: `span`,
