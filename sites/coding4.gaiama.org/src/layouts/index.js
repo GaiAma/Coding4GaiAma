@@ -21,12 +21,11 @@ const isProduction = process.env.NODE_ENV === `production`
 
 const Layout = ({ children, data, ...props }) => {
   !isProduction && console.log(data, props)
-  const themeUi = useThemeUI()
+  const themeUI = useThemeUI()
   useEffect(() => {
-    const { emotionVersion, theme, colorMode } = themeUi
-    window.GaiAma = window.GaiAma ?? {}
+    const { emotionVersion, theme, colorMode } = themeUI
     window.GaiAma.ThemeUI = { emotionVersion, theme, colorMode }
-  }, [themeUi])
+  }, [themeUI])
   return (
     <Styled.root>
       <UiLayout>
