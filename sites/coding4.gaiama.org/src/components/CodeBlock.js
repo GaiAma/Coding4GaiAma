@@ -66,7 +66,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                       mb: 3,
                       mr: `auto`,
                       borderBottomRightRadius: `lg`,
-                      fontSize: `small`,
+                      fontSize: 0,
                     }}
                   >
                     {props.title}
@@ -79,7 +79,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                       bg: `subtle`,
                       px: 2,
                       borderBottomLeftRadius: `lg`,
-                      fontSize: `small`,
+                      fontSize: 0,
                     }}
                   >
                     {languages.get(language) || language.toUpperCase()}
