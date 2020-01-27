@@ -1,6 +1,5 @@
 /// <reference types="user-meta" />
-import { NodePlopAPI, ActionType, PlopCfg } from 'plop';
-// import { HelperOptions } from 'handlebars';
+import { ActionType } from 'plop';
 import userMeta from 'user-meta';
 import chalk from 'chalk';
 import pkgJson from './templates/package.json';

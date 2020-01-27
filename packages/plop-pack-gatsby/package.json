@@ -19,9 +19,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@types/handlebars": "4.1.0",
     "chalk": "3.0.0",
-    "handlebars": "4.4.3",
     "plop": "2.5.3",
     "plop-pack-node-helpers": "1.0.0",
     "rimraf": "3.0.0",
