@@ -1,7 +1,7 @@
 # based on https://sung.codes/blog/2019/12/25/building-gatsby-with-git-hub-actions-and-deploying-to-netlify/
 name: Build and Deploy Releases to Netlify
 
-# TODO: integrate [cache](https://github.com/actions/cache), looks like it's not compatible with actions on.release tho
+# DONE: integrate [cache](https://github.com/actions/cache)
 on:
   push:
     branches:
@@ -31,13 +31,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 3. https://github.com/actions/checkout
       - uses: actions/checkout@v2
 
-      # 3. https://github.com/actions/setup-node
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+
+      - name: Use cached Node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            nodeModules-
 
       - run: yarn
       - run: yarn lerna run build
