@@ -3,10 +3,20 @@ name: Build and Deploy Releases to Netlify
 
 # TODO: integrate [cache](https://github.com/actions/cache), looks like it's not compatible with actions on.release tho
 on:
+  push:
+    branches:
+      - master # only deploy pull requests against master
+    paths:
+      - '**.jsx?' # only deploy if .js/.jsx files have changed
+      - '**.tsx?' # only deploy if .ts/.tsx files have changed
+      - '**/yarn.lock' # or dependencies have changed
+
+    # paths-ignore:
+    #   - 'docs/**'
   # use https://hub.github.com/hub-release.1.html to trigger a build
-  release:
-    types:
-      - created
+  # release:
+  #   types:
+  #     - created
   # push:
   # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpaths
   #   paths-ignore:
