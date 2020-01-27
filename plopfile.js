@@ -72,7 +72,7 @@ module.exports = function(plop) {
       return [
         {
           type: `add`,
-          path: `sites/coding4.gaiama.org/content/posts/{{kebabCase (lowerCase title)}}/en.mdx`,
+          path: `sites/coding4.gaiama.org/content/posts/{{date}}_{{kebabCase (lowerCase title)}}/en.mdx`,
           templateFile: `plop-templates/post/en.mdx.hbs`,
         },
       ].filter(Boolean)
