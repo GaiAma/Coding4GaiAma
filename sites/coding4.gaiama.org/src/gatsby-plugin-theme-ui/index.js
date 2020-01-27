@@ -1,3 +1,23 @@
+// Checkout https://alligator.io/css/minimal-css-reset/
+// maybe for rythm https://hankchizljaw.com/wrote/a-modern-css-reset/
+
+// TODO: proper baseline rythm https://codepen.io/machal/embed/zVQQKN/?height=320&theme-id=light&default-tab=result,css
+// https://bubblin.io/blog/baseline-css
+
+// https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+/**
+ * https://a11yproject.com/posts/never-remove-css-outlines/
+ * remove CSS outline in an accessible way
+ * https://github.com/lindsayevans/outline.js
+ * https://gist.github.com/jensgro/2470777
+ * https://medium.com/hackernoon/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2
+ * https://twitter.com/JavaScriptFeed/status/1074515514746118144
+ * https://hackernoon.com/one-line-of-code-to-remove-focus-blue-outline-and-keep-accessibility-bca3ccea9892
+ */
+
+// TODO: try out [palx](https://github.com/jxnblk/palx) for more color themes, maybe using babel-preval
+
 export default {
   useCustomProperties: true,
   initialColorModeName: 'dark',
@@ -314,7 +334,10 @@ export default {
       borderBottomColor: 'text',
     },
   },
-  gradients: { peach: 'linear-gradient(20deg, #db7093, #daa357)' },
+  gradients: {
+    peach: 'linear-gradient(20deg, #db7093, #daa357)',
+    peach2: 'linear-gradient(90deg,#ff8a00,#e52e71)',
+  },
 }
 
 // import { bootstrap } from '@theme-ui/presets'

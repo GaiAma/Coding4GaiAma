@@ -108,6 +108,7 @@ module.exports = {
           require(`remark-heading-id`),
           // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-breaks`),
+          // require(`remark-capitalize`),
           require(`remark-responsive-css-tables`).remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
@@ -176,6 +177,14 @@ module.exports = {
       },
     },
     // {
+    //   resolve: `@lekoarts/gatsby-theme-specimens`,
+    //   options: {
+    //     contrastGuidelines: `AAA`,
+    //     codeExample: false,
+    //     rootFontSize: 16,
+    //   },
+    // },
+    // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
     //     pathToConfigModule: `src/utils/typography`,
@@ -229,6 +238,7 @@ module.exports = {
     //   options: {
     //     id: `GTM-WMKKBFD`,
     //     includeInDevelopment: true,
+    //     defaultDataLayer: { platform: "gatsby" },
     //   },
     // },
     // {
