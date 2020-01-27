@@ -42,6 +42,7 @@ module.exports = async function createPages({ graphql, actions }) {
 
     const page = {
       path: url,
+      // NOTE: optimize? pre resolving all available layouts?
       component: resolve(`./src/templates/${layout}.js`),
       // customizable layout
       // layout: resolve(`./src/templates/${layout}.js`),

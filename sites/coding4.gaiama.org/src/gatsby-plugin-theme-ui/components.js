@@ -17,34 +17,10 @@ import { Heading } from 'components/Heading'
 //   />
 // )
 
-// const Title = props => (
-//   <Heading
-//     sx={
-//       {
-//         // gridColumn: `4/7`,
-//         // width: `100%`,
-//         // maxWidth: `100%`,
-//         // paddingLeft: `10px`,
-//         // color: `red`,
-//       }
-//     }
-//     {...props}
-//   />
-// )
-
-// const Paragraph = props => <Text as="p" mb="4" {...props} />
-
 export default {
   // blockquote,
   pre: props => <div {...props} sx={{ variant: `grid.contentL`, mb: 10 }} />,
   code: props => <CodeBlock {...props} />,
-  // h1: props => <Title as="h1" {...props} />,
-  // h2: props => <Title as="h2" {...props} />,
-  // h3: props => <Title as="h3" {...props} />,
-  // h4: props => <Title as="h4" {...props} />,
-  // h5: props => <Title as="h5" {...props} />,
-  // h6: props => <Title as="h6" {...props} />,
-  // p: Paragraph,
   a: Link,
   Link,
   h1: props => <Heading {...props} as="h1" />,
