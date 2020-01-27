@@ -37,9 +37,9 @@
     "unist-util-visit": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.5.0",
     "@types/unist": "^2.0.3",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "files": [
     "lib"
