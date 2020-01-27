@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Layout as UiLayout, useThemeUI } from 'theme-ui'
+import { jsx, Styled, useThemeUI } from 'theme-ui'
 import { useEffect } from 'react'
 import { Box } from '@theme-ui/components'
 import { Global } from '@emotion/core'
@@ -28,7 +28,7 @@ const Layout = ({ children, data, ...props }) => {
   }, [themeUI])
   return (
     <Styled.root>
-      <UiLayout>
+      <Box>
         <SkipLink>Skip to content</SkipLink>
         <GlobalMeta page={data?.page} meta={data?.site?.meta} />
         <Global styles={theme => theme.styles.Global(theme)} />
@@ -66,7 +66,7 @@ const Layout = ({ children, data, ...props }) => {
           />
           {/* </Main> */}
         </div>
-      </UiLayout>
+      </Box>
     </Styled.root>
   )
 }
