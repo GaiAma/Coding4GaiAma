@@ -56,7 +56,6 @@
     "react-head": "^3.3.0-0",
     "react-icons": "^3.8.0",
     "react-share": "^4.0.1",
-    "react-toggle": "^4.1.1",
     "remark-responsive-css-tables": "1.0.0",
     "speakingurl": "^14.0.1",
     "theme-ui": "^0.2.52",
@@ -70,7 +69,6 @@
     "wcag-contrast": "3.0.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "babel-plugin-preval": "^4.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -110,8 +108,7 @@
     "serve": "^11.3.0",
     "table-of-contents": "1.0.0",
     "typographic-single-spaces": "^1.0.2",
-    "watch": "^1.0.2",
-    "webpack-jarvis": "^0.3.2"
+    "watch": "^1.0.2"
   },
   "remarkConfig": {
     "plugins": [
