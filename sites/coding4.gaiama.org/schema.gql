@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-01-26T08:05:59.734Z ###
+### Type definitions saved at 2020-01-27T15:46:19.643Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -272,13 +272,6 @@ type ImageSharpResize {
   originalName: String
 }
 
-type SpecimensConfig implements Node @dontInfer {
-  contrastGuidelines: String
-  CMYK: Boolean
-  codeExample: Boolean
-  rootFontSize: Int
-}
-
 type MdxFrontmatter {
   title: String!
   isPublished: Boolean
@@ -325,19 +318,20 @@ type Mdx implements Node @derivedTypes @dontInfer {
 
 type Frontmatter @derivedTypes {
   showTableOfContents: Boolean
+  dateModified: Date
   title: String
   isPublished: Boolean
   type: String
+  slug: String
   layout: String
+  menu: String
+  description: String
   date: Date @dateformat
   author: String
-  description: String
   tags: [String]
-  slug: String
-  menu: String
+  shortSlug: String
   robots: String
   statusCode: Int
-  shortSlug: String
   name: String
   image: File @fileByRelativePath
   twitterHandle: String
@@ -357,31 +351,4 @@ type MdxFields {
   slug: String
   url: String
   absoluteUrl: String
-}
-
-interface Post @nodeInterface {
-  id: ID!
-  isPublished: Boolean
-  type: String!
-  title: String!
-  shortSlug: String
-  layout: String!
-  date: Date! @dateformat
-  author: String!
-  description: String
-  tags: [String!]
-  showTableOfContents: Boolean
-}
-
-type PostMdx implements Node & Post @childOf(mimeTypes: [], types: [], many: false) @dontInfer {
-  isPublished: Boolean @proxyResolve(from: "parent.frontmatter.isPublished")
-  type: String! @proxyResolve(from: "parent.frontmatter.type")
-  title: String! @proxyResolve(from: "parent.frontmatter.title")
-  shortSlug: String @proxyResolve(from: "parent.frontmatter.shortSlug")
-  layout: String! @proxyResolve(from: "parent.frontmatter.layout")
-  date: Date! @proxyResolve(from: "parent.frontmatter.date") @dateformat
-  author: String! @proxyResolve(from: "parent.frontmatter.author")
-  description: String! @proxyResolve(from: "parent.frontmatter.description")
-  tags: [String!] @proxyResolve(from: "parent.frontmatter.tags")
-  showTableOfContents: Boolean @proxyResolve(from: "parent.frontmatter.showTableOfContents")
 }
