@@ -21,7 +21,6 @@
 export default {
   useCustomProperties: true,
   initialColorModeName: 'dark',
-  initialColorMode: 'dark',
   // useColorSchemeMediaQuery: true,
   // breakpoints: ['576px', '768px', '992px', '1200px'],
   colors: {

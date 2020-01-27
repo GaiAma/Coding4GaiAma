@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "emoji-regex": "^8.0.0",
-    "gemoji": "^4.2.1",
+    "gemoji": "^5.0.0",
     "hast-util-is-element": "^1.0.3",
     "unist-util-flatmap": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.5.0",
     "@types/unist": "^2.0.3",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "files": [
     "lib"

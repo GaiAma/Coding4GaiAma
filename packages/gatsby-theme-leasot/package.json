@@ -25,12 +25,12 @@
     "gatsby": "^2.13.65"
   },
   "dependencies": {
-    "gatsby-transformer-leasot": "1.1.1",
-    "gatsby-source-filesystem": "^2.1.46"
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-leasot": "1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.5.0",
     "@types/unist": "^2.0.3",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   }
 }

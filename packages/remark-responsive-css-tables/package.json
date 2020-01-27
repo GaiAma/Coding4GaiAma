@@ -31,11 +31,11 @@
     "unist-util-visit": "^2.0.1"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
+    "@types/node": "^13.5.0",
     "@types/unist": "^2.0.3",
-    "ava": "2.4.0",
+    "ava": "3.1.0",
     "remark": "11.0.2",
-    "typescript": "^3.7.4",
+    "typescript": "^3.7.5",
     "unist-builder": "2.0.2",
     "unist-util-remove-position": "2.0.0"
   },
@@ -44,7 +44,9 @@
   ],
   "ava": {
     "compileEnhancements": false,
-    "files": ["src/**/*.test.ts"],
+    "files": [
+      "src/**/*.test.ts"
+    ],
     "extensions": [
       "ts"
     ],
