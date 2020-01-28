@@ -142,6 +142,10 @@ export default {
       // 'body::-webkit-scrollbar-track': {
       //   background: `#161616`,
       // },
+      'input, button, textarea, select': {
+        // source https://dev.to/hankchizljaw/a-modern-css-reset-6p3 explaination https://stackoverflow.com/a/2875030/3484824
+        font: `inherit`,
+      },
       '@media only screen and (max-width: 900px)': {
         'table, thead, tbody, th, td, tr': {
           display: 'block',
