@@ -1,5 +1,5 @@
 # based on https://sung.codes/blog/2019/12/25/building-gatsby-with-git-hub-actions-and-deploying-to-netlify/
-name: Build and Deploy Releases to Netlify
+name: Build & Deploy
 
 # DONE: integrate [cache](https://github.com/actions/cache)
 on:
