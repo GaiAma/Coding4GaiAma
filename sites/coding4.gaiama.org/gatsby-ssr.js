@@ -1,7 +1,8 @@
 const { createElement } = require('react')
-const { version, bugs } = require('./package.json')
+const { version, bugs, dependencies } = require('./package.json')
 const { branch, newIssueUrl } = require('./src/utils/environment-helpers.js')
 const { minify } = require('terser')
+const { gatsby, react, preact, 'theme-ui': themeUI } = dependencies
 
 exports.onRenderBody = ({ setHeadComponents }) => {
   const result = minify(`
@@ -11,6 +12,12 @@ exports.onRenderBody = ({ setHeadComponents }) => {
       bugTracker: '${bugs.url}',
       newIssueUrl: '${newIssueUrl}',
       perf: {},
+      dependencies: {
+        gatsby: '${gatsby}',
+        'theme-ui': '${themeUI}',
+        react: '${react}',
+        preact: '${preact}',
+      },
     }
   `)
 
