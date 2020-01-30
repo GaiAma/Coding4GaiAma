@@ -12,3 +12,4 @@ public/
 packages/**/lib
 packages/**/*.js
 !packages/**/index.js
+!packages/**/src/**/*.js
