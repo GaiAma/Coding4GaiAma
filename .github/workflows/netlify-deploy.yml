@@ -10,6 +10,7 @@ on:
       - '**.jsx?' # only deploy if .js/.jsx files have changed
       - '**.tsx?' # only deploy if .ts/.tsx files have changed
       - '**/yarn.lock' # or dependencies have changed
+      - '**/sites/**/content/' # or content has changed
 
     # paths-ignore:
     #   - 'docs/**'
