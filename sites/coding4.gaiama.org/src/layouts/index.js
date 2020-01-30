@@ -23,8 +23,7 @@ const Layout = ({ children, data, ...props }) => {
   !isProduction && console.log(data, props)
   const themeUI = useThemeUI()
   useEffect(() => {
-    const { emotionVersion, theme, colorMode } = themeUI
-    window.GaiAma.ThemeUI = { emotionVersion, theme, colorMode }
+    window.GaiAma.ThemeUI = themeUI
   }, [themeUI])
   return (
     <Styled.root>
