@@ -1,6 +1,6 @@
 /// <reference types="user-meta" />
-import { NodePlopAPI } from 'plop';
-import { HelperOptions } from 'handlebars';
+// import { NodePlopAPI } from 'plop';
+// import { HelperOptions } from 'handlebars';
 import userMeta from 'user-meta';
 
 export type Config = {};
@@ -13,8 +13,9 @@ export type Author = {
 
 const defaults = {};
 
-module.exports = (plop: NodePlopAPI, config: Config): void => {
-  const cfg = Object.assign(defaults, config || {});
+export default (plop: any, config: Config): void => {
+  // (<any>Object) from https://stackoverflow.com/a/57268258/3484824
+  const cfg = (<any>Object).assign(defaults, config || {});
 
   plop.setDefaultInclude({ helpers: true });
 
@@ -58,12 +59,7 @@ module.exports = (plop: NodePlopAPI, config: Config): void => {
   //   );
   // });
 
-  plop.setHelper('if_eq', function(
-    this: any,
-    a: string,
-    b: string,
-    opts: HelperOptions
-  ) {
+  plop.setHelper('if_eq', function(this: any, a: string, b: string, opts: any) {
     return a === b ? opts.fn(this) : opts.inverse(this);
   });
 };
