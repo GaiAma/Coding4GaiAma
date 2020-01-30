@@ -30,10 +30,6 @@
     "build:live": "gatsby build",
     "readme": "remark README.md"
   },
-  "resolutions": {
-    "gatsby-plugin-theme-ui/theme-ui": "^0.3.1",
-    "@theme-ui/style-guide/theme-ui": "^0.3.1"
-  },
   "dependencies": {
     "@canrau/gatsby-plugin-react-head": "^0.2.2",
     "@emotion/core": "^10.0.27",
