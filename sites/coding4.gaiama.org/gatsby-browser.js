@@ -92,7 +92,7 @@ try {
     `,
     `\n`,
     `\n`,
-    `Feel free to inspect everything, e.g. 'win.C4G' / 'win.GaiAma'`,
+    `Feel free to inspect everything, e.g. 'window.C4G' / 'window.GaiAma'`,
     `\n`,
     `\n`,
     `You'll find the MIT licensed source code of the website at ${repository.url}`,
