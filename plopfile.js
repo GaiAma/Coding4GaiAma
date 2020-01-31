@@ -78,4 +78,10 @@ module.exports = function(plop) {
       ].filter(Boolean)
     },
   })
+
+  plop.setGenerator('exit', {
+    description: 'exit plop',
+    prompts: [],
+    actions: () => ['\n🙏 Thanks for plopping with GaiAma\n']
+  })
 }
