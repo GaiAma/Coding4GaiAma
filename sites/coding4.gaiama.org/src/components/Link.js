@@ -6,7 +6,7 @@ import { Link as UiLink } from '@theme-ui/components'
 
 const isFqdn = x => !/^\/(?!\/)/.test(x)
 const isAnchor = x => /^#/.test(x)
-
+// TODO: publish as @gaiama/gatsby-link
 export const Link = forwardRef(
   (
     {
