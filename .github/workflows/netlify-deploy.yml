@@ -32,13 +32,23 @@ jobs:
         with:
           node-version: '12.x'
 
-      - name: Use cached Node modules
-        uses: actions/cache@v1
+      # - name: Use cached Node modules
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: node_modules
+      #     key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       nodeModules-
+      
+      - name: Get yarn cache dir
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
         with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            nodeModules-
+            ${{ runner.os }}-yarn-
 
       - run: yarn
       - name: Build Packages
