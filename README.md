@@ -1,7 +1,7 @@
 <!-- <h1 align="center"><a href="https://coding4.gaiama.org" title="GaiAma.org">Coding4.GaiAma.org</a></h1> -->
 <h1 align="center">Coding4GaiAma</h1>
 
-![Build & Deploy](https://github.com/GaiAma/Coding4GaiAma/workflows/Build%20&%20Deploy/badge.svg)
+[![Build & Deploy](https://github.com/GaiAma/Coding4GaiAma/workflows/Build%20&%20Deploy/badge.svg)](https://github.com/GaiAma/Coding4GaiAma/actions/)
 
 ## Sites
 
