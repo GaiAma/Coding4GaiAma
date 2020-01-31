@@ -183,6 +183,7 @@ export default {
       ':hover,:focus': { textDecoration: 'underline' },
     },
     p: { m: 0, mb: 10, lineHeight: 'body' },
+    sup: { ml: '0.2rem' },
     h1: {
       variant: 'typeStyles.heading',
       fontSize: 7,

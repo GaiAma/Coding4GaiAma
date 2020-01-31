@@ -53,4 +53,6 @@ export default {
   // <Box as="figure" sx={{ overflowX: `auto`, variant: `grid.contentL` }}>
   // </Box>
   kbd: props => <kbd {...props} sx={{ variant: `styles.kbd` }} />,
+  sup: 'sup',
+  // div: 'div',
 }
