@@ -41,7 +41,8 @@ export const Link = forwardRef(
       ...(isExt &&
         !isAnchor(url) && {
           target: target || `_blank`,
-          rel: rel || `nofollow noopener noreferrer`,
+          // removed `nofollow` https://backlinko.com/nofollow-link
+          rel: rel || `noopener noreferrer`,
         }),
       title: title || url,
       ...props,
