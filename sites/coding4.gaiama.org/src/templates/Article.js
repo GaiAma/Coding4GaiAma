@@ -41,6 +41,7 @@ import { Heading } from 'components/Heading'
 // }
 
 // inspired by https://gatsby-theme-legals.netlify.com/privacy-policy
+// NOTE: checkout https://css-tricks.com/sticky-table-of-contents-with-scrolling-active-states/
 const TableOfContents = ({ items }) =>
   !!items.length && (
     <ul>

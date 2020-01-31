@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/vsDark'
 
-// console.log(`prism`, theme)
+// NOTE: check out [reakit-playground](https://github.com/reakit/reakit/tree/master/packages/reakit-playground)
 
 const codeFenceRegex = /language-(?<lang>[^{\s]+)(?:\{(?<lineStart>\d*)(?:-(?<lineEnd>.*))?\})?/i
 
@@ -104,6 +104,7 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                   return null
                 }
 
+                // NOTE: maybe use 'user-select: none' for line no. like [kcd](https://kentcdodds.com/blog/super-simple-start-to-es-modules-in-the-browser)
                 const lineNo = i + 1
                 const isLineHighlighted = highlightEnd
                   ? lineNo >= highlightStart && lineNo <= highlightEnd
