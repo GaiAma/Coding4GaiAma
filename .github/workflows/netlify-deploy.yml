@@ -4,20 +4,18 @@ name: Build & Deploy
 # DONE: integrate [cache](https://github.com/actions/cache)
 on:
   push:
-    branches:
-      - master # only deploy pull requests against master
-    paths:
-      - '**.jsx?' # only deploy if .js/.jsx files have changed
-      - '**.tsx?' # only deploy if .ts/.tsx files have changed
-      - '**/yarn.lock' # or dependencies have changed
-      - '**/sites/**/content/' # or content has changed
+    branches: [master]
+    paths: # only deploy if .js/.jsx, .ts/.tsx, yarn.lock or content files have changed
+      - '**.jsx?'
+      - '**.tsx?'
+      - '**/yarn.lock'
+      - '**/sites/**/content/'
 
     # paths-ignore:
     #   - 'docs/**'
   # use https://hub.github.com/hub-release.1.html to trigger a build
   # release:
-  #   types:
-  #     - created
+  #   types: [published]
   # push:
   # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpaths
   #   paths-ignore:
