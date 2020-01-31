@@ -26,7 +26,7 @@
     "user-meta": "1.0.0"
   },
   "devDependencies": {
-    "@types/node": "13.5.0",
+    "@types/node": "13.5.3",
     "@types/unist": "2.0.3",
     "typescript": "3.7.5"
   },
