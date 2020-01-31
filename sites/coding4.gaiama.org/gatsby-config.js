@@ -112,6 +112,7 @@ module.exports = {
           require(`remark-responsive-css-tables`).remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
+          require(`remark-numbered-footnotes`),
           [
             require(`remark-textr`),
             { plugins: [require(`typographic-single-spaces`)] },

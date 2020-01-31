@@ -100,6 +100,7 @@
     "remark-github": "^8.0.0",
     "remark-heading-id": "1.0.0",
     "remark-kbd": "^1.0.20",
+    "remark-numbered-footnotes": "1.1.0",
     "remark-preset-wooorm": "^6.0.1",
     "remark-textr": "^3.0.4",
     "remark-truncate-links": "^1.0.1",
