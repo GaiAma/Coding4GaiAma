@@ -29,7 +29,7 @@
     "comments"
   ],
   "dependencies": {
-    "@babel/core": "^7.8.3",
+    "@babel/core": "^7.8.4",
     "@mdx-js/mdx": "^1.5.5",
     "autolinker": "^3.11.1",
     "he": "^1.2.0",
