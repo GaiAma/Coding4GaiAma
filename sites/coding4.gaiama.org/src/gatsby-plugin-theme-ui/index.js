@@ -146,6 +146,11 @@ export default {
         // source https://dev.to/hankchizljaw/a-modern-css-reset-6p3 explaination https://stackoverflow.com/a/2875030/3484824
         font: `inherit`,
       },
+      // emojis
+      'span[role="img"]': {
+        fontSize: '1.4rem',
+        verticalAlign: 'middle',
+      },
       '@media only screen and (max-width: 900px)': {
         'table, thead, tbody, th, td, tr': {
           display: 'block',
