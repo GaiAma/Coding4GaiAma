@@ -4,7 +4,8 @@ name: Build & Deploy
 # DONE: integrate [cache](https://github.com/actions/cache)
 on:
   push:
-    branches: [master]
+    branches:
+      - master
     paths: # only deploy if .js/.jsx, .ts/.tsx, yarn.lock or content files have changed
       - '**.jsx?'
       - '**.tsx?'
