@@ -10,7 +10,7 @@ on:
       - '**.jsx?'
       - '**.tsx?'
       - '**/yarn.lock'
-      - '**/sites/**/content/'
+      - '**/sites/**/content/**'
 
     # paths-ignore:
     #   - 'docs/**'
