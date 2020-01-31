@@ -34,7 +34,7 @@ export default {
   h4: props => <Heading {...props} as="h4" />,
   h5: props => <Heading {...props} as="h5" />,
   h6: props => <Heading {...props} as="h6" />,
-  Box,
+  Box: props => <Box mb="10" {...props} />,
   table: ({ headers, ...props }) => (
     <table
       {...props}
