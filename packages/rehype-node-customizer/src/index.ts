@@ -28,7 +28,6 @@ export type NodeWithTagName = Node & {
 export type CustomizerFn = (props: {
   node: Node;
   cleanChildren: Node[];
-  childrenCount: number;
 }) => Node;
 
 export type TypeSelector = {
@@ -88,7 +87,6 @@ export const rehypeNodeCustomizer = (options: Options = defaultOptions) => (
       parent.children[index] = opts.customizer({
         node,
         cleanChildren: children,
-        childrenCount,
       });
     }
 
