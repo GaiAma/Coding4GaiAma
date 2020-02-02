@@ -12,7 +12,7 @@ on:
     paths:
       - '**.jsx?'
       - '**.tsx?'
-      - '**/yarn.lock'
+      - 'yarn.lock'
       - 'sites/**/content/**'
       - '!plopfile.js'
       - '!plop-templates/**'
