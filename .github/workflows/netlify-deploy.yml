@@ -4,14 +4,20 @@ name: Build & Deploy
 # DONE: integrate [cache](https://github.com/actions/cache)
 on:
   push:
-    branches: 
+    branches:
       - master
     # only deploy if .js/.jsx, .ts/.tsx, yarn.lock or content files have changed
+
+    # TODO: not running on content changes??
     paths:
       - '**.jsx?'
       - '**.tsx?'
       - '**/yarn.lock'
-      - '**/sites/**/content/**'
+      - 'sites/**/content/**'
+    paths-ignore:
+      - 'plopfile.js'
+      - 'plop-templates/**'
+      - 'packages/plop-pack*'
 
     # paths-ignore: ['docs/**']
   # use https://hub.github.com/hub-release.1.html to trigger a build
@@ -44,7 +50,7 @@ jobs:
       #     key: nodeModules-${{ hashFiles('**/yarn.lock') }}
       #     restore-keys: |
       #       nodeModules-
-      
+
       - name: Get yarn cache dir
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
