@@ -24,7 +24,12 @@ const gridSize = str => {
 
 export default {
   // blockquote,
-  pre: props => <div {...props} sx={{ variant: gridSize(props.children?.props?.size), mb: 10 }} />,
+  pre: props => (
+    <div
+      {...props}
+      sx={{ variant: gridSize(props.children?.props?.size), mb: 10 }}
+    />
+  ),
   code: props => <CodeBlock {...props} />,
   a: Link,
   Link,
