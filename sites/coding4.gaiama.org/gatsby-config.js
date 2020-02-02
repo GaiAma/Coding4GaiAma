@@ -5,8 +5,6 @@
  * https://webmention.io/
  * https://brid.gy/
  *
- * DONE: Check out https://npm.im/gatsby-plugin-schema-snapshot/ to lock-down gQL schema
- *
  * NOTE: [hover-cards](https://github.com/sindresorhus/module-requests/issues/115)
  *
  * NOTE: check out https://gatsby-remark-design-system.netlify.com/
@@ -64,18 +62,6 @@ module.exports = {
       },
     },
     // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: resolve(__dirname, `../..`),
-    //     name: `leasot`,
-    //     ignore: [
-    //       /\.*.*\/(node_modules|\.cache|public|static|dist)\/./,
-    //       /\.*.\.(log|jpe?g|png|gif|ico|json|map|gz|pdf|yarn|d\.ts)/,
-    //       /packages\/.*\/lib\//,
-    //     ],
-    //   },
-    // },
-    // {
     //   resolve: `gatsby-source-graphql`,
     //   options: {
     //     typeName: `GitHub`,
@@ -88,13 +74,6 @@ module.exports = {
     //     fetchOptions: {},
     //   },
     // },
-    // {
-    //   resolve: `gatsby-transformer-leasot`,
-    //   options: {
-    //     customTags: [`NOTE`, `DONE`],
-    //     mode: `mdx`,
-    //   },
-    // },
     {
       resolve: `gatsby-theme-leasot`,
       options: {
@@ -104,6 +83,19 @@ module.exports = {
       },
     },
     {
+      // NOTE: try https://github.com/andrewbranch/gatsby-remark-vscode
+      // NOTE: check out https://mdxjs.com/guides/live-code
+      // NOTE: check out https://mdxjs.com/guides/syntax-highlighting
+      // NOTE: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
+      // maybe make mdx plugin
+      // NOTE: accessible footnotes
+      // https://www.sitepoint.com/accessible-footnotes-css/
+      // https://codepen.io/SitePoint/pen/QbMgvY?editors=1100
+      // https://github.com/zestedesavoir/zmarkdown/blob/master/packages/remark-numbered-footnotes
+      // maybe make accessible footnote plugin like https://www.jamesrmeyer.com/otherstuff/easy-footnotes-for-web-pages.html
+      // https://blog.apaonline.org/2019/01/17/eliminating-footnotes-makes-philosophy-more-accessible/
+      // footnotes https://en.wikipedia.org/wiki/Fields_Medal
+      // `gatsby-remark-abbr`,
       resolve: `gatsby-plugin-mdx`,
       options: {
         rehypePlugins: [
@@ -126,7 +118,6 @@ module.exports = {
           require(`remark-heading-id`),
           require(`remark-breaks`),
           // require(`remark-capitalize`),
-          // require(`remark-title`),
           remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
@@ -160,29 +151,7 @@ module.exports = {
             },
           },
           // { resolve: `gatsby-remark-external-links` },
-          // {
-          //   // NOTE: try https://github.com/andrewbranch/gatsby-remark-vscode
-          //   // NOTE: check out https://mdxjs.com/guides/live-code
-          //   // NOTE: check out https://mdxjs.com/guides/syntax-highlighting
-          //   resolve: `gatsby-remark-prismjs`,
-          //   options: {
-          //     // inlineCodeMarker: `+`,
-          //     showLineNumbers: true,
-          //     noInlineHighlight: false,
-          //   },
-          // },
           `gatsby-remark-gemoji-to-emoji`,
-          // NOTE: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
-          // maybe make mdx plugin
-          // accessible footnotes
-          // https://www.sitepoint.com/accessible-footnotes-css/
-          // https://codepen.io/SitePoint/pen/QbMgvY?editors=1100
-          // https://github.com/zestedesavoir/zmarkdown/blob/master/packages/remark-numbered-footnotes
-          // maybe make accessible footnote plugin like https://www.jamesrmeyer.com/otherstuff/easy-footnotes-for-web-pages.html
-          // https://blog.apaonline.org/2019/01/17/eliminating-footnotes-makes-philosophy-more-accessible/
-          // footnotes https://en.wikipedia.org/wiki/Fields_Medal
-          // `gatsby-remark-abbr`,
-          // DONE: hash urls not jumping to anchor?
           `gatsby-remark-lang-slug`,
         ],
       },
@@ -195,41 +164,9 @@ module.exports = {
       },
     },
     // {
-    //   resolve: `@lekoarts/gatsby-theme-specimens`,
-    //   options: {
-    //     contrastGuidelines: `AAA`,
-    //     codeExample: false,
-    //     rootFontSize: 16,
-    //   },
-    // },
-    // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
     //     pathToConfigModule: `src/utils/typography`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-sass`,
-    //   options: {
-    //     // implementation: require(`sass`),
-    //     postCssPlugins: [
-    //       // require(`postcss-import`)({
-    //       //   path: [resolve(__dirname, `..`, `..`), resolve(__dirname)],
-    //       // }),
-    //       require(`tailwindcss`),
-    //       require(`postcss-preset-env`)({ stage: 0 }),
-    //     ],
-    //   },
-    // },
-    // {
-    //   // https://github.com/anantoghosh/gatsby-plugin-purgecss#whitelist-solutions
-    //   resolve: `gatsby-plugin-purgecss`,
-    //   options: {
-    //     printRejected: isDebug,
-    //     printAll: isDebug,
-    //     tailwind: true,
-    //     whitelistPatterns: [/^(gatsby|theme|has-highlighted)/],
-    //     whitelistPatternsChildren: [/token/],
     //   },
     // },
     {
@@ -251,14 +188,6 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-tagmanager`,
-    //   options: {
-    //     id: `GTM-WMKKBFD`,
-    //     includeInDevelopment: true,
-    //     defaultDataLayer: { platform: "gatsby" },
-    //   },
-    // },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
@@ -291,10 +220,6 @@ module.exports = {
         allPageHeaders: [
           ...(!isProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
         ],
-        // transformHeaders: (headers, path) => {
-        //   console.log(JSON.stringify({ path, headers }, null, 2))
-        //   return headers
-        // },
       },
     },
     {
