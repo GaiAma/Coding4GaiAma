@@ -144,8 +144,9 @@ module.exports = {
             options: {
               maxWidth: 800,
               backgroundColor: `#eae9e9`,
-              linkImagesToOriginal: true,
-              showCaptions: true,
+              linkImagesToOriginal: false,
+              showCaptions: ['title'],
+              markdownCaptions: true,
               quality: 75,
               wrapperStyle: f => `flex:${round(f.aspectRatio, 2)};`,
               ignoreFileExtensions: [], // the quick fix? #6698
