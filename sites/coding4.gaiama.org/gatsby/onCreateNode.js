@@ -1,7 +1,9 @@
-const speakingurl = require(`speakingurl`)
+const sindreSlugify = require(`@sindresorhus/slugify`)
 const { homepage, repository } = require(`../package.json`)
 
 // const isHomePage = node => node.frontmatter.layout === `HomePage`
+
+const slugify = str => sindreSlugify(str, { decamelize: false })
 
 module.exports = async function onCreateNode({
   node,
@@ -51,8 +53,6 @@ module.exports = async function onCreateNode({
   if (!node.frontmatter.layout) {
     return
   }
-
-  const slugify = s => speakingurl(s, { lang })
 
   /**
    * Post related fields
