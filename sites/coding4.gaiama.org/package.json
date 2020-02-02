@@ -28,6 +28,7 @@
     "build": "gatsby build && notify -t 'Build complete' -m $npm_package_name",
     "build:clean": "gatsby clean && yarn build",
     "build:live": "gatsby build",
+    "preview": "yarn build:clean && yarn serve",
     "readme": "remark README.md"
   },
   "dependencies": {
