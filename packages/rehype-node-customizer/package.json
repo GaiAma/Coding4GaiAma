@@ -1,0 +1,41 @@
+{
+  "name": "rehype-node-customizer",
+  "version": "0.1.0",
+  "description": "Rehype plugin to customize select nodes & their parent, for example change the image wrapper from <p> to <div class=\"gallery gallery-images-3\">",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/rehype-node-customizer"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/rehype-node-customizer#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
+  },
+  "dependencies": {
+    "@types/unist": "^2.0.3",
+    "hast-util-whitespace": "1.0.3",
+    "unist-util-is": "4.0.1",
+    "unist-util-visit": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.5.0",
+    "unist-util-visit-parents": "^3.0.1",
+    "typescript": "^3.7.5"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rehype",
+    "markdown",
+    "unified",
+    "unist",
+    "ast",
+    "customize"
+  ]
+}
