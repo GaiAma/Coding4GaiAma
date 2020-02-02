@@ -116,9 +116,7 @@ module.exports = {
               customizer: ({ node, cleanChildren }) => {
                 node.tagName = 'div'
                 node.children = cleanChildren
-                if (node.children.length > 1) {
-                  node.properties.class = `inline-gallery inline-gallery-${node.children.length}`
-                }
+                node.properties.class = `inline-gallery inline-gallery-${cleanChildren.length}`
                 return node
               },
             },
