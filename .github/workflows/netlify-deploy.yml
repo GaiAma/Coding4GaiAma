@@ -14,10 +14,9 @@ on:
       - '**.tsx?'
       - '**/yarn.lock'
       - 'sites/**/content/**'
-    paths-ignore:
-      - 'plopfile.js'
-      - 'plop-templates/**'
-      - 'packages/plop-pack*'
+      - '!plopfile.js'
+      - '!plop-templates/**'
+      - '!packages/plop-pack*'
 
     # paths-ignore: ['docs/**']
   # use https://hub.github.com/hub-release.1.html to trigger a build
