@@ -12,6 +12,8 @@ tags:
 showTableOfContents: true
 ---
 
+![Cover showing GatsbyJS & Leasot Logos](assets/cover.png)
+
 # Gatsby Transformer Leasot
 
 I finally published [gatsby-transformer-leasot](https://www.npmjs.com/package/gatsby-transformer-leasot) 🎉 I started working on this half a year ago I believe, yet couldn't manage to bring it to a state I'd feel comfortable releasing. In the last couple of days I could spare some time improving the API, convert it to Typescript 🚀 and improve the docs.
@@ -20,13 +22,13 @@ I finally published [gatsby-transformer-leasot](https://www.npmjs.com/package/ga
 
 It extracts all comments in provided source files like the following
 
-```js
+```js size=content
 // TODO: find a more concise way
 ```
 
 and makes them available to you via GrapqhQL as accessible object containing the comment along useful information.
 
-```json
+```json size=content
 {
   "todo": {
     "ref": "",
@@ -41,7 +43,7 @@ and makes them available to you via GrapqhQL as accessible object containing the
 
 ## How to install it
 
-```bash
+```bash size=content
 yarn add -D gatsby-transformer-leasot
 # or
 npm i -D gatsby-transformer-leasot
@@ -115,7 +117,7 @@ allLeasot(
 
 ## More examples
 
-```js
+```js size=content
 // FIXME(Reference): improve example
 // TODO: you can add a reference like this as well /Reference
 // TODO: example without reference
