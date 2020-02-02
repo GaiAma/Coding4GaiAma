@@ -35,17 +35,19 @@ export default {
   h5: props => <Heading {...props} as="h5" />,
   h6: props => <Heading {...props} as="h6" />,
   Box: props => <Box mb="10" {...props} />,
-  table: ({ headers, ...props }) => (
+  table: ({ headers = [], ...props }) => (
     <table
       {...props}
       sx={{
-        '@media only screen and (max-width: 900px)': headers.reduce(
-          (result, each, index) => ({
-            ...result,
-            [`td:nth-of-type(${index + 1}):before`]: { content: `"${each}"` },
-          }),
-          {}
-        ),
+        ...(headers?.length && {
+          '@media only screen and (max-width: 900px)': headers.reduce(
+            (result, each, index) => ({
+              ...result,
+              [`td:nth-of-type(${index + 1}):before`]: { content: `"${each}"` },
+            }),
+            {}
+          ),
+        }),
       }}
     />
   ),
