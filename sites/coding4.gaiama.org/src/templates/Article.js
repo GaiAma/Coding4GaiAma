@@ -119,6 +119,22 @@ const Article = ({ data: { page, site }, ...props }) => {
         </Link>
       </Box>
 
+      {process.env.NODE_ENV !== 'production' &&
+        !!page.frontmatter.publications && (
+          <Box mt="10">
+            <Heading as="h2">⚠️ [POC] Publications</Heading>
+            <ul>
+              {page.frontmatter.publications.map(x => (
+                <li key={x}>
+                  <Link to={x} sx={{ wordBreak: `break-all` }}>
+                    {x}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Box>
+        )}
+
       <ShareButtons
         sx={{ gridColumn: `1/7`, mt: 4 }}
         title={page.frontmatter.title}
@@ -178,6 +194,7 @@ export const query = graphql`
       toc
       frontmatter {
         showTableOfContents
+        publications
       }
       fields {
         # shareableUrl

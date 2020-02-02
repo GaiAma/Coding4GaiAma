@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-01-27T22:11:40.721Z ###
+### Type definitions saved at 2020-02-02T14:55:07.992Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -70,6 +70,14 @@ type Directory implements Node @dontInfer {
   birthtimeMs: Float @deprecated(reason: "Use `birthTime` instead")
   blksize: Int
   blocks: Int
+}
+
+type SitePage implements Node @dontInfer {
+  path: String!
+  component: String!
+  internalComponentName: String!
+  componentChunkName: String!
+  matchPath: String
 }
 
 type Leasot implements Node @dontInfer {
@@ -329,6 +337,7 @@ type Frontmatter @derivedTypes {
   date: Date @dateformat
   author: String
   tags: [String]
+  publications: [String]
   shortSlug: String
   robots: String
   statusCode: Int
