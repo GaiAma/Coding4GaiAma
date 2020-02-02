@@ -1,23 +1,25 @@
 /**
  * NOTE: https://wooorm.com/write-music/ & https://unifiedjs.com/learn/guide/create-an-editor/
- * TODO: check out webmentions
+ * NOTE: check out webmentions
  * https://www.npmjs.com/package/gatsby-plugin-webmention
  * https://webmention.io/
  * https://brid.gy/
  *
  * DONE: Check out https://npm.im/gatsby-plugin-schema-snapshot/ to lock-down gQL schema
  *
- * TODO: check out https://gatsby-remark-design-system.netlify.com/
+ * NOTE: [hover-cards](https://github.com/sindresorhus/module-requests/issues/115)
  *
- * TODO: gatsby-plugin for https://ffoodd.github.io/a11y.css/ ?
+ * NOTE: check out https://gatsby-remark-design-system.netlify.com/
+ *
+ * NOTE: gatsby-plugin for https://ffoodd.github.io/a11y.css/ ?
  * check out GaiAma/gaiama.org/packages..
  *
- * TODO: use https://github.com/nytimes/react-tracking ?
+ * NOTE: use https://github.com/nytimes/react-tracking ?
  *
- * TODO: add fancy page transitions
+ * NOTE: add fancy page transitions
  * https://github.com/gatsbyjs/gatsby/blob/master/examples/using-page-transitions/src/components/transition.js
  *
- * TODO: use react-icons?
+ * NOTE: use react-icons?
  *
  * NOTE: consider https://www.gatsbyjs.org/packages/gatsby-remark-embedder/
  *
@@ -26,6 +28,9 @@
  */
 const { resolve } = require(`path`)
 const { round } = require(`lodash`)
+const { rehypeNodeCustomizer } = require(`rehype-node-customizer`)
+const { rehypeAccessibleEmojis } = require(`rehype-accessible-emojis`)
+const { remarkResponsiveCssTables } = require(`remark-responsive-css-tables`)
 const { version, license } = require(`./package.json`)
 const {
   branch,
@@ -102,14 +107,29 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         rehypePlugins: [
-          require(`rehype-accessible-emojis`).rehypeAccessibleEmojis,
+          rehypeAccessibleEmojis,
+          [
+            // NOTE: install or improve gatsby-remark-wrap-images then open source it
+            rehypeNodeCustomizer,
+            {
+              childrenTypes: [{ tagName: 'figure' }, { tagName: 'img' }],
+              customizer: ({ node, cleanChildren }) => {
+                node.tagName = 'div'
+                node.children = cleanChildren
+                if (node.children.length > 1) {
+                  node.properties.class = `inline-gallery inline-gallery-${node.children.length}`
+                }
+                return node
+              },
+            },
+          ],
         ],
         remarkPlugins: [
           require(`remark-heading-id`),
-          // TODO: use for https://github.com/remarkjs/remark-toc ?
           require(`remark-breaks`),
           // require(`remark-capitalize`),
-          require(`remark-responsive-css-tables`).remarkResponsiveCssTables,
+          // require(`remark-title`),
+          remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
           require(`remark-numbered-footnotes`),
@@ -121,7 +141,7 @@ module.exports = {
         ],
         gatsbyRemarkPlugins: [
           {
-            // TODO: consider [gatsby-remark-images-anywhere](https://github.com/d4rekanguok/gatsby-remark-images-anywhere)
+            // NOTE: consider [gatsby-remark-images-anywhere](https://github.com/d4rekanguok/gatsby-remark-images-anywhere)
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
@@ -133,8 +153,6 @@ module.exports = {
               ignoreFileExtensions: [], // the quick fix? #6698
             },
           },
-          // FIXME: install or improve gatsby-remark-wrap-images then open source it
-          // { resolve: `@gaiama/gatsby-remark-wrap-images` },
           { resolve: `gatsby-remark-copy-linked-files` },
           {
             resolve: `gatsby-remark-smartypants`,
@@ -144,9 +162,9 @@ module.exports = {
           },
           // { resolve: `gatsby-remark-external-links` },
           // {
-          //   // TODO: try https://github.com/andrewbranch/gatsby-remark-vscode
-          //   // TODO: check out https://mdxjs.com/guides/live-code
-          //   // TODO: check out https://mdxjs.com/guides/syntax-highlighting
+          //   // NOTE: try https://github.com/andrewbranch/gatsby-remark-vscode
+          //   // NOTE: check out https://mdxjs.com/guides/live-code
+          //   // NOTE: check out https://mdxjs.com/guides/syntax-highlighting
           //   resolve: `gatsby-remark-prismjs`,
           //   options: {
           //     // inlineCodeMarker: `+`,
@@ -155,7 +173,7 @@ module.exports = {
           //   },
           // },
           `gatsby-remark-gemoji-to-emoji`,
-          // TODO: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
+          // NOTE: gatsby-remark-abbr not working? Accessible solution for sidenotes/footnotes? Even necessary?
           // maybe make mdx plugin
           // accessible footnotes
           // https://www.sitepoint.com/accessible-footnotes-css/
