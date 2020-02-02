@@ -1,14 +1,10 @@
 # based on https://sung.codes/blog/2019/12/25/building-gatsby-with-git-hub-actions-and-deploying-to-netlify/
 name: Build & Deploy
-
-# DONE: integrate [cache](https://github.com/actions/cache)
 on:
   push:
     branches:
       - master
     # only deploy if .js/.jsx, .ts/.tsx, yarn.lock or content files have changed
-
-    # TODO: not running on content changes??
     paths:
       - '**.jsx?'
       - '**.tsx?'
@@ -17,19 +13,11 @@ on:
       - '!plopfile.js'
       - '!plop-templates/**'
       - '!packages/plop-pack*'
-
-    # paths-ignore: ['docs/**']
-  # use https://hub.github.com/hub-release.1.html to trigger a build
-  # release:
+  # release: # use https://hub.github.com/hub-release.1.html to trigger a build
   #   types: [published]
-  # push:
-  # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/workflow-syntax-for-github-actions#onpushpull_requestpaths
-  #   paths-ignore: ['docs/**'] # to be extended if I decide to enable build on push
-  #   branches: [master]
   # 1. Trigger the workflow every 2 hours
   # schedule:
   #   - cron: '0 */2 * * *'
-
 jobs:
   build:
     runs-on: ubuntu-latest
