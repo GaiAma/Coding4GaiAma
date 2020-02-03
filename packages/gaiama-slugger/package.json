@@ -1,7 +1,7 @@
 {
   "name": "@gaiama/slugger",
   "version": "0.1.0",
-  "description": "",
+  "description": "Opinionated slugger - handles duplicates & pre-configures @sindresorhus/slugify",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
@@ -23,10 +23,10 @@
     "@sindresorhus/slugify": "0.10.0"
   },
   "devDependencies": {
-    "@types/node": "^13.5.0",
+    "@types/node": "13.5.0",
     "ava": "3.1.0",
     "ts-node": "8.6.2",
-    "typescript": "^3.7.4"
+    "typescript": "3.7.4"
   },
   "ava": {
     "extensions": [
@@ -38,7 +38,12 @@
   },
   "keywords": [
     "slug",
-    "pretty url"
+    "slugify",
+    "slug",
+    "url",
+    "url-safe",
+    "urlify",
+    "pretty-url"
   ],
   "files": ["lib"]
 }
