@@ -2,6 +2,8 @@
  * - https://github.com/malerba118/react-starter-cli/tree/master/plop-templates
  * - https://dev.to/ekafyi/adding-generators-to-your-gatsby-site-with-plop-2gd5
  * - https://www.reddit.com/r/javascript/comments/3v5gum/plop_a_microgenerator_to_ease_your_daily_life/
+ * - https://github.com/HT2-Labs/plop-generators/blob/master/package.json#L16
+ * - https://github.com/amwmedia/plop-pack-fancy-comments
  */
 module.exports = function(plop) {
   plop.load('plop-pack-gatsby', {
@@ -82,6 +84,6 @@ module.exports = function(plop) {
   plop.setGenerator('exit', {
     description: 'exit plop',
     prompts: [],
-    actions: () => ['\n🙏 Thanks for plopping with GaiAma\n']
+    actions: () => ['\n🙏 Thanks for plopping with GaiAma\n'],
   })
 }

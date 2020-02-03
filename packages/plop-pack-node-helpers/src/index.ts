@@ -57,7 +57,7 @@ module.exports = (plop: NodePlopAPI, config: Config): void => {
   //     ''
   //   );
   // });
-
+  // https://stackoverflow.com/questions/41944650/this-implicitly-has-type-any-because-it-does-not-have-a-type-annotation
   plop.setHelper('if_eq', function(
     this: any,
     a: string,
