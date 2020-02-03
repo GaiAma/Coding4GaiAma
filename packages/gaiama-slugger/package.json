@@ -15,9 +15,10 @@
   "scripts": {
     "build": "tsc",
     "watch": "yarn build --watch",
-    "prepublish": "yarn build",
-    "test": "ava --verbose",
-    "test:watch": "yarn test --watch"
+    "prepublish": "yarn build && yarn test",
+    "test": "nyc ava --verbose",
+    "test:watch": "ava --verbose --watch",
+    "coverage": "nyc report --reporter=text-lcov"
   },
   "dependencies": {
     "@sindresorhus/slugify": "0.10.0"
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "13.5.0",
     "ava": "3.1.0",
+    "nyc": "15.0.0",
     "ts-node": "8.6.2",
     "typescript": "3.7.4"
   },
@@ -36,6 +38,13 @@
       "ts-node/register"
     ]
   },
+  "nyc": {
+    "check-coverage": true,
+    "branches": 80,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
+  },
   "keywords": [
     "slug",
     "slugify",
@@ -45,5 +54,7 @@
     "urlify",
     "pretty-url"
   ],
-  "files": ["lib"]
+  "files": [
+    "lib"
+  ]
 }

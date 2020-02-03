@@ -1,2 +1,4 @@
 .env
 /lib
+.nyc_output
+coverage
