@@ -1,0 +1,45 @@
+{
+  "name": "remark-lang-slug",
+  "version": "0.1.0",
+  "description": "Uses @sindresorhus/slugify to add localized anchors to headings",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/remark-lang-slug"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-lang-slug#readme",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava --verbose",
+    "test:watch": "yarn test --watch"
+  },
+  "dependencies": {
+    "@gaiama/slugger": "0.1.0",
+    "mdast-util-to-string": "^1.0.7",
+    "rehype": "9.0.1",
+    "unist-util-remove-position": "2.0.0",
+    "unist-util-visit": "^2.0.1"
+  },
+  "keywords": [
+    "unified",
+    "remark",
+    "plugin",
+    "mdast",
+    "markdown",
+    "text",
+    "slug",
+    "id",
+    "github",
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization"
+  ],
+  "devDependencies": {
+    "ava": "3.1.0",
+    "remark-parse": "7.0.2",
+    "remark-unwrap-images": "1.0.0",
+    "unified": "8.4.2"
+  }
+}
