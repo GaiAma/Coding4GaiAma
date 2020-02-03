@@ -102,6 +102,7 @@ module.exports = {
           rehypeAccessibleEmojis,
           [
             // NOTE: install or improve gatsby-remark-wrap-images then open source it
+            // NOTE [gatsby-remark-figure-caption](https://github.com/leonardodino/gatsby-remark-figure-caption)
             rehypeNodeCustomizer,
             {
               childrenTypes: [{ tagName: 'figure' }, { tagName: 'img' }],
