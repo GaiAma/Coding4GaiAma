@@ -282,6 +282,7 @@ export default {
   grid: {
     display: 'grid',
 
+    // https://www.smashingmagazine.com/2019/10/editorial-design-patterns-css-grid-subgrid-naming/
     gridTemplateColumns: [
       // `0 0 0 20px minmax(auto, 90vw) 20px 0 0 0`,
       `0 0 0 2vw 20px minmax(auto,90vw) 20px 2vw 0 0 0`,

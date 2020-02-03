@@ -11,6 +11,7 @@ const win = window
 // by https://stackoverflow.com/a/27779534/3484824
 // read https://developer.akamai.com/blog/2017/12/04/beware-performancetimingdominteractive
 // watch https://www.oreilly.com/ideas/measuring-what-matters
+// https://blog.logrocket.com/how-to-practically-use-performance-api-to-measure-performance/
 doc.addEventListener('readystatechange', () => {
   win.GaiAma.perf[doc.readyState] = `${performance.now().toFixed(2)}ms`
 })

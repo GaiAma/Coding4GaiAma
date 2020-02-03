@@ -119,6 +119,7 @@ module.exports = {
           require(`remark-heading-id`),
           require(`remark-breaks`),
           // require(`remark-capitalize`),
+          // require(`remark-align`),
           remarkResponsiveCssTables,
           require(`remark-github`),
           require(`remark-kbd`),
