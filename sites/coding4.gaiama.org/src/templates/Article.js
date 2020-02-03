@@ -122,7 +122,12 @@ const Article = ({ data: { page, site }, ...props }) => {
       {process.env.NODE_ENV !== 'production' &&
         !!page.frontmatter.publications && (
           <Box mt="10">
-            <Heading as="h2">⚠️ [POC] Publications</Heading>
+            <Heading as="h2">
+              <span role="img" aria-label="warn">
+                ⚠️
+              </span>{' '}
+              [POC] Publications
+            </Heading>
             <ul>
               {page.frontmatter.publications.map(x => (
                 <li key={x}>
