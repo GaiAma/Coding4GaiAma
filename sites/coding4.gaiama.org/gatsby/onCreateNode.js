@@ -1,9 +1,7 @@
-const sindreSlugify = require(`@sindresorhus/slugify`)
+const { slugify } = require(`@gaiama/slugger`)
 const { homepage, repository } = require(`../package.json`)
 
 // const isHomePage = node => node.frontmatter.layout === `HomePage`
-
-const slugify = str => sindreSlugify(str, { decamelize: false })
 
 module.exports = async function onCreateNode({
   node,
@@ -14,6 +12,8 @@ module.exports = async function onCreateNode({
   if (typeof node.frontmatter === `undefined`) return
 
   const { createNodeField, createRedirect, deleteNode } = actions
+
+  slugify.reset()
 
   // remove draft nodes
   // not working at the moment

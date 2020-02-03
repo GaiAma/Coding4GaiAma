@@ -127,6 +127,7 @@ module.exports = {
             { plugins: [require(`typographic-single-spaces`)] },
           ],
           require('remark-truncate-links').remarkTruncateLinks,
+          require(`remark-lang-slug`),
         ],
         gatsbyRemarkPlugins: [
           {
@@ -152,7 +153,6 @@ module.exports = {
           },
           // { resolve: `gatsby-remark-external-links` },
           `gatsby-remark-gemoji-to-emoji`,
-          `gatsby-remark-lang-slug`,
         ],
       },
     },
