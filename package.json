@@ -14,11 +14,12 @@
     "plop": "plop",
     "lerna": "lerna",
     "packages:build": "lerna run build",
-    "postinstall": "yarn packages:build"
+    "packages:test": "lerna run test",
+    "postinstall": "yarn packages:build && yarn packages:test"
   },
   "husky": {
     "hooks": {
-      "pre-push": "echo \"lerna run test\"",
+      "pre-push": "yarn packages:test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
