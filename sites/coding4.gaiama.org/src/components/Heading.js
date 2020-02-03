@@ -22,9 +22,11 @@ export const Heading = props => (
       },
     }}
   >
-    <a href={`#${props.id}`} sx={{ color: `muted`, textDecoration: `none` }}>
-      #
-    </a>
+    {!!props.id && (
+      <a href={`#${props.id}`} sx={{ color: `muted`, textDecoration: `none` }}>
+        #
+      </a>
+    )}
     {props.children}
   </UiHeading>
 )
