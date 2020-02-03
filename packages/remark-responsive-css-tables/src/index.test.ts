@@ -1,15 +1,17 @@
 /// <reference path="../types/unist-util-remove-position/index.d.ts" />
-import test, { ExecutionContext } from 'ava'
-import remark from 'remark'
-import u from 'unist-builder'
-import removePosition from 'unist-util-remove-position'
-import { remarkResponsiveCssTables as plugin, NodeWithHprops } from './index'
+import test, { ExecutionContext } from 'ava';
+import remark from 'remark';
+import u from 'unist-builder';
+import removePosition from 'unist-util-remove-position';
+import { remarkResponsiveCssTables as plugin, NodeWithHprops } from './index';
 
-const clearTerminal = () => process.stdout.write('\x1B[2J\x1B[3J\x1B[H\x1Bc')
+const clearTerminal = () => process.stdout.write('\x1B[2J\x1B[3J\x1B[H\x1Bc');
 
 test.before((t: ExecutionContext) => {
-  clearTerminal()
-})
+  if (process.env.npm_config_argv.includes('watch')) {
+    clearTerminal();
+  }
+});
 
 const table1 = {
   input: `
@@ -36,7 +38,7 @@ const table1 = {
       ]
     ),
   ]),
-}
+};
 
 test('includes headers array', (t: ExecutionContext) => {
   const actual = removePosition(
@@ -44,8 +46,8 @@ test('includes headers array', (t: ExecutionContext) => {
       .use(plugin)
       .runSync(remark().parse(table1.input)),
     true
-  ) as NodeWithHprops
-  t.deepEqual(actual, table1.expected, 'message?')
+  ) as NodeWithHprops;
+  t.deepEqual(actual, table1.expected, 'message?');
   // if (!Array.isArray(actual.children)) {
   //   return t.fail('missing children')
   // }
@@ -59,7 +61,7 @@ test('includes headers array', (t: ExecutionContext) => {
   //   actual.children[0].data.hProperties.headers.includes('Column 2'),
   //   'headers includes Column 2'
   // )
-})
+});
 
 /* expected AST
 {

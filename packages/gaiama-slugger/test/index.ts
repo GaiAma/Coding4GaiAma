@@ -4,7 +4,9 @@ import { slugify } from '../src';
 const clearTerminal = () => process.stdout.write('\x1B[2J\x1B[3J\x1B[H\x1Bc');
 
 test.before(() => {
-  clearTerminal();
+  if (process.env.npm_config_argv.includes('watch')) {
+    clearTerminal();
+  }
 });
 
 test('basics', (t: ExecutionContext) => {
