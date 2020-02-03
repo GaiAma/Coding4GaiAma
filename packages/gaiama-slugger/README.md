@@ -1,4 +1,4 @@
-# gaiama-slugger
+# @gaiama/slugger
 
 ## Early release
 
