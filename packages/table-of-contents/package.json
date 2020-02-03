@@ -16,7 +16,8 @@
     "build": "tsc",
     "watch": "yarn build --watch",
     "prepublish": "yarn build",
-    "test": "ava --verbose"
+    "test": "ava --verbose",
+    "test:watch": "yarn test --watch"
   },
   "keywords": [
     "toc",
@@ -33,7 +34,9 @@
     "lib"
   ],
   "ava": {
-    "compileEnhancements": false,
+    "files": [
+      "test/**/*.test.ts"
+    ],
     "extensions": [
       "ts"
     ],

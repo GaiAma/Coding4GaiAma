@@ -16,7 +16,8 @@
     "build": "tsc",
     "watch": "yarn build --watch",
     "prepublish": "yarn build",
-    "test": "ava --verbose"
+    "test": "ava --verbose",
+    "test:watch": "yarn test --watch"
   },
   "keywords": [
     "unified",
@@ -43,7 +44,6 @@
     "lib"
   ],
   "ava": {
-    "compileEnhancements": false,
     "files": [
       "src/**/*.test.ts"
     ],
