@@ -3,22 +3,7 @@ import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { Box } from '@theme-ui/components'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Link } from '../components/Link'
-
-// inspired by https://gatsby-theme-legals.netlify.com/privacy-policy
-const TableOfContents = ({ items }) =>
-  !!items.length && (
-    <ul>
-      {items.map(item => (
-        <li key={item.url}>
-          <Link variant="muted" to={item.url}>
-            {item.title}
-          </Link>
-          {!!item.children?.length && <TableOfContents items={item.children} />}
-        </li>
-      ))}
-    </ul>
-  )
+import { TableOfContents } from 'components/tabl-of-contents'
 
 const SimplePage = ({ data: { page }, ...props }) => {
   // does that always work?

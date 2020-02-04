@@ -9,6 +9,7 @@ import { ShareButtons } from 'components/ShareButtons'
 import { Link } from 'components/Link'
 import { Flex, Box } from '@theme-ui/components'
 import { Heading } from 'components/Heading'
+import { TableOfContents } from 'components/tabl-of-contents'
 
 // type Props = {
 //   data: {
@@ -39,26 +40,6 @@ import { Heading } from 'components/Heading'
 //     },
 //   },
 // }
-
-// inspired by https://gatsby-theme-legals.netlify.com/privacy-policy
-// TODO: checkout https://css-tricks.com/sticky-table-of-contents-with-scrolling-active-states/
-const TableOfContents = ({ items }) =>
-  !!items.length && (
-    <nav>
-      <ul>
-        {items.map(item => (
-          <li key={item.url}>
-            <Link variant="muted" to={item.url}>
-              {item.title}
-            </Link>
-            {!!item.children?.length && (
-              <TableOfContents items={item.children} />
-            )}
-          </li>
-        ))}
-      </ul>
-    </nav>
-  )
 
 const Article = ({ data: { page, site }, ...props }) => {
   // const description = page.frontmatter.description
