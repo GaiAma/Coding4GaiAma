@@ -10,6 +10,8 @@ module.exports = function(plop) {
     repo: 'https://github.com/GaiAma/Coding4GaiAma.git',
   })
 
+  // [Asking questions recursively (Repeat questions)](https://github.com/plopjs/plop/issues/121)
+  // https://github.com/SBoudrias/Inquirer.js/#reactive-interface
   // plop.addPrompt('recursive', require('inquirer-recursive'))
 
   // Add new post

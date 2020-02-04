@@ -12,6 +12,8 @@ const win = window
 // read https://developer.akamai.com/blog/2017/12/04/beware-performancetimingdominteractive
 // watch https://www.oreilly.com/ideas/measuring-what-matters
 // https://blog.logrocket.com/how-to-practically-use-performance-api-to-measure-performance/
+// https://github.com/NoriSte/gatsby-plugin-perfume.js
+// https://github.com/hupe1980/gatsby-plugin-performance-metrics
 doc.addEventListener('readystatechange', () => {
   win.GaiAma.perf[doc.readyState] = `${performance.now().toFixed(2)}ms`
 })
