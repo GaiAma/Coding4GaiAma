@@ -116,6 +116,7 @@ module.exports = {
           ],
         ],
         remarkPlugins: [
+          // require(`remark-sectionize`), // NOTE: wait for [jake-low/remark-sectionize#2]https://github.com/jake-low/remark-sectionize/pull/2
           require(`remark-heading-id`),
           require(`remark-breaks`),
           // require(`remark-capitalize`),
