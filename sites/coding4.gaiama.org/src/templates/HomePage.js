@@ -22,7 +22,12 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
               as="article"
               key={p.id}
               mb="12"
-              sx={{ opacity: !p.frontmatter.isPublished && 0.3 }}
+              sx={{
+                ...(!p.frontmatter.isPublished && {
+                  opacity: 0.3,
+                  ':hover': { opacity: 0.6 },
+                }),
+              }}
             >
               <Box as="header">
                 <Heading as="h2">
