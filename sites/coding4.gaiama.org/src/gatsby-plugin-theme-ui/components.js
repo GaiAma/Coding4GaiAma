@@ -61,5 +61,6 @@ export default {
   // </Box>
   kbd: props => <kbd {...props} sx={{ variant: `styles.kbd` }} />,
   sup: 'sup',
+  figure: 'figure',
   // div: 'div',
 }

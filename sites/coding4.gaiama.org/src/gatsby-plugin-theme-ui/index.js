@@ -187,6 +187,7 @@ export default {
       textDecoration: 'none',
       ':hover,:focus': { textDecoration: 'underline' },
     },
+    figure: { mx: 0 },
     p: { m: 0, mb: 10, lineHeight: 'body' },
     sup: { ml: '0.2rem' },
     h1: {
