@@ -24,11 +24,11 @@
     "@sindresorhus/slugify": "0.10.0"
   },
   "devDependencies": {
-    "@types/node": "13.5.0",
-    "ava": "3.1.0",
+    "@types/node": "13.7.0",
+    "ava": "3.2.0",
     "nyc": "15.0.0",
     "ts-node": "8.6.2",
-    "typescript": "3.7.4"
+    "typescript": "3.7.5"
   },
   "ava": {
     "extensions": [
