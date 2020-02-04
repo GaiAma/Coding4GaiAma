@@ -44,16 +44,20 @@ import { Heading } from 'components/Heading'
 // TODO: checkout https://css-tricks.com/sticky-table-of-contents-with-scrolling-active-states/
 const TableOfContents = ({ items }) =>
   !!items.length && (
-    <ul>
-      {items.map(item => (
-        <li key={item.url}>
-          <Link variant="muted" to={item.url}>
-            {item.title}
-          </Link>
-          {!!item.children?.length && <TableOfContents items={item.children} />}
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <ul>
+        {items.map(item => (
+          <li key={item.url}>
+            <Link variant="muted" to={item.url}>
+              {item.title}
+            </Link>
+            {!!item.children?.length && (
+              <TableOfContents items={item.children} />
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 
 const Article = ({ data: { page, site }, ...props }) => {
