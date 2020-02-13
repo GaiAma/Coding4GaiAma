@@ -24,6 +24,12 @@ export const GlobalMeta = ({ page, meta }) => {
         <Meta name="robots" content={page.frontmatter.robots} />
       )}
       <Meta name="theme-color" content={theme.colors.background} />
+
+      <Link
+        rel="sitemap"
+        type="application/xml"
+        href={`/${page.fields.lang}/sitemap.xml`}
+      />
     </React.Fragment>
   )
 }

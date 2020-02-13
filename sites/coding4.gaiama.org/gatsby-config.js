@@ -38,6 +38,33 @@ const {
   // isDebug,
 } = require(`./src/utils/environment-helpers.js`)
 
+const getSitemapForLanguage = lang => ({
+  output: `/${lang}/sitemap.xml`,
+  exclude: [`/${lang}/404`],
+  createLinkInHead: false, // done manually in MainLayout
+  query: `
+    {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+      allSitePage( filter: { path: { regex: "/^\/${lang}\//" } } ) {
+        edges {
+          node {
+            path
+          }
+        }
+      }
+    }`,
+  serialize: ({ site, allSitePage }) =>
+    allSitePage.edges.map(edge => ({
+      url: site.siteMetadata.siteUrl + edge.node.path,
+      changefreq: `daily`,
+      priority: 0.7,
+    })),
+})
+
 module.exports = {
   siteMetadata: {
     title: `Coding4GaiAma`,
@@ -232,6 +259,10 @@ module.exports = {
         src: resolve(`./src`),
         components: resolve(`./src/components`),
       },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: getSitemapForLanguage(`en`),
     },
     `gatsby-plugin-netlify-cache`,
     // If this should ever be removed, replace it with `gatsby-plugin-remove-serviceworker`
