@@ -16,6 +16,7 @@
   "scripts": {
     "plop": "plop",
     "lerna": "lerna",
+    "netlify": "netlify",
     "packages:build": "lerna run build",
     "packages:test": "lerna run test",
     "postinstall": "yarn packages:build && yarn packages:test"
@@ -31,6 +32,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "husky": "^4.2.3",
     "lerna": "^3.20.2",
+    "netlify-cli": "2.36.0",
     "plop": "^2.5.4",
     "plop-pack-gatsby": "1.0.0",
     "prettier": "^1.19.1",
