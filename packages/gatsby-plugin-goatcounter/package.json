@@ -1,0 +1,44 @@
+{
+  "name": "gatsby-plugin-goatcounter",
+  "publishConfig": {
+    "tag": "beta"
+  },
+  "version": "0.1.0-beta.0",
+  "description": "Gatsby plugin to add GoatCounter Analytics to a website",
+  "main": "index.js",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/gatsby-plugin-goatcounter"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-plugin-goatcounter/README.md",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublish": "yarn build"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "analytics",
+    "gdpr",
+    "stats",
+    "pageview",
+    "dsgvo",
+    "privacy",
+    "privatsphäre",
+    "datenschutz"
+  ],
+  "peerDependencies": {
+    "gatsby": "^2.0.0",
+    "react": "^16.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.6",
+    "gatsby": "^2.0.0",
+    "react": "^16.4.2",
+    "typescript": "^3.7.4"
+  }
+}

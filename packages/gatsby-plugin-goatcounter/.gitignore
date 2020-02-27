@@ -1,0 +1,7 @@
+.env
+/**.js
+/**.ts
+/**.map
+!src/**/*
+.nyc_output
+coverage
