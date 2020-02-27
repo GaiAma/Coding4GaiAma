@@ -13,6 +13,7 @@ on:
       - '!plopfile.js'
       - '!plop-templates/**'
       - '!packages/plop-pack*'
+      - '.github/workflows/**'
   # release: # use https://hub.github.com/hub-release.1.html to trigger a build
   #   types: [published]
   # 1. Trigger the workflow every 2 hours
