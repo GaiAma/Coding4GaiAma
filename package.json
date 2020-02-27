@@ -10,6 +10,9 @@
     "packages/*",
     "sites/*"
   ],
+  "resolutions": {
+    "**/sharp": "^0.24.0"
+  },
   "scripts": {
     "plop": "plop",
     "lerna": "lerna",
@@ -26,9 +29,9 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "husky": "^4.2.1",
+    "husky": "^4.2.3",
     "lerna": "^3.20.2",
-    "plop": "^2.5.3",
+    "plop": "^2.5.4",
     "plop-pack-gatsby": "1.0.0",
     "prettier": "^1.19.1",
     "user-meta": "^1.0.0"
