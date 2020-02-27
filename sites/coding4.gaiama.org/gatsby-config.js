@@ -264,6 +264,16 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: getSitemapForLanguage(`en`),
     },
+    {
+      resolve: `gatsby-plugin-goatcounter`,
+      options: {
+        code: `coding4gaiama`,
+        // exclude: ['/en/rubber-ducking'],
+        head: true,
+        allowLocal: false,
+        pixel: true,
+      },
+    },
     `gatsby-plugin-netlify-cache`,
     // If this should ever be removed, replace it with `gatsby-plugin-remove-serviceworker`
     // as explained in https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
