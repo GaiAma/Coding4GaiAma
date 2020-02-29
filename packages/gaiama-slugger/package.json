@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "yarn build --watch",
-    "prepublish": "yarn build && yarn test",
+    "prepublishOnly": "yarn build && yarn test",
     "test": "nyc ava --verbose",
     "test:watch": "ava --verbose --watch",
     "coverage": "nyc report --reporter=text-lcov"
