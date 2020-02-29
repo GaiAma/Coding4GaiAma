@@ -38,7 +38,8 @@ yarn add -D gatsby-transformer-leasot
 npm i -D gatsby-transformer-leasot
 ```
 
-**REQUIRES: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**
+**REQUIRES: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**  
+Alternatively, since v1.2.0, you can bring your own source plugin and set the `internalType` accordingly.
 
 ## Usage
 
@@ -104,14 +105,15 @@ allLeasot(
 
 ## All config options
 
-| name               | type            | default                     | description                                                                                                                                                                                                                                          |
-| ------------------ | --------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sourceInstanceName | `string`        | 'leasot'                    | Has to match the `name` prop of `gatsby-source-filesystem`.                                                                                                                                                                                          |
-| customTags         | `array`         | []                          | Other tags to look for (besides todos and fixmes). Tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customtags) |
-| mode               | `string`        | 'text'                      | Supports one of: `text`, `mdx`, `html`.                                                                                                                                                                                                              |
-| truncateLinks      | `int`\|`object` | {length: 32,style: 'smart'} | Provide `int` to change the length only. `style` can be one of: `smart`, `middle`, `end`.                                                                                                                                                            |
-| associateParser    | `object`        | {}                          | Associate the filetypes with parsers. This allows adding support for new filetypes. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#associateparser)                                                             |
-| customParsers      | `object`        | {}                          | Extend the parsers by parserName, for example override the defaultParser or add a new parser. [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customparsers)                                                             |
+| name                              | type            | default                     | description                                                                                                                                                                                                                                          |
+| --------------------------------- | --------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sourceInstanceName                | `string`        | "leasot"                    | Has to match the `name` prop of `gatsby-source-filesystem`.                                                                                                                                                                                          |
+| customTags                        | `array`         | []                          | Other tags to look for (besides todos and fixmes). Tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customtags) |
+| mode                              | `string`        | "text"                      | Supports one of: `text`, `mdx`, `html`.                                                                                                                                                                                                              |
+| truncateLinks                     | `int`\|`object` | {length: 32,style: "smart"} | Provide `int` to change the length only. `style` can be one of: `smart`, `middle`, `end`.                                                                                                                                                            |
+| associateParser                   | `object`        | {}                          | Associate the filetypes with parsers. This allows adding support for new filetypes. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#associateparser)                                                             |
+| customParsers                     | `object`        | {}                          | Extend the parsers by parserName, for example override the defaultParser or add a new parser. [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customparsers)                                                             |
+| internalType <br/> (since v1.2.0) | `string`        | "File"                      | Has to match `node.internal.type`                                                                                                                                                                                                                    |
 
 > `modifiedTime` works only locally as file time will be the same on CI
 

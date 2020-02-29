@@ -33,6 +33,7 @@ enum ContentMode {
 
 type PluginOpts = PluginOptions & {
   sourceInstanceName: string
+  internalType: string
   mode: ContentMode
   truncateLinks?: number | { length: number; style: string }
   customTags: string[]
@@ -54,6 +55,7 @@ type ContentModes = {
 }
 
 const defaultSourceInstanceName = 'leasot'
+const defaultInternalType = 'File'
 
 export const onCreateNode = async (
   {
@@ -67,6 +69,7 @@ export const onCreateNode = async (
   }: NodeArgs,
   {
     sourceInstanceName = defaultSourceInstanceName,
+    internalType = defaultInternalType,
     mode = ContentMode.Text,
     truncateLinks = { length: 32, style: 'smart' },
     customTags = [],
@@ -77,7 +80,10 @@ export const onCreateNode = async (
   // we only care about File nodes with our sourceInstanceName
   if (
     node.sourceInstanceName !== sourceInstanceName ||
-    !(node.internal.type === 'File' && leasot.isExtensionSupported(node.ext))
+    !(
+      node.internal.type === internalType &&
+      leasot.isExtensionSupported(node.ext)
+    )
   ) {
     return
   }
