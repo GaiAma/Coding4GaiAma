@@ -4,6 +4,7 @@ type: post
 title: 'ES6: Sort an array based on another array'
 layout: Article
 date: 2020-02-03
+updated: 2020-02-29
 author: can
 description: Sorting an array of numbers & an array of objects based on another array of numbers/strings in JavaScript.
 showTableOfContents: true
@@ -41,8 +42,8 @@ const result = sortArray.map(key => arrayMap[key])
 This is actually the same, only changing both inputs. Just to show possibilities 😉
 
 ```js size=content
-const array = ['a', 'b', 'c', 'd', 'e']
-const sortArray = ['c', 'e', 'b', 'd', 'a']
+const array = ['jackfruit', 'pineapple', 'papaya', 'watermelon', 'banana']
+const sortArray = ['papaya', 'banana', 'pineapple', 'watermelon', 'jackfruit']
 
 const arrayMap = array.reduce(
   (accumulator, currentValue) => ({
@@ -53,7 +54,7 @@ const arrayMap = array.reduce(
 )
 
 const result = sortArray.map(key => arrayMap[key])
-// ['c', 'e', 'b', 'd', 'a']
+// ['papaya', 'banana', 'pineapple', 'watermelon', 'jackfruit']
 ```
 
 ## Array of Objects
@@ -64,11 +65,11 @@ It's almost the same, note how only the key `[currentValue.key]` differs and has
 
 ```js size=content
 const array = [
-  { key: 'foo', value: 'bar' },
-  { key: 'foobar', value: 'baz' },
-  { key: 'qux', value: 'quux' },
+  { key: 'banana', value: 'A curved yellow fruit' },
+  { key: 'pineapple', value: 'That sour-sweet thing wearing a crown' },
+  { key: 'durian', value: 'The smelly king of fruits' },
 ]
-const sortArray = ['foobar', 'qux', 'foo']
+const sortArray = ['pineapple', 'durian', 'banana']
 
 const arrayMap = array.reduce(
   (accumulator, currentValue) => ({
@@ -80,9 +81,9 @@ const arrayMap = array.reduce(
 
 const result = sortArray.map(key => arrayMap[key])
 // [
-//   { key: 'foobar', value: 'baz' },
-//   { key: 'qux', value: 'quux' },
-//   { key: 'foo', value: 'bar'}
+//   { key: 'pineapple', value: 'That sour-sweet thing wearing a crown' },
+//   { key: 'durian', value: 'The smelly king of fruits' },
+//   { key: 'banana', value: 'A curved yellow fruit'}
 // ]
 ```
 
