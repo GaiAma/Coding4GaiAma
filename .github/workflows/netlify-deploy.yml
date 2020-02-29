@@ -25,7 +25,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-
+      - name: GitLeaks
+        uses: zricethezav/gitleaks-action@v1.1.2
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
