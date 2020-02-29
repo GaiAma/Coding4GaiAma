@@ -49,6 +49,7 @@ module.exports = async function onCreateNode({
   addField(`lang`, lang)
   addField(`date`, date)
   addField(`editLink`, editLink)
+  addField(`updated`, node.frontmatter.updated || node.frontmatter.date)
 
   if (!node.frontmatter.layout) {
     return
