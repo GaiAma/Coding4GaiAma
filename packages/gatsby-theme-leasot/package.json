@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-leasot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-leasot": "1.2.0"
+    "gatsby-transformer-leasot": "1.2.1"
   },
   "devDependencies": {
-    "@types/node": "^13.5.0",
+    "@types/node": "^13.7.7",
     "@types/unist": "^2.0.3",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }
