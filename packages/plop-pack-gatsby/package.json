@@ -1,6 +1,6 @@
 {
   "name": "plop-pack-gatsby",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,7 +16,7 @@
     "build": "yarn prepare && tsc",
     "watch": "yarn prepare && tsc --watch",
     "prepare": "rimraf lib && mkdir -p lib/templates && cp -af src/templates lib/",
-    "prepublish": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "chalk": "3.0.0",

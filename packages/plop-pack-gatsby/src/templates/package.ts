@@ -1,4 +1,4 @@
-{
+export const pkgJsonStr = `{
   "name": "{{kebabCase name}}",
   "version": "1.0.0",
   "description": "",
@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "yarn build --watch",
-    "prepublish": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "keywords": [
     "gatsby",
@@ -28,3 +28,4 @@
     "typescript": "^3.7.4"
   }
 }
+`;

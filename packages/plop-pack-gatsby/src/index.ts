@@ -2,7 +2,7 @@
 import { ActionType } from 'plop';
 import userMeta from 'user-meta';
 import chalk from 'chalk';
-import pkgJson from './templates/package.json';
+import { pkgJsonStr } from './templates/package';
 const pkgName = 'plop-pack-gatsby';
 
 // TODO: CHECKOUT https://github.com/tomorrowstudio/generator-gatsby
@@ -28,7 +28,9 @@ const error = (msg: string) => {
   process.exit(1);
 };
 
-module.exports = (plop: any, config: Config): void => {
+const pkgJson = JSON.parse(pkgJsonStr);
+
+export default (plop: any, config: Config): void => {
   // setup config defaults
   const cfg = Object.assign(defaults, config || {});
 
