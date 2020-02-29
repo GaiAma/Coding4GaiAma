@@ -4,6 +4,7 @@ type: post
 title: Gatsby Transformer Leasot
 layout: Article
 date: 2020-01-04
+updated: 2020-02-29
 author: can
 description: 'Make TODO:, FIXME: (and more) source code comments GraphQL queryable in your GatsbyJS site'
 tags:
@@ -21,6 +22,10 @@ publications:
 
 # Gatsby Transformer Leasot
 
+> 2020-02-29 Released [gatsby-theme-leasot](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-theme-leasot) for convenience.
+
+> 2020-02-29 v1.2.0 adds `internalType` setting
+
 I finally published [gatsby-transformer-leasot](https://www.npmjs.com/package/gatsby-transformer-leasot) 🎉 I started working on this half a year ago I believe, yet couldn't manage to bring it to a state I'd feel comfortable releasing. In the last couple of days I could spare some time improving the API, convert it to Typescript 🚀 and improve the docs.
 
 ## So what does it do?
@@ -28,7 +33,7 @@ I finally published [gatsby-transformer-leasot](https://www.npmjs.com/package/ga
 It extracts all comments in provided source files like the following
 
 ```js size=content
-// TODO: find a more concise way
+// TODO: water the seedlings
 ```
 
 and makes them available to you via GrapqhQL as accessible object containing the comment along useful information.
@@ -54,7 +59,9 @@ yarn add -D gatsby-transformer-leasot
 npm i -D gatsby-transformer-leasot
 ```
 
-It **requires: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**, this way you can use a separate instance to define which files to source only used by gatsby-transformer-leasot.
+It **requires: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**, this way you can use a separate instance to define which files to source only used by gatsby-transformer-leasot.  
+You can use [gatsby-theme-leasot](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-theme-leasot) for convenience.  
+Alternatively, since v1.2.0, you can bring your own source plugin and set the `internalType` accordingly.
 
 ## How to configure it
 
@@ -109,14 +116,15 @@ allLeasot(
 
 ## All config options
 
-| name               | type            | default                     | description                                                                                                                                                                                                                                          |
-| ------------------ | --------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sourceInstanceName | `string`        | 'leasot'                    | Has to match the `name` prop of `gatsby-source-filesystem`.                                                                                                                                                                                          |
-| customTags         | `array`         | []                          | Other tags to look for (besides todos and fixmes). Tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customtags) |
-| mode               | `string`        | 'text'                      | Supports one of: `text`, `mdx`, `html`.                                                                                                                                                                                                              |
-| truncateLinks      | `int`\|`object` | {length: 32,style: 'smart'} | Provide `int` to change the length only. `style` can be one of: `smart`, `middle`, `end`.                                                                                                                                                            |
-| associateParser    | `object`        | {}                          | Associate the filetypes with parsers. This allows adding support for new filetypes. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#associateparser)                                                             |
-| customParsers      | `object`        | {}                          | Extend the parsers by parserName, for example override the defaultParser or add a new parser. [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customparsers)                                                             |
+| name                              | type            | default                     | description                                                                                                                                                                                                                                          |
+| --------------------------------- | --------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| sourceInstanceName                | `string`        | 'leasot'                    | Has to match the `name` prop of `gatsby-source-filesystem`.                                                                                                                                                                                          |
+| customTags                        | `array`         | []                          | Other tags to look for (besides todos and fixmes). Tags are case-insensitive and are strict matching, i.e PROD tag will match PROD but not PRODUCTS. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customtags) |
+| mode                              | `string`        | 'text'                      | Supports one of: `text`, `mdx`, `html`.                                                                                                                                                                                                              |
+| truncateLinks                     | `int`\|`object` | {length: 32,style: 'smart'} | Provide `int` to change the length only. `style` can be one of: `smart`, `middle`, `end`.                                                                                                                                                            |
+| associateParser                   | `object`        | {}                          | Associate the filetypes with parsers. This allows adding support for new filetypes. More in [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#associateparser)                                                             |
+| customParsers                     | `object`        | {}                          | Extend the parsers by parserName, for example override the defaultParser or add a new parser. [Leasot's Docs](https://pgilad.github.io/leasot/interfaces/parseconfig.html#customparsers)                                                             |
+| internalType <br/> (since v1.2.0) | `string`        | "File"                      | Has to match `node.internal.type`                                                                                                                                                                                                                    |
 
 > All by default supported languages (file extensions) can be found in [Leasot's Readme](https://github.com/pgilad/leasot/#supported-languages)
 
