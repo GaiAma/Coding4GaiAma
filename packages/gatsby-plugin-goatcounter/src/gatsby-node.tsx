@@ -1,5 +1,5 @@
 import { NodePluginArgs } from 'gatsby';
-import { PluginOptions } from './types';
+import { PluginOptions } from './index.d';
 
 export const onPreInit = (
   { reporter }: NodePluginArgs,

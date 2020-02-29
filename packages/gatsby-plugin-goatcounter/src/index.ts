@@ -1,5 +1,5 @@
 // global window
-import { CountVars } from './types';
+import { CountVars } from './index.d';
 import { useEffect, useState } from 'react';
 
 // TODO: Skip own views inspo: https://coding4gaiama.goatcounter.com/settings#tab-site-code

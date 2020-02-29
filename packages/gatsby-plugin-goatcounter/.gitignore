@@ -3,5 +3,6 @@
 /**.ts
 /**.map
 !src/**/*
+!rollup*
 .nyc_output
 coverage
