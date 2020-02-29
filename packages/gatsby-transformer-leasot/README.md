@@ -39,6 +39,7 @@ npm i -D gatsby-transformer-leasot
 ```
 
 **REQUIRES: [gatsby-source-filesystem](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-filesystem)**  
+You can use [gatsby-theme-leasot](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-theme-leasot) for convenience.  
 Alternatively, since v1.2.0, you can bring your own source plugin and set the `internalType` accordingly.
 
 ## Usage
