@@ -36,8 +36,12 @@ const HomePage = ({ data: { page, posts }, ...props }) => {
                   </Link>
                 </Heading>
                 <Text as="small" sx={{ color: `subtle` }}>
-                  <time dateTime={p.frontmatter.dateTime}>
-                    {p.frontmatter.date}
+                  <time
+                    dateTime={
+                      p.frontmatter.updatedTime ?? p.frontmatter.dateTime
+                    }
+                  >
+                    {p.frontmatter.updated ?? p.frontmatter.date}
                   </time>
                   <span sx={{ mx: 2 }}>–</span>
                   <span>{p.timeToRead} min read</span>
@@ -78,7 +82,7 @@ export const query = graphql`
           isPublished: { in: $publishedList }
         }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [fields___updated, frontmatter___date], order: DESC }
     ) {
       nodes {
         ...CommonFields
