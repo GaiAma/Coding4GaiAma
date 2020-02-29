@@ -5,6 +5,7 @@ export type PluginOptions = {
   head: boolean;
   pixel: boolean;
   allowLocal: boolean;
+  localStorageKey: string;
 };
 
 export type CountVars = {

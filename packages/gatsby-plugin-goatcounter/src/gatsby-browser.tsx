@@ -12,16 +12,22 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export const onRouteUpdate = (
   { location }: RouteUpdateArgs,
-  opts: PluginOptions
+  opts: PluginOptions = {} as PluginOptions
 ) => {
-  // if (process.env.NODE_ENV !== `production`) {
-  //   return null;
-  // }
+  const lsKey = opts.localStorageKey ?? 'skipgc';
+
+  if (window.location.hash === `#${lsKey}`) {
+    localStorage.setItem(lsKey, 't');
+  }
+  if (window.localStorage.getItem(lsKey) === 't') {
+    return null;
+  }
 
   const pathIsExcluded =
     location &&
     typeof window.excludeGCPaths !== `undefined` &&
     window.excludeGCPaths.some(rx => rx.test(location.pathname));
+
   if ((!isProduction && !opts.allowLocal) || pathIsExcluded) return null;
 
   // wrap inside a timeout to make sure react-helmet is done with it's changes (https://github.com/gatsbyjs/gatsby/issues/9139)
