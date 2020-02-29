@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-02-02T14:55:07.992Z ###
+### Type definitions saved at 2020-02-29T16:32:57.751Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -338,8 +338,10 @@ type Frontmatter @derivedTypes {
   author: String
   tags: [String]
   publications: [String]
+  updated: Date @dateformat
   shortSlug: String
   robots: String
+  changelog: [String]
   statusCode: Int
   name: String
   image: File @fileByRelativePath
@@ -357,6 +359,7 @@ type MdxFields {
   lang: String
   date: Date @dateformat
   editLink: String
+  updated: Date @dateformat
   slug: String
   url: String
   absoluteUrl: String
