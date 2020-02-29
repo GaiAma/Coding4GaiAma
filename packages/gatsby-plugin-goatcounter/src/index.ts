@@ -1,10 +1,25 @@
+// global window
 import { CountVars } from './types';
+import { useEffect, useState } from 'react';
 
-export * from './types';
+// TODO: Skip own views inspo: https://coding4gaiama.goatcounter.com/settings#tab-site-code
+// NOTE: OutboundLink use ref as replacement for GAs eventLabel?
 
-export const goatcount = (vars: CountVars) => {
-  return typeof window !== 'undefined' &&
-    typeof window.goatcounter?.count === 'function'
-    ? window.goatcounter.count(vars)
-    : () => false;
+export const useGoatCounter = () => {
+  const [count, setCount] = useState({ count: (_: CountVars) => {} });
+
+  useEffect(() => {
+    const t = window.setInterval(() => {
+      if (window.goatcounter?.count) {
+        window.clearInterval(t);
+        setCount({ count: window.goatcounter.count });
+      }
+    }, 100);
+
+    return () => {
+      window.clearInterval(t);
+    };
+  }, []);
+
+  return count.count;
 };
