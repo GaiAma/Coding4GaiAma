@@ -2,6 +2,7 @@
 import { jsx } from 'theme-ui'
 import { MDXProvider } from '@mdx-js/react'
 import { graphql } from 'gatsby'
+import { Fragment } from 'react'
 import Img from 'gatsby-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 // import { FiEdit } from 'react-icons/fi'
@@ -10,6 +11,8 @@ import { Link } from 'components/Link'
 import { Flex, Box } from '@theme-ui/components'
 import { Heading } from 'components/Heading'
 import { TableOfContents } from 'components/tabl-of-contents'
+
+// TODO: Article Design Inspo https://www.didierboelens.com/2018/08/reactive-programming---streams---bloc/
 
 // type Props = {
 //   data: {
@@ -46,26 +49,39 @@ const Article = ({ data: { page, site }, ...props }) => {
   const { absoluteUrl } = page.fields
   const toc = page.frontmatter.showTableOfContents === true ? page.toc : []
 
-  const components = {
-    h1: ({ children, ...props }) => (
-      <Box as="header" mb="9">
-        <Heading as="h1" {...props}>
-          <span itemProp="headline">{children}</span>
-          {/* {!!description && <small itemProp="description">{description}</small>} */}
-        </Heading>
-        <Box as="small" variant="text.muted">
-          {/* <Link variant="dim" to={page.fields.url}> */}
-          <time dateTime={page.frontmatter.dateTime}>
-            {page.frontmatter.date}
-          </time>
-          {/* </Link> */}
-        </Box>
+  const h1 = ({ children, ...props }) => (
+    <Box as="header" mb="9">
+      <Heading as="h1" {...props}>
+        <span itemProp="headline">{children}</span>
+        {/* {!!description && <small itemProp="description">{description}</small>} */}
+      </Heading>
+      <Box as="small" variant="text.muted">
+        {/* <Link variant="dim" to={page.fields.url}> */}
+        {page.frontmatter.updated && (
+          <Fragment>
+            <span sx={{ fontWeight: `bold` }}>Last updated</span>
+            <time
+              dateTime={page.frontmatter.updatedTime}
+              itemprop="dateModified"
+              sx={{ pl: 1, fontWeight: `bold` }}
+            >
+              {page.frontmatter.updated}
+            </time>
+            <span sx={{ pl: 4, pr: 1 }}>Originally published</span>
+          </Fragment>
+        )}
+        <time dateTime={page.frontmatter.dateTime} itemprop="datePublished">
+          {page.frontmatter.date}
+        </time>
+        {/* </Link> */}
       </Box>
-    ),
-  }
+    </Box>
+  )
+
+  const components = { h1 }
 
   return (
-    <Box variant="grid">
+    <Box variant="grid" itemscope itemType="http://schema.org/BlogPosting">
       {!!toc?.length && (
         <Box
           sx={{
