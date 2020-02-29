@@ -8,6 +8,8 @@ export const Fragments = graphql`
       type
       date(formatString: "YYYY-MM-DD")
       dateTime: date(formatString: "YYYY-MM-DD")
+      updated(formatString: "YYYY-MM-DD")
+      updatedTime: updated(formatString: "YYYY-MM-DD")
       description
       robots
     }
