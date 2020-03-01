@@ -20,15 +20,15 @@
   },
   "dependencies": {
     "chalk": "3.0.0",
-    "plop": "2.5.3",
+    "plop": "2.5.4",
     "plop-pack-node-helpers": "1.0.0",
-    "rimraf": "3.0.1",
+    "rimraf": "3.0.2",
     "user-meta": "1.0.0"
   },
   "devDependencies": {
-    "@types/node": "13.7.0",
+    "@types/node": "13.7.7",
     "@types/unist": "2.0.3",
-    "typescript": "3.7.5"
+    "typescript": "3.8.3"
   },
   "keywords": [
     "plop",
