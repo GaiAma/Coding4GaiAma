@@ -54,7 +54,7 @@ jobs:
       - name: Build Packages
         run: yarn lerna run build
       - name: Build
-        run: yarn workspace @gaiama/coding4.gaiama.org build:live
+        run: GAIAMA_ENV="production" yarn workspace @gaiama/coding4.gaiama.org build:live
 
       - name: Publish
         env:
