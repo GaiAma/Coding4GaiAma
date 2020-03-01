@@ -22,6 +22,8 @@ yarn add -D gatsby-plugin-goatcounter
 npm i -D gatsby-plugin-goatcounter
 ```
 
+> It has `peerDependencies` on [react](http://npmjs.com/package/react) & [gatsby](https://www.npmjs.com/package/gatsby) which are required by Gatsby anyways 😉
+
 ### How to use
 
 ```js
@@ -33,11 +35,14 @@ module.exports = {
       options: {
         // REQUIRED! https://[my_code].goatcounter.com
         code: 'YOUR_GOATCOUNTER_PAGE_CODE';
+        
+        // ALL following settings are OPTIONAL
+
         // Avoids sending pageview hits from custom paths
         exclude: [];
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        // Defines where to place the tracking script - boolean `true` in the head and `false` in the body
         head: false,
         // set to true to include a gif to count non-JS users
         pixel: false,

@@ -13,7 +13,7 @@ const globals = {
 
 const sharedConfig = {
   plugins: [
-    resolve({ extensions }),
+    resolve({ extensions, preferBuiltins: true }),
     commonjs({ include: '**/node_modules/**' }),
     babel({ extensions, include: ['src/**/*'], exclude: 'node_modules/**' }),
   ],

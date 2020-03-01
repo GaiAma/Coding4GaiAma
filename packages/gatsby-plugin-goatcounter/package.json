@@ -3,6 +3,7 @@
   "description": "Gatsby plugin to add GoatCounter Analytics to a website",
   "version": "0.2.0",
   "main": "index.js",
+  "types": "index.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
   "license": "MIT",
   "repository": {

@@ -6,7 +6,7 @@
     "target": "esnext",
     "jsx": "react",
 		// Search under node_modules for non-relative imports.
-		"moduleResolution": "node",
+    "moduleResolution": "node",
 		// Process & infer types from .js files.
 		"allowJs": true,
 		// Don't emit; allow Babel to transform files.
