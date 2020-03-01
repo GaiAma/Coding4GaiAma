@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "@types/unist": "^2.0.3",
-    "hast-util-whitespace": "1.0.3",
-    "unist-util-is": "4.0.1",
+    "hast-util-whitespace": "1.0.4",
+    "unist-util-is": "4.0.2",
     "unist-util-visit": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "^13.5.0",
-    "unist-util-visit-parents": "^3.0.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "unist-util-visit-parents": "^3.0.1"
   },
   "files": [
     "lib"
