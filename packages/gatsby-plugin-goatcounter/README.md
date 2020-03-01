@@ -1,3 +1,5 @@
+![Gatsby meets GoatCounter](assets/Gatsby-meets-GoatCounter.png)
+
 # gatsby-plugin-goatcounter
 
 Adds GDPR compliant [GoatCounter Statistics](https://goatcounter.com/) to your GatsbyJS website.
