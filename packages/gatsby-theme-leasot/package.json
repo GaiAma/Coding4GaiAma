@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-leasot": "1.2.1"
+    "gatsby-transformer-leasot": "1.2.2"
   },
   "devDependencies": {
     "@types/node": "^13.7.7",
