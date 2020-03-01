@@ -34,11 +34,11 @@
   "devDependencies": {
     "@types/node": "^13.5.0",
     "@types/unist": "^2.0.3",
-    "ava": "3.2.0",
+    "ava": "3.4.0",
     "remark": "11.0.2",
     "typescript": "^3.7.5",
-    "unist-builder": "2.0.2",
-    "unist-util-remove-position": "2.0.0"
+    "unist-builder": "2.0.3",
+    "unist-util-remove-position": "2.0.1"
   },
   "files": [
     "lib"
