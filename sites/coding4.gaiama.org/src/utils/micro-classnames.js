@@ -2,13 +2,11 @@
  * micro-classnames utility
  * conditionally joining class names
  * inspired by http://jedwatson.github.io/classnames/
+ * alternative https://github.com/lukeed/clsx
  *
  * Copyright (c) 2019 Can Rau (canrau.com)
  * Licensed under the MIT License (MIT)
  */
-// const isArray = arr =>
-//   (Array.isArray && Array.isArray(arr)) ||
-//   Object.prototype.toString.call(arr) === `[object Array]`
 
 export const cx = classNames => {
   const classes =
@@ -26,6 +24,6 @@ export const cx = classNames => {
     }
     return acc
       .replace(/\s{2,}/g, ` `) // remove duplicate white-space
-      .replace(/(^\s*)?(\s*$)?/g, ``) // trim start & end
+      .trim() // trim start & end
   }, ``)
 }
