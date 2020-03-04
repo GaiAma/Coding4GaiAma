@@ -19,7 +19,8 @@
     "netlify": "netlify",
     "packages:build": "lerna run build",
     "packages:test": "lerna run test",
-    "postinstall": "yarn packages:build && yarn packages:test"
+    "postinstall": "yarn packages:build && yarn packages:test",
+    "ci": "GAIAMA_ENV=\"production\" yarn workspace @gaiama/coding4.gaiama.org build:live"
   },
   "husky": {
     "hooks": {
