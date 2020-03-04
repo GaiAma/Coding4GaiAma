@@ -82,7 +82,10 @@ export const query = graphql`
           isPublished: { in: $publishedList }
         }
       }
-      sort: { fields: [fields___updated, frontmatter___date], order: DESC }
+      sort: {
+        fields: [fields___updated, frontmatter___date]
+        order: [DESC, DESC]
+      }
     ) {
       nodes {
         ...CommonFields
