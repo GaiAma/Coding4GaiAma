@@ -32,11 +32,14 @@ const { remarkResponsiveCssTables } = require(`remark-responsive-css-tables`)
 const { version, license } = require(`./package.json`)
 const {
   branch,
-  isProduction,
   siteUrl,
   repository,
   // isDebug,
 } = require(`./src/utils/environment-helpers.js`)
+
+const isProduction = process.env.GAIAMA_ENV || false
+
+console.log('isProduction =', isProduction)
 
 const getSitemapForLanguage = lang => ({
   output: `/${lang}/sitemap.xml`,
@@ -248,7 +251,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         allPageHeaders: [
-          ...(!isProduction ? [`X-Robots-Tag: noindex, nofollow`] : []),
+          ...(isProduction ? [] : [`X-Robots-Tag: noindex, nofollow`]),
         ],
       },
     },
@@ -267,10 +270,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-goatcounter`,
       options: {
-        code: `coding4gaiama`,
+        code: isProduction ? `coding4gaiama` : `coding4gaiama-dev`,
         // exclude: ['/en/rubber-ducking'],
         head: true,
-        allowLocal: false,
+        allowLocal: !isProduction,
         pixel: true,
       },
     },
