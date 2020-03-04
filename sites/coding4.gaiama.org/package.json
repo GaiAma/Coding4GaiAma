@@ -41,7 +41,7 @@
     "date-fns": "^2.9.0",
     "gatsby": "^2.19.22",
     "gatsby-image": "^2.2.41",
-    "gatsby-plugin-goatcounter": "^0.1.0-beta.0",
+    "gatsby-plugin-goatcounter": "^0.2.0",
     "gatsby-plugin-layout": "^1.1.21",
     "gatsby-plugin-mdx": "^1.0.74",
     "gatsby-plugin-offline": "^3.0.35",
