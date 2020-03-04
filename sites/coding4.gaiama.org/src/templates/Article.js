@@ -62,7 +62,7 @@ const Article = ({ data: { page, site }, ...props }) => {
             <span sx={{ fontWeight: `bold` }}>Last updated</span>
             <time
               dateTime={page.frontmatter.updatedTime}
-              itemprop="dateModified"
+              itemProp="dateModified"
               sx={{ pl: 1, fontWeight: `bold` }}
             >
               {page.frontmatter.updated}
@@ -70,7 +70,7 @@ const Article = ({ data: { page, site }, ...props }) => {
             <span sx={{ pl: 4, pr: 1 }}>Originally published</span>
           </Fragment>
         )}
-        <time dateTime={page.frontmatter.dateTime} itemprop="datePublished">
+        <time dateTime={page.frontmatter.dateTime} itemProp="datePublished">
           {page.frontmatter.date}
         </time>
         {/* </Link> */}
