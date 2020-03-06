@@ -195,7 +195,10 @@ export const onCreateNode = async (
 
 export const createSchemaCustomization = (
   { actions }: CreateSchemaCustomizationArgs,
-  { sourceInstanceName = defaultSourceInstanceName }: PluginOpts
+  {
+    sourceInstanceName = defaultSourceInstanceName,
+    internalType = defaultInternalType,
+  }: PluginOpts
 ) => {
   const { createTypes } = actions
   const capitalizedInstanceName =
@@ -210,7 +213,7 @@ export const createSchemaCustomization = (
       line: Int
       ref: String
       text: String
-      file: File @link(by: "id", from: "file___NODE")
+      file: ${internalType} @link(by: "id", from: "file___NODE")
       value: String
       modifiedTime: Date @dateformat
     }
