@@ -11,7 +11,7 @@
     "sites/*"
   ],
   "resolutions": {
-    "sharp": "^0.24.1"
+    "sharp": "^0.25.1"
   },
   "scripts": {
     "plop": "plop",
