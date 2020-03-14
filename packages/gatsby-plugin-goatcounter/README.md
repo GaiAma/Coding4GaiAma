@@ -4,6 +4,8 @@
 
 Adds GDPR compliant [GoatCounter Statistics](https://goatcounter.com/) to your GatsbyJS website.
 
+## v.0.3.1
+- Add missing note about `referrer` option
 ## v.0.3.0
 - Add support for `?ref=referrer.com` & `?utm_source=referrer.com`
 - Add boolean `urlCleanup` option
@@ -63,18 +65,28 @@ module.exports = {
         // Override the default localStorage key more below
         localStorageKey: 'skipgc',
 
-        // Disabled by default.
+        // Set to boolean true to enable referrer set via URL parameters
+        // Like example.com?ref=referrer.com or example.com?utm_source=referrer.com
+        // Accepts a function to override the default referrer extraction
+        // NOTE: No Babel! The function will be passes as is to your websites <head> section
+        // So make sure the function works as intended in all browsers you want to support
+        referrer: false,
+
         // Setting it to boolean true will clean the URL from
         // `?ref` & `?utm_` parameters before sending it to GoatCounter
         // It uses `window.history.replaceState` to clean the URL in the
         // browser address bar as well.
         // This is to prevent ref tracking ending up in your users bookmarks.
+        // All parameters other than `ref` and all `utm_` will stay intact
         urlCleanup: false,
       },
     },
   ],
 }
 ```
+
+> NOTE: The `referrer` and `urlCleanup` functions will only add to your page size if you explicitly enable them.  
+> This plugin uses `minimatch` for the `exclude` option, which will only be used at build time, so `minimatch` won't be added to your website.
 
 ### Tip: Additional Site to not spam your main analytics for testing purposes
 
