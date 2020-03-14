@@ -281,5 +281,6 @@ module.exports = {
     // If this should ever be removed, replace it with `gatsby-plugin-remove-serviceworker`
     // as explained in https://www.gatsbyjs.org/packages/gatsby-plugin-offline/#remove
     `gatsby-plugin-offline`,
+    `gatsby-plugin-terminal-notifier`,
   ],
 }
