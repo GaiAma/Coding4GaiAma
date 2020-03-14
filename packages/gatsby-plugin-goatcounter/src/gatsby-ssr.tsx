@@ -9,48 +9,54 @@ export const onRenderBody = (
     setPostBodyComponents,
     pathname,
   }: RenderBodyArgs,
-  opts: PluginOptions
+  pluginOptions: PluginOptions
 ) => {
-  const excludeGCPaths: string[] = [];
-  if (typeof opts.exclude !== `undefined`) {
-    const Minimatch = require(`minimatch`).Minimatch;
-    opts.exclude.map(exclude => {
+  const setComponents = pluginOptions.head
+    ? setHeadComponents
+    : setPostBodyComponents;
+
+  const excludePaths: RegExp[] = [];
+  if (Array.isArray(pluginOptions.exclude)) {
+    const Minimatch = require('minimatch').Minimatch;
+    pluginOptions.exclude.map(exclude => {
       const mm = new Minimatch(exclude);
-      excludeGCPaths.push(mm.makeRe());
+      excludePaths.push(mm.makeRe(exclude));
     });
   }
 
   const settings: GoatCounter = { no_onload: true };
-  if (opts.allowLocal) settings.allow_local = true;
-
-  const setComponents = opts.head ? setHeadComponents : setPostBodyComponents;
+  if (pluginOptions.allowLocal) settings.allow_local = true;
 
   setComponents([
     <script
       key="gatsby-plugin-goatcounter-config"
       dangerouslySetInnerHTML={{
-        __html: `
-        window.goatcounter = ${JSON.stringify(settings)};
-        ${
-          excludeGCPaths.length
-            ? `window.excludeGCPaths=[${excludeGCPaths.join(`,`)}];`
-            : ``
-        }
-        `,
+        // prettier-ignore
+        __html:
+          'window.goatcounter={' +
+            Object.entries(settings).reduce((acc, [key, val]) => `${acc}${key}:${val},`, '') +
+            (pluginOptions.referrer === true ? `referrer:function(){return window.goatcounter.get_query('ref')||window.goatcounter.get_query('utm_source')||document.referrer;},` : '') +
+            (typeof pluginOptions.referrer === 'function' ? `referrer:${pluginOptions.referrer}` : '') +
+          '};' +
+          (excludePaths.length ? `window.GPGC_ExcludePaths=[${excludePaths}];` : '') +
+          (pluginOptions.urlCleanup === true ? `window.GPGC_CleanPath=function(){var l=document.location;var p=l.pathname;var s=l.search.substring(1).split('&').filter(function(x){return !/^(utm_.*=|ref=)/.test(x)}).join('&');return p+(s.length?'?'+s:'')+l.hash;};window.GPGC_PostCountCallback=function(){window.history.replaceState({},document.title,window.GPGC_CleanPath());};` : '')
+        // (typeof pluginOptions.postCountCallback === 'function' ? `window.GPGC_PostCountCallback=${pluginOptions.postCountCallback};` : '')
       }}
     />,
     <script
       key="gatsby-plugin-goatcounter"
       async
-      data-goatcounter={`https://${opts.code}.goatcounter.com/count`}
+      data-goatcounter={`https://${pluginOptions.code}.goatcounter.com/count`}
       src="https://gc.zgo.at/count.js"
     />,
   ]);
 
-  if (opts.pixel) {
+  if (pluginOptions.pixel) {
     setPreBodyComponents([
       <noscript key="gatsby-plugin-goatcounter-noscript">
-        <img src={`https://${opts.code}.goatcounter.com/count?p=${pathname}`} />
+        <img
+          src={`https://${pluginOptions.code}.goatcounter.com/count?p=${pathname}`}
+        />
       </noscript>,
     ]);
   }

@@ -4,6 +4,9 @@
 
 Adds GDPR compliant [GoatCounter Statistics](https://goatcounter.com/) to your GatsbyJS website.
 
+## v.0.3.0
+- Add support for `?ref=referrer.com` & `?utm_source=referrer.com`
+- Add boolean `urlCleanup` option
 ## v.0.2.0
 - BREAKING CHANGE: drops `goatcount` in favor of `useGoatCounter` hook
 - not tagged as beta yet it's still not widely tested
@@ -40,17 +43,33 @@ module.exports = {
 
         // Avoids sending pageview hits from custom paths
         exclude: [];
+
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
-        // Defines where to place the tracking script - boolean `true` in the head and `false` in the body
+
+        // Defines where to place the tracking script
+        // boolean `true` in the head and `false` in the body
         head: false,
-        // set to true to include a gif to count non-JS users
+
+        // Set to true to include a gif to count non-JS users
         pixel: false,
-        // Allow requests from local addresses (localhost, 192.168.0.0, etc.) for testing the integration locally.
-        // TIP: set up a `Additional Site` in your GoatCounter settings and use its code conditionally when you `allowLocal`, example below
+
+        // Allow requests from local addresses (localhost, 192.168.0.0, etc.)
+        // for testing the integration locally.
+        // TIP: set up a `Additional Site` in your GoatCounter settings
+        // and use its code conditionally when you `allowLocal`, example below
         allowLocal: false,
-        // override the default localStorage key more below
+
+        // Override the default localStorage key more below
         localStorageKey: 'skipgc',
+
+        // Disabled by default.
+        // Setting it to boolean true will clean the URL from
+        // `?ref` & `?utm_` parameters before sending it to GoatCounter
+        // It uses `window.history.replaceState` to clean the URL in the
+        // browser address bar as well.
+        // This is to prevent ref tracking ending up in your users bookmarks.
+        urlCleanup: false,
       },
     },
   ],
@@ -112,7 +131,7 @@ You have to visit you-url.com/#skipgc (or you defined localStorageKey) once or s
 Why 't'? I basically copied the example from GoatCounter settings. Naming things is hard 😅
 
 ## Questions? Anything unclear?
-Feel free to open an [issue](https://github.com/GaiAma/Coding4GaiAma/issues/new).
+Feel free to open an [issue](https://github.com/GaiAma/Coding4GaiAma/issues/new) or reach out via Twitter [@CanRau](https://twitter.com/CanRau).
 
 ## Who uses gatsby-plugin-goatcounter?
 - [Coding4.Gaiama.org](https://coding4.gaiama.org)
