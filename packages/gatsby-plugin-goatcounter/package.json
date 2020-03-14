@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-goatcounter",
   "description": "Gatsby plugin to add GoatCounter Analytics to a website",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "types": "index.d.ts",
   "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
