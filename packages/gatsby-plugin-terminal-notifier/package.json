@@ -1,0 +1,37 @@
+{
+  "name": "gatsby-plugin-terminal-notifier",
+  "version": "1.0.0",
+  "description": "Get native OS notification when Gatsby's dev server is about to start & after build process has finished",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "CanRau <cansrau@gmail.com> (https://www.canrau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GaiAma/Coding4GaiAma.git",
+    "directory": "packages/gatsby-plugin-terminal-notifier"
+  },
+  "homepage": "https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/gatsby-plugin-terminal-notifier/README.md",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "yarn build --watch",
+    "prepublishOnly": "yarn build"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "notification"
+  ],
+  "dependencies": {
+    "node-notifier": "6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.5.0",
+    "@types/node-notifier": "6.0.0",
+    "typescript": "^3.7.4"
+  },
+  "files": [
+    "index.js",
+    "gatsby-node.js"
+  ]
+}
