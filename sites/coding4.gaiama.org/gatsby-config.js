@@ -271,10 +271,12 @@ module.exports = {
       resolve: `gatsby-plugin-goatcounter`,
       options: {
         code: isProduction ? `coding4gaiama` : `coding4gaiama-dev`,
-        // exclude: ['/en/rubber-ducking'],
+        // exclude: [`/en/rubber-ducking`, `/en/privacy`],
         head: true,
         allowLocal: !isProduction,
         pixel: true,
+        referrer: true,
+        urlCleanup: true,
       },
     },
     `gatsby-plugin-netlify-cache`,
