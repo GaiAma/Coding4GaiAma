@@ -1,6 +1,0 @@
-yarn.lock
-src
-coverage
-tsconfig.json
-.tsbuildinfo
-.prettierrc
