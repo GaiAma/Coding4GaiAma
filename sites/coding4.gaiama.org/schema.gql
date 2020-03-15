@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-02-29T16:32:57.751Z ###
+### Type definitions saved at 2020-03-06T01:00:27.792Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -330,19 +330,20 @@ type Frontmatter @derivedTypes {
   title: String
   isPublished: Boolean
   type: String
-  slug: String
   layout: String
-  menu: String
-  description: String
   date: Date @dateformat
   author: String
+  description: String
+  coverBackground: File @fileByRelativePath
   tags: [String]
-  publications: [String]
-  updated: Date @dateformat
-  shortSlug: String
+  menu: String
+  slug: String
   robots: String
   changelog: [String]
   statusCode: Int
+  updated: Date @dateformat
+  publications: [String]
+  shortSlug: String
   name: String
   image: File @fileByRelativePath
   twitterHandle: String
@@ -355,7 +356,9 @@ type MdxFrontmatterLinks {
   url: String
 }
 
-type MdxFields {
+type MdxFields @derivedTypes {
+  generatedCover: File @fileByRelativePath
+  generatedCoverAvgColor: MdxFieldsGeneratedCoverAvgColor
   lang: String
   date: Date @dateformat
   editLink: String
@@ -363,4 +366,9 @@ type MdxFields {
   slug: String
   url: String
   absoluteUrl: String
+}
+
+type MdxFieldsGeneratedCoverAvgColor {
+  rgb: String
+  hex: String
 }

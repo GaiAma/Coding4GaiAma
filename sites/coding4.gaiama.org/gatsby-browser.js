@@ -68,7 +68,7 @@ const log = msg => console.log(`\n\u001B[36m${msg}\u001B[0m\u001B[0m\n`)
 const scrollTo = id => () => {
   const el = doc.querySelector(id)
   if (!el) return false
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  el.scrollIntoView({ behavior: `smooth`, block: `start` })
 }
 
 export const onRouteUpdate = ({ location: { hash } }) => {
