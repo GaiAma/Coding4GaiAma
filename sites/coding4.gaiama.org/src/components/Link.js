@@ -16,7 +16,8 @@ export const Link = forwardRef(
       title,
       as,
       ext,
-      variant: _variant = `default`,
+      extAs,
+      variant: _variant = `default`, // FIXME: won't work without theme-ui
       active = true,
       target,
       rel,
