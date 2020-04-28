@@ -39,12 +39,12 @@ module.exports = {
       resolve: `gatsby-plugin-goatcounter`,
       options: {
         // REQUIRED! https://[my_code].goatcounter.com
-        code: 'YOUR_GOATCOUNTER_PAGE_CODE';
+        code: 'YOUR_GOATCOUNTER_PAGE_CODE',
         
         // ALL following settings are OPTIONAL
 
         // Avoids sending pageview hits from custom paths
-        exclude: [];
+        exclude: [],
 
         // Delays sending pageview hits on route update (in milliseconds)
         pageTransitionDelay: 0,
