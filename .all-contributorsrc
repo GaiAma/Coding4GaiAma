@@ -13,6 +13,17 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "CanRau",
+      "name": "Can Rau",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5196971?v=4",
+      "profile": "https://www.GaiAma.org",
+      "contributions": [
+        "code",
+        "doc",
+        "plugin"
+      ]
     }
   ],
   "contributorsPerLine": 7,
