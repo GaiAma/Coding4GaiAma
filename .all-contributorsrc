@@ -6,15 +6,6 @@
   "commit": false,
   "contributors": [
     {
-      "login": "MoSattler",
-      "name": "MoSattler",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/64152453?v=4",
-      "profile": "https://github.com/MoSattler",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
       "login": "CanRau",
       "name": "Can Rau",
       "avatar_url": "https://avatars0.githubusercontent.com/u/5196971?v=4",
@@ -23,6 +14,15 @@
         "code",
         "doc",
         "plugin"
+      ]
+    },
+    {
+      "login": "MoSattler",
+      "name": "MoSattler",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/64152453?v=4",
+      "profile": "https://github.com/MoSattler",
+      "contributions": [
+        "doc"
       ]
     }
   ],

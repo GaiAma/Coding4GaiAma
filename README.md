@@ -2,6 +2,9 @@
 <h1 align="center">Coding4GaiAma</h1>
 
 [![Build & Deploy](https://github.com/GaiAma/Coding4GaiAma/workflows/Build%20&%20Deploy/badge.svg)](https://github.com/GaiAma/Coding4GaiAma/actions/)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Sites
 
@@ -20,6 +23,20 @@
 - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog)
 - [commit message template](.github/commit_template)
 - [All Contributors by Kent C. Dodds](https://github.com/kentcdodds/all-contributors)
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.GaiAma.org"><img src="https://avatars0.githubusercontent.com/u/5196971?v=4" width="100px;" alt=""/><br /><sub><b>Can Rau</b></sub></a><br /><a href="https://github.com/GaiAma/Coding4GaiAma/commits?author=CanRau" title="Code">💻</a> <a href="https://github.com/GaiAma/Coding4GaiAma/commits?author=CanRau" title="Documentation">📖</a> <a href="#plugin-CanRau" title="Plugin/utility libraries">🔌</a></td>
+    <td align="center"><a href="https://github.com/MoSattler"><img src="https://avatars2.githubusercontent.com/u/64152453?v=4" width="100px;" alt=""/><br /><sub><b>MoSattler</b></sub></a><br /><a href="https://github.com/GaiAma/Coding4GaiAma/commits?author=MoSattler" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
 
