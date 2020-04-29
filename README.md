@@ -23,7 +23,6 @@
 - Typescript
 - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog)
 - [commit message template](.github/commit_template)
-- [All Contributors by Kent C. Dodds](https://github.com/kentcdodds/all-contributors)
 
 ## Contributors ✨
 
