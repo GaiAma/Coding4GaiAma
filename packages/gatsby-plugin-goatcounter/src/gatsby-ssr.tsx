@@ -1,3 +1,4 @@
+// -*- mode: js; js-indent-level: 2; -*-
 import { PluginOptions, GoatCounter } from './index.d';
 import { RenderBodyArgs } from 'gatsby';
 import * as React from 'react';
@@ -23,10 +24,22 @@ export const onRenderBody = (
       excludePaths.push(mm.makeRe(exclude));
     });
   }
-
   const settings: GoatCounter = { no_onload: true };
   if (pluginOptions.allowLocal) settings.allow_local = true;
+  let goatSrc = {
+    script: "https://gc.zgo.at/count.js",
+    data: `https://${pluginOptions.code}.goatcounter.com/count`,
+    img: `https://${pluginOptions.code}.goatcounter.com/count?p=${pathname}`
 
+  };
+
+  if (pluginOptions.selfHostUrl) {
+    goatSrc = {
+      script:  `${pluginOptions.selfHostUrl}/count.js`,
+      data: `${pluginOptions.selfHostUrl}/count`,
+      img: `${pluginOptions.selfHostUrl}/count`
+    };
+  };
   setComponents([
     <script
       key="gatsby-plugin-goatcounter-config"
@@ -46,8 +59,8 @@ export const onRenderBody = (
     <script
       key="gatsby-plugin-goatcounter"
       async
-      data-goatcounter={`https://${pluginOptions.code}.goatcounter.com/count`}
-      src="https://gc.zgo.at/count.js"
+      data-goatcounter={goatSrc.data}
+      src={goatSrc.script}
     />,
   ]);
 
@@ -55,9 +68,9 @@ export const onRenderBody = (
     setPreBodyComponents([
       <noscript key="gatsby-plugin-goatcounter-noscript">
         <img
-          src={`https://${pluginOptions.code}.goatcounter.com/count?p=${pathname}`}
+          src={goatSrc.img}
         />
-      </noscript>,
+        </noscript>,
     ]);
   }
 };
