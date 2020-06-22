@@ -16,7 +16,7 @@ Adds GDPR compliant [GoatCounter Statistics](https://goatcounter.com/) to your G
 
 I plan to add a component to track outbound links like [gatsby-plugin-google-analytics](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-google-analytics#outboundlink-component)
 
-For now [count.js](https://gc.zgo.at/count.js) (GoatCounter's minimalistic js file) is loaded once from the official CDN.  
+For now [count.js](https://gc.zgo.at/count.js) (GoatCounter's minimalistic js file) is loaded once from the official CDN.
 Eventually it'll be bundled and inlined, want to talk to GoatCounter for this first tho.
 
 ## Install
@@ -38,9 +38,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-goatcounter`,
       options: {
-        // REQUIRED! https://[my_code].goatcounter.com
+        // Either `code` or `selfHostUrl` is required.
+        // REQUIRED IF USING HOSTED GOATCOUNTER! https://[my_code].goatcounter.com
         code: 'YOUR_GOATCOUNTER_PAGE_CODE',
-        
+
+        // REQUIRED IF USING SELFHOSTED GOATCOUNTER!
+        selfHostUrl: `https://example.com`
+
         // ALL following settings are OPTIONAL
 
         // Avoids sending pageview hits from custom paths
@@ -85,7 +89,7 @@ module.exports = {
 }
 ```
 
-> NOTE: The `referrer` and `urlCleanup` functions will only add to your page size if you explicitly enable them.  
+> NOTE: The `referrer` and `urlCleanup` functions will only add to your page size if you explicitly enable them.
 > This plugin uses `minimatch` for the `exclude` option, which will only be used at build time, so `minimatch` won't be added to your website.
 
 ### Tip: Additional Site to not spam your main analytics for testing purposes
@@ -138,8 +142,8 @@ const Layout = (props) => {
 > `useGoatCounter` returns a noop function, meaning a no-operation function which does nothing, until GoatCounter.js has loaded. The component will then re-render and send the event.
 
 ### Skip own views
-`gatsby-plugin-goatcounter` skips views if the `localStorageKey` by default `skipgc` has been set in localStorage.  
-You have to visit you-url.com/#skipgc (or you defined localStorageKey) once or set it manually to 't'.  
+`gatsby-plugin-goatcounter` skips views if the `localStorageKey` by default `skipgc` has been set in localStorage.
+You have to visit you-url.com/#skipgc (or you defined localStorageKey) once or set it manually to 't'.
 Why 't'? I basically copied the example from GoatCounter settings. Naming things is hard 😅
 
 ## Questions? Anything unclear?

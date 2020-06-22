@@ -2,6 +2,7 @@ type PropertyFunction<T> = () => T;
 
 export type PluginOptions = {
   code: '';
+  selfHostUrl: '';
   exclude: string[];
   pageTransitionDelay: number;
   head: boolean;
