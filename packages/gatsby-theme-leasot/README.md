@@ -30,7 +30,7 @@ npm i -D gatsby-theme-leasot
 ## Related
 - [gatsby-transformer-leasot]
 - [leasot]
-- [live example](https://coding4.gaiama.org)
+- [live example: Roadmap on Coding4GaiAma](https://coding4.gaiama.org/en/roadmap)
 
 ## License
 
