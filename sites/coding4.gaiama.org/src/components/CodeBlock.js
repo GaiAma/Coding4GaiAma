@@ -125,12 +125,14 @@ export const CodeBlock = ({ children, className, highlight, ...props }) => {
                 return (
                   <div
                     key={i}
+                    id={`L${i + 1}`}
                     {...getLineProps({ line, key: i })}
                     sx={{
                       backgroundColor, // NOTE: maybe apply only to <spans>?
                       display: `grid`,
                       gridTemplateColumns: `20px auto`,
                       px: 3,
+                      ':target': { bg: 'codeLineHighlight' },
                     }}
                   >
                     <div
