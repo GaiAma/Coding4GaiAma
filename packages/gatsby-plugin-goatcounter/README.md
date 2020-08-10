@@ -4,21 +4,6 @@
 
 Adds GDPR compliant [GoatCounter Statistics](https://goatcounter.com/) to your GatsbyJS website.
 
-## v.0.3.1
-- Add missing note about `referrer` option
-## v.0.3.0
-- Add support for `?ref=referrer.com` & `?utm_source=referrer.com`
-- Add boolean `urlCleanup` option
-## v.0.2.0
-- BREAKING CHANGE: drops `goatcount` in favor of `useGoatCounter` hook
-- not tagged as beta yet it's still not widely tested
-- I'd appreciate bug reports & feature requests. 🙏
-
-I plan to add a component to track outbound links like [gatsby-plugin-google-analytics](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-google-analytics#outboundlink-component)
-
-For now [count.js](https://gc.zgo.at/count.js) (GoatCounter's minimalistic js file) is loaded once from the official CDN.
-Eventually it'll be bundled and inlined, want to talk to GoatCounter for this first tho.
-
 ## Install
 
 ```bash
@@ -145,6 +130,26 @@ const Layout = (props) => {
 `gatsby-plugin-goatcounter` skips views if the `localStorageKey` by default `skipgc` has been set in localStorage.
 You have to visit you-url.com/#skipgc (or you defined localStorageKey) once or set it manually to 't'.
 Why 't'? I basically copied the example from GoatCounter settings. Naming things is hard 😅
+
+## Changelog
+
+### v.0.4.0
+- Add support for self-hosted GoatCounter instances
+- Fix missing commas and wrong semicolons in readme examples
+### v.0.3.1
+- Add missing note about `referrer` option
+### v.0.3.0
+- Add support for `?ref=referrer.com` & `?utm_source=referrer.com`
+- Add boolean `urlCleanup` option
+### v.0.2.0
+- BREAKING CHANGE: drops `goatcount` in favor of `useGoatCounter` hook
+- not tagged as beta yet it's still not widely tested
+- I'd appreciate bug reports & feature requests. 🙏
+
+I plan to add a component to track outbound links like [gatsby-plugin-google-analytics](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-google-analytics#outboundlink-component)
+
+For now [count.js](https://gc.zgo.at/count.js) (GoatCounter's minimalistic js file) is loaded once from the official CDN.
+Eventually it'll be bundled and inlined, want to talk to GoatCounter for this first tho.
 
 ## Questions? Anything unclear?
 Feel free to open an [issue](https://github.com/GaiAma/Coding4GaiAma/issues/new) or reach out via Twitter [@CanRau](https://twitter.com/CanRau).
