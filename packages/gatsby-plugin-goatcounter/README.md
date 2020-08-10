@@ -43,7 +43,7 @@ module.exports = {
         code: 'YOUR_GOATCOUNTER_PAGE_CODE',
 
         // REQUIRED IF USING SELFHOSTED GOATCOUNTER!
-        selfHostUrl: `https://example.com`
+        selfHostUrl: `https://example.com`,
 
         // ALL following settings are OPTIONAL
 
@@ -103,8 +103,8 @@ module.exports = {
     {
       resolve:`gatsby-plugin-goatcounter`,
       options: {
-        code: isProduction ? 'YOUR_GOATCOUNTER_PAGE_CODE' : 'GOATCOUNTER_DEV_CODE';
-        allowLocal: !isProduction
+        code: isProduction ? 'YOUR_GOATCOUNTER_PAGE_CODE' : 'GOATCOUNTER_DEV_CODE',
+        allowLocal: !isProduction,
       },
     },
   ],
