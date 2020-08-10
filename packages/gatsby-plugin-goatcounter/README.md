@@ -1,4 +1,4 @@
-![Gatsby meets GoatCounter](assets/Gatsby-meets-GoatCounter.png)
+![Gatsby meets GoatCounter](https://github.com/GaiAma/Coding4GaiAma/blob/master/packages/gatsby-plugin-goatcounter/assets/Gatsby-meets-GoatCounter.png)
 
 # gatsby-plugin-goatcounter
 
