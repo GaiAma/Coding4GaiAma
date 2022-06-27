@@ -38,6 +38,8 @@ export const onRouteUpdate = (
   const sendPageView = () => {
     const path =
       window?.GPGC_CleanPath?.() ??
+      // cast to `any` to fix "href does not exist on Element"
+      (window?.document.querySelector('link[rel=canonical]') as any)?.href ??
       location.pathname + location.search + location.hash;
 
     const settings: CountVars = { ...window.goatcounter, path };
